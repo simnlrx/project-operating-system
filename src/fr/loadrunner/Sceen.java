@@ -1,7 +1,7 @@
 public class Sceen{
     private int height; //Hauteur de l'écran
     private int lenght; //Largeur de l'écran
-    private int tab[][]; //scene représentée par un tableau en 2D
+    private int tab[][]; //scene représentée par une matrice 2*2
 
     //constructeur de Sceen
     public Sceen(int height, int lenght){
@@ -32,5 +32,5 @@ public class Sceen{
         System.out.println("");
       }
     }
-    //fonction permettant de transformer 
+    //fonction permettant d'afficher l'écran à partir de la matrice
 }
