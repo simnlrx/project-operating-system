@@ -3,6 +3,6 @@ public class Game{
     Player joueur1 = new Player(10, "Bastien");
     Player joueur2 = new Player(10, "Simon");
     Sceen sceen = new Sceen(8,16);
-    sceen.printMatrix();
+    sceen.Matrix2Screen();
   }
 }
