@@ -1,3 +1,13 @@
+// -- Lexique des différents entiers avec leur représentation graphique --
+// 0 - représente un espace vide dans la scene
+// 1 - représente les contours de l'écran
+// 2 - représente un morceau de platforme
+// 3 - représente un morceau d'une échelle
+// 4 - représente un ennemi
+// 5 - représente un objet à récupérer
+// 10 - représente le joueur courant
+// 11 - représente le joueur en multijoueur
+
 public class Sceen{
     private int height; //Hauteur de l'écran
     private int lenght; //Largeur de l'écran
