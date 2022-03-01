@@ -1,0 +1,24 @@
+public class player{
+  private int score;
+  private String name;
+
+  public player(int score, String name){
+    this.score = score;
+    this.name = name;
+  }
+  //accesseurs pour le nom du joueur
+  public void setName(String name){
+    this.name = name;
+  }
+  public String getName(){
+    return this.name;
+  }
+
+  //accesseurs pour le score du joueur
+  public void setScore(int score){
+    this.score = score;
+  }
+  public int getScore(){
+    return this.score;
+  }
+}
