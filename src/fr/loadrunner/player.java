@@ -1,7 +1,7 @@
 public class Player{
   private int score;
   private String name;
-
+  //constructeur de Player
   public Player(int score, String name){
     this.score = score;
     this.name = name;
