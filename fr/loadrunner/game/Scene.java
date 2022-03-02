@@ -27,11 +27,7 @@ public class Scene {
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
-<<<<<<< Updated upstream:fr/loadrunner/Scene.java
         //initialisation d'une Sceen remplies préalablement de 0
-=======
-        //initialisation d'une game.Scene remplies préalablement de 0
->>>>>>> Stashed changes:fr/loadrunner/game/Scene.java
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
