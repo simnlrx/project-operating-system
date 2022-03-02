@@ -1,7 +1,7 @@
 package game;
 
 public class GameManager {
-//
+
   private Player player1;
   private Player player2;
   private Scene scene;
