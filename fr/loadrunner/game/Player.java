@@ -1,10 +1,13 @@
+package game;
+
 public class Player {
+    //
     private int score;
     private String name;
     private int posX;
     private int posY;
 
-    //constructeur de Player
+    //constructeur de game.Player
     public Player(int score, String name) {
         this.score = score;
         this.name = name;
