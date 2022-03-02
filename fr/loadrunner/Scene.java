@@ -27,7 +27,7 @@ public class Scene {
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
-        //initialisation d'une Sceen remplies préalablement de 0
+        //initialisation d'une Scene remplies préalablement de 0
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -48,7 +48,7 @@ public class Scene {
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
-        //initialisation d'une Sceen remplies préalablement de 0
+        //initialisation d'une Scene remplies préalablement de 0
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -101,7 +101,7 @@ public class Scene {
         }
     }
 
-    public void genSceenLevel1() {//fonction qui va pemrettre de générer un niveau prédéfinis
+    public void genSceneLevel1() {//fonction qui va pemrettre de générer un niveau prédéfinis
         this.baseStairsY = this.height - 2;//declaration d'une base d'escalier
         int basePlat = baseStairsY;
         int baseStair = baseStairsY;

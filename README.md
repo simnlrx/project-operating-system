@@ -1,4 +1,0 @@
-# project-operating-system
- The purpose of the operating system project is to implement all the learning from the Info4B module of the University of Burgundy.
- 
- Directed by Bastien Gouneaud and Simon Le Roux
