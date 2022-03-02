@@ -1,6 +1,7 @@
 package game;
 
 public class Player {
+    //
     private int score;
     private String name;
     private int posX;
