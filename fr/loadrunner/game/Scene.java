@@ -1,4 +1,4 @@
-// -- Lexique des différents entiers avec leur représentation graphique --
+package game;// -- Lexique des différents entiers avec leur représentation graphique --
 // 0 - représente un espace vide dans la scene
 // 1 - représente les contours horizontaux de l'écran
 // 2 - représente un morceau de platforme
@@ -20,14 +20,18 @@ public class Scene {
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
-    //constructeur de Scene
+    //constructeur de game.Scene
     public Scene(int height, int lenght, Player player1) {
         this.player1 = player1;
         this.player2 = new Player(0, "");
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
-        //initialisation d'une Scene remplies préalablement de 0
+<<<<<<< Updated upstream:fr/loadrunner/Scene.java
+        //initialisation d'une Sceen remplies préalablement de 0
+=======
+        //initialisation d'une game.Scene remplies préalablement de 0
+>>>>>>> Stashed changes:fr/loadrunner/game/Scene.java
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -48,7 +52,11 @@ public class Scene {
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
-        //initialisation d'une Scene remplies préalablement de 0
+<<<<<<< Updated upstream:fr/loadrunner/Scene.java
+        //initialisation d'une Sceen remplies préalablement de 0
+=======
+        //initialisation d'une game.Scene remplies préalablement de 0
+>>>>>>> Stashed changes:fr/loadrunner/game/Scene.java
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -101,7 +109,7 @@ public class Scene {
         }
     }
 
-    public void genSceneLevel1() {//fonction qui va pemrettre de générer un niveau prédéfinis
+    public void genSceenLevel1() {//fonction qui va pemrettre de générer un niveau prédéfinis
         this.baseStairsY = this.height - 2;//declaration d'une base d'escalier
         int basePlat = baseStairsY;
         int baseStair = baseStairsY;
