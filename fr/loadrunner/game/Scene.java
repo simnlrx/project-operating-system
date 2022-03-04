@@ -23,7 +23,7 @@ public class Scene {
     //constructeur de game.Scene
     public Scene(int height, int lenght, Player player1) {
         this.player1 = player1;
-        this.player2 = new Player(0, "");
+        this.player2 = new Player(0, "",2);
         this.height = height;
         this.lenght = lenght;
         this.tab = new int[height][lenght];
@@ -211,10 +211,21 @@ public class Scene {
     }
 
     public void setPositionPlayer(Player player, int x, int y){
-      tab[y][x] = 1;
+      if(player.getNumber()==1){
+        tab[y][x] = 1;
+        player.setPosition(x, y);
+      }
+      else if(player.getNumber()==2){
+        tab[y][x] = 2;
+        player.setPosition(x, y);
+      }
     }
 
     public int getValueScene(int x,int y){
       return tab[y][x];
+    }
+
+    public void setValueScene(int x,int y, int value){
+      tab[y][x] = value;
     }
 }
