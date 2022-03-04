@@ -2,13 +2,15 @@ package game;
 
 public class Player {
     //
+    private Scene scene;
     private int score;
     private String name;
     private int posX;
     private int posY;
 
     //constructeur de game.Player
-    public Player(int score, String name) {
+    public Player(Scene scene, int score, String name) {
+        this.scene = scene;
         this.score = score;
         this.name = name;
         this.posX = 0;
@@ -33,20 +35,8 @@ public class Player {
         return this.score;
     }
 
-    public int getPosX() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setPosPlayer(int x, int y){
+      scene.setPosPlayer(x,y);
     }
 
 
