@@ -1,25 +1,27 @@
 package game;
 
 public class Player {
-    //
+
     private int score;
-    private String name;
+    private final String name;
     private int posX;
     private int posY;
-    private int number;
+    private final int number;
+    private int life;
 
-    //constructeur de game.Player
+    /**
+     * Constructeur d'un joueur
+     * @param score Score du joueur
+     * @param name Non du joueur
+     * @param number Numéro du joueur
+     */
     public Player(int score, String name, int number) {
         this.score = score;
         this.name = name;
         this.posX = 0;
         this.posY = 0;
         this.number = number;
-    }
-
-    //accesseurs pour le nom du joueur
-    public void setName(String name) {
-        this.name = name;
+        this.life = 3;
     }
 
     public String getName() {
@@ -50,5 +52,17 @@ public class Player {
 
     public int getPosY(){
       return this.posY;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void addLife() {
+        this.life++;
+    }
+
+    public void removeLife(){
+        this.life--;
     }
 }

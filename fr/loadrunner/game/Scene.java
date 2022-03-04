@@ -1,4 +1,7 @@
-package game;// -- Lexique des différents entiers avec leur représentation graphique --
+package game;
+
+
+// -- Lexique des différents entiers avec leur représentation graphique --
 // 0 - représente un espace vide dans la scene
 // 1 - représente les contours horizontaux de l'écran
 // 2 - représente un morceau de platforme
@@ -85,7 +88,7 @@ public class Scene {
                     case 3: {System.out.print("##");break;}//échelle
                     case 4: {System.out.print("4 ");break;}//simulation d'un ennemi en attente d'un symbole
                     case 5: {System.out.print("☼ ");break;}//simulation d'un objet
-                    case 6: {System.out.print("S ");break;}
+                    case 6: {System.out.print("S ");break;}//simulation du spawn
                     case 9: {System.out.print("||");break;}//bord vertical
                     case 10: {System.out.print("1 ");break;}//simulation du joueur courant en attendant un symbole
                     case 11: {System.out.print("2 ");break;}//simulation du joueur 2 en attendant un symbole

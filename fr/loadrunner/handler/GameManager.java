@@ -1,4 +1,7 @@
-package game;
+package handler;
+
+import game.Player;
+import game.Scene;
 
 public class GameManager {
 
