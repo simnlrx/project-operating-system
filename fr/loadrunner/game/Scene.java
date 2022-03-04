@@ -210,11 +210,11 @@ public class Scene {
         } while (stage >= 4);
     }
 
-    public void setPlayer(int x, int y){
+    public void setPositionPlayer(Player player, int x, int y){
       tab[y][x] = 1;
     }
 
-    public void getValueScene(int x,int y){
+    public int getValueScene(int x,int y){
       return tab[y][x];
     }
 }
