@@ -19,7 +19,6 @@ public class GameManager {
 
   public void start(){
     int optionGame;
-
     scene.genSceenLevel1();//test d'affichage de mla méthode Matrix2Screen
     scene.matrix2Screen();
     scene.printMatrix();
