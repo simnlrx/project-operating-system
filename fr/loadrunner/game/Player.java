@@ -3,7 +3,7 @@ package game;
 public class Player {
 
     private int score;
-    private final String name;
+    private String name;
     private int posX;
     private int posY;
     private final int number;
@@ -26,6 +26,10 @@ public class Player {
 
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name){
+      this.name = name;
     }
 
     //accesseurs pour le score du joueur

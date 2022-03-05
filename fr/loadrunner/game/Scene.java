@@ -23,6 +23,7 @@ public class Scene {
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
+
     //constructeur de Scene
     public Scene(int height, int length, Player player1) {
         this.player1 = player1;
@@ -77,6 +78,7 @@ public class Scene {
 
     //fonction permettant d'afficher l'écran à partir de la matrice
     public void matrix2Screen() {
+        System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         int value;
         for (int i = 0; i < (this.height); i++) {
             for (int y = 0; y < (this.length); y++) {

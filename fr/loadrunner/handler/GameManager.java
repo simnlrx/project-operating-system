@@ -8,16 +8,16 @@ public class GameManager {
   private Player player1;
   private Player player2;
   private Scene scene;
+  private int gamemode;
 
-  public GameManager(Player player, Scene scene){
+  public GameManager(Player player){
     this.player1 = player;
     this.scene = scene;
   }
 
-  public GameManager(Player player1, Player player2, Scene scene){
+  public GameManager(Player player1, Player player2){
     this.player1 = player1;
     this.player2 = player2;
-    this.scene = scene;
   }
 
   public void start(){
@@ -29,5 +29,29 @@ public class GameManager {
 
   public void end(){
 
+  }
+
+  public void setScene(Scene scene){
+    this.scene = scene;
+  }
+
+  public Scene getScene(){
+    return this.scene;
+  }
+
+  public void setPlayer1(Player player1){
+    this.player1 = player1;
+  }
+
+  public void setPlayer2(Player player2){
+    this.player2 = player2;
+  }
+
+  public void setGameMode(int gamemode){
+    this.gamemode = gamemode;
+  }
+
+  public int getGameMode(){
+    return this.gamemode;
   }
 }
