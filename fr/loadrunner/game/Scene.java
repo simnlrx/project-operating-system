@@ -215,6 +215,10 @@ public class Scene {
         } while (stage >= 4);
     }
 
+    public void setValuePostion(int x, int y, int value){
+        board[y][x] = value;
+    }
+
     public void setPositionPlayer(Player player, int x, int y){
       if(player.getNumber()==1){
         board[y][x] = 1;
