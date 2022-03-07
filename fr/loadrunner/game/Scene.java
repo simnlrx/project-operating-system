@@ -215,7 +215,7 @@ public class Scene {
         } while (stage >= 4);
     }
 
-    public void setValuePostion(int x, int y, int value){
+    public void setValuePosition(int x, int y, int value){
         board[y][x] = value;
     }
 

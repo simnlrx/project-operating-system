@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddbca9ec-1459-4bcb-a467-6f59ebf2a84e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fr/loadrunner/LoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/fr/loadrunner/LoadRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fr/loadrunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/fr/loadrunner/game/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LoadRunner/LoadRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LoadRunner/LoadRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LoadRunner/game/GameManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LoadRunner/game/Scene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LoadRunner/game/Scene.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,13 +39,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration name="LoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LoadRunner" />
-      <module name="LoadRunner" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -54,6 +46,13 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LoadRunner" />
+      <module name="LoadRunner" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -74,6 +73,7 @@
       <updated>1646222566452</updated>
       <workItem from="1646222569558" duration="669000" />
       <workItem from="1646416739406" duration="4144000" />
+      <workItem from="1646655485394" duration="304000" />
     </task>
     <servers />
   </component>

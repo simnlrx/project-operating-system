@@ -1,12 +1,12 @@
-package game;
+package handler;
 import java.util.Scanner;
 
-public class Loading{
+public class LoadingManager {
     private int height; //Hauteur de l'écran
     private int length; //Largeur de l'écran
     private String board[][]; //scene représentée par une matrice 2*2
 
-    public Loading(int height, int length){
+    public LoadingManager(int height, int length){
       this.height = height;//Hauteur de l'écran
       this.length = length;//Largeur de l'écran
       String loderunner = "Lode Runner           ";
