@@ -1,9 +1,10 @@
 package game;
 
-public class Enemy{
+public class Enemy extends Thread{
   private int posX;
   private int posY;
   private Scene scene;
+  private boolean direction;
 
   public Enemy(int posX, int posY, Scene scene){
     this.posX = posX;
@@ -11,7 +12,8 @@ public class Enemy{
     this.scene = scene;
   }
 
-  public void mooveEnemy(){
-    
+  @Override
+  public void run(){
+
   }
 }
