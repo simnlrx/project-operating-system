@@ -2,7 +2,7 @@ package LoadRunner.thread;
 
 import LoadRunner.game.Scene;
 
-public class EnemyThread extends Thread{
+public class EnemyThread extends Thread {
   private int posX;//position en x de l'ennemi
   private int posY;//position en y de l'ennemi
   private Scene scene;//scene de l'ennemi
@@ -17,13 +17,14 @@ public class EnemyThread extends Thread{
   }
 
   public void chooseDirection(){
-    System.out.println(scene.getValuePosition(posX-1, posY-1) + " ");
-    if(scene.getValuePosition(posX-1, posY-1)!=2 || scene.getValuePosition(posX-1, posY-1)!=3){
+    System.out.println(getName() + " X: " + posX + " et Y: " + posY);
+    if(scene.getValuePosition(posX-1, posY-1)==0 || scene.getValuePosition(posX-1, posY-1)==9){
       //si l'ennemi se deplace de droite à gauche et qu'il rencontre le bord de la platforme ou le bord de l'écran
-      this.sens = !sens;//alors il change de sens de déplacement
-    }else if(scene.getValuePosition(posX+1, posY-1)!=2 || scene.getValuePosition(posX+1, posY-1)!=3)
+      this.sens = false;//alors il change de sens de déplacement
+    }else if(scene.getValuePosition(posX+1, posY-1)==0 || scene.getValuePosition(posX+1, posY-1)==9){
       //si l'ennemi se deplace de gauche à droite et qu'il rencontre le bord de la platforme ou le bord de l'écran
-      this.sens = !sens;//alors il change de sens de déplacement
+      this.sens = true;//alors il change de sens de déplacement
+    }
   }
 
   public void StairAfterEnemyPass(){
@@ -39,28 +40,26 @@ public class EnemyThread extends Thread{
   }
 
   @Override
-  public void run(){
+  public void run() {
     try{
-      System.out.println("test");
-      chooseDirection();
       while(scene.getinGame()){
-        if(sens){//si le sens est à true
-          this.sleep(500);
-          scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
-          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-          this.posX--;//on décrémente la position en x du joueur de 1
-        }
-        else if(!sens){//si le sens est à false
-          this.sleep(500);
-          scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à droite
-          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-          this.posX++;//on incrémente la position en x du joueur de 1
-        }
-        StairAfterEnemyPass();
+      chooseDirection();
+      if(sens){//si le sens est à true
+        this.sleep(500);
+        scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
+        scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+        this.posX--;//on décrémente la position en x du joueur de 1
       }
-    }
-    catch(InterruptedException e){
-        e.printStackTrace();
+      else if(!sens){//si le sens est à false
+        this.sleep(500);
+        scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à droite
+        scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+        this.posX++;//on incrémente la position en x du joueur de 1
+      }
+      StairAfterEnemyPass();
+      }
+    }catch(InterruptedException e){
+          e.printStackTrace();
     }
   }
 }
