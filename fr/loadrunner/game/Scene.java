@@ -147,14 +147,6 @@ public class Scene {
         board[baseStairsY - 1][2] = 6;
     }
 
-    public void genStairs(int baseStairsY, int baseStairsX) {//fonction test pour la génération d'escaliers
-        for (int i = 1; i < 5; i++) {
-            if (board[baseStairsY + i][baseStairsX] != 1) {
-                board[baseStairsY + i][baseStairsX] = 3;
-            }
-        }
-    }
-
     public void setValuePosition(int x, int y, int value){
         board[y][x] = value;
     }
@@ -172,9 +164,5 @@ public class Scene {
 
     public int getValueScene(int x,int y){
       return board[y][x];
-    }
-
-    public void setValueScene(int x,int y, int value){
-      board[y][x] = value;
     }
 }

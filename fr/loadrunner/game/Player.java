@@ -15,6 +15,7 @@ public class Player {
      * @param name Non du joueur
      * @param number Numéro du joueur
      */
+     
     public Player(int score, String name, int number) {
         this.score = score;
         this.name = name;
