@@ -1,4 +1,4 @@
-package game;
+package thread;
 
 public class Enemy extends Thread{
   private int posX;//position en x de l'ennemi
