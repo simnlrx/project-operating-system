@@ -1,5 +1,5 @@
-package fr.loadrunner.thread;
-import fr.loadrunner.game.Scene;
+package LoadRunner.thread;
+import LoadRunner.game.Scene;
 
 public class EnemyThread extends Thread{
   private int posX;//position en x de l'ennemi

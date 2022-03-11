@@ -1,4 +1,4 @@
-package fr.loadrunner.thread;
+package LoadRunner.thread;
 
 //NE RIEN FAIRE ICI JE REFLECHIS BABA MERCI
 

@@ -1,4 +1,4 @@
-package fr.loadrunner.utils;
+package LoadRunner.utils;
 
 public class Display {
 

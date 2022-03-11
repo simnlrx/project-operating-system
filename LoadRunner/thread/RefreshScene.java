@@ -1,6 +1,6 @@
-package fr.loadrunner.thread;
+package LoadRunner.thread;
 
-import fr.loadrunner.game.Scene;
+import LoadRunner.game.Scene;
 
 public class RefreshScene extends Thread{
   private Scene scene;
