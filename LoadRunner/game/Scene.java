@@ -1,4 +1,4 @@
-package LoadRunner.game;
+package game;
 
 // -- Lexique des différents entiers avec leur représentation graphique --
 // 0 - représente un espace vide dans la scene

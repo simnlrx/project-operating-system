@@ -1,7 +1,7 @@
-package LoadRunner.handler;
+package handler;
 
-import LoadRunner.game.Player;
-import LoadRunner.game.Scene;
+import game.Player;
+import game.Scene;
 
 public class GameManager {
 
