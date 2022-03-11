@@ -1,4 +1,4 @@
-package handler;
+package fr.loadrunner.handler;
 import java.util.Scanner;
 
 public class LoadingManager {

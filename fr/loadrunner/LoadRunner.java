@@ -1,11 +1,12 @@
-import game.Player;
-import game.Scene;
-import thread.EnemyThread;
-import thread.RefreshScene;
-import handler.GameManager;
-import handler.LoadingManager;
+package fr.loadrunner;
 
-//
+import fr.loadrunner.game.Player;
+import fr.loadrunner.game.Scene;
+import fr.loadrunner.handler.GameManager;
+import fr.loadrunner.handler.LoadingManager;
+import fr.loadrunner.thread.EnemyThread;
+import fr.loadrunner.thread.RefreshScene;
+
 public class LoadRunner {
     public static void main(String[] args) {
         System.out.println("Load Runner | Runnig ...");

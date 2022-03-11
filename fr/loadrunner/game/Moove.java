@@ -1,4 +1,4 @@
-package game;
+package fr.loadrunner.game;
 
 public class Moove {
 
@@ -25,13 +25,13 @@ public class Moove {
                 }
                 break;
             case 's':
-                if (scene.getvaluePosition(player.getPosX(), player.getPosY() + 1) == 3) {
+                if (scene.getValuePosition(player.getPosX(), player.getPosY() + 1) == 3) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
                     player.setPosition(player.getPosX(), player.getPosY() + 1);
                 }
                 break;
             case 'd':
-                if (scene.getvaluePosition(player.getPosX() + 1, player.getPosY()+1) == 0) {
+                if (scene.getValuePosition(player.getPosX() + 1, player.getPosY()+1) == 0) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
                     player.setPosition(player.getPosX() + 1, player.getPosY() + 1);
                 }
