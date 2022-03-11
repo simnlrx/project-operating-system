@@ -162,7 +162,7 @@ public class Scene {
       }
     }
 
-    public int getValueScene(int x,int y){
+    public int getValuePosition(int x,int y){
       return board[y][x];
     }
 }
