@@ -1,4 +1,4 @@
-package handler;
+package LoadRunner.handler;
 
 public enum GameState {
 

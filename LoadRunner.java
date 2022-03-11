@@ -1,11 +1,9 @@
-package LoadRunner;
-
-import game.Player;
-import game.Scene;
-import handler.GameManager;
-import handler.LoadingManager;
-import thread.EnemyThread;
-import thread.RefreshScene;
+import LoadRunner.game.Player;
+import LoadRunner.game.Scene;
+import LoadRunner.handler.GameManager;
+import LoadRunner.handler.LoadingManager;
+import LoadRunner.thread.EnemyThread;
+import LoadRunner.thread.RefreshScene;
 
 public class LoadRunner {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package game;
+package LoadRunner.game;
 
 public class Moove {
 
