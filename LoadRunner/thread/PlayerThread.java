@@ -1,7 +1,7 @@
-package LoadRunner.thread;
+package thread;
 
 //NE RIEN FAIRE ICI JE REFLECHIS BABA MERCI
-import LoadRunner.game.Player;
+import game.Player;
 
 public class PlayerThread extends Thread {
 
