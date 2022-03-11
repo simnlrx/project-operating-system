@@ -16,10 +16,10 @@ public class EnemyThread extends Thread{
   }
 
   public void chooseDirection(){
-    if(scene.getValuePosition(posX-1, posY-1)!=2 || scene.getValuePosition(posX-1, posY-1)==3){
+    if(scene.getValuePosition(posX-1, posY-1)!=2 || scene.getValuePosition(posX-1, posY-1)!=3){
       //si l'ennemi se deplace de droite à gauche et qu'il rencontre le bord de la platforme ou le bord de l'écran
       this.sens = false;//alors il change de sens de déplacement
-    }else if(scene.getValuePosition(posX+1, posY-1)!=2 || scene.getValuePosition(posX+1, posY-1)==3)
+    }else if(scene.getValuePosition(posX+1, posY-1)!=2 || scene.getValuePosition(posX+1, posY-1)!=3)
       //si l'ennemi se deplace de gauche à droite et qu'il rencontre le bord de la platforme ou le bord de l'écran
       this.sens = true;//alors il change de sens de déplacement
   }
