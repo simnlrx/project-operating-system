@@ -16,6 +16,7 @@ public class EnemyThread extends Thread{
   }
 
   public void chooseDirection(){
+    System.out.println(scene.getValuePosition(posX-1, posY-1) + " ");
     if(scene.getValuePosition(posX-1, posY-1)!=2 || scene.getValuePosition(posX-1, posY-1)!=3){
       //si l'ennemi se deplace de droite à gauche et qu'il rencontre le bord de la platforme ou le bord de l'écran
       this.sens = !sens;//alors il change de sens de déplacement
@@ -38,8 +39,9 @@ public class EnemyThread extends Thread{
 
   @Override
   public void run(){
-    chooseDirection();
     try{
+      System.out.println("test");
+      chooseDirection();
       while(scene.getinGame()){
         if(sens){//si le sens est à true
           this.sleep(500);
