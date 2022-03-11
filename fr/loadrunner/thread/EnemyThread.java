@@ -25,15 +25,22 @@ public class Enemy extends Thread{
   @Override
   public void run(){
     chooseDirection();
-    if(sens){//si le sens est à true
-      scene.setValueScene(posX-1, posY+1, 4);//on déplace le joueur d'une case à gauche
-      scene.setValueScene(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-      this.posX--;//on décrémente la position en x du joueur de 1
+    try{
+      if(sens){//si le sens est à true
+        scene.setValueScene(posX-1, posY+1, 4);//on déplace le joueur d'une case à gauche
+        scene.setValueScene(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+        this.posX--;//on décrémente la position en x du joueur de 1
+        this.sleep(500);
+      }
+      else if(!sens){//si le sens est à false
+        scene.setValueScene(posX+1, posY+1, 4);//on déplace le joueur d'une case à droite
+        scene.setValueScene(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+        this.posX++;//on incrémente la position en x du joueur de 1
+        this.sleep(500);
+      }
     }
-    else if(!sens){//si le sens est à false
-      scene.setValueScene(posX+1, posY+1, 4);//on déplace le joueur d'une case à droite
-      scene.setValueScene(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-      this.posX++;//on incrémente la position en x du joueur de 1
-    }
+    catch(InterruptedException e){
+        e.printStackTrace();
+      }
   }
 }
