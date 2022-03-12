@@ -14,7 +14,6 @@ public class RefreshScene extends Thread{
     while(scene.getinGame()){
       try{
         this.scene.matrix2Screen();
-        scene.printMatrix();
         this.sleep(500);
       }
       catch(InterruptedException e){
