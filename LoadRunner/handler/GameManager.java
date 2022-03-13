@@ -3,6 +3,7 @@ package LoadRunner.handler;
 
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
+import LoadRunner.thread.RefreshScene;
 
 public class GameManager {
 
@@ -10,22 +11,24 @@ public class GameManager {
   private Player player2;
   private Scene scene;
   private int gamemode;
+  private GameState gameState;
 
-  public GameManager(Player player){
+  RefreshScene refresh = new RefreshScene(scene, true);
+
+  public GameManager(Player player, Scene scene){
     this.player1 = player;
     this.scene = scene;
   }
 
-  public GameManager(Player player1, Player player2){
+  public GameManager(Player player1, Player player2, Scene scene){
     this.player1 = player1;
     this.player2 = player2;
   }
 
   public void start(){
-    int optionGame;
-    scene.genSceenLevel1();//test d'affichage de mla méthode Matrix2Screen
+    scene.genSceenLevel1();
     scene.matrix2Screen();
-    scene.printMatrix();
+    refresh.start();
   }
 
   public void end(){

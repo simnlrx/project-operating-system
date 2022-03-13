@@ -1,12 +1,14 @@
 package LoadRunner.thread;
 
 import LoadRunner.game.Scene;
+import LoadRunner.handler.GameState;
 
 public class EnemyThread extends Thread {
   private int posX;//position en x de l'ennemi
   private int posY;//position en y de l'ennemi
   private Scene scene;//scene de l'ennemi
   private boolean sens;//sens du mouvement de l'ennemi
+  private GameState gameState;
 
   public EnemyThread(int posX, int posY, boolean sens, Scene scene){
     this.scene = scene;
@@ -41,7 +43,7 @@ public class EnemyThread extends Thread {
   @Override
   public void run() {
     try{
-      while(scene.getinGame()){
+      while(GameState.SOLOGAME.isState() || GameState.MULTIGAME.isState()){
       chooseDirection();
       if(sens){//si le sens est à true
         this.sleep(500);

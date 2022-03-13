@@ -22,16 +22,13 @@ public class Scene {
     private int baseStairsX;//pointeur selon l'axe X
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
-    private boolean inGame;//boolean qui permet de savoir si le jue est en cours
-
 
     //constructeur de Scene avec un seul joueur
-    public Scene(int height, int length, Player player1, boolean inGame) {
+    public Scene(int height, int length, Player player1) {
         this.player1 = player1;
         this.player2 = new Player(0, "",2);
         this.height = height;
         this.length = length;
-        this.inGame = inGame;
         this.board = new int[height][length];
         //initialisation d'une Scene remplies préalablement de 0
         for (int i = 0; i < this.height; i++) {
@@ -49,7 +46,7 @@ public class Scene {
     }
 
     //constructeur de scene avec le joueur 1 et le joueur2
-    public Scene(int height, int length, Player player1, Player player2, boolean inGame) {
+    public Scene(int height, int length, Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         this.height = height;
@@ -167,7 +164,4 @@ public class Scene {
       return board[y][x];
     }
 
-    public boolean getinGame(){
-      return this.inGame;
-    }
 }
