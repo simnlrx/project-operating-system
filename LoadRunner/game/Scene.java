@@ -119,6 +119,10 @@ public class Scene {
       return  this.height;
     }
 
+    public int getLength(){
+      return this.length;
+    }
+
     //méthode permettant de récupérer la valeur de la position
     public int getValuePosition(int x,int y){
       return board[y][x];

@@ -14,9 +14,8 @@ public class RefreshScene extends Thread {
 
     @Override
     public void run() {
-      System.out.println("THREAD" + gameManager.getGameState().name());
         while (gameManager.getGameState().isGame()) {
-            this.scene.matrix2Screen();
+            scene.printMatrix();
             try {
                 this.sleep(500);
             } catch (InterruptedException e) {
