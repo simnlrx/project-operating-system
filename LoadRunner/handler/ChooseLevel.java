@@ -1,3 +1,5 @@
+package LoadRunner.handler;
+
 public class ChooseLevel{
     private GameManager gameManager;
     private int height; //Hauteur de l'écran
