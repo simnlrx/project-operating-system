@@ -73,4 +73,8 @@ public class GameManager {
       this.level = level;
     }
 
+    public int getLevel(){
+      return this.level;
+    }
+
 }

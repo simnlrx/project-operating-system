@@ -71,7 +71,7 @@ public class LoadingManager {
 
     }
 
-    public void loadingChooseLevel(){
+    public void loadingChooseLevel(){//scene permettant de choisir le niveau
       System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
       String choose = "Choose your level";
       String level1 = "1 - Easy         ";//niveau facile
@@ -82,13 +82,14 @@ public class LoadingManager {
 
       for(int z = 0;  z < 17; z ++) {//affichage des différentes chaines de caracteres dans le board
         board[height-14][7+z] = choose.charAt(z)+" ";
-        board[height-10][7+z] = level1.charAt(z)+" ";
-        board[height-8][7+z] = level2.charAt(z)+" ";
-        board[height-6][7+z] = level3.charAt(z)+" ";
-        board[height-4][7+z] = pressenter.charAt(z)+" ";
+        board[height-12][7+z] = level1.charAt(z)+" ";
+        board[height-10][7+z] = level2.charAt(z)+" ";
+        board[height-8][7+z] = level3.charAt(z)+" ";
+        board[height-6][7+z] = pressenter.charAt(z)+" ";
       }
       printLoading();
     }
+
 
     public void initLoadingScene(){//initialise uen scene vide pour le chargement chargement
       for (int i = 0; i < this.height; i++) {
@@ -137,5 +138,9 @@ public class LoadingManager {
           this.loadingStage(gamemode);
         }
         return gamemode;
+    }
+
+    public int getLevel(){
+      return this.level;
     }
 }
