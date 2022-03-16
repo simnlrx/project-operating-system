@@ -18,8 +18,6 @@ public class Scene {
     private int height; //Hauteur de l'écran
     private int length; //Largeur de l'écran
     private int board[][]; //scene représentée par une matrice 2*2
-    private int baseStairsY;//pointeur selon l'axe Y
-    private int baseStairsX;//pointeur selon l'axe X
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
@@ -30,19 +28,7 @@ public class Scene {
         this.height = height;
         this.length = length;
         this.board = new int[height][length];
-        //initialisation d'une Scene remplies préalablement de 0
-        for (int i = 0; i < this.height; i++) {
-            for (int y = 0; y < this.length; y++) {
-                //déclarations des bordures du terrain
-                if (i == 0 || i == (this.height - 1)) {
-                    board[i][y] = 1;
-                } else if (y == 0 || y == (this.length - 1)) {
-                    board[i][y] = 9;
-                } else {
-                    board[i][y] = 0;
-                }
-            }
-        }
+        this.setScene();
     }
 
     //constructeur de scene avec le joueur 1 et le joueur2
@@ -52,18 +38,23 @@ public class Scene {
         this.height = height;
         this.length = length;
         this.board = new int[height][length];
-        for (int i = 0; i < this.height; i++) {
-            for (int y = 0; y < this.length; y++) {
-                //déclarations des bordures du terrain
-                if (i == 0 || i == (this.height - 1)) {
-                    board[i][y] = 1;
-                } else if (y == 0 || y == (this.length - 1)) {
-                    board[i][y] = 9;
-                } else {
-                    board[i][y] = 0;
-                }
-            }
-        }
+        this.setScene();
+    }
+
+    //méthode qui permet d'initialiser la scene sous forme brut
+    public void setScene(){
+      for (int i = 0; i < this.height; i++) {
+          for (int y = 0; y < this.length; y++) {
+              //déclarations des bordures du terrain
+              if (i == 0 || i == (this.height - 1)) {
+                  board[i][y] = 1;
+              } else if (y == 0 || y == (this.length - 1)) {
+                  board[i][y] = 9;
+              } else {
+                  board[i][y] = 0;
+              }
+          }
+      }
     }
 
     //fonction permettant d'afficher la matrice de l'écran
@@ -106,49 +97,13 @@ public class Scene {
         }
     }
 
-    public void genSceenLevel1() {//fonction qui va permettre de générer un niveau prédéfinis
-        this.baseStairsY = this.height - 2;//declaration d'une base d'escalier
-        int basePlat = baseStairsY;
-        int baseStair = baseStairsY;
-        for (int i = 1; i < 18; i++) {//génération d'une premier platforme
-            board[basePlat][i] = 2;
-        }
-        basePlat -= 4;
-        for (int i = 16; i < 30; i++) {//génération d'une deuxieme platforme
-            board[basePlat][i] = 2;
-        }
-        basePlat -= 4;
-        for (int i = 2; i < 26; i++) {//génération d'une troisieme platforme
-            board[basePlat][i] = 2;
-        }
-        basePlat -= 4;
-        for (int i = 5; i < 30; i++) {//génération d'une quatrieme platforme
-            board[basePlat][i] = 2;
-        }
-        for (int i = 1; i < 5; i++) {//generation premier esclaier
-            board[baseStair - i][16] = 3;
-        }
-        baseStair -= 4;
-        for (int i = 1; i < 5; i++) {//generation deuxieme esclaier
-            board[baseStair - i][18] = 3;
-        }
-        baseStair -= 4;
-        for (int i = 1; i < 5; i++) {//generation troisieme esclaier
-            board[baseStair - i][10] = 3;
-        }
-        baseStair -= 4;
-        for (int i = 1; i < 5; i++) {//generation quatrieme esclaier
-            if (board[baseStair - i][22] != 1) {
-                board[baseStair - i][22] = 3;
-            }
-        }
-        board[baseStairsY - 1][2] = 6;
-    }
 
+    //méthode permettant de metre unevaleur dans le tableau
     public void setValuePosition(int x, int y, int value){
         board[y][x] = value;
     }
 
+    //méthode permettant de changer la position du joueur
     public void setPositionPlayer(Player player, int x, int y){
       if(player.getNumber()==1){
         board[y][x] = 1;
@@ -159,7 +114,12 @@ public class Scene {
         player.setPosition(x, y);
       }
     }
+    // méthode permettant de récupérer la hauteur du plateau
+    public int getHeight(){
+      return  this.height;
+    }
 
+    //méthode permettant de récupérer la valeur de la position
     public int getValuePosition(int x,int y){
       return board[y][x];
     }
