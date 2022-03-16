@@ -1,5 +1,6 @@
 package LoadRunner.handler;
-
+import java.io.BufferedReader;
+import java.io.StreamTokenizer;
 import java.io.File;
 
 public class LevelManager {
@@ -7,22 +8,22 @@ public class LevelManager {
     private Scene scene;
     private File file;//= new File("../files/level1.txt");
 
+
     public LevelManager(GameManager gameManager){
       this.gameManager = gameManager;
       this.scene = gameManager.getScene;
-      if(gameManager.getLevel()==1){
-        this.file = new File("../files/level1.txt");
+      this.ligne = 0;
+      try{
+        file = new File("../files/level" + scene.getLevel() + .txt");
+      }catch(Exception e){
+        e.printStackTrace();
       }
-      else if(gameManager.getLevel()==2){
-        this.file = new File("../files/level2.txt");
-      }else{
-        this.file = new File("../files/level3.txt");
-      }
-      for(int i=0;i< scene.getHeight();i++){
-        for(int y=0;y<scene.getLength();y+){
-
+      BufferedReader obj = new BufferedReader(new FileReader(file));
+      StreamTokenizer st = new StreamTokenizer(obj);
+      while(st.nextToken()!=StreamTokenizer.TT_EOF){
+        if(st.ttype==StreamTokenizer.TT_NUMBER){
+          scene.setValuePosition(int x, int y, int value);
         }
       }
-    }
 
 }
