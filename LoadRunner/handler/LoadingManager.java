@@ -20,18 +20,9 @@ public class LoadingManager {
       String licence = "licenced by           ";
       String ufr = "NINTUFR OF FRANCE INC ";
       this.board = new String[height][length];//instanciation  d'une matrice 2x2 de String
-      for (int i = 0; i < this.height; i++) {
-          for (int y = 0; y < this.length; y++) {
-              //déclarations des bordures du terrain
-              if (i == 0 || i == (this.height - 1)) {
-                  board[i][y] = "–-";
-              } else if (y == 0 || y == (this.length - 1)) {
-                  board[i][y] = "||";
-              } else {
-                  board[i][y] = "  ";
-              }
-          }
-      }
+      initLoadingScene();
+
+
       for(int z = 0;  z < 22; z ++) {//affichage des différentes chaines de caracteres dans le board
           board[height-16][10+z] = loderunner.charAt(z)+" ";
           board[height-15][7+z] = software.charAt(z)+" ";
@@ -53,18 +44,9 @@ public class LoadingManager {
       String score = "SCORE   000000000      ";
       String hiscore = "HISCORE 000000000      ";
       String pressenter= "press enter to continue";
-      for (int i = 0; i < this.height; i++) {
-          for (int y = 0; y < this.length; y++) {
-              //déclarations des bordures du terrain
-              if (i == 0 || i == (this.height - 1)) {
-                  board[i][y] = "–-";
-              } else if (y == 0 || y == (this.length - 1)) {
-                  board[i][y] = "||";
-              } else {
-                  board[i][y] = "  ";
-              }
-          }
-      }
+      this.initLoadingScene();
+
+
       if(gamemode==1){
         for(int z = 0;  z < 17; z ++) {//affichage des différentes chaines de caracteres dans le board
           board[height-12][7+z] = solo.charAt(z)+" ";
@@ -95,6 +77,21 @@ public class LoadingManager {
             }
             System.out.print("\n");
         }
+    }
+
+    public void initLoadingScene(){//initialise uen scene vide pour le chargement chargement
+      for (int i = 0; i < this.height; i++) {
+          for (int y = 0; y < this.length; y++) {
+              //déclarations des bordures du terrain
+              if (i == 0 || i == (this.height - 1)) {
+                  board[i][y] = "–-";
+              } else if (y == 0 || y == (this.length - 1)) {
+                  board[i][y] = "||";
+              } else {
+                  board[i][y] = "  ";
+              }
+          }
+      }
     }
 
     public int selectGameMode(){//fonction qui permet de rentrer un entier et de retourner le mode de jeu

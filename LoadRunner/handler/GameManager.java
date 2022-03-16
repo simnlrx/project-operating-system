@@ -12,9 +12,11 @@ public class GameManager {
     private Scene scene;
     private int gamemode;
     private GameState gameState;
+    private int level;
 
     public GameManager(Scene scene, Player player) {
         this(scene, player, null);
+        this.gamemode = 1;
     }
 
     public GameManager(Scene scene, Player player1, Player player2) {
@@ -22,6 +24,7 @@ public class GameManager {
         this.player1 = player1;
         this.player2 = player2;
         this.gameState = GameState.LOADING;
+        this.gamemode = 2;
     }
 
     public void start() {
@@ -30,7 +33,6 @@ public class GameManager {
             gameState = GameState.SOLOGAME;
         else
             gameState = GameState.MULTIGAME;
-        scene.genSceenLevel1();
         scene.matrix2Screen();
         refresh.start();
     }
@@ -65,6 +67,10 @@ public class GameManager {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public void setLevel(int level){
+      this.level = level;
     }
 
 }
