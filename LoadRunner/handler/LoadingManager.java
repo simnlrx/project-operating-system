@@ -6,6 +6,7 @@ public class LoadingManager {
     private int height; //Hauteur de l'écran
     private int length; //Largeur de l'écran
     private String board[][]; //scene représentée par une matrice 2*2
+    private int level;
 
     public LoadingManager(int height, int length){
       this.height = height;//Hauteur de l'écran
@@ -40,7 +41,7 @@ public class LoadingManager {
       System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
       String solo =  "PLAYER 1               ";
       String multi = "PLAYER 2               ";
-      String stage = "STAGE 1 - 3 LIVES      ";
+      String stage = "STAGE "+level+" - 3 LIVES      ";
       String score = "SCORE   000000000      ";
       String hiscore = "HISCORE 000000000      ";
       String pressenter= "press enter to continue";
@@ -70,13 +71,23 @@ public class LoadingManager {
 
     }
 
-    public void printLoading() {//affichage de board
-        for (int i = 0; i < (this.height); i++) {
-            for (int y = 0; y < (this.length); y++) {
-                System.out.print(board[i][y]);
-            }
-            System.out.print("\n");
-        }
+    public void loadingChooseLevel(){
+      System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
+      String choose = "Choose your level";
+      String level1 = "1 - Easy         ";//niveau facile
+      String level2 = "2 - Medium       ";//niveau moyen
+      String level3 = "3 - Hard         ";//niveau difficile
+      String pressenter= "press enter      ";
+      this.initLoadingScene();
+
+      for(int z = 0;  z < 17; z ++) {//affichage des différentes chaines de caracteres dans le board
+        board[height-14][7+z] = choose.charAt(z)+" ";
+        board[height-10][7+z] = level1.charAt(z)+" ";
+        board[height-8][7+z] = level2.charAt(z)+" ";
+        board[height-6][7+z] = level3.charAt(z)+" ";
+        board[height-4][7+z] = pressenter.charAt(z)+" ";
+      }
+      printLoading();
     }
 
     public void initLoadingScene(){//initialise uen scene vide pour le chargement chargement
@@ -94,6 +105,15 @@ public class LoadingManager {
       }
     }
 
+    public void printLoading() {//affichage de board
+        for (int i = 0; i < (this.height); i++) {
+            for (int y = 0; y < (this.length); y++) {
+                System.out.print(board[i][y]);
+            }
+            System.out.print("\n");
+        }
+    }
+
     public int selectGameMode(){//fonction qui permet de rentrer un entier et de retourner le mode de jeu
         int gamemode;
         String pressenter;
@@ -104,9 +124,15 @@ public class LoadingManager {
           this.printLoading();
           gamemode = sc1.nextInt();
         }
-        this.loadingStage(gamemode);
+        this.loadingChooseLevel();
         Scanner sc2 = new Scanner(System.in);
-        pressenter = sc2.nextLine();
+        this.level = sc2.nextInt();
+        while(this.level!=1 && this.level!=2 && this.level!=3){
+          this.printLoading();
+        }
+        this.loadingStage(gamemode);
+        Scanner sc3 = new Scanner(System.in);
+        pressenter = sc3.nextLine();
         while(pressenter!=""){
           this.loadingStage(gamemode);
         }
