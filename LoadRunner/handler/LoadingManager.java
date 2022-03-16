@@ -130,12 +130,13 @@ public class LoadingManager {
         this.level = sc2.nextInt();
         while(this.level!=1 && this.level!=2 && this.level!=3){
           this.printLoading();
+          this.level = sc2.nextInt();
         }
         this.loadingStage(gamemode);
         Scanner sc3 = new Scanner(System.in);
         pressenter = sc3.nextLine();
         while(pressenter!=""){
-          this.loadingStage(gamemode);
+          this.printLoading();
         }
         return gamemode;
     }

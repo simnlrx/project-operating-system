@@ -21,18 +21,18 @@ public class EnemyThread extends Thread {
   }
 
   public void chooseDirection(){
-    if(scene.getValuePosition(posX-2, posY+1)!=2 && scene.getValuePosition(posX-2, posY+1)!=3){
+    if(scene.getValuePosition(posX-1, posY+1)!=2 && scene.getValuePosition(posX-1, posY+1)!=3){
       //si l'ennemi se deplace de droite à gauche et qu'il rencontre le bord de la platforme ou le bord de l'écran
       this.sens = false;//alors il change de sens de déplacement
-    }else if(scene.getValuePosition(posX+2, posY+1)==0 && scene.getValuePosition(posX+2, posY+1)!=3){
+    }else if(scene.getValuePosition(posX+1, posY+1)==0 && scene.getValuePosition(posX+1, posY+1)!=3){
       //si l'ennemi se deplace de gauche à droite et qu'il rencontre le bord de la platforme ou le bord de l'écran
       this.sens = true;//alors il change de sens de déplacement
     }
   }
 
-  public void StairAfterEnemyPass(){
-    if(scene.getValuePosition(18,11)!=3 && scene.getValuePosition(18,11)!=4){//si l'escalier1 avait disparut lors du passage d'un ennemi
-      scene.setValuePosition(18,11,3);//on refix un esclaier là où il était
+  public void StairAfterEnemyPassLevel1(){
+    if(scene.getValuePosition(20,11)!=3 && scene.getValuePosition(20,11)!=4){//si l'escalier1 avait disparut lors du passage d'un ennemi
+      scene.setValuePosition(20,11,3);//on refix un esclaier là où il était
     }
     if(scene.getValuePosition(10,7)!=3 && scene.getValuePosition(10,7)!=4){//si l'escalier2 avait disparut lors du passage d'un ennemi
       scene.setValuePosition(10,7,3);//on refix un esclaier là où il était
@@ -41,6 +41,8 @@ public class EnemyThread extends Thread {
       scene.setValuePosition(22,3,3);//on refix un esclaier là où il était
     }
   }
+
+
 
   @Override
   public void run() {
@@ -59,7 +61,7 @@ public class EnemyThread extends Thread {
         scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
         this.posX++;//on incrémente la position en x du joueur de 1
       }
-      StairAfterEnemyPass();
+      StairAfterEnemyPassLevel1();
       }
     }catch(InterruptedException e){
           e.printStackTrace();

@@ -33,7 +33,6 @@ public class GameManager {
             gameState = GameState.SOLOGAME;
         else
             gameState = GameState.MULTIGAME;
-        scene.matrix2Screen();
         refresh.start();
     }
 
