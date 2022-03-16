@@ -2,32 +2,28 @@ package LoadRunner.handler;
 
 public enum GameState {
 
-    LOADING("loading", true),
-    SOLOGAME("solo", false),
-    MULTIGAME("multi", false),
+    LOADING("loading", false),
+    SOLOGAME("solo", true),
+    MULTIGAME("multi", true),
     END("end", false);
 
     private String name;
-    private boolean state;
+    private boolean isgame;
 
-    GameState(String name, boolean state) {
+    GameState(String name, boolean isgame) {
         this.name = name;
-        this.state = state;
+        this.isgame = isgame;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean isGame() {
+        return isgame;
     }
 
-    public boolean isState() {
-        return state;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
+    public void setIsgame(boolean isgame) {
+        this.isgame = isgame;
     }
 }

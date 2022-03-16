@@ -1,24 +1,27 @@
 package LoadRunner.thread;
 
 import LoadRunner.game.Scene;
+import LoadRunner.handler.GameManager;
 
-public class RefreshScene extends Thread{
-  private Scene scene;
+public class RefreshScene extends Thread {
+    private Scene scene;
+    private GameManager gameManager;
 
-  public RefreshScene(Scene scene, boolean inGame){
-    this.scene = scene;
-  }
-
-  @Override
-  public void run(){
-    while(scene.getinGame()){
-      try{
-        this.scene.matrix2Screen();
-        this.sleep(500);
-      }
-      catch(InterruptedException e){
-            e.printStackTrace();
-      }
+    public RefreshScene(GameManager gameManager) {
+        this.scene = gameManager.getScene();
+        this.gameManager = gameManager;
     }
-  }
+
+    @Override
+    public void run() {
+      System.out.println("THREAD" + gameManager.getGameState().name());
+        while (gameManager.getGameState().isGame()) {
+            this.scene.matrix2Screen();
+            try {
+                this.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

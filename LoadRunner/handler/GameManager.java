@@ -7,55 +7,64 @@ import LoadRunner.thread.RefreshScene;
 
 public class GameManager {
 
-  private Player player1;
-  private Player player2;
-  private Scene scene;
-  private int gamemode;
-  private GameState gameState;
+    private Player player1;
+    private Player player2;
+    private Scene scene;
+    private int gamemode;
+    private GameState gameState;
 
-  RefreshScene refresh = new RefreshScene(scene, true);
+    public GameManager(Scene scene, Player player) {
+        this(scene, player, null);
+    }
 
-  public GameManager(Player player, Scene scene){
-    this.player1 = player;
-    this.scene = scene;
-  }
+    public GameManager(Scene scene, Player player1, Player player2) {
+        this.scene = scene;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.gameState = GameState.LOADING;
+    }
 
-  public GameManager(Player player1, Player player2, Scene scene){
-    this.player1 = player1;
-    this.player2 = player2;
-  }
+    public void start() {
+        RefreshScene refresh = new RefreshScene(this);
+        if (player2 == null)
+            gameState = GameState.SOLOGAME;
+        else
+            gameState = GameState.MULTIGAME;
+        scene.genSceenLevel1();
+        scene.matrix2Screen();
+        refresh.start();
+    }
 
-  public void start(){
-    scene.genSceenLevel1();
-    scene.matrix2Screen();
-    refresh.start();
-  }
+    public void end() {
 
-  public void end(){
+    }
 
-  }
+    public Scene getScene() {
+        return this.scene;
+    }
 
-  public void setScene(Scene scene){
-    this.scene = scene;
-  }
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
 
-  public Scene getScene(){
-    return this.scene;
-  }
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
 
-  public void setPlayer1(Player player1){
-    this.player1 = player1;
-  }
+    public void setGameMode(int gamemode) {
+        this.gamemode = gamemode;
+    }
 
-  public void setPlayer2(Player player2){
-    this.player2 = player2;
-  }
+    public int getGameMode() {
+        return this.gamemode;
+    }
 
-  public void setGameMode(int gamemode){
-    this.gamemode = gamemode;
-  }
+    public GameState getGameState() {
+        return gameState;
+    }
 
-  public int getGameMode(){
-    return this.gamemode;
-  }
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
 }
