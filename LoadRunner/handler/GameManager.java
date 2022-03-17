@@ -19,6 +19,7 @@ public class GameManager {
         this.gameState = GameState.LOADING;
     }
 
+    //lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
     public void start() {
         scene.getPlayer1();
         scene.getPlayer2();
