@@ -16,17 +16,12 @@ public class GameManager {
 
     public GameManager(Scene scene) {
         this.scene = scene;
-        this.player1 = scene.getPlayer1();
-        this.player2 = scene.getPlayer2();
-        if(this.player2.getName().equals("")){
-          gamemode = 1;
-        }else{
-          gamemode = 2;
-        }
         this.gameState = GameState.LOADING;
     }
 
     public void start() {
+        scene.getPlayer1();
+        scene.getPlayer2();
         RefreshScene refresh = new RefreshScene(this);
         if (player2 == null)
             gameState = GameState.SOLOGAME;

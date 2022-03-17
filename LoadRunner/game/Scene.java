@@ -21,25 +21,14 @@ public class Scene {
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
-    //constructeur de Scene avec un seul joueur
-    public Scene(int height, int length, Player player1) {
-        this.player1 = player1;
-        this.player2 = new Player(0, "",2);
+    //constructeur de Scene
+    public Scene(int height, int length) {
         this.height = height;
         this.length = length;
         this.board = new int[height][length];
         this.setScene();
     }
 
-    //constructeur de scene avec le joueur 1 et le joueur2
-    public Scene(int height, int length, Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.height = height;
-        this.length = length;
-        this.board = new int[height][length];
-        this.setScene();
-    }
 
     //méthode qui permet d'initialiser la scene sous forme brut
     public void setScene(){
@@ -98,6 +87,7 @@ public class Scene {
         }
     }
 
+    //méthode permettant d'afficher la vie des joueurs
     public String printLife(Player player){
       String life = "   ";
       for(int i=0;i<player.getLife();i++){
@@ -128,6 +118,7 @@ public class Scene {
       return  this.height;
     }
 
+    //méthode permettant de récupérer la longueur du tableau
     public int getLength(){
       return this.length;
     }
@@ -137,10 +128,24 @@ public class Scene {
       return board[y][x];
     }
 
+    //ajoute un joueur à la scene
+    public void set1Player(Player player1){
+      this.player1 = player1;
+      this.player2 = new Player(0,"",2);
+    }
+
+    //ajoute deux joueurs à la scene
+    public void set2Players(Player player1, Player player2){
+      this.player1 = player1;
+      this.player2 = player2;
+    }
+
+    //getter pour le premier joueur
     public Player getPlayer1(){
       return this.player1;
     }
 
+    //getter pour le second joueur
     public Player getPlayer2(){
       return this.player2;
     }
