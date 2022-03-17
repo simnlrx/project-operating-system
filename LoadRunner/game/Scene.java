@@ -8,7 +8,6 @@ package LoadRunner.game;
 // 4 - représente un ennemi
 // 5 - représente un objet à récupérer
 // 6 - spawn d'un joueur
-// 7 - représente le spawn d'un ennemi
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
 // 11 - représente le joueur en multijoueur
@@ -70,7 +69,7 @@ public class Scene {
                     case 3: {System.out.print("│┤");break;}//échelle
                     case 4: {System.out.print("EN");break;}//simulation d'un ennemi en attente d'un symbole
                     case 5: {System.out.print("☼☼");break;}//simulation d'un objet
-                    case 6: {System.out.print("SJ");break;}//simulation du spawn du joueur
+                    case 6: {System.out.print("🚩");break;}//simulation du spawn du joueur
                     case 7: {System.out.print("SE");break;}//simulation du spawn d'un ennemi
                     case 9: {System.out.print("||");break;}//bord vertical
                     case 10: {System.out.print("J1");break;}//simulation du joueur courant en attendant un symbole
