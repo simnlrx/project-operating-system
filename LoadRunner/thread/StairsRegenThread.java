@@ -45,7 +45,6 @@ public class StairsRegenThread extends Thread{
             for(int x=0;x<lenghtab;x++){
               if(gameManager.getScene().getValuePosition(x,y)==0 && this.tab[y][x]==3){
                 gameManager.getScene().setValuePosition(x,y,3);
-                System.out.println("Un escalier a disparu");
               }
             }
           }

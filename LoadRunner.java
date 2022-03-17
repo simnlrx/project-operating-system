@@ -1,9 +1,12 @@
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
+
 import LoadRunner.handler.GameManager;
 import LoadRunner.handler.GameState;
 import LoadRunner.handler.LoadingManager;
 import LoadRunner.handler.LevelManager;
+import LoadRunner.handler.EnemiesManager;
+
 import LoadRunner.thread.EnemyThread;
 import LoadRunner.thread.StairsRegenThread;
 
@@ -25,14 +28,10 @@ public class LoadRunner {
         }
         gameManager.setLevel(loading.getLevel());
         LevelManager levelManager = new LevelManager(gameManager);
-        gameManager.start();
-        EnemyThread ennemi1 = new EnemyThread(22,11, true, scene, gameManager);
-        EnemyThread ennemi2 = new EnemyThread(16,7, false, scene, gameManager);
-        EnemyThread ennemi3 = new EnemyThread(15,3,true, scene, gameManager);
         StairsRegenThread regenstairs = new StairsRegenThread(gameManager);
-        ennemi1.start();
-        ennemi2.start();
-        ennemi3.start();
+        EnemiesManager enemiesManager = new EnemiesManager(gameManager);
+        gameManager.start();
+        enemiesManager.startEnemies();
         regenstairs.start();
     }
 }
