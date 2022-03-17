@@ -11,8 +11,8 @@ public class EnemyThread extends Thread {
   private boolean sens;//sens du mouvement de l'ennemi
   private GameManager gameManager;
 
-  public EnemyThread(int posX, int posY, boolean sens, Scene scene, GameManager gameManager){
-    this.scene = scene;
+  public EnemyThread(int posX, int posY, boolean sens, GameManager gameManager){
+    this.scene = gameManager.getScene();
     this.posX = posX;
     this.posY = posY;
     scene.setValuePosition(posX,posY,4);//les coordonnées de l'ennemi sont directement placés dans la scene

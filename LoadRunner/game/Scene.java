@@ -16,16 +16,16 @@ package LoadRunner.game;
 
 public class Scene {
     private int height; //Hauteur de l'écran
-    private int length; //Largeur de l'écran
+    private int lenght; //Largeur de l'écran
     private int board[][]; //scene représentée par une matrice 2*2
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
     //constructeur de Scene
-    public Scene(int height, int length) {
+    public Scene(int height, int lenght) {
         this.height = height;
-        this.length = length;
-        this.board = new int[height][length];
+        this.lenght = lenght;
+        this.board = new int[height][lenght];
         this.setScene();
     }
 
@@ -33,11 +33,11 @@ public class Scene {
     //méthode qui permet d'initialiser la scene sous forme brut
     public void setScene(){
       for (int i = 0; i < this.height; i++) {
-          for (int y = 0; y < this.length; y++) {
+          for (int y = 0; y < this.lenght; y++) {
               //déclarations des bordures du terrain
               if (i == 0 || i == (this.height - 1)) {
                   board[i][y] = 1;
-              } else if (y == 0 || y == (this.length - 1)) {
+              } else if (y == 0 || y == (this.lenght - 1)) {
                   board[i][y] = 9;
               } else {
                   board[i][y] = 0;
@@ -49,7 +49,7 @@ public class Scene {
     //fonction permettant d'afficher la matrice de l'écran
     public void printMatrix() {
         for (int i = 0; i < (this.height); i++) {
-            for (int y = 0; y < (this.length); y++) {
+            for (int y = 0; y < (this.lenght); y++) {
                 System.out.print(board[i][y] + " ");
             }
             System.out.print("\n");
@@ -61,7 +61,7 @@ public class Scene {
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         int value;
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
-            for (int y = 0; y < (this.length); y++) {//parcours de la matrice en x
+            for (int y = 0; y < (this.lenght); y++) {//parcours de la matrice en x
                 value = board[i][y];
                 switch (value) {
                     case 0: {System.out.print("  ");break;}//espace vide
@@ -119,8 +119,8 @@ public class Scene {
     }
 
     //méthode permettant de récupérer la longueur du tableau
-    public int getLength(){
-      return this.length;
+    public int getLenght(){
+      return this.lenght;
     }
 
     //méthode permettant de récupérer la valeur de la position

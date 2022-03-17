@@ -18,7 +18,7 @@ public class RegenSceneThread extends Thread{
 
     public RegenSceneThread(GameManager gameManager){
       this.gameManager = gameManager;
-      this.lenghtab = gameManager.getScene().getLength();
+      this.lenghtab = gameManager.getScene().getLenght();
       this.heighttab = gameManager.getScene().getHeight();
       this.index = 0;
       try{
@@ -45,6 +45,8 @@ public class RegenSceneThread extends Thread{
             for(int x=0;x<lenghtab;x++){
               if(gameManager.getScene().getValuePosition(x,y)==0 && this.tab[y][x]==3){
                 gameManager.getScene().setValuePosition(x,y,3);
+              }else if(gameManager.getScene().getValuePosition(x,y)==0 && this.tab[y][x]==5){
+                gameManager.getScene().setValuePosition(x,y,5);
               }
             }
           }

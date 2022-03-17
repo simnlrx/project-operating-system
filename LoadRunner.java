@@ -30,9 +30,11 @@ public class LoadRunner {
         }
         gameManager.setLevel(loading.getLevel());
         gameManager.start();
+
         LevelManager levelManager = new LevelManager(gameManager);
         ThreadManager threadManager = new ThreadManager();
         EnemiesManager enemiesManager = new EnemiesManager(gameManager, threadManager);
+
         RefreshScene refresh = new RefreshScene(gameManager);
         RegenSceneThread regenScene = new RegenSceneThread(gameManager);
         threadManager.addThread(refresh);

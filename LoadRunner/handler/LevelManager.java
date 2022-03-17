@@ -1,6 +1,6 @@
 package LoadRunner.handler;
-import LoadRunner.game.Scene;
 
+import LoadRunner.game.Scene;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.StreamTokenizer;
@@ -19,7 +19,7 @@ public class LevelManager {
         this.gameManager = gameManager;
         this.scene = gameManager.getScene();
         this.index = 0;
-        this.length = scene.getLength();
+        this.length = scene.getLenght();
         file = new File("LoadRunner/files/level" + gameManager.getLevel() + ".txt");
         BufferedReader obj = new BufferedReader(new FileReader(file));
         StreamTokenizer st = new StreamTokenizer(obj);
