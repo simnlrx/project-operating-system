@@ -30,38 +30,23 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public void StairAfterEnemyPassLevel1(){
-    if(scene.getValuePosition(20,11)!=3 && scene.getValuePosition(20,11)!=4){//si l'escalier1 avait disparut lors du passage d'un ennemi
-      scene.setValuePosition(20,11,3);//on refix un esclaier là où il était
-    }
-    if(scene.getValuePosition(10,7)!=3 && scene.getValuePosition(10,7)!=4){//si l'escalier2 avait disparut lors du passage d'un ennemi
-      scene.setValuePosition(10,7,3);//on refix un esclaier là où il était
-    }
-    if(scene.getValuePosition(22,3)!=3 && scene.getValuePosition(22,3)!=4){//si l'escalier3 avait disparut lors du passage d'un ennemi
-      scene.setValuePosition(22,3,3);//on refix un esclaier là où il était
-    }
-  }
-
-
-
   @Override
   public void run() {
     try{
       while(gameManager.getGameState().isGame()){
-      chooseDirection();
-      if(sens){//si le sens est à true
-        this.sleep(500);
-        scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
-        scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-        this.posX--;//on décrémente la position en x du joueur de 1
-      }
-      else if(!sens){//si le sens est à false
-        this.sleep(500);
-        scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à droite
-        scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-        this.posX++;//on incrémente la position en x du joueur de 1
-      }
-      StairAfterEnemyPassLevel1();
+        chooseDirection();
+        if(sens){//si le sens est à true
+          this.sleep(500);
+          scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
+          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+          this.posX--;//on décrémente la position en x du joueur de 1
+        }
+        else if(!sens){//si le sens est à false
+          this.sleep(500);
+          scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à droite
+          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+          this.posX++;//on incrémente la position en x du joueur de 1
+        }
       }
     }catch(InterruptedException e){
           e.printStackTrace();
