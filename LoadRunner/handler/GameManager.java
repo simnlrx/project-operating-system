@@ -14,17 +14,16 @@ public class GameManager {
     private GameState gameState;
     private int level;
 
-    public GameManager(Scene scene, Player player) {
-        this(scene, player, null);
-        this.gamemode = 1;
-    }
-
-    public GameManager(Scene scene, Player player1, Player player2) {
+    public GameManager(Scene scene) {
         this.scene = scene;
-        this.player1 = player1;
-        this.player2 = player2;
+        this.player1 = scene.getPlayer1();
+        this.player2 = scene.getPlayer2();
+        if(this.player2.getName().equals("")){
+          gamemode = 1;
+        }else{
+          gamemode = 2;
+        }
         this.gameState = GameState.LOADING;
-        this.gamemode = 2;
     }
 
     public void start() {

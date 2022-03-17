@@ -91,10 +91,19 @@ public class Scene {
             System.out.print("\n");
         }
         if ((player2.getName()).equals("")) {//si un deuxieme joueur n'est présent dans la partie
-            System.out.println("Score " + player1.getName() + ": " + player1.getScore());//affichage du nom et du score du joueur1
+            System.out.println("Score " + player1.getName() + ": " + player1.getScore()+ printLife(player1));//affichage du nom et du score du joueur1
         } else {//sinon affichage du nom et du score du joueur1 et du joueur2
-            System.out.println("Score " + player1.getName() + ": " + player1.getScore() + "   Score " + player2.getName() + ": " + player2.getScore());//affichage du nom et du score du joueur
+            System.out.println("Score " + player1.getName() + ": " + player1.getScore()+ printLife(player1));
+            System.out.println("Score " + player2.getName() + ": " + player2.getScore()+ printLife(player2));//affichage du nom et du score du joueur
         }
+    }
+
+    public String printLife(Player player){
+      String life = "   ";
+      for(int i=0;i<player.getLife();i++){
+        life+="♥";
+      }
+      return life;
     }
 
 
@@ -126,6 +135,14 @@ public class Scene {
     //méthode permettant de récupérer la valeur de la position
     public int getValuePosition(int x,int y){
       return board[y][x];
+    }
+
+    public Player getPlayer1(){
+      return this.player1;
+    }
+
+    public Player getPlayer2(){
+      return this.player2;
     }
 
 }
