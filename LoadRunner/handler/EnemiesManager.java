@@ -24,6 +24,7 @@ public class EnemiesManager{
     this.gameManager = gameManager;
     this.lenghtab = gameManager.getScene().getLength();
     this.sens = true;
+    AddEnemiesList();
   }
 
   public void AddEnemiesList(){
@@ -37,8 +38,8 @@ public class EnemiesManager{
         if(st.ttype==StreamTokenizer.TT_NUMBER){
           //this.tab[(int)(index/lenghtab)][index%lenghtab] = (int)st.nval;
           if((int)st.nval==4){
-            EnemyThread enemi = new EnemyThread(((int)(index/lenghtab)), ((int)(index/lenghtab)), sens, gameManager.getScene(),gameManager);
-            sens = !sens;
+            EnemyThread enemi = new EnemyThread(index%lenghtab, (int)(index/lenghtab), sens, gameManager.getScene(),gameManager);
+            this.sens = !sens;
             enemies.add(enemi);
           }
         }
@@ -51,7 +52,6 @@ public class EnemiesManager{
 
   public void startEnemies(){
     for(int i=0;i<enemies.size();i++){
-      System.out.println("marche du thread ennemi : "+enemies.get(i).getName());
       enemies.get(i).start();
     }
   }

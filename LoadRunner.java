@@ -27,9 +27,9 @@ public class LoadRunner {
           scene.set2Players(player1,player2);
         }
         gameManager.setLevel(loading.getLevel());
+        EnemiesManager enemiesManager = new EnemiesManager(gameManager);
         LevelManager levelManager = new LevelManager(gameManager);
         StairsRegenThread regenstairs = new StairsRegenThread(gameManager);
-        EnemiesManager enemiesManager = new EnemiesManager(gameManager);
         gameManager.start();
         enemiesManager.startEnemies();
         regenstairs.start();
