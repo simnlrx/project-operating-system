@@ -8,7 +8,7 @@ import LoadRunner.handler.LevelManager;
 import LoadRunner.handler.EnemiesManager;
 
 import LoadRunner.thread.EnemyThread;
-import LoadRunner.thread.StairsRegenThread;
+import LoadRunner.thread.RegenSceneThread;
 
 public class LoadRunner {
     public static void main(String[] args) {
@@ -29,9 +29,9 @@ public class LoadRunner {
         gameManager.setLevel(loading.getLevel());
         EnemiesManager enemiesManager = new EnemiesManager(gameManager);
         LevelManager levelManager = new LevelManager(gameManager);
-        StairsRegenThread regenstairs = new StairsRegenThread(gameManager);
+        RegenSceneThread regenScene = new RegenSceneThread(gameManager);
         gameManager.start();
         enemiesManager.startEnemies();
-        regenstairs.start();
+        regenScene.start();
     }
 }

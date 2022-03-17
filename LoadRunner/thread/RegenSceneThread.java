@@ -8,7 +8,7 @@ import java.io.File;
 import LoadRunner.handler.GameManager;
 import LoadRunner.game.Scene;
 
-public class StairsRegenThread extends Thread{
+public class RegenSceneThread extends Thread{
     private int tab[][];
     private int lenghtab;
     private int heighttab;
@@ -16,7 +16,7 @@ public class StairsRegenThread extends Thread{
     private File file;
     private GameManager gameManager;
 
-    public StairsRegenThread(GameManager gameManager){
+    public RegenSceneThread(GameManager gameManager){
       this.gameManager = gameManager;
       this.lenghtab = gameManager.getScene().getLength();
       this.heighttab = gameManager.getScene().getHeight();
