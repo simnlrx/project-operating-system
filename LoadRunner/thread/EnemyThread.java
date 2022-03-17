@@ -37,15 +37,27 @@ public class EnemyThread extends Thread {
         chooseDirection();
         if(sens){//si le sens est à true
           this.sleep(500);
-          scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
-          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-          this.posX--;//on décrémente la position en x du joueur de 1
+          if(scene.getValuePosition(posX-1, posY)==5){
+            scene.setValuePosition(posX-2, posY, 4);//on déplace le joueur d'une case à gauche
+            scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+            this.posX = this.posX-2;
+          }else{
+            scene.setValuePosition(posX-1, posY, 4);//on déplace le joueur d'une case à gauche
+            scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+            this.posX--;
+          }
         }
         else if(!sens){//si le sens est à false
           this.sleep(500);
-          scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à droite
-          scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
-          this.posX++;//on incrémente la position en x du joueur de 1
+          if(scene.getValuePosition(posX+1, posY)==5){
+            scene.setValuePosition(posX+2, posY, 4);//on déplace le joueur d'une case à gauche
+            scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+            this.posX = this.posX+2;
+          }else{
+            scene.setValuePosition(posX+1, posY, 4);//on déplace le joueur d'une case à gauche
+            scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
+            this.posX++;
+          }
         }
       }
     }catch(InterruptedException e){

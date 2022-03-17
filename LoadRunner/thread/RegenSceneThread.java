@@ -45,8 +45,6 @@ public class RegenSceneThread extends Thread{
             for(int x=0;x<lenghtab;x++){
               if(gameManager.getScene().getValuePosition(x,y)==0 && this.tab[y][x]==3){
                 gameManager.getScene().setValuePosition(x,y,3);
-              }else if(gameManager.getScene().getValuePosition(x,y)==0 && this.tab[y][x]==5){
-                gameManager.getScene().setValuePosition(x,y,5);
               }
             }
           }
