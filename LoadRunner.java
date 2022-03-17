@@ -1,12 +1,14 @@
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 
+import LoadRunner.handler.ThreadManager;
 import LoadRunner.handler.GameManager;
 import LoadRunner.handler.GameState;
 import LoadRunner.handler.LoadingManager;
 import LoadRunner.handler.LevelManager;
 import LoadRunner.handler.EnemiesManager;
 
+import LoadRunner.thread.RefreshScene;
 import LoadRunner.thread.EnemyThread;
 import LoadRunner.thread.RegenSceneThread;
 
@@ -27,11 +29,14 @@ public class LoadRunner {
           scene.set2Players(player1,player2);
         }
         gameManager.setLevel(loading.getLevel());
-        EnemiesManager enemiesManager = new EnemiesManager(gameManager);
-        LevelManager levelManager = new LevelManager(gameManager);
-        RegenSceneThread regenScene = new RegenSceneThread(gameManager);
         gameManager.start();
-        enemiesManager.startEnemies();
-        regenScene.start();
+        LevelManager levelManager = new LevelManager(gameManager);
+        ThreadManager threadManager = new ThreadManager();
+        EnemiesManager enemiesManager = new EnemiesManager(gameManager, threadManager);
+        RefreshScene refresh = new RefreshScene(gameManager);
+        RegenSceneThread regenScene = new RegenSceneThread(gameManager);
+        threadManager.addThread(refresh);
+        threadManager.addThread(regenScene);
+        threadManager.startThreads();
     }
 }

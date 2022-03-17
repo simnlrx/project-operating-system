@@ -23,12 +23,10 @@ public class GameManager {
     public void start() {
         scene.getPlayer1();
         scene.getPlayer2();
-        RefreshScene refresh = new RefreshScene(this);
         if (player2 == null)
             gameState = GameState.SOLOGAME;
         else
             gameState = GameState.MULTIGAME;
-        refresh.start();
     }
 
     public void end() {

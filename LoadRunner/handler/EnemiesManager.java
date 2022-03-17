@@ -6,22 +6,25 @@ import java.io.StreamTokenizer;
 import java.io.File;
 import java.util.ArrayList;
 
+import LoadRunner.handler.ThreadManager;
 import LoadRunner.handler.GameManager;
+
 import LoadRunner.game.Scene;
+
 import LoadRunner.thread.EnemyThread;
 
 //classe de gestion des threads ennemies
 public class EnemiesManager{
   private GameManager gameManager;
   private File file;
-  private ArrayList<EnemyThread> enemies;
+  private ThreadManager threadManager;
   private boolean sens;
   private int index;
   private int lenghtab;
   private int heighttab;
 
-  public EnemiesManager(GameManager gameManager){
-    this.enemies = new ArrayList<EnemyThread>();//instanciation d'une ArrayList de EnemyThread
+  public EnemiesManager(GameManager gameManager, ThreadManager threadManager){
+    this.threadManager = threadManager;//liste des threads
     this.gameManager = gameManager;//l'attribut gameManager récuépère le gameManager passé en parametre
     this.lenghtab = gameManager.getScene().getLength();//on recupère la longueur du tableau
     this.sens = true;//on choisis un sens lors de l'instanciation
@@ -43,20 +46,13 @@ public class EnemiesManager{
             //on change le sens de déplacement de l'ennemi
             this.sens = !sens;
             //on ajoute l'ennemi à la liste
-            enemies.add(enemi);
+            threadManager.addThread(enemi);
           }
         }
         index++;
       }
     }catch (Exception e) {
       e.printStackTrace();
-    }
-  }
-
-  //méthode qui va permettre de lancer l'enesemble des threads ennemis
-  public void startEnemies(){
-    for(int i=0;i<enemies.size();i++){
-      enemies.get(i).start();
     }
   }
 }

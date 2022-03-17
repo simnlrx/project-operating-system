@@ -15,7 +15,6 @@ public class LevelManager {
 
 
     public LevelManager(GameManager gameManager){
-
       try{
         this.gameManager = gameManager;
         this.scene = gameManager.getScene();
