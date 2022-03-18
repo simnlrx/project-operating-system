@@ -45,6 +45,7 @@ public class Scene {
         }
     }
 
+
     //fonction permettant d'afficher la matrice de l'écran
     public void printMatrix() {
         for (int i = 0; i < (this.height); i++) {
