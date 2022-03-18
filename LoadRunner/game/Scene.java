@@ -96,13 +96,13 @@ public class Scene {
     }
 
 
-    //méthode permettant de metre unevaleur dans le tableau
-    public void setValuePosition(int x, int y, int value){
+    //méthode permettant de metre une valeur dans le tableau
+    public synchronized void setValuePosition(int x, int y, int value){
         board[y][x] = value;
     }
 
     //méthode permettant de changer la position du joueur
-    public void setPositionPlayer(Player player, int x, int y){
+    public synchronized void setPositionPlayer(Player player, int x, int y){
       if(player.getNumber()==1){
         board[y][x] = 1;
         player.setPosition(x, y);

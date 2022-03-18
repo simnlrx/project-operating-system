@@ -1,4 +1,5 @@
 package LoadRunner.thread;
+import java.util.concurrent.Semaphore;
 
 import java.io.FileReader;
 import java.io.BufferedReader;

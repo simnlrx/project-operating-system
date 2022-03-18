@@ -1,9 +1,12 @@
 package LoadRunner.handler;
 
-
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.thread.RefreshScene;
+import LoadRunner.handler.LevelManager;
+import LoadRunner.handler.EnemiesManager;
+import LoadRunner.thread.EnemyThread;
+import LoadRunner.thread.RegenSceneThread;
 
 public class GameManager {
 
@@ -21,12 +24,23 @@ public class GameManager {
 
     //lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
     public void start() {
+        LevelManager levelManager = new LevelManager(this);
+        ThreadManager threadManager = new ThreadManager();
+        EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
+        RefreshScene refresh = new RefreshScene(this);
+        RegenSceneThread regenScene = new RegenSceneThread(this);
+
+        threadManager.addThread(refresh);
+        threadManager.addThread(regenScene);
+
         scene.getPlayer1();
         scene.getPlayer2();
         if (player2 == null)
             gameState = GameState.SOLOGAME;
         else
             gameState = GameState.MULTIGAME;
+
+        threadManager.startThreads();
     }
 
     public void end() {

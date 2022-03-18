@@ -1,4 +1,5 @@
 package LoadRunner.thread;
+import java.util.concurrent.Semaphore;
 
 import LoadRunner.game.Scene;
 import LoadRunner.handler.GameManager;
@@ -12,15 +13,16 @@ public class RefreshScene extends Thread {
         this.gameManager = gameManager;
     }
 
+
     @Override
     public void run() {
-        while (gameManager.getGameState().isGame()) {
-            scene.matrix2Screen();
             try {
+              while (gameManager.getGameState().isGame()) {
+                scene.matrix2Screen();
                 this.sleep(500);
-            } catch (InterruptedException e) {
+              }
+            }catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
     }
 }

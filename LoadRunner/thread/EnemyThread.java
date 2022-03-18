@@ -30,6 +30,7 @@ public class EnemyThread extends Thread {
     }
   }
 
+
   @Override
   public void run() {
     try{
