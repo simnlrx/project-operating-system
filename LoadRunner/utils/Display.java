@@ -2,11 +2,7 @@ package LoadRunner.utils;
 
 public class Display {
 
-    public Display(){
-
-    }
-
-    public void title(){
+    public static void title(){
         System.out.println("                                                                                                                                                      \n" +
                 " ____                _____          _____        _____              _____    ____   ____  _____   ______  _____   ______        ______        _____   \n" +
                 "|    |          ____|\\    \\     ___|\\    \\   ___|\\    \\         ___|\\    \\  |    | |    ||\\    \\ |\\     \\|\\    \\ |\\     \\   ___|\\     \\   ___|\\    \\  \n" +

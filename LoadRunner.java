@@ -1,10 +1,9 @@
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 
-import LoadRunner.handler.ThreadManager;
 import LoadRunner.handler.GameManager;
-import LoadRunner.handler.GameState;
 import LoadRunner.handler.LoadingManager;
+import LoadRunner.utils.Display;
 
 
 public class LoadRunner {
@@ -12,6 +11,7 @@ public class LoadRunner {
 
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         System.out.println("Load Runner | Runnig ...");
+        Display.title();
 
         Player player1 = new Player(100, "Player1", 1);
         Player player2 = new Player(0, "Player2", 2);

@@ -11,17 +11,7 @@ public class PlayerThread extends Thread {
         this.player = player;
     }
 
-    public void setSemaphore(Semaphore s){
-      this.s = s;
-    }
-
     @Override
     public void run() {
-      try{
-        while(gameManager.getGameState().isGame()){
-        }catch(InterruptedException e){
-              e.printStackTrace();
-        }
-      }
     }
 }
