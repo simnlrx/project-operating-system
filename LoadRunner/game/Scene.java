@@ -21,7 +21,7 @@ public class Scene {
     private Player player2;//déclaration du joueur2
 
     //constructeur de Scene
-    public Scene(int height, int lenght) {
+    public Scene(int height, int lenght) {//constrcuteur de la scene
         this.height = height;
         this.lenght = lenght;
         this.board = new int[height][lenght];
