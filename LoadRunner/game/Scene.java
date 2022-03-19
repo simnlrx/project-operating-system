@@ -57,83 +57,85 @@ public class Scene {
     }
 
     //fonction permettant d'afficher l'écran à partir de la matrice
-    public String matrix2Screen() {
-        //System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
-        String out = "<html>";
+    //public String matrix2Screen() {
+    public void matrix2Screen() {
+        System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
+        //String out = "<html>";
         int value;
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
             for (int y = 0; y < (this.lenght); y++) {//parcours de la matrice en x
                 value = board[i][y];
                 switch (value) {
                     case 0: {
-                        //System.out.print("  ");
-                        out+="ㅤ";
+                        System.out.print("  ");
+                        //out+="ㅤ";
                         break;
                     }//espace vide
                     case 1: {
-                        //System.out.print("–-");
-                        out+="--";
+                        System.out.print("–-");
+                        //out+="--";
                         break;
                     }//bord horizontal
                     case 2: {
-                        //System.out.print("▓▓");
-                        out+="▓▓";
+                        System.out.print("▓▓");
+                        //out+="▓▓";
                         break;
                     }//platforme
                     case 3: {
-                        //System.out.print("│┤");
-                        out+="│┤";
+                        System.out.print("│┤");
+                        //out+="│┤";
                         break;
                     }//échelle
                     case 4: {
-                        //System.out.print("EN");
-                        out+="EN";
+                        System.out.print("EN");
+                        //out+="EN";
                         break;
                     }//simulation d'un ennemi en attente d'un symbole
                     case 5: {
-                        //System.out.print("☼☼");
-                        out+="☼☼";
+                        System.out.print("☼☼");
+                        //out+="☼☼";
                         break;
                     }//simulation d'un objet
                     case 6: {
-                        //System.out.print("🚩");
-                        out+="🚩";
+                        System.out.print("🚩");
+                        //out+="🚩";
                         break;
                     }//simulation du spawn du joueur
                     case 7: {
-                        //System.out.print("SE");
-                        out+="SE";
+                        System.out.print("SE");
+                        //out+="SE";
                         break;
                     }//simulation du spawn d'un ennemi
                     case 9: {
-                        //System.out.print("||");
-                        out+="||";
+                        System.out.print("||");
+                        //out+="||";
                         break;
                     }//bord vertical
                     case 10: {
-                        //System.out.print("J1");
-                        out+="J1";
+                        System.out.print("J1");
+                        //out+="J1";
                         break;
                     }//simulation du joueur courant en attendant un symbole
                     case 11: {
-                        //System.out.print("J2");
-                        out+="J2";
+                        System.out.print("J2");
+                        //out+="J2";
                         break;
                     }//simulation du joueur 2 en attendant un symbole
                 }
 
             }
-            //System.out.print("\n");
-            out+="<br/>";
-        }/*
+            System.out.print("\n");
+            //out+="<br/>";
+        }
+        
         if ((player2.getName()).equals("")) {//si un deuxieme joueur n'est présent dans la partie
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));//affichage du nom et du score du joueur1
         } else {//sinon affichage du nom et du score du joueur1 et du joueur2
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
             System.out.println("Score " + player2.getName() + ": " + player2.getScore() + printLife(player2));//affichage du nom et du score du joueur
-        }*/
-        out+="<html/>";
-        return out;
+        }
+        //out+="<html/>";
+        //return out;
     }
 
     //méthode permettant d'afficher la vie des joueurs

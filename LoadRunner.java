@@ -13,18 +13,18 @@ import java.awt.*;
 public class LoadRunner {
     public static void main(String[] args) {
 
-        Frame f = new Frame("Demo");
-        f.setLayout(new FlowLayout());
-        f.setSize(800, 500);
-        JLabel l = new JLabel("Jeux", SwingConstants.CENTER);
+        //Frame f = new Frame("Demo");
+        //f.setLayout(new FlowLayout());
+        //f.setSize(800, 500);
+        //JLabel l = new JLabel("Jeux", SwingConstants.CENTER);
 
-        l.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        f.add(l);
-        f.setVisible(true);
+        //l.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        //f.add(l);
+        //f.setVisible(true);
 
         //Creating and adding the key listener
-        KeyboardEvent k = new KeyboardEvent();
-        f.addKeyListener(k);
+        //KeyboardEvent k = new KeyboardEvent();
+        //f.addKeyListener(k);
 
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         System.out.println("Load Runner | Runnig ...");
@@ -35,8 +35,7 @@ public class LoadRunner {
         LoadingManager loading = new LoadingManager(18,34);
         Scene scene = new Scene(18,34);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         GameManager gameManager = new GameManager(scene);
-        gameManager.setGameMode(2);
-        System.out.println(scene.matrix2Screen());
+        gameManager.setGameMode(loading.selectGameMode());
         //lors de la récupération du mode de jeu, on set les joueurs
 
         if(gameManager.getGameMode()==1){
@@ -46,7 +45,7 @@ public class LoadRunner {
         }
 
         gameManager.setLevel(loading.getLevel());
-        //gameManager.start();
-        l.setText(scene.matrix2Screen());
+        gameManager.start();
+        //l.setText(scene.matrix2Screen());
     }
 }

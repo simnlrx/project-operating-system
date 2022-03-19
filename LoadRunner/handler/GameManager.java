@@ -30,7 +30,7 @@ public class GameManager {
         EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
         RefreshScene refresh = new RefreshScene(this);
         RegenSceneThread regenScene = new RegenSceneThread(this);
-        KeyboardEvent key = new KeyboardEvent();
+        //KeyboardEvent key = new KeyboardEvent();
 
         threadManager.addThread(refresh);
         threadManager.addThread(regenScene);
