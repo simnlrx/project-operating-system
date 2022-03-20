@@ -1,6 +1,7 @@
 package LoadRunner.game;
 
 // -- Lexique des différents entiers avec leur représentation graphique --
+
 // 0 - représente un espace vide dans la scene
 // 1 - représente les contours horizontaux de l'écran
 // 2 - représente un morceau de platforme
@@ -11,6 +12,11 @@ package LoadRunner.game;
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
 // 11 - représente le joueur en multijoueur
+
+// 20 - fleche vers le haut
+// 21 - fleche vers la gauche
+// 22 - fleche vers la droite
+// 23 - fleche vers le bas
 
 
 public class Scene {
@@ -87,40 +93,55 @@ public class Scene {
                         break;
                     }//échelle
                     case 4: {
-                        System.out.print("EN");
+                        System.out.print("☠ ");
                         //out+="EN";
                         break;
                     }//simulation d'un ennemi en attente d'un symbole
                     case 5: {
-                        System.out.print("☼☼");
+                        System.out.print("☼ ");
                         //out+="☼☼";
                         break;
                     }//simulation d'un objet
                     case 6: {
-                        System.out.print("🚩");
-                        //out+="🚩";
+                        System.out.print("⚑ ");
+                        //out+="⚑";
                         break;
                     }//simulation du spawn du joueur
-                    case 7: {
-                        System.out.print("SE");
-                        //out+="SE";
-                        break;
-                    }//simulation du spawn d'un ennemi
                     case 9: {
                         System.out.print("||");
                         //out+="||";
                         break;
                     }//bord vertical
                     case 10: {
-                        System.out.print("J1");
+                        System.out.print("♙ ");
                         //out+="J1";
                         break;
                     }//simulation du joueur courant en attendant un symbole
                     case 11: {
-                        System.out.print("J2");
+                        System.out.print("♟ ");
                         //out+="J2";
                         break;
                     }//simulation du joueur 2 en attendant un symbole
+                    case 20: {
+                        System.out.print("↑ ");
+                        //out+="J2";
+                        break;
+                    }
+                    case 21: {
+                        System.out.print("← ");
+                        //out+="J2";
+                        break;
+                    }
+                    case 22: {
+                        System.out.print("→ ");
+                        //out+="J2";
+                        break;
+                    }
+                    case 23: {
+                        System.out.print("↓ ");
+                        //out+="J2";
+                        break;
+                    }
                 }
 
             }
