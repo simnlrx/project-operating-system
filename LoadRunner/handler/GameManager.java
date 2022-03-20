@@ -9,6 +9,8 @@ import LoadRunner.handler.EnemiesManager;
 import LoadRunner.thread.EnemyThread;
 import LoadRunner.thread.RegenSceneThread;
 
+import java.awt.*;
+
 public class GameManager {
 
     private Player player1;
@@ -17,8 +19,11 @@ public class GameManager {
     private int gamemode;
     private GameState gameState;
     private int level;
+    private FrameManager frameManager;
 
     public GameManager(Scene scene) {
+        this.player1 = scene.getPlayer1();
+        this.player2 = scene.getPlayer2();
         this.scene = scene;
         this.gameState = GameState.LOADING;
     }
@@ -30,10 +35,11 @@ public class GameManager {
         EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
         RefreshScene refresh = new RefreshScene(this);
         RegenSceneThread regenScene = new RegenSceneThread(this);
-        //KeyboardEvent key = new KeyboardEvent();
+        FrameManager frameManager = new FrameManager(new Frame("Contrôles"), scene);
 
         threadManager.addThread(refresh);
         threadManager.addThread(regenScene);
+        frameManager.generate();
 
         scene.getPlayer1();
         scene.getPlayer2();

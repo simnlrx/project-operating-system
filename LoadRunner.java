@@ -2,6 +2,7 @@ import LoadRunner.events.KeyboardEvent;
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 
+import LoadRunner.handler.FrameManager;
 import LoadRunner.handler.GameManager;
 import LoadRunner.handler.LoadingManager;
 import LoadRunner.utils.Display;
@@ -21,8 +22,6 @@ public class LoadRunner {
         //l.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         //f.add(l);
         //f.setVisible(true);
-
-        //Creating and adding the key listener
         //KeyboardEvent k = new KeyboardEvent();
         //f.addKeyListener(k);
 
@@ -35,6 +34,7 @@ public class LoadRunner {
         LoadingManager loading = new LoadingManager(18,34);
         Scene scene = new Scene(18,34);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         GameManager gameManager = new GameManager(scene);
+
         gameManager.setGameMode(loading.selectGameMode());
         //lors de la récupération du mode de jeu, on set les joueurs
 

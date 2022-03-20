@@ -20,9 +20,9 @@ package LoadRunner.game;
 
 
 public class Scene {
-    private int height; //Hauteur de l'écran
-    private int lenght; //Largeur de l'écran
-    private int board[][]; //scene représentée par une matrice 2*2
+    private final int height; //Hauteur de l'écran
+    private final int lenght; //Largeur de l'écran
+    private final int[][] board; //scene représentée par une matrice 2*2
     private Player player1;//déclaration du joueur1
     private Player player2;//déclaration du joueur2
 
@@ -166,6 +166,15 @@ public class Scene {
             life += "♥";
         }
         return life;
+    }
+
+    public boolean getIn(int posX, int posY){
+        try{
+            getValuePosition(posX, posY);
+            return true;
+        }catch (ArrayIndexOutOfBoundsException e){
+            return false;
+        }
     }
 
 
