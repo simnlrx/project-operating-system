@@ -58,7 +58,7 @@ public class Scene {
 
     //fonction permettant d'afficher l'écran à partir de la matrice
     //public String matrix2Screen() {
-    public void matrix2Screen() {
+    public synchronized void matrix2Screen() {
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         //String out = "<html>";
         int value;
@@ -127,7 +127,7 @@ public class Scene {
             System.out.print("\n");
             //out+="<br/>";
         }
-        
+
         if ((player2.getName()).equals("")) {//si un deuxieme joueur n'est présent dans la partie
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));//affichage du nom et du score du joueur1
         } else {//sinon affichage du nom et du score du joueur1 et du joueur2
