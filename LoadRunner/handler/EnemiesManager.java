@@ -39,7 +39,7 @@ public class EnemiesManager {
                         EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), sens, gameManager);
                         //on change le sens de déplacement de l'ennemi
                         this.sens = !sens;
-                        //on ajoute l'ennemi à la liste
+                        // on ajoute l'ennemi à la liste
                         threadManager.addThread(enemi);
                     }
                 }
