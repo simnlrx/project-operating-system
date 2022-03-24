@@ -24,46 +24,50 @@ public class EnemyThread extends Thread {
     scene.setValuePosition(posX,posY,4);//les coordonnées de l'ennemi sont directement placés dans la scene
     this.sens = sens;
     this.gameManager = gameManager;
-    this.player1 = GameManager.getPlayer1();
+    this.player1 = gameManager.getPlayer1();
   }
 
-  public int getDistanceToPlayer(int posXEnemy, int posYEnemy){
-    int dist = Math.sqrt(Math.pow((posXEnemy- player1.getPosX()),2)+ Math.pow((posYEnemy - player1.getPosY()),2));
+  public double getDistanceToPlayer(int posXEnemy, int posYEnemy){
+    double dist = Math.sqrt(Math.pow((posXEnemy- player1.getPosX()),2)+ Math.pow((posYEnemy - player1.getPosY()),2));
     return dist;
   }
 
-  public void testDistanceX(){//test si un deplacement sur X se rapprocherait de
+  public void testDistanceX(){//test si un deplacement sur X se rapprocherait du joueur
     if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
       if(scene.getValuePosition(posX-1, posY-1)!=0){
         if(scene.getValuePosition(posX-1, posY)==5){
           this.posX = posX-2;
+          scene.setValuePosition(posX, posY, 0);
         }else{
+          scene.setValuePosition(posX, posY, 0);
           this.posX--;
         }
       }
     }else{
       if(scene.getValuePosition(posX+1, posY-1)!=0){
-        if(scene.getValuePosition(posX+1, posY1)==5){
+        if(scene.getValuePosition(posX+1, posY)==5){
+          scene.setValuePosition(posX, posY, 0);
           this.posX = posX-2;
         }else{
+          scene.setValuePosition(posX, posY, 0);
           this.posX--;
         }
       }
     }
-    scene.setValuePosition(posX, posY);
   }
 
-  public void testDistanceY(){
+  public void testDistanceY(){//test si un deplacement en Y se rapprocherait du joueur
     if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){
-      if(scene.getValuePosition(posX, posY-1)==3{
+      if(scene.getValuePosition(posX, posY-1)==3){
+        scene.setValuePosition(posX, posY, 0);
         this.posY--;
       }
     }else{
       if(scene.getValuePosition(posX, posY)==3){
+        scene.setValuePosition(posX, posY, 0);
         this.posY++;
       }
     }
-    scene.setValuePosition(posX, posY);
   }
 
 
@@ -75,6 +79,8 @@ public class EnemyThread extends Thread {
       while(gameManager.getGameState().isGame()){
         testDistanceX();
         testDistanceY();
+        scene.setValuePosition(posX, posY, 3);
+      }
     }catch(InterruptedException e){
           e.printStackTrace();
     }
