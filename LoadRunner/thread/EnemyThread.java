@@ -69,16 +69,12 @@ public class EnemyThread extends Thread {
       }
     }
   }
-
-
-
-
   @Override
   public void run() {
     while(gameManager.getGameState().isGame()){
       testDistanceX();
       testDistanceY();
-      scene.setValuePosition(posX, posY, 3);
+      scene.setValuePosition(posX, posY, 4);
     }
   }
 }
