@@ -37,7 +37,7 @@ public class EnemyThread extends Thread {
       while(gameManager.getGameState().isGame()){
         chooseDirection();
         if(sens){//si le sens est à true
-          this.sleep(500);
+          this.sleep(800);
           if(scene.getValuePosition(posX-1, posY)==5){
             scene.setValuePosition(posX-2, posY, 4);//on déplace le joueur d'une case à gauche
             scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide
@@ -48,8 +48,8 @@ public class EnemyThread extends Thread {
             this.posX--;
           }
         }
-        else if(!sens){//si le sens est à false
-          this.sleep(500);
+        else {//si le sens est à false
+          this.sleep(800);
           if(scene.getValuePosition(posX+1, posY)==5){
             scene.setValuePosition(posX+2, posY, 4);//on déplace le joueur d'une case à gauche
             scene.setValuePosition(posX, posY, 0);//la position précédente de l'ennemi repasse à un espace vide

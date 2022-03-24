@@ -42,7 +42,7 @@ public class EnemiesManager{
         if(st.ttype==StreamTokenizer.TT_NUMBER){//si le mot courant est un nombre
           if((int)st.nval==4){//si l'entier est 4, il s'agit d'un ennemi
           //alors on instancie un objet EnemyThread avec en parametre, son numéro de colonne, son numéro de ligne, son sens de deplacement, sa scene et l'état le gameManager
-            EnemyThread enemi = new EnemyThread(index%lenghtab, (int)(index/lenghtab), sens, gameManager);
+            EnemyThread enemi = new EnemyThread(index%lenghtab, (index/lenghtab), sens, gameManager);
             //on change le sens de déplacement de l'ennemi
             this.sens = !sens;
             //on ajoute l'ennemi à la liste

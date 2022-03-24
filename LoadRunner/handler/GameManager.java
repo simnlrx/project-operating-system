@@ -41,13 +41,13 @@ public class GameManager {
         threadManager.addThread(regenScene);
         frameManager.generate();
 
-        scene.getPlayer1();
-        scene.getPlayer2();
-        if (player2 == null)
+        if(getGameMode()==1){
+            scene.set1Player(player1);
             gameState = GameState.SOLOGAME;
-        else
+        }else{
+            scene.set2Players(player1,player2);
             gameState = GameState.MULTIGAME;
-
+        }
         threadManager.startThreads();
     }
 

@@ -23,8 +23,8 @@ public class Scene {
     private final int height; //Hauteur de l'écran
     private final int lenght; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
-    private Player player1;//déclaration du joueur1
-    private Player player2;//déclaration du joueur2
+    private Player player1 = new Player(100, "Player1", 1);
+    private Player player2 = new Player(100, "Player2", 2);
 
     //constructeur de Scene
     public Scene(int height, int lenght) {//constrcuteur de la scene
@@ -63,10 +63,8 @@ public class Scene {
     }
 
     //fonction permettant d'afficher l'écran à partir de la matrice
-    //public String matrix2Screen() {
     public synchronized void matrix2Screen() {
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
-        //String out = "<html>";
         int value;
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
             for (int y = 0; y < (this.lenght); y++) {//parcours de la matrice en x
@@ -74,32 +72,26 @@ public class Scene {
                 switch (value) {
                     case 0: {
                         System.out.print("  ");
-                        //out+="ㅤ";
                         break;
                     }//espace vide
                     case 1: {
                         System.out.print("–-");
-                        //out+="--";
                         break;
                     }//bord horizontal
                     case 2: {
                         System.out.print("▓▓");
-                        //out+="▓▓";
                         break;
                     }//platforme
                     case 3: {
                         System.out.print("│┤");
-                        //out+="│┤";
                         break;
                     }//échelle
                     case 4: {
                         System.out.print("☠ ");
-                        //out+="EN";
                         break;
                     }//simulation d'un ennemi en attente d'un symbole
                     case 5: {
                         System.out.print("☼ ");
-                        //out+="☼☼";
                         break;
                     }//simulation d'un objet
                     case 6: {
@@ -109,44 +101,36 @@ public class Scene {
                     }//simulation du spawn du joueur
                     case 9: {
                         System.out.print("||");
-                        //out+="||";
                         break;
                     }//bord vertical
                     case 10: {
-                        System.out.print("♙ ");
-                        //out+="J1";
+                        System.out.print("J ");
                         break;
                     }//simulation du joueur courant en attendant un symbole
                     case 11: {
-                        System.out.print("♟ ");
-                        //out+="J2";
+                        System.out.print("P ");
                         break;
                     }//simulation du joueur 2 en attendant un symbole
                     case 20: {
                         System.out.print("↑ ");
-                        //out+="J2";
                         break;
                     }
                     case 21: {
                         System.out.print("← ");
-                        //out+="J2";
                         break;
                     }
                     case 22: {
                         System.out.print("→ ");
-                        //out+="J2";
                         break;
                     }
                     case 23: {
                         System.out.print("↓ ");
-                        //out+="J2";
                         break;
                     }
                 }
 
             }
             System.out.print("\n");
-            //out+="<br/>";
         }
 
         if ((player2.getName()).equals("")) {//si un deuxieme joueur n'est présent dans la partie
@@ -167,16 +151,6 @@ public class Scene {
         }
         return life;
     }
-
-    public boolean getIn(int posX, int posY){
-        try{
-            getValuePosition(posX, posY);
-            return true;
-        }catch (ArrayIndexOutOfBoundsException e){
-            return false;
-        }
-    }
-
 
     //méthode permettant de metre une valeur dans le tableau
     public synchronized void setValuePosition(int x, int y, int value) {
@@ -204,15 +178,28 @@ public class Scene {
         return this.lenght;
     }
 
-    //méthode permettant de récupérer la valeur de la position
+    //méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
     public int getValuePosition(int x, int y) {
-        return board[y][x];
+        try{
+            return board[y][x];
+        }catch (ArrayIndexOutOfBoundsException e){
+            return -1;
+        }
     }
 
     //ajoute un joueur à la scene
     public void set1Player(Player player1) {
         this.player1 = player1;
         this.player2 = new Player(0, "", 2);
+        printMatrix();
+        for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
+            for (int j = 0; j < (this.lenght); j++) {//parcours de la matrice en x
+                if(board[i][j] == 10){
+                    player1.setPosition(j,i);
+                }
+            }
+        }
+        System.out.println(player1.getPosX() + " " + player1.getPosY());
     }
 
     //ajoute deux joueurs à la scene

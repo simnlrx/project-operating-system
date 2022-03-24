@@ -27,7 +27,7 @@ public class LevelManager {
           if(st.ttype==StreamTokenizer.TT_NUMBER){
             //pour avoir le numéro de la ligne, on divise l'index par le nombre de ligne
             //pour avoir le numéro de la colonne, on récuépère le reste de la division entre l'index et la longeur de la ligne
-            scene.setValuePosition(index%length, (int)(index/length), (int)st.nval);
+            scene.setValuePosition(index%length, (index/length), (int)st.nval);
           }
           index++;
         }
