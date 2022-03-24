@@ -1,18 +1,25 @@
 package LoadRunner.game;
 
 import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
+import LoadRunner.thread.BlockBreakThread;
 
 public class KeySelection {
 
     private final Player player;
     private final Scene scene;
+    private GameManager gameManager;
 
     public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
+        this.gameManager = gameManager;
         this.scene = gameManager.getScene();
     }
 
     public void setKey(char key) {
+        BlockBreakThread blockBreakE = new BlockBreakThread(gameManager, player);
+        blockBreakE.start();
+
         int top = scene.getValuePosition(player.getPosX(), player.getPosY() - 1);
         int bottom = scene.getValuePosition(player.getPosX(), player.getPosY() + 1);
         int left = scene.getValuePosition((player.getPosX() - 1), player.getPosY());
@@ -73,7 +80,7 @@ public class KeySelection {
                 }
                 break;
             case 'e':
-                System.exit(0);
+                blockBreakE.notify();
         }
     }
 }
