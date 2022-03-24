@@ -188,7 +188,6 @@ public class Scene {
     public void set1Player(Player player1) {
         this.player1 = player1;
         this.player2 = new Player(0, "", 2);
-        printMatrix();
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
             for (int j = 0; j < (this.lenght); j++) {//parcours de la matrice en x
                 if(board[i][j] == 6){
@@ -196,7 +195,6 @@ public class Scene {
                 }
             }
         }
-        System.out.println(player1.getPosX() + " " + player1.getPosY());
     }
 
     //ajoute deux joueurs à la scene

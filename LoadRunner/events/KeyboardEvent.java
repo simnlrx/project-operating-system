@@ -11,7 +11,7 @@ import LoadRunner.handler.GameState;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyboardEvent extends Thread implements KeyListener {
+public class KeyboardEvent implements KeyListener {
 
     private final KeySelection keySelection;
 

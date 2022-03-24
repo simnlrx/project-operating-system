@@ -48,12 +48,12 @@ public class LoadingManager {
     public String[][] getDisplay(String[] linesToDisplay) {
         String[][] res = this.board.clone();
         int l = this.gameManager.getScene().getLenght();
-        int h = (this.gameManager.getScene().getHeight()/2)-(linesToDisplay.length/2)-1;
+        int h = (this.gameManager.getScene().getHeight() / 2) - (linesToDisplay.length / 2) - 1;
 
-        for(String s : linesToDisplay) {
-            String line = getCentered((l-4), s);
-            for(int i = 0; i < line.length(); i++) {
-                res[h][2+i] = line.charAt(i) + " ";
+        for (String s : linesToDisplay) {
+            String line = getCentered((l - 4), s);
+            for (int i = 0; i < line.length(); i++) {
+                res[h][2 + i] = line.charAt(i) + " ";
             }
             h++;
         }
@@ -65,7 +65,7 @@ public class LoadingManager {
     private String getCentered(int size, String s) {
         String toAdd = "";
 
-        for(int i = 0; i < (size - s.length())/2; i++){
+        for (int i = 0; i < (size - s.length()) / 2; i++) {
             toAdd += " ";
         }
 
@@ -108,7 +108,6 @@ public class LoadingManager {
             }
         }
     }
-
 
 
 }

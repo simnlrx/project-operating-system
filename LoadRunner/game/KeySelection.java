@@ -13,7 +13,6 @@ public class KeySelection {
     }
 
     public void setKey(char key) {
-        System.out.println("MOVE");
         int top = scene.getValuePosition(player.getPosX(), player.getPosY() - 1);
         int bottom = scene.getValuePosition(player.getPosX(), player.getPosY() + 1);
         int left = scene.getValuePosition((player.getPosX() - 1), player.getPosY());
