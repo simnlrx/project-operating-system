@@ -64,6 +64,10 @@ public class GameManager {
         this.player2 = player2;
     }
 
+    public Player getPlayer1(){
+        return this.player1;
+    }
+
     public void setGameMode(int gamemode) {
         this.gamemode = gamemode;
     }
