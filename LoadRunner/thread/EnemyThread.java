@@ -27,6 +27,7 @@ public class EnemyThread extends Thread {
 
   public double getDistanceToPlayer(int posXEnemy, int posYEnemy){
     double dist = Math.sqrt(Math.pow((posXEnemy- player1.getPosX()),2)+ Math.pow((posYEnemy - player1.getPosY()),2));
+    System.out.println(""+ dist+": la distance ");
     return dist;
   }
 
