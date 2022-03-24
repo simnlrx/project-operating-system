@@ -1,12 +1,9 @@
 import LoadRunner.game.Scene;
 
-import LoadRunner.handler.FrameManager;
-import LoadRunner.handler.GameManager;
-import LoadRunner.handler.GameState;
-import LoadRunner.handler.LoadingManager;
+import LoadRunner.handler.*;
 import LoadRunner.utils.Display;
 
-import java.awt.*;
+import javax.swing.*;
 
 public class LoadRunner {
 
@@ -15,13 +12,19 @@ public class LoadRunner {
         System.out.println("Load Runner | Runnig ...");
         Display.title();
 
-        LoadingManager loading = new LoadingManager(30,40); // 40 30
         Scene scene = new Scene(30,40);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         GameManager gameManager = new GameManager(scene, GameState.GAMEMODE);
-        FrameManager frameManager = new FrameManager(new Frame("Contrôles"), gameManager);
+
+        JFrame frame = new JFrame("Contrôles");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        FrameManager frameManager = new FrameManager(frame, gameManager);
+
+        LoadingManager loading = new LoadingManager(gameManager); // 40 30
+
         frameManager.generate();
 
-        gameManager.setGameMode(loading.selectGameMode()); //lors de la récupération du mode de jeu, on set les joueurs
+        loading.start();
+        gameManager.setGameMode(loading.getGamemode()); //lors de la récupération du mode de jeu, on set les joueurs
         gameManager.setGameState(GameState.LEVEL);
         gameManager.setLevel(loading.getLevel());
         gameManager.setGameState(GameState.LOADING);

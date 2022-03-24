@@ -1,16 +1,16 @@
 package LoadRunner.handler;
 
 import LoadRunner.events.KeyboardEvent;
-import LoadRunner.game.Scene;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class FrameManager {
 
-    private final Frame frame;
+    private final JFrame frame;
     private final GameManager gameManager;
 
-    public FrameManager(Frame frame, GameManager gameManager) {
+    public FrameManager(JFrame frame, GameManager gameManager) {
         this.frame = frame;
         this.gameManager = gameManager;
     }

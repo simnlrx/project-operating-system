@@ -5,12 +5,10 @@ import LoadRunner.handler.GameManager;
 public class KeySelection {
 
     private final Player player;
-    private final GameManager gameManager;
     private final Scene scene;
 
     public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
-        this.gameManager = gameManager;
         this.scene = gameManager.getScene();
     }
 
