@@ -12,6 +12,8 @@ package LoadRunner.game;
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
 // 11 - représente le joueur en multijoueur
+// 12 - paserelle
+// 13 - spawn ennemie
 
 // 20 - fleche vers le haut
 // 21 - fleche vers la gauche
@@ -95,7 +97,7 @@ public class Scene {
                         break;
                     }//simulation d'un objet
                     case 6: {
-                        System.out.print("⚑ ");
+                        System.out.print("  ");
                         //out+="⚑";
                         break;
                     }//simulation du spawn du joueur
@@ -160,10 +162,10 @@ public class Scene {
     //méthode permettant de changer la position du joueur
     public synchronized void setPositionPlayer(Player player, int x, int y) {
         if (player.getNumber() == 1) {
-            board[y][x] = 1;
+            board[y][x] = 10;
             player.setPosition(x, y);
         } else if (player.getNumber() == 2) {
-            board[y][x] = 2;
+            board[y][x] = 11;
             player.setPosition(x, y);
         }
     }
@@ -194,8 +196,8 @@ public class Scene {
         printMatrix();
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
             for (int j = 0; j < (this.lenght); j++) {//parcours de la matrice en x
-                if(board[i][j] == 10){
-                    player1.setPosition(j,i);
+                if(board[i][j] == 6){
+                    setPositionPlayer(player1, j, i);
                 }
             }
         }

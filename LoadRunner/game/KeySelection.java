@@ -20,8 +20,7 @@ public class KeySelection {
             case 'z':
                 if (top == 3) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 3);
-                    player.setPosition(player.getPosX(), player.getPosY() - 1);
-                    scene.setValuePosition(player.getPosX(), player.getPosY(), 10);
+                    scene.setPositionPlayer(player, player.getPosX(), player.getPosY() - 1);
                     break;
                 }
 
@@ -29,16 +28,14 @@ public class KeySelection {
                 if (left == 0 || left == 3) {
                     if(scene.getValuePosition(player.getPosX()-1, player.getPosY()+1) == 2 || scene.getValuePosition(player.getPosX()-1, player.getPosY()+1) == 3){
                         scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
-                        player.setPosition(player.getPosX() + 1, player.getPosY());
-                        scene.setValuePosition(player.getPosX(), player.getPosY(), 10);
+                        scene.setPositionPlayer(player, player.getPosX()+1, player.getPosY());
                     }
                 }
                 break;
             case 's':
                 if (bottom == 3) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
-                    player.setPosition(player.getPosX(), player.getPosY() - 1);
-                    scene.setValuePosition(player.getPosX(), player.getPosY(), 10);
+                    scene.setPositionPlayer(player, player.getPosX(), player.getPosY() - 1);
                 }
                 break;
             case 'd':
@@ -47,9 +44,7 @@ public class KeySelection {
                 if (right == 0 || right == 3) {
                     if(scene.getValuePosition(player.getPosX()-1, player.getPosY()+1) == 2 || scene.getValuePosition(player.getPosX()+1, player.getPosY()+1) == 3){
                         scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
-                        player.setPosition(player.getPosX() + 1, player.getPosY());
-                        System.out.println("playerpos après modif: " + player.getPosX() + " " + player.getPosY());
-                        scene.setValuePosition(player.getPosX(), player.getPosY(), 10);
+                        scene.setPositionPlayer(player, player.getPosX()+1, player.getPosY());
                     }
                 }
                 break;

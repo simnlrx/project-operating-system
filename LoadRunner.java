@@ -10,7 +10,7 @@ public class LoadRunner {
         System.out.println("Load Runner | Runnig ...");
         Display.title();
 
-        LoadingManager loading = new LoadingManager(18,34);
+        LoadingManager loading = new LoadingManager(18,34); // 40 30
         Scene scene = new Scene(18,34);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         GameManager gameManager = new GameManager(scene);
 
