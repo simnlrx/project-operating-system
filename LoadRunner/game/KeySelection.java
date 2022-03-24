@@ -1,22 +1,28 @@
 package LoadRunner.game;
 
+import LoadRunner.handler.GameManager;
+
 public class KeySelection {
 
     private final Player player;
+    private final GameManager gameManager;
     private final Scene scene;
 
-    public KeySelection(Player player, Scene scene) {
+    public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
-        this.scene = scene;
+        this.gameManager = gameManager;
+        this.scene = gameManager.getScene();
     }
 
-    public void setKey(char direction) {
+    public void setKey(char key) {
         System.out.println("MOVE");
         int top = scene.getValuePosition(player.getPosX(), player.getPosY() + 1);
         int bottom = scene.getValuePosition(player.getPosX(), player.getPosY() - 1);
         int left = scene.getValuePosition((player.getPosX() - 1), player.getPosY());
         int right = scene.getValuePosition((player.getPosX() + 1), player.getPosY());
-        switch (direction) {
+        switch (key) {
+            case '1':
+
             case 'z':
                 if (top == 3) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 3);
@@ -42,7 +48,8 @@ public class KeySelection {
                 System.out.println("playerpos: " + player.getPosX() + " " + player.getPosY());
                 System.out.println("right: " + right);
                 if (right == 0 || right == 3) {
-                    if(scene.getValuePosition(player.getPosX()-1, player.getPosY()+1) == 2 || scene.getValuePosition(player.getPosX()+1, player.getPosY()+1) == 3){
+                    if(scene.getValuePosition(player.getPosX()+1, player.getPosY()+1) == 2 || scene.getValuePosition(player.getPosX()+1, player.getPosY()+1) == 3){
+                        System.out.println("OK");
                         scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
                         scene.setPositionPlayer(player, player.getPosX()+1, player.getPosY());
                     }

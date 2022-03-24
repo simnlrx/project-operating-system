@@ -8,18 +8,18 @@ import java.awt.*;
 public class FrameManager {
 
     private final Frame frame;
-    private final Scene scene;
+    private final GameManager gameManager;
 
-    public FrameManager(Frame frame, Scene scene) {
+    public FrameManager(Frame frame, GameManager gameManager) {
         this.frame = frame;
-        this.scene = scene;
+        this.gameManager = gameManager;
     }
 
     public void generate(){
         frame.setLayout(new FlowLayout());
-        frame.setSize(200, 200);
+        frame.setSize(500, 500);
 
-        KeyboardEvent keyboardEvent = new KeyboardEvent(scene.getPlayer1(), scene);
+        KeyboardEvent keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer1(), gameManager);
         frame.addKeyListener(keyboardEvent);
 
         frame.setVisible(true);

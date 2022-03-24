@@ -24,7 +24,7 @@ public class EnemyThread extends Thread {
     scene.setValuePosition(posX,posY,4);//les coordonnées de l'ennemi sont directement placés dans la scene
     this.sens = sens;
     this.gameManager = gameManager;
-    this.player1 = gameManager.getPlayer1();
+    this.player1 = gameManager.getScene().getPlayer1();
   }
 
   public double getDistanceToPlayer(int posXEnemy, int posYEnemy){
@@ -75,14 +75,10 @@ public class EnemyThread extends Thread {
 
   @Override
   public void run() {
-    try{
-      while(gameManager.getGameState().isGame()){
-        testDistanceX();
-        testDistanceY();
-        scene.setValuePosition(posX, posY, 3);
-      }
-    }catch(InterruptedException e){
-          e.printStackTrace();
+    while(gameManager.getGameState().isGame()){
+      testDistanceX();
+      testDistanceY();
+      scene.setValuePosition(posX, posY, 3);
     }
   }
 }

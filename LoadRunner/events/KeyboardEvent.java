@@ -5,6 +5,8 @@ package LoadRunner.events;
 import LoadRunner.game.KeySelection;
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
+import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,13 +14,13 @@ import java.awt.event.KeyListener;
 public class KeyboardEvent extends Thread implements KeyListener {
 
     private Player player;
-    private Scene scene;
+    private GameManager gameManager;
     private KeySelection keySelection;
 
-    public KeyboardEvent(Player player, Scene scene) {
+    public KeyboardEvent(Player player, GameManager gameManager) {
         this.player = player;
-        this.scene = scene;
-        this.keySelection = new KeySelection(player, scene);
+        this.gameManager = gameManager;
+        this.keySelection = new KeySelection(player, gameManager);
     }
 
     @Override
