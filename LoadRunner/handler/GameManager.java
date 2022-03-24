@@ -34,7 +34,6 @@ public class GameManager {
         EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
         RefreshScene refresh = new RefreshScene(this);
         RegenSceneThread regenScene = new RegenSceneThread(this);
-
         threadManager.addThread(refresh);
         threadManager.addThread(regenScene);
 
