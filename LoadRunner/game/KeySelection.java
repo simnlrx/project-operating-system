@@ -25,12 +25,24 @@ public class KeySelection {
                 if (top == 3) {
                     scene.setValuePosition(player.getPosX(), player.getPosY(), 3);
                     scene.setPositionPlayer(player, player.getPosX(), player.getPosY() - 1);
-                    break;
                 }
-
+                break;
             case 'q':
                 if (left == 0 || left == 3) {
                     if (scene.getValuePosition(player.getPosX() - 1, player.getPosY() + 1) == 2 || scene.getValuePosition(player.getPosX() - 1, player.getPosY() + 1) == 3) {
+                        scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
+                        scene.setPositionPlayer(player, player.getPosX() - 1, player.getPosY());
+                    }
+                    break;
+                }
+                if (left == 5) {
+                    scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
+                    scene.setPositionPlayer(player, player.getPosX() - 1, player.getPosY());
+                    player.addScore(100);
+                    break;
+                }
+                if (left == 12) {
+                    if(scene.getValuePosition(player.getPosX() - 1, player.getPosY()) == 12){
                         scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
                         scene.setPositionPlayer(player, player.getPosX() - 1, player.getPosY());
                     }
@@ -45,6 +57,19 @@ public class KeySelection {
             case 'd':
                 if (right == 0 || right == 3) {
                     if (scene.getValuePosition(player.getPosX() + 1, player.getPosY() + 1) == 2 || scene.getValuePosition(player.getPosX() + 1, player.getPosY() + 1) == 3) {
+                        scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
+                        scene.setPositionPlayer(player, player.getPosX() + 1, player.getPosY());
+                    }
+                    break;
+                }
+                if (right == 5) {
+                    scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
+                    scene.setPositionPlayer(player, player.getPosX() + 1, player.getPosY());
+                    player.addScore(100);
+                    break;
+                }
+                if (right == 12) {
+                    if(scene.getValuePosition(player.getPosX() + 1, player.getPosY()) == 12){
                         scene.setValuePosition(player.getPosX(), player.getPosY(), 0);
                         scene.setPositionPlayer(player, player.getPosX() + 1, player.getPosY());
                     }

@@ -8,7 +8,7 @@ import LoadRunner.thread.RefreshScene;
 import LoadRunner.thread.RegenSceneThread;
 
 public class ThreadManager{
-  private ArrayList<Thread> threadList;
+  private final ArrayList<Thread> threadList;
 
   public ThreadManager(){
     this.threadList = new ArrayList<Thread>();

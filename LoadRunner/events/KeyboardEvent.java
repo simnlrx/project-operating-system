@@ -13,13 +13,9 @@ import java.awt.event.KeyListener;
 
 public class KeyboardEvent extends Thread implements KeyListener {
 
-    private Player player;
-    private GameManager gameManager;
-    private KeySelection keySelection;
+    private final KeySelection keySelection;
 
     public KeyboardEvent(Player player, GameManager gameManager) {
-        this.player = player;
-        this.gameManager = gameManager;
         this.keySelection = new KeySelection(player, gameManager);
     }
 

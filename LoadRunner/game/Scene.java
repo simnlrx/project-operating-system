@@ -72,18 +72,18 @@ public class Scene {
             for (int y = 0; y < (this.lenght); y++) {//parcours de la matrice en x
                 value = board[i][y];
                 switch (value) {
-                    case 0: {
+                    case 0:
+                    case 13 :
+                    case 6: {
                         System.out.print("  ");
                         break;
                     }//espace vide
-                    case 1: {
-                        System.out.print("–-");
-                        break;
-                    }//bord horizontal
-                    case 2: {
+                    case 1:
+                    case 2:
+                    case 9: {
                         System.out.print("▓▓");
                         break;
-                    }//platforme
+                    }//bord horizontal
                     case 3: {
                         System.out.print("│┤");
                         break;
@@ -96,15 +96,6 @@ public class Scene {
                         System.out.print("☼ ");
                         break;
                     }//simulation d'un objet
-                    case 6: {
-                        System.out.print("  ");
-                        //out+="⚑";
-                        break;
-                    }//simulation du spawn du joueur
-                    case 9: {
-                        System.out.print("||");
-                        break;
-                    }//bord vertical
                     case 10: {
                         System.out.print("J ");
                         break;
@@ -113,6 +104,10 @@ public class Scene {
                         System.out.print("P ");
                         break;
                     }//simulation du joueur 2 en attendant un symbole
+                    case 12 : {
+                        System.out.print("__");
+                        break;
+                    }
                     case 20: {
                         System.out.print("↑ ");
                         break;
