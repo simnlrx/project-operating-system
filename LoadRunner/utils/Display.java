@@ -25,9 +25,9 @@ public class Display {
     };
 
     public static String[] scorePage = new String[]{
-           "TODO",
-            "mettre",
-            "les",
+           "Player 1",
+            "",
+            "Stage ",
             "",
             "scooooooores",
             "stp"

@@ -12,7 +12,6 @@ public class EnemiesManager {
     private GameManager gameManager;
     private File file;
     private ThreadManager threadManager;
-    private boolean sens;
     private int index;
     private int lenghtab;
     private int heighttab;
@@ -21,7 +20,6 @@ public class EnemiesManager {
         this.threadManager = threadManager;//liste des threads
         this.gameManager = gameManager;//l'attribut gameManager récuépère le gameManager passé en parametre
         this.lenghtab = gameManager.getScene().getLenght();//on recupère la longueur du tableau
-        this.sens = true;//on choisis un sens lors de l'instanciation
         AddEnemiesList();//on appel la méthode pour ajouter les ennemies dans la ArrayList
     }
 
@@ -36,9 +34,8 @@ public class EnemiesManager {
                 if (st.ttype == StreamTokenizer.TT_NUMBER) {//si le mot courant est un nombre
                     if ((int) st.nval == 4) {//si l'entier est 4, il s'agit d'un ennemi
                         //alors on instancie un objet EnemyThread avec en parametre, son numéro de colonne, son numéro de ligne, son sens de deplacement, sa scene et l'état le gameManager
-                        EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), sens, gameManager);
+                        EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), gameManager);
                         //on change le sens de déplacement de l'ennemi
-                        this.sens = !sens;
                         // on ajoute l'ennemi à la liste
                         threadManager.addThread(enemi);
                     }
