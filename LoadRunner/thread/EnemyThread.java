@@ -36,7 +36,6 @@ public class EnemyThread extends Thread {
     while(gameManager.getGameState().isGame()){
       this.sleep(500);
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
-        
         if(scene.getValuePosition(posX-1, posY-1)!=0){
           if(scene.getValuePosition(posX-1, posY)==5){
             this.posX = posX-2;
