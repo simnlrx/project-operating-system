@@ -21,7 +21,12 @@ public class Display {
     };
 
     public static String[] levelPage = new String[]{
-           "NIVEAU A METTRE"
+           "Choose your level: ",
+           "1 - Easy",
+           "",
+           "2 - Medium",
+           "",
+           "3 - Hard"
     };
 
     public static String[] scorePage = new String[]{
