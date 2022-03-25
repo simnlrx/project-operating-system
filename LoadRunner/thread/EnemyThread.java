@@ -35,45 +35,49 @@ public class EnemyThread extends Thread {
     try {
     while(gameManager.getGameState().isGame()){
       this.sleep(500);
-      System.out.println("La distance de base est " + getDistanceToPlayer(posX, posY));
-      System.out.println("La nouvelle distance est " + getDistanceToPlayer(posX-1, posY));
-      if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
-        System.out.println("La distance est moindre, déplacement");
-        if(scene.getValuePosition(posX-1, posY-1)!=0){
-          if(scene.getValuePosition(posX-1, posY)==5){
-            this.posX = posX-2;
-            scene.setValuePosition(posX, posY, 0);
-          }else{
-            scene.setValuePosition(posX, posY, 0);
-            this.posX--;
-          }
-        }
-      }else{
-        if(scene.getValuePosition(posX+1, posY-1)!=0){
-          if(scene.getValuePosition(posX+1, posY)==5){
-            scene.setValuePosition(posX, posY, 0);
-            this.posX = posX-2;
-          }else{
-            scene.setValuePosition(posX, posY, 0);
-            this.posX--;
-          }
-        }
-      }
-
-      scene.setValuePosition(posX, posY, 4);
-
-      if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){
-        if(scene.getValuePosition(posX, posY-1)==3){
+      if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
+        if(scene.getValuePosition(posX, posY+1)==3){
           scene.setValuePosition(posX, posY, 0);
-          this.posY--;
+          this.posY++;
+          scene.setValuePosition(posX, posY, 4);
         }
       }else{
         if(scene.getValuePosition(posX, posY)==3){
           scene.setValuePosition(posX, posY, 0);
-          this.posY++;
+          this.posY--;
+          scene.setValuePosition(posX, posY, 4);
         }
       }
-      scene.setValuePosition(posX, posY, 4);
+
+      if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
+        int valueBlocInf = scene.getValuePosition(posX-1, posY+1);
+        int valueBlocMid = scene.getValuePosition(posX-1, posY);
+        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){
+          if(valueBlocMid==5){
+            scene.setValuePosition(posX, posY, 0);
+            this.posX = posX-2;
+            scene.setValuePosition(posX, posY, 4);
+          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+            scene.setValuePosition(posX, posY, 0);
+            this.posX--;
+            scene.setValuePosition(posX, posY, 4);
+          }
+        }
+      }else{
+        int valueBlocInf = scene.getValuePosition(posX+1, posY+1);
+        int valueBlocMid = scene.getValuePosition(posX+1, posY);
+        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){
+          if(valueBlocMid==5){
+            scene.setValuePosition(posX, posY, 0);
+            this.posX = posX+2;
+            scene.setValuePosition(posX, posY, 4);
+          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+            scene.setValuePosition(posX, posY, 0);
+            this.posX++;
+            scene.setValuePosition(posX, posY, 4);
+          }
+        }
+      }
     }
     } catch (Exception e) {
       e.printStackTrace();
