@@ -27,7 +27,6 @@ public class EnemyThread extends Thread {
 
   public double getDistanceToPlayer(int posXEnemy, int posYEnemy){
     double dist = Math.sqrt(Math.pow((posXEnemy- player1.getPosX()),2)+ Math.pow((posYEnemy - player1.getPosY()),2));
-    System.out.println(""+ dist+": la distance ");
     return dist;
   }
 
@@ -58,6 +57,8 @@ public class EnemyThread extends Thread {
         }
       }
 
+      scene.setValuePosition(posX, posY, 4);
+
       if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){
         if(scene.getValuePosition(posX, posY-1)==3){
           scene.setValuePosition(posX, posY, 0);
@@ -69,8 +70,6 @@ public class EnemyThread extends Thread {
           this.posY++;
         }
       }
-      System.out.println("Deplacement en X "+ posX+" du thread "+this.getName());
-      System.out.println("Deplacement en Y "+ posY+" du thread "+this.getName());
       scene.setValuePosition(posX, posY, 4);
     }
     } catch (Exception e) {
