@@ -35,8 +35,8 @@ public class EnemyThread extends Thread {
     try {
     while(gameManager.getGameState().isGame()){
       this.sleep(500);
-      System.out.println("La distance de base est " + getDistanceToPlayer(posX, posY)));
-      System.out.println("La nouvelle distance est " + getDistanceToPlayer(posX-1, posY)));
+      System.out.println("La distance de base est " + getDistanceToPlayer(posX, posY));
+      System.out.println("La nouvelle distance est " + getDistanceToPlayer(posX-1, posY));
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
         System.out.println("La distance est moindre, déplacement");
         if(scene.getValuePosition(posX-1, posY-1)!=0){
