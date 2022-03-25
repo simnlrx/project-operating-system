@@ -8,6 +8,7 @@ package LoadRunner.game;
 // 3 - représente un morceau d'une échelle
 // 4 - représente un ennemi
 // 5 - représente un objet à récupérer
+
 // 6 - spawn d'un joueur
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
@@ -25,8 +26,10 @@ public class Scene {
     private final int height; //Hauteur de l'écran
     private final int lenght; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
-    private Player player1 = new Player(100, "Player1", 1);
-    private Player player2 = new Player(100, "Player2", 2);
+
+    private Player player1 = new Player(100, "Player1", 1);//joueur1
+    private Player player2 = new Player(100, "Player2", 2);//joueur2
+
 
     //constructeur de Scene
     public Scene(int height, int lenght) {//constrcuteur de la scene

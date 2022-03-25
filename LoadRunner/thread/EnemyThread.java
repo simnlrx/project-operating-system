@@ -12,10 +12,6 @@ public class EnemyThread extends Thread {
   private GameManager gameManager;// Game Manager
   private Player player1;
 
-  private int DistanceToPlayer; //distance entre l'ennemi et le joueur
-
-
-
   public EnemyThread(int posX, int posY, GameManager gameManager){
     this.scene = gameManager.getScene();
     this.posX = posX;
@@ -25,9 +21,18 @@ public class EnemyThread extends Thread {
     this.player1 = gameManager.getScene().getPlayer1();
   }
 
-  public double getDistanceToPlayer(int posXEnemy, int posYEnemy){
+  public double getDistanceToPlayer(int posXEnemy, int posYEnemy){//calcul distance entre enenmy et joueur
     double dist = Math.sqrt(Math.pow((posXEnemy- player1.getPosX()),2)+ Math.pow((posYEnemy - player1.getPosY()),2));
     return dist;
+  }
+
+  public void KillPlayer(){
+    int spawnX = (int)(Math.random()*scene.getLenght()+1);
+    if((posX == player1.getPosX() && posY == player1.getPosY())){
+      System.out.println("Rencontre avec un ennemi");
+      player1.getKill();
+      player1.setPosition(spawnX, scene.getHeight()-2);
+    }
   }
 
   @Override
@@ -48,7 +53,7 @@ public class EnemyThread extends Thread {
           scene.setValuePosition(posX, posY, 4);
         }
       }
-
+      KillPlayer();
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
         int valueBlocInf = scene.getValuePosition(posX-1, posY+1);
         int valueBlocMid = scene.getValuePosition(posX-1, posY);
@@ -78,6 +83,7 @@ public class EnemyThread extends Thread {
           }
         }
       }
+      KillPlayer();
     }
     } catch (Exception e) {
       e.printStackTrace();

@@ -63,6 +63,10 @@ public class Player {
         return life;
     }
 
+    public void getKill(){
+        this.life--;
+    }
+
     public void addScore(int score){
         this.score+=score;
     }
