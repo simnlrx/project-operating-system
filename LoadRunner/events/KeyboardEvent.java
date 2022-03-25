@@ -1,12 +1,8 @@
 package LoadRunner.events;
 
-//NE RIEN FAIRE ICI JE REFLECHIS BABA MERCI
-
 import LoadRunner.game.KeySelection;
 import LoadRunner.game.Player;
-import LoadRunner.game.Scene;
 import LoadRunner.handler.GameManager;
-import LoadRunner.handler.GameState;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
