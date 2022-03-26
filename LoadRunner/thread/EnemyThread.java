@@ -28,13 +28,18 @@ public class EnemyThread extends Thread {
 
   public void KillPlayer(){
     int spawnX;
-    if((posX == player1.getPosX() && posY == player1.getPosY())){
-      do{
-        spawnX = (int)(Math.random()*scene.getLenght()+1);
-      }while(scene.getValuePosition(spawnX-2,posY)!=2 && scene.getValuePosition(spawnX-1,posY)==2);
-      player1.getKill();
-      player1.setPosition(spawnX, scene.getHeight()-2);
-      scene.setValuePosition(spawnX, scene.getHeight()-2, 10);
+    int basScene = scene.getHeight()-2;
+    if(player1.getLife()>1){
+      if((posX == player1.getPosX() && posY == player1.getPosY())){
+        do{
+          spawnX = (int)(Math.random()*scene.getLenght()+1);
+        }while(scene.getValuePosition(spawnX,basScene+1)!=2 && scene.getValuePosition(spawnX-1,basScene)!=0);
+        System.out.println(scene.getValuePosition(spawnX,basScene));
+        System.out.println(scene.getValuePosition(spawnX,basScene+1));
+        player1.getKill();
+        player1.setPosition(spawnX, basScene);
+        scene.setValuePosition(spawnX, basScene, 10);
+      }
     }
   }
 
@@ -44,13 +49,13 @@ public class EnemyThread extends Thread {
     while(gameManager.getGameState().isGame()){
       this.sleep(500);
       if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
-        if(scene.getValuePosition(posX, posY+1)==3){
+        if(scene.getValuePosition(posX, posY+1)==3 || scene.getValuePosition(posX, posY+1)==10){
           scene.setValuePosition(posX, posY, 0);
           this.posY++;
           scene.setValuePosition(posX, posY, 4);
         }
       }else{
-        if(scene.getValuePosition(posX, posY)==3){
+        if(scene.getValuePosition(posX, posY-1)==3 || scene.getValuePosition(posX, posY-1)==10){
           scene.setValuePosition(posX, posY, 0);
           this.posY--;
           scene.setValuePosition(posX, posY, 4);
