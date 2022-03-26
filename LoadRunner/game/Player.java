@@ -22,7 +22,7 @@ public class Player {
         this.posX = 0;//position en X
         this.posY = 0;//position en Y
         this.number = number;//numéro du joueur
-        this.life = 3;//nombre de vie initialiserà 3
+        this.life = 3;//nombre de vie initialiser à 3
     }
 
     public String getName() {
@@ -63,7 +63,7 @@ public class Player {
         return life;
     }
 
-    public void getKill(){//méthode pour enelver la vie d'un joueur
+    public void getKill(){//méthode pour enlever la vie d'un joueur
         this.life--;
     }
 

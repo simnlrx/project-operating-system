@@ -137,7 +137,7 @@ public class Scene {
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));//affichage du nom et du score du joueur1
         } else {//sinon affichage du nom et du score du joueur1 et du joueur2
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
-            System.out.println("Score " + player2.getName() + ": " + player2.getScore() + printLife(player2));//affichage du nom et du score du joueur
+            System.out.println(player2.getName() + ": " + "unlimited life, kill player 1");//affichage du nom et du score du joueur
         }
         //out+="<html/>";
         //return out;
