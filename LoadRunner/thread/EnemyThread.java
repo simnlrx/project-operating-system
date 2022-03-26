@@ -27,11 +27,14 @@ public class EnemyThread extends Thread {
   }
 
   public void KillPlayer(){
-    int spawnX = (int)(Math.random()*scene.getLenght()+1);
+    int spawnX;
     if((posX == player1.getPosX() && posY == player1.getPosY())){
-      System.out.println("Rencontre avec un ennemi");
+      do{
+        spawnX = (int)(Math.random()*scene.getLenght()+1);
+      }while(scene.getValuePosition(spawnX-2,posY)!=2 && scene.getValuePosition(spawnX-1,posY)==2);
       player1.getKill();
       player1.setPosition(spawnX, scene.getHeight()-2);
+      scene.setValuePosition(spawnX, scene.getHeight()-2, 10);
     }
   }
 

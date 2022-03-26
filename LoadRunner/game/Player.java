@@ -17,12 +17,12 @@ public class Player {
      */
 
     public Player(int score, String name, int number) {
-        this.score = score;
-        this.name = name;
-        this.posX = 0;
-        this.posY = 0;
-        this.number = number;
-        this.life = 3;
+        this.score = score;//score initialiser
+        this.name = name;//nom initialiser
+        this.posX = 0;//position en X
+        this.posY = 0;//position en Y
+        this.number = number;//numéro du joueur
+        this.life = 3;//nombre de vie initialiserà 3
     }
 
     public String getName() {
@@ -63,7 +63,7 @@ public class Player {
         return life;
     }
 
-    public void getKill(){
+    public void getKill(){//méthode pour enelver la vie d'un joueur
         this.life--;
     }
 
