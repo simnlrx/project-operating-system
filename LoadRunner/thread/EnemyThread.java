@@ -38,6 +38,8 @@ public class EnemyThread extends Thread {
         player1.setPosition(spawnX, basScene);
         scene.setValuePosition(spawnX, basScene, 10);
       }
+    }else{
+      System.out.println("Fin de partie");
     }
   }
 
