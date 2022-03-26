@@ -27,16 +27,14 @@ public class EnemyThread extends Thread {
   }
 
   public void KillPlayer(){
-    int spawnX;
+    int spawnX = 0;
     int basScene = scene.getHeight()-2;
-    if(player1.getLife()>0){
+    if(player1.getLife()>=1){
       if((posX == player1.getPosX() && posY == player1.getPosY())){
         player1.getKill();
         do{
           spawnX = (int)(Math.random()*scene.getLenght()+1);
-        }while(scene.getValuePosition(spawnX,basScene+1)!=2 && scene.getValuePosition(spawnX-1,basScene)!=0);
-        System.out.println(scene.getValuePosition(spawnX,basScene));
-        System.out.println(scene.getValuePosition(spawnX,basScene+1));
+        }while(scene.getValuePosition(spawnX,basScene+1)!=2 && scene.getValuePosition(spawnX,basScene)!=2);
         player1.setPosition(spawnX, basScene);
         scene.setValuePosition(spawnX, basScene, 10);
       }
