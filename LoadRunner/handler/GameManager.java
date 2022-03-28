@@ -67,8 +67,8 @@ public class GameManager {
     }
 
     public void end(){
+      gameState = GameState.END;
         try{
-          gameState = GameState.END;
           wait(1000);
           EndGame();
           wait(10000);
