@@ -39,7 +39,7 @@ public class EnemyThread extends Thread {
         scene.setValuePosition(spawnX, basScene, 10);
       }
     }else{
-      System.out.println("Fin de partie");
+      System.out.println("Fin de partie");//partie à remplacer avec un affichage de fin de partie
     }
   }
 
@@ -48,45 +48,60 @@ public class EnemyThread extends Thread {
     try {
     while(gameManager.getGameState().isGame()){
       this.sleep(500);
-      if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
-        if(scene.getValuePosition(posX, posY+1)==3 || scene.getValuePosition(posX, posY+1)==10){
-          scene.setValuePosition(posX, posY, 0);
-          this.posY++;
-          scene.setValuePosition(posX, posY, 4);
+      if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){//vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
+        if(scene.getValuePosition(posX, posY+1)==3 || scene.getValuePosition(posX, posY+1)==10){//vérification si le bloc suivant est un escalier et pas une platforme
+          scene.setValuePosition(posX, posY, 0);//postion actuelle de l'ennemi placée à 0
+          this.posY++;// incrémantation de sa position
+          scene.setValuePosition(posX, posY, 4);//valeur de l'ennemi placé à sa nouvelle position
         }
-      }else{
-        if(scene.getValuePosition(posX, posY-1)==3 || scene.getValuePosition(posX, posY-1)==10){
-          scene.setValuePosition(posX, posY, 0);
-          this.posY--;
-          scene.setValuePosition(posX, posY, 4);
+      }else{//si un deplacment vers le haut éloigne l'ennemi
+        if(scene.getValuePosition(posX, posY-1)==3 || scene.getValuePosition(posX, posY-1)==10){//vérification si le bloc suivant est un escalier et pas une platforme
+          scene.setValuePosition(posX, posY, 0);//postion actuelle de l'ennemi placée à 0
+          this.posY--;// décrémantation de sa position
+          scene.setValuePosition(posX, posY, 4);//valeur de l'ennemi placé à sa nouvelle position
         }
       }
       KillPlayer();
-      if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
-        int valueBlocInf = scene.getValuePosition(posX-1, posY+1);
-        int valueBlocMid = scene.getValuePosition(posX-1, posY);
-        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){
-          if(valueBlocMid==5){
+
+
+      if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){//vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
+        int valueBlocInf = scene.getValuePosition(posX-1, posY+1);//récupération de la valeur du bloc en bas à gauche
+        int valueBlocInf2 = scene.getValuePosition(posX-2, posY+1);//récupération de la valeur du bloc en bas à gauche
+        int valueBlocMid = scene.getValuePosition(posX-1, posY);//récupérationn de la valeur du bloc à gauche
+
+
+        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){//si les critères correspondent
+          if(valueBlocMid==5){//et si le prochain bloc est un object
             scene.setValuePosition(posX, posY, 0);
-            this.posX = posX-2;
+            this.posX = posX-2;//deplacement de 2 blocs à gauche
             scene.setValuePosition(posX, posY, 4);
-          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+          }else if(valueBlocMid!=2 && valueBlocInf==0 && valueBlocInf2==2){
             scene.setValuePosition(posX, posY, 0);
+            this.posX--;
+            this.posY++;
+          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){//sinon
+            scene.setValuePosition(posX, posY, 0);//déplacement d'un bloc à gauche
             this.posX--;
             scene.setValuePosition(posX, posY, 4);
           }
         }
-      }else{
-        int valueBlocInf = scene.getValuePosition(posX+1, posY+1);
-        int valueBlocMid = scene.getValuePosition(posX+1, posY);
-        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){
-          if(valueBlocMid==5){
+      }else{//si un deplacment vers la gauche éloigne l'ennemi
+        int valueBlocInf = scene.getValuePosition(posX+1, posY+1);//récupération de la valeur du bloc en bas à droite
+        int valueBlocInf2 = scene.getValuePosition(posX+2, posY+1);//récupération de la valeur du bloc en bas à gauche
+        int valueBlocMid = scene.getValuePosition(posX+1, posY);//récupérationn de la valeur du bloc à droite
+
+        if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){//si les critères correspondent
+          if(valueBlocMid==5){//et si le prochain bloc est un object
             scene.setValuePosition(posX, posY, 0);
-            this.posX = posX+2;
+            this.posX = posX+2;//deplacement de 2 blocs à gauche
             scene.setValuePosition(posX, posY, 4);
-          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+          }else if(valueBlocMid!=2 && valueBlocInf==0 && valueBlocInf2==2){
             scene.setValuePosition(posX, posY, 0);
             this.posX++;
+            this.posY++;
+          }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+            scene.setValuePosition(posX, posY, 0);
+            this.posX++;//déplacement d'un bloc à droite
             scene.setValuePosition(posX, posY, 4);
           }
         }
