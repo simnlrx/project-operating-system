@@ -19,7 +19,7 @@ public class RefreshScene extends Thread {
             try {
               while (gameManager.getGameState().isGame()) {
                 scene.matrix2Screen();
-                this.sleep(800);
+                this.sleep(100);
               }
             }catch (InterruptedException e) {
                 e.printStackTrace();

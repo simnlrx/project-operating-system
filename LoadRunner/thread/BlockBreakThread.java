@@ -19,7 +19,7 @@ public class BlockBreakThread extends Thread {
     public void run() {
         try {
             Scene scene = gameManager.getScene();
-            scene.setValuePosition(x, y, 0);
+            scene.setValuePosition(x, y, 14);
             sleep(4000);
             scene.setValuePosition(x, y, 2);
         } catch (InterruptedException e) {

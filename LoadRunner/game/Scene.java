@@ -15,6 +15,7 @@ package LoadRunner.game;
 // 11 - représente le joueur en multijoueur
 // 12 - paserelle
 // 13 - spawn ennemie
+// 14 - case vide où les méchants tombent
 
 // 20 - fleche vers le haut
 // 21 - fleche vers la gauche
@@ -27,6 +28,9 @@ public class Scene {
     private final int lenght; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
 
+    private int posXSpawnEnemy;// position en X du spawn ennemi
+    private int posYSpawnEnemy;// position en Y du spawn ennemi
+
     private Player player1 = new Player(100, "Player1", 1);//joueur1
     private Player player2 = new Player(100, "Player2", 2);//joueur2
 
@@ -37,6 +41,7 @@ public class Scene {
         this.lenght = lenght;
         this.board = new int[height][lenght];
         this.setScene();
+
     }
 
 
@@ -77,6 +82,7 @@ public class Scene {
                 switch (value) {
                     case 0:
                     case 13 :
+                    case 14 :
                     case 6: {
                         System.out.print("  ");
                         break;
@@ -214,6 +220,22 @@ public class Scene {
     //getter pour le second joueur
     public Player getPlayer2() {
         return this.player2;
+    }
+
+    public void setPosXSpawnEnemy(int x){
+      this.posXSpawnEnemy = x;
+    }
+
+    public void setPosYSpawnEnemy(int y){
+      this.posYSpawnEnemy = y;
+    }
+
+    public int getPosXSpawnEnemy(){
+      return this.posXSpawnEnemy;
+    }
+
+    public int getPosYSpawnEnemy(){
+      return this.posYSpawnEnemy;
     }
 
 }

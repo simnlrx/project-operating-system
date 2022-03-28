@@ -47,6 +47,10 @@ public class GameManager {
         threadManager.startThreads();
     }
 
+    public void end(){
+        gameState = GameState.END;
+    }
+
 
     public Scene getScene() {
         return this.scene;

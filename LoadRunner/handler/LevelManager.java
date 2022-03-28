@@ -29,6 +29,10 @@ public class LevelManager {
                     //pour avoir le numéro de la ligne, on divise l'index par le nombre de ligne
                     //pour avoir le numéro de la colonne, on récuépère le reste de la division entre l'index et la longeur de la ligne
                     scene.setValuePosition(index % length, (index / length), (int) st.nval);
+                    if(st.nval==13){
+                      scene.setPosXSpawnEnemy(index % length);
+                      scene.setPosYSpawnEnemy(index / length);
+                    }
                 }
                 index++;
             }

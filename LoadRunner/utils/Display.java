@@ -38,6 +38,10 @@ public class Display {
             "stp"
     };
 
+    public static String[] gameOver = new String[]{
+           "t mort gros noob"
+    };
+
     public static void title() {
         System.out.println("                                                                                                                                                      \n" +
                 " ____                _____          _____        _____              _____    ____   ____  _____   ______  _____   ______        ______        _____   \n" +

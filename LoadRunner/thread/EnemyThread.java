@@ -40,8 +40,10 @@ public class EnemyThread extends Thread {
       }
     }else{
       System.out.println("Fin de partie");//partie à remplacer avec un affichage de fin de partie
+      gameManager.end();
     }
   }
+
 
   @Override
   public void run() {
@@ -66,7 +68,6 @@ public class EnemyThread extends Thread {
 
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){//vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
         int valueBlocInf = scene.getValuePosition(posX-1, posY+1);//récupération de la valeur du bloc en bas à gauche
-        int valueBlocInf2 = scene.getValuePosition(posX-2, posY+1);//récupération de la valeur du bloc en bas à gauche
         int valueBlocMid = scene.getValuePosition(posX-1, posY);//récupérationn de la valeur du bloc à gauche
 
 
@@ -75,10 +76,16 @@ public class EnemyThread extends Thread {
             scene.setValuePosition(posX, posY, 0);
             this.posX = posX-2;//deplacement de 2 blocs à gauche
             scene.setValuePosition(posX, posY, 4);
-          }else if(valueBlocMid!=2 && valueBlocInf==0 && valueBlocInf2==2){
+          }else if(valueBlocMid!=2 && valueBlocInf==14){
             scene.setValuePosition(posX, posY, 0);
             this.posX--;
             this.posY++;
+            scene.setValuePosition(posX, posY, 4);
+            sleep(5000);
+            scene.setValuePosition(posX, posY, 2);
+            posX = scene.getPosXSpawnEnemy();
+            posY = scene.getPosYSpawnEnemy();
+            scene.setValuePosition(posX, posY, 4);
           }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){//sinon
             scene.setValuePosition(posX, posY, 0);//déplacement d'un bloc à gauche
             this.posX--;
@@ -87,7 +94,6 @@ public class EnemyThread extends Thread {
         }
       }else{//si un deplacment vers la gauche éloigne l'ennemi
         int valueBlocInf = scene.getValuePosition(posX+1, posY+1);//récupération de la valeur du bloc en bas à droite
-        int valueBlocInf2 = scene.getValuePosition(posX+2, posY+1);//récupération de la valeur du bloc en bas à gauche
         int valueBlocMid = scene.getValuePosition(posX+1, posY);//récupérationn de la valeur du bloc à droite
 
         if(valueBlocInf!=0 && valueBlocInf!=9 && valueBlocMid!=12){//si les critères correspondent
@@ -95,10 +101,16 @@ public class EnemyThread extends Thread {
             scene.setValuePosition(posX, posY, 0);
             this.posX = posX+2;//deplacement de 2 blocs à gauche
             scene.setValuePosition(posX, posY, 4);
-          }else if(valueBlocMid!=2 && valueBlocInf==0 && valueBlocInf2==2){
+          }else if(valueBlocMid!=2 && valueBlocInf==14){
             scene.setValuePosition(posX, posY, 0);
             this.posX++;
             this.posY++;
+            scene.setValuePosition(posX, posY, 4);
+            sleep(5000);
+            scene.setValuePosition(posX, posY, 2);
+            posX = scene.getPosXSpawnEnemy();
+            posY = scene.getPosYSpawnEnemy();
+            scene.setValuePosition(posX, posY, 4);
           }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
             scene.setValuePosition(posX, posY, 0);
             this.posX++;//déplacement d'un bloc à droite
