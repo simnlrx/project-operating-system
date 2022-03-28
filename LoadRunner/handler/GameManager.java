@@ -1,11 +1,14 @@
 package LoadRunner.handler;
 
+import java.util.Scanner;
+
 import LoadRunner.events.KeyboardEvent;
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.thread.RefreshScene;
 import LoadRunner.handler.LevelManager;
 import LoadRunner.handler.EnemiesManager;
+import LoadRunner.handler.LoadingManager;
 import LoadRunner.thread.EnemyThread;
 import LoadRunner.thread.RegenSceneThread;
 
@@ -19,6 +22,8 @@ public class GameManager {
     private int gamemode;
     private GameState gameState;
     private int level;
+    private ThreadManager threadManager;
+
 
     public GameManager(Scene scene, GameState gameState) {
         this.player1 = scene.getPlayer1();
@@ -30,7 +35,7 @@ public class GameManager {
     //lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
     public void start() {
         LevelManager levelManager = new LevelManager(this);
-        ThreadManager threadManager = new ThreadManager();
+        threadManager = new ThreadManager();
         EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
         RefreshScene refresh = new RefreshScene(this);
         RegenSceneThread regenScene = new RegenSceneThread(this);
@@ -47,8 +52,29 @@ public class GameManager {
         threadManager.startThreads();
     }
 
+    public void EndGame(){
+      //méthoe pour terminer la partie
+      System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
+      LoadingManager loadingManager = new LoadingManager(this);
+
+      Scanner scanner;
+      String continueToEnd;
+
+      String [] scorePage = new String[]{"GAME OVER","Player : "+player1.getName(),"Score :"+player1.getScore(),"Press c to continue"};
+      String[][] end = loadingManager.getDisplay(scorePage);
+
+      loadingManager.printBoard(end);
+    }
+
     public void end(){
-        gameState = GameState.END;
+        try{
+          gameState = GameState.END;
+          wait(1000);
+          EndGame();
+          wait(10000);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
     }
 
 
@@ -78,6 +104,14 @@ public class GameManager {
 
     public int getLevel(){
       return this.level;
+    }
+
+    public void setPlayer1(Player player){
+      this.player1 = player;
+    }
+
+    public Player getPlayer1(){
+      return this.player1;
     }
 
 }

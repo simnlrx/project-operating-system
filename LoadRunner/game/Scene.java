@@ -31,8 +31,8 @@ public class Scene {
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
 
-    private Player player1 = new Player(100, "Player1", 1);//joueur1
-    private Player player2 = new Player(100, "Player2", 2);//joueur2
+    private Player player1 = new Player(0, "Player1", 1);//joueur1
+    private Player player2 = new Player(0, "Player2", 2);//joueur2
 
 
     //constructeur de Scene
@@ -149,6 +149,19 @@ public class Scene {
         //return out;
     }
 
+    //ajoute un joueur à la scene
+    public void set1Player(Player player1) {
+        this.player1 = player1;
+        this.player2 = new Player(0, "", 2);
+        for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
+            for (int j = 0; j < (this.lenght); j++) {//parcours de la matrice en x
+                if(board[i][j] == 6){
+                    setPositionPlayer(player1, j, i);
+                }
+            }
+        }
+    }
+
     //méthode permettant d'afficher la vie des joueurs
     public String printLife(Player player) {
         String life = "   ";
@@ -174,6 +187,22 @@ public class Scene {
         }
     }
 
+    //méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
+    public int getValuePosition(int x, int y) {
+        try{
+            return board[y][x];
+        }catch (ArrayIndexOutOfBoundsException e){
+            return -1;
+        }
+    }
+
+    //ajoute deux joueurs à la scene
+    public void set2Players(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+
     // méthode permettant de récupérer la hauteur du plateau
     public int getHeight() {
         return this.height;
@@ -184,33 +213,6 @@ public class Scene {
         return this.lenght;
     }
 
-    //méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
-    public int getValuePosition(int x, int y) {
-        try{
-            return board[y][x];
-        }catch (ArrayIndexOutOfBoundsException e){
-            return -1;
-        }
-    }
-
-    //ajoute un joueur à la scene
-    public void set1Player(Player player1) {
-        this.player1 = player1;
-        this.player2 = new Player(0, "", 2);
-        for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
-            for (int j = 0; j < (this.lenght); j++) {//parcours de la matrice en x
-                if(board[i][j] == 6){
-                    setPositionPlayer(player1, j, i);
-                }
-            }
-        }
-    }
-
-    //ajoute deux joueurs à la scene
-    public void set2Players(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-    }
 
     //getter pour le premier joueur
     public Player getPlayer1() {

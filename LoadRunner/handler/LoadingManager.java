@@ -30,6 +30,18 @@ public class LoadingManager {
         } while (this.gamemode != 1 && this.gamemode != 2);
 
         initLoadingScene();
+
+        String[][] namePlayer1 = getDisplay(Display.namePage);
+        do{
+
+          printBoard(namePlayer1);
+          scanner = new Scanner(System.in);
+          this.gameManager.getPlayer1().setName(scanner.nextLine());
+
+        } while(this.gameManager.getPlayer1().getName()=="");
+
+        initLoadingScene();
+
         String[][] levelChoose = getDisplay(Display.levelPage);
         do {
 
@@ -40,7 +52,8 @@ public class LoadingManager {
         } while (this.level != 1 && this.level != 2 && this.level != 3);
 
         initLoadingScene();
-        printBoard(getDisplay(Display.scorePage));
+        String [] scorePage = new String[]{"Level "+this.level,"","Player : "+gameManager.getPlayer1().getName(),"","Score :"+gameManager.getPlayer1().getScore(),"","3 lifes"};
+        printBoard(getDisplay(scorePage));
         new Scanner(System.in).nextLine();
 
     }

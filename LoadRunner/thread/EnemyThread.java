@@ -5,6 +5,7 @@ import LoadRunner.game.Player;
 import LoadRunner.handler.GameManager;
 import LoadRunner.handler.GameState;
 
+
 public class EnemyThread extends Thread {
   private int posX;//position en x de l'ennemi
   private int posY;//position en y de l'ennemi
@@ -41,7 +42,6 @@ public class EnemyThread extends Thread {
         scene.setValuePosition(spawnX, basScene, 10);
       }
     }else{
-      System.out.println("Fin de partie");//partie à remplacer avec un affichage de fin de partie
       gameManager.end();
     }
   }
@@ -133,7 +133,6 @@ public class EnemyThread extends Thread {
   }
 
 
-
   @Override
   public void run() {
     try {
@@ -145,8 +144,6 @@ public class EnemyThread extends Thread {
       }else{//si un deplacement vers le haut éloigne l'ennemi
         upStairs();
       }
-      KillPlayer();
-
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
         //vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
         mooveLeft();

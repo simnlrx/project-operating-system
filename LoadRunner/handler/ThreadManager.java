@@ -16,9 +16,9 @@ public class ThreadManager{
 
   public void startThreads(){
     for(int i=0;i<threadList.size();i++){
-//      if(!threadList.get(i).isAlive()) {
+      if(!threadList.get(i).isAlive()) {
         threadList.get(i).start();
-//      }
+      }
     }
   }
 

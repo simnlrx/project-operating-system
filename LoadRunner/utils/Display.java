@@ -22,6 +22,7 @@ public class Display {
 
     public static String[] levelPage = new String[]{
            "Choose your level: ",
+           "",
            "1 - Easy",
            "",
            "2 - Medium",
@@ -30,12 +31,17 @@ public class Display {
     };
 
     public static String[] scorePage = new String[]{
-           "Player 1",
-            "",
-            "Stage ",
-            "",
-            "scooooooores",
-            "stp"
+       "Player 1",
+        "",
+        "Stage ",
+        "",
+        "scooooooores",
+        "stp"
+
+    };
+
+    public static String[] namePage = new String[]{
+           "Choose name of player 1",
     };
 
     public static String[] gameOver = new String[]{

@@ -9,7 +9,7 @@ public class Player {
     private final int number;
     private int life;
 
-    /**
+    /*
      * Constructeur d'un joueur
      * @param score Score du joueur
      * @param name Non du joueur
