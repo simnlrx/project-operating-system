@@ -53,8 +53,9 @@ public class GameManager {
     }
 
     public void EndGame(){
-      //méthoe pour terminer la partie
-      System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
+      //méthode pour terminer la partie
+      System.out.println("\033[H\033[2J");
+      //supprime tout ce qu'il y a dans la console auparavant
       LoadingManager loadingManager = new LoadingManager(this);
 
       Scanner scanner;
@@ -68,13 +69,6 @@ public class GameManager {
 
     public void end(){
       gameState = GameState.END;
-        try{
-          wait(1000);
-          EndGame();
-          wait(10000);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
     }
 
 

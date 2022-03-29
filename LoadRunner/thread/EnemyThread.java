@@ -32,11 +32,16 @@ public class EnemyThread extends Thread {
     //méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
     if(player1.getLife()>=1){
       if((posX == player1.getPosX() && posY == player1.getPosY())){
-        scene.resSpawnPlayer1();
+        scene.reSpawnPlayer1();
       }
     }else{
       gameManager.end();
-      //gameManager.EndGame();
+      try{
+        wait(2000);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      gameManager.EndGame();
     }
   }
 

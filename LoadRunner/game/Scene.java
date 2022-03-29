@@ -162,7 +162,7 @@ public class Scene {
         }
     }
 
-    public void resSpawnPlayer1(){
+    public void reSpawnPlayer1(){
       //méthode pour respawn le joueur 1 dans la scene
       int Platforme = this.getHeight()-2;
       int spawnX = 0;
@@ -170,8 +170,6 @@ public class Scene {
       do{
         spawnX = (int)(Math.random()*this.getLenght()+1);
       }while(this.getValuePosition(spawnX,Platforme+1)!=2 || this.getValuePosition(spawnX,Platforme)==2);
-      System.out.println(""+this.getValuePosition(spawnX,Platforme));
-      System.out.println(""+this.getValuePosition(spawnX,Platforme+1));
       player1.setPosition(spawnX, Platforme);
       this.setValuePosition(spawnX, Platforme, 10);
     }
