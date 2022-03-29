@@ -35,8 +35,8 @@ public class Scene {
     private Player player2 = new Player(0, "Player2", 2);//joueur2
 
 
-    //constructeur de Scene
-    public Scene(int height, int lenght) {//constrcuteur de la scene
+    public Scene(int height, int lenght) {
+      //constructeur de Scene
         this.height = height;
         this.lenght = lenght;
         this.board = new int[height][lenght];
@@ -45,8 +45,8 @@ public class Scene {
     }
 
 
-    //méthode qui permet d'initialiser la scene sous forme brut
     public void setScene() {
+      //méthode qui permet d'initialiser la scene sous forme brut
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -62,8 +62,8 @@ public class Scene {
     }
 
 
-    //fonction permettant d'afficher la matrice de l'écran
     public void printMatrix() {
+      //fonction permettant d'afficher la matrice de l'écran
         for (int i = 0; i < (this.height); i++) {
             for (int y = 0; y < (this.lenght); y++) {
                 System.out.print(board[i][y] + " ");
@@ -72,8 +72,8 @@ public class Scene {
         }
     }
 
-    //fonction permettant d'afficher l'écran à partir de la matrice
     public synchronized void matrix2Screen() {
+      //fonction permettant d'afficher l'écran à partir de la matrice
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         int value;
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
@@ -149,8 +149,8 @@ public class Scene {
         //return out;
     }
 
-    //ajoute un joueur à la scene
     public void set1Player(Player player1) {
+      //ajoute un joueur à la scene
         this.player1 = player1;
         this.player2 = new Player(0, "", 2);
         for (int i = 0; i < (this.height); i++) {//parcours de la matrice en y
@@ -163,7 +163,7 @@ public class Scene {
     }
 
     public void resSpawnPlayer1(){
-      //méthode pour respawn un ennemi dans la scene
+      //méthode pour respawn le joueur 1 dans la scene
       int Platforme = this.getHeight()-2;
       int spawnX = 0;
       player1.getKill();
@@ -176,8 +176,8 @@ public class Scene {
       this.setValuePosition(spawnX, Platforme, 10);
     }
 
-    //méthode permettant d'afficher la vie des joueurs
     public String printLife(Player player) {
+      //méthode permettant d'afficher la vie des joueurs
         String life = "   ";
         for (int i = 0; i < player.getLife(); i++) {
             life += "♥";
@@ -185,13 +185,13 @@ public class Scene {
         return life;
     }
 
-    //méthode permettant de metre une valeur dans le tableau
     public synchronized void setValuePosition(int x, int y, int value) {
+      //méthode permettant de metre une valeur dans le tableau
         board[y][x] = value;
     }
 
-    //méthode permettant de changer la position du joueur
     public synchronized void setPositionPlayer(Player player, int x, int y) {
+      //méthode permettant de changer la position du joueur
         if (player.getNumber() == 1) {
             board[y][x] = 10;
             player.setPosition(x, y);
@@ -201,8 +201,8 @@ public class Scene {
         }
     }
 
-    //méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
     public int getValuePosition(int x, int y) {
+      //méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
         try{
             return board[y][x];
         }catch (ArrayIndexOutOfBoundsException e){
@@ -210,47 +210,51 @@ public class Scene {
         }
     }
 
-    //ajoute deux joueurs à la scene
     public void set2Players(Player player1, Player player2) {
+      //ajoute deux joueurs à la scene
         this.player1 = player1;
         this.player2 = player2;
     }
 
 
-    // méthode permettant de récupérer la hauteur du plateau
     public int getHeight() {
+      // méthode permettant de récupérer la hauteur du plateau
         return this.height;
     }
 
-    //méthode permettant de récupérer la longueur du tableau
     public int getLenght() {
+      //méthode permettant de récupérer la longueur du tableau
         return this.lenght;
     }
 
 
-    //getter pour le premier joueur
     public Player getPlayer1() {
+      //getter pour le premier joueur
         return this.player1;
     }
 
-    //getter pour le second joueur
     public Player getPlayer2() {
+      //getter pour le second joueur
         return this.player2;
     }
 
     public void setPosXSpawnEnemy(int x){
+      //setter pour le spawn en X des ennemis
       this.posXSpawnEnemy = x;
     }
 
     public void setPosYSpawnEnemy(int y){
+      //setter pour le spawn en Y des ennemis
       this.posYSpawnEnemy = y;
     }
 
     public int getPosXSpawnEnemy(){
+      //getter pour le spawn en X des ennemis
       return this.posXSpawnEnemy;
     }
 
     public int getPosYSpawnEnemy(){
+      //getter pour le spawn en Y des ennemis
       return this.posYSpawnEnemy;
     }
 
