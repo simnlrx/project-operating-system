@@ -31,15 +31,15 @@ public class EnemyThread extends Thread {
   public void KillPlayer(){
     //méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
     int spawnX = 0;
-    int basScene = scene.getHeight()-2;
+    int Platforme = scene.getHeight()-2;
     if(player1.getLife()>=1){
       if((posX == player1.getPosX() && posY == player1.getPosY())){
         player1.getKill();
         do{
           spawnX = (int)(Math.random()*scene.getLenght()+1);
-        }while(scene.getValuePosition(spawnX,basScene+1)!=2 && scene.getValuePosition(spawnX,basScene)!=2);
-        player1.setPosition(spawnX, basScene);
-        scene.setValuePosition(spawnX, basScene, 10);
+        }while(scene.getValuePosition(spawnX,Platforme+1)!=2 && scene.getValuePosition(spawnX,Platforme)==2);
+        player1.setPosition(spawnX, Platforme);
+        scene.setValuePosition(spawnX, Platforme, 10);
       }
     }else{
       gameManager.end();
@@ -124,6 +124,7 @@ public class EnemyThread extends Thread {
         posX = scene.getPosXSpawnEnemy();
         posY = scene.getPosYSpawnEnemy();
         scene.setValuePosition(posX, posY, 4);
+        
       }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
         scene.setValuePosition(posX, posY, 0);
         this.posX++;
