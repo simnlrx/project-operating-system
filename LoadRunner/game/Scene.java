@@ -162,6 +162,20 @@ public class Scene {
         }
     }
 
+    public void resSpawnPlayer1(){
+      //méthode pour respawn un ennemi dans la scene
+      int Platforme = this.getHeight()-2;
+      int spawnX = 0;
+      player1.getKill();
+      do{
+        spawnX = (int)(Math.random()*this.getLenght()+1);
+      }while(this.getValuePosition(spawnX,Platforme+1)!=2 || this.getValuePosition(spawnX,Platforme)==2);
+      System.out.println(""+this.getValuePosition(spawnX,Platforme));
+      System.out.println(""+this.getValuePosition(spawnX,Platforme+1));
+      player1.setPosition(spawnX, Platforme);
+      this.setValuePosition(spawnX, Platforme, 10);
+    }
+
     //méthode permettant d'afficher la vie des joueurs
     public String printLife(Player player) {
         String life = "   ";
