@@ -36,6 +36,7 @@ public class EnemyThread extends Thread {
       }
     }else{
       gameManager.end();
+      //gameManager.EndGame();
     }
   }
 
