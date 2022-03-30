@@ -28,24 +28,24 @@ public class EnemyThread extends Thread {
     return dist;
   }
 
-  public void KillPlayer(){
+  public synchronized void KillPlayer(){
     //méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
     if(player1.getLife()>=1){
       if((posX == player1.getPosX() && posY == player1.getPosY())){
+        scene.setValuePosition(player1.getPosX(), player1.getPosY(), 0);
+        // on enleve le joueur de la scene lorsqu'il est mort
         scene.reSpawnPlayer1();
       }
     }else{
-      gameManager.end();
       try{
-        wait(2000);
+        gameManager.end();
       } catch (Exception e) {
         e.printStackTrace();
       }
-      gameManager.EndGame();
     }
   }
 
-  public void downStairs(){
+  public synchronized void downStairs(){
     //méthode permettant de faire descendre les escaliers à un ennemi
     if(scene.getValuePosition(posX, posY+1)==3 || scene.getValuePosition(posX, posY+1)==10){//vérification si le bloc suivant est un escalier et pas une platforme
       scene.setValuePosition(posX, posY, 0);//postion actuelle de l'ennemi placée à la valeur 0
@@ -54,7 +54,7 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public void upStairs(){
+  public synchronized void upStairs(){
     //méthode permettant de faire monter les escaliers à un ennemi
     if(scene.getValuePosition(posX, posY-1)==3 || scene.getValuePosition(posX, posY-1)==10){//vérification si le bloc suivant est un escalier et pas une platforme
       scene.setValuePosition(posX, posY, 0);//postion actuelle de l'ennemi placée à la valeur 0
@@ -63,7 +63,7 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public void mooveLeft(){
+  public synchronized void mooveLeft(){
     //méthode permettant de déplacer un ennemi vers la gauche
     int valueBlocInf = scene.getValuePosition(posX-1, posY+1);//récupération de la valeur du bloc en bas à gauche
     int valueBlocMid = scene.getValuePosition(posX-1, posY);//récupérationn de la valeur du bloc à gauche
@@ -97,7 +97,7 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public void mooveRight(){
+  public synchronized void mooveRight(){
     //méthode permettant de déplacer un ennemi vers la la droite
     int valueBlocInf = scene.getValuePosition(posX+1, posY+1);//récupération de la valeur du bloc en bas à droite
     int valueBlocMid = scene.getValuePosition(posX+1, posY);//récupérationn de la valeur du bloc à droite
