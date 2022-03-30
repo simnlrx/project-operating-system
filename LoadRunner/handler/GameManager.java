@@ -16,24 +16,37 @@ import java.awt.*;
 
 public class GameManager {
 
-    private Player player1;// joueur 1
-    private Player player2;// joueur 2
-    private final Scene scene;// scene de jeu
-    private int gamemode;// mode de jeu - solo ou multi -
-    private GameState gameState;// GameState pour l'état de la partie
-    private int level;// niveau de la partie
-    private ThreadManager threadManager;// liste de thread
-    private boolean printEndGame;// boolean pour l'affichage de fin de la partie
+    private Player player1;
+    // joueur 1
+    private Player player2;
+    // joueur 2
+    private final Scene scene;
+    // scene de jeu
+    private int gamemode;
+    // mode de jeu - solo ou multi -
+    private GameState gameState;
+    // GameState pour l'état de la partie
+    private int level;
+    // niveau de la partie
+    private ThreadManager threadManager;
+    // liste de thread
+    private boolean printEndGame;
+    // boolean pour l'affichage de fin de la partie
 
+    /*
+     * Constructeur de GameManager
+     * @param Scene scene qui est la scène du jeu
+     * @param GameState gameState pour l'état du jeu
+     */
 
     public GameManager(Scene scene, GameState gameState) {
-      // constructeur de GameManager
       // lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
         this.player1 = scene.getPlayer1();
         this.player2 = scene.getPlayer2();
         this.scene = scene;
         this.gameState = gameState;
-        this.printEndGame = true;// possibilité de faire l'affichage de fin de partie quand printEndGame est à true
+        this.printEndGame = true;
+        // possibilité de faire l'affichage de fin de partie quand printEndGame est à true
     }
 
     public void start() {
@@ -67,7 +80,7 @@ public class GameManager {
           scene.setScene();
 
           GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE);
-          // créé une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
+          // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
           if(this.getLevel()<3){
             gameManager2.setLevel(this.level+1);
@@ -118,7 +131,6 @@ public class GameManager {
       // méthode qui va permettre de mettre fin à la partie suivi de son affichage
       gameState = GameState.END;
     }
-
 
 
     public Scene getScene() {

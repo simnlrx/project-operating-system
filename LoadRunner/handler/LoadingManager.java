@@ -61,7 +61,7 @@ public class LoadingManager {
     }
 
     public void loadEnd(){
-      //affichage de fin de partie avec les différentes informations recueillies
+      // affichage de fin de partie avec les différentes informations recueillies
       String[][] end;
       String [] scorePage = new String[]{"GAME OVER",
       "",

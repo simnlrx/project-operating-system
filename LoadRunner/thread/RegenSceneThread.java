@@ -9,13 +9,25 @@ import java.io.StreamTokenizer;
 
 public class RegenSceneThread extends Thread {
     private int tab[][];
+    // tableau à 2 dimensions d'entiers
     private int lenghtab;
+    // longueur du tableau
     private int heighttab;
+    // hauteur du tableau
     private int index;
+    // index pour le tableau
     private File file;
+    // fichier du niveau
     private GameManager gameManager;
+    // GameManager
+
+    /*
+     * Constructeur de RegenSceneThread
+     * @param GameManager gameManager
+     */
 
     public RegenSceneThread(GameManager gameManager) {
+      // méthode permettant d'initialiser le tableau tab avec les valeurs comprises dans le fichier du niveau
         this.gameManager = gameManager;
         this.lenghtab = gameManager.getScene().getLenght();
         this.heighttab = gameManager.getScene().getHeight();
@@ -38,6 +50,7 @@ public class RegenSceneThread extends Thread {
 
     @Override
     public void run() {
+      // méthode qui va permettre de comparer le tableau tab et les valeurs de la scene pour regénérer les blocs, les échelles et les passerelleaprès le passage d'un ennemi ou d'un joueur
         try {
             while (gameManager.getGameState().isGame()) {
                 for (int y = 0; y < heighttab; y++) {
