@@ -103,7 +103,7 @@ public class GameManager {
           loadingEnd.loadEnd();
           scanner = new Scanner(System.in);
           continueToEnd = scanner.nextLine();
-        }while(!continueToEnd.equals("c"));
+        }while(!continueToEnd.equals("e"));
         System.exit(0);
       }
     }

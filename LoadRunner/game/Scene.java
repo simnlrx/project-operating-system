@@ -150,10 +150,12 @@ public class Scene {
 
     public synchronized void reSpawnPlayer1(){
       //méthode pour respawn le joueur 1 dans la scene
+      this.setValuePosition(player1.getPosX(), player1.getPosY(), 4);
+      player1.setPosition(0,0);
+      int Platforme = this.getHeight()-2;
+      int spawnX = 0;
       try{
         wait(2000);
-        int Platforme = this.getHeight()-2;
-        int spawnX = 0;
         player1.getKill();
         do{
           spawnX = (int)(Math.random()*this.getLenght()+1);

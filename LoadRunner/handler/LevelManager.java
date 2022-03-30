@@ -29,14 +29,19 @@ public class LevelManager {
                     //pour avoir le numéro de la ligne, on divise l'index par le nombre de ligne
                     //pour avoir le numéro de la colonne, on récuépère le reste de la division entre l'index et la longeur de la ligne
                     scene.setValuePosition(index % length, (index / length), (int) st.nval);
-                    if(st.nval==13){
+                    if(st.nval == 13){
                       scene.setPosXSpawnEnemy(index % length);
                       scene.setPosYSpawnEnemy(index / length);
+                    }else if(st.nval == 15){
+                      // si la valeur vaut 15, il s'agit de la porte de sortie du niveau
+                      // donc affectation de la ligne et de la colonne au spawn du joueur
+                      scene.setPosXSpawnPlayer1(index % length);
+                      scene.setPosYSpawnPlayer1(index / length);
                     }
+                    index++;
                 }
-                index++;
             }
-        } catch (Exception e) {
+          } catch (Exception e) {
             e.printStackTrace();
         }
     }

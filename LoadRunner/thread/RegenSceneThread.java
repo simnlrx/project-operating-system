@@ -29,12 +29,6 @@ public class RegenSceneThread extends Thread {
                 if (st.ttype == StreamTokenizer.TT_NUMBER) {
                     this.tab[index / lenghtab][index % lenghtab] = (int) st.nval;
                 }
-                if(st.nval == 15){
-                  // si la valeur vaut 15, il s'agit de la porte de sortie du niveau
-                  // donc affectation de la ligne et de la colonne au spawn du joueur
-                  gameManager.getScene().setPosXSpawnPlayer1(index % lenghtab);
-                  gameManager.getScene().setPosYSpawnPlayer1(index / lenghtab);
-                }
                 index++;
             }
         } catch (Exception e) {

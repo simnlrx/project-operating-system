@@ -63,7 +63,15 @@ public class LoadingManager {
     public void loadEnd(){
       //affichage de fin de partie avec les différentes informations recueillies
       String[][] end;
-      String [] scorePage = new String[]{"GAME OVER","","Player : "+gameManager.getPlayer1().getName(),"Score :"+gameManager.getPlayer1().getScore(),"Press c to Exit"};
+      String [] scorePage = new String[]{"GAME OVER",
+      "",
+      "Player : "+gameManager.getPlayer1().getName(),
+      "Level : "+gameManager.getLevel(),
+      "lifes : "+gameManager.getPlayer1().getLife(),
+      "Score :"+gameManager.getPlayer1().getScore(),
+      "",
+      "Press e to Exit"};
+
       end = this.getDisplay(scorePage);
       printBoard(end);
     }

@@ -32,8 +32,7 @@ public class EnemyThread extends Thread {
     //méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
     if(player1.getLife()>=1){
       if((posX == player1.getPosX() && posY == player1.getPosY())){
-        scene.setValuePosition(player1.getPosX(), player1.getPosY(), 0);
-        // on enleve le joueur de la scene lorsqu'il est mort
+        // on enleve le joueur de la scene lorsqu'il est mort et on le rplace au spawn
         scene.reSpawnPlayer1();
       }
     }else{

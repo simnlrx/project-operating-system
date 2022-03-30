@@ -64,7 +64,8 @@ public class Player {
         return life;
     }
 
-    public void getKill(){//méthode pour enlever la vie d'un joueur
+    public void getKill(){
+      //méthode pour enlever la vie d'un joueur
         this.life--;
     }
 
