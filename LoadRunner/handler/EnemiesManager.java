@@ -49,7 +49,7 @@ public class EnemiesManager {
             while (st.nextToken() != StreamTokenizer.TT_EOF) {
               // parcours du fichier jusqu'à sa fin
                 if (st.ttype == StreamTokenizer.TT_NUMBER) {
-                  / /si le mot courant est un nombre
+                  //si le mot courant est un nombre
                     if ((int) st.nval == 4) {
                       // si l'entier est 4, il s'agit d'un ennemi
                         EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), gameManager);
