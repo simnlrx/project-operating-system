@@ -43,6 +43,7 @@ public class LoadingManager {
         initLoadingScene();
 
         String[][] levelChoose = getDisplay(Display.levelPage);
+
         do {
 
             printBoard(levelChoose);
@@ -52,6 +53,7 @@ public class LoadingManager {
         } while (this.level != 1 && this.level != 2 && this.level != 3);
 
         initLoadingScene();
+
         String [] scorePage = new String[]{"Level "+this.level,"","Player : "+gameManager.getPlayer1().getName(),"","Score :"+gameManager.getPlayer1().getScore(),"","3 lifes"};
         printBoard(getDisplay(scorePage));
         new Scanner(System.in).nextLine();

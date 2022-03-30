@@ -59,7 +59,32 @@ public class GameManager {
         // méthode qui permet de lancer tout les threads présents dans la liste et donc de la partie
     }
 
-    public void EndGame(){
+    public synchronized void nextLevel(){
+      //méthode pour respawn le joueur 1 dans un nouveau niveau
+      try{
+          this.endLevel();
+          wait(2000);
+          scene.setScene();
+
+          GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE);
+          // créé une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
+
+          if(this.getLevel()<3){
+            gameManager2.setLevel(this.level+1);
+            gameManager2.setGameMode(gamemode); //lors de la récupération du mode de jeu, on set les joueurs
+            gameManager2.setGameState(GameState.LEVEL);
+            gameManager2.setLevel(gameManager2.getLevel());
+            gameManager2.setGameState(GameState.LOADING);
+            gameManager2.start();
+          }else{
+            gameManager2.endGame();
+          }
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+    }
+
+    public void printEndGame(){
       //méthode pour afficher la fin de partie
       if(this.printEndGame){
 
@@ -83,11 +108,17 @@ public class GameManager {
       }
     }
 
-    public synchronized void end(){
+    public synchronized void endGame(){
       // méthode qui va permettre de mettre fin à la partie suivi de son affichage
       gameState = GameState.END;
-      EndGame();
+      printEndGame();
     }
+
+    public synchronized void endLevel(){
+      // méthode qui va permettre de mettre fin à la partie suivi de son affichage
+      gameState = GameState.END;
+    }
+
 
 
     public Scene getScene() {

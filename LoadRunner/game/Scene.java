@@ -16,11 +16,8 @@ package LoadRunner.game;
 // 12 - paserelle
 // 13 - spawn ennemie
 // 14 - case vide où les méchants tombent
+// 15 - niveau suivant
 
-// 20 - fleche vers le haut
-// 21 - fleche vers la gauche
-// 22 - fleche vers la droite
-// 23 - fleche vers le bas
 
 
 public class Scene {
@@ -30,6 +27,9 @@ public class Scene {
 
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
+
+    private int posXSpawnPlayer1;// position en X du spawn du joueur 1
+    private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
     private Player player1 = new Player(0, "Player1", 1);//joueur1
     private Player player2 = new Player(0, "Player2", 2);//joueur2
@@ -93,6 +93,8 @@ public class Scene {
                         System.out.print("▓▓");
                         break;
                     }//bord horizontal
+                    case 15:
+                    // porte de sortie du niveau
                     case 3: {
                         System.out.print("│┤");
                         break;
@@ -115,22 +117,6 @@ public class Scene {
                     }//simulation du joueur 2 en attendant un symbole
                     case 12 : {
                         System.out.print("__");
-                        break;
-                    }
-                    case 20: {
-                        System.out.print("↑ ");
-                        break;
-                    }
-                    case 21: {
-                        System.out.print("← ");
-                        break;
-                    }
-                    case 22: {
-                        System.out.print("→ ");
-                        break;
-                    }
-                    case 23: {
-                        System.out.print("↓ ");
                         break;
                     }
                 }
@@ -162,17 +148,23 @@ public class Scene {
         }
     }
 
-    public void reSpawnPlayer1(){
+    public synchronized void reSpawnPlayer1(){
       //méthode pour respawn le joueur 1 dans la scene
-      int Platforme = this.getHeight()-2;
-      int spawnX = 0;
-      player1.getKill();
-      do{
-        spawnX = (int)(Math.random()*this.getLenght()+1);
-      }while(this.getValuePosition(spawnX,Platforme+1)!=2 || this.getValuePosition(spawnX,Platforme)==2);
-      player1.setPosition(spawnX, Platforme);
-      this.setValuePosition(spawnX, Platforme, 10);
+      try{
+        wait(2000);
+        int Platforme = this.getHeight()-2;
+        int spawnX = 0;
+        player1.getKill();
+        do{
+          spawnX = (int)(Math.random()*this.getLenght()+1);
+        }while(this.getValuePosition(spawnX,Platforme+1)!=2 || this.getValuePosition(spawnX,Platforme)==2);
+        player1.setPosition(spawnX, Platforme);
+        this.setValuePosition(spawnX, Platforme, 10);
+      } catch (Exception e) {
+        e.printStackTrace();
     }
+  }
+
 
     public String printLife(Player player) {
       //méthode permettant d'afficher la vie des joueurs
@@ -254,6 +246,26 @@ public class Scene {
     public int getPosYSpawnEnemy(){
       //getter pour le spawn en Y des ennemis
       return this.posYSpawnEnemy;
+    }
+
+    public void setPosXSpawnPlayer1(int x){
+      //setter pour le spawn en X du joueur
+      this.posXSpawnPlayer1 = x;
+    }
+
+    public void setPosYSpawnPlayer1(int y){
+      //setter pour le spawn en Y du joueur
+      this.posYSpawnPlayer1 = y;
+    }
+
+    public int getPosXSpawnPlayer1(){
+      //getter pour le spawn en X du joueur
+      return this.posXSpawnPlayer1;
+    }
+
+    public int getPosYSpawnPlayer1(){
+      //getter pour le spawn en Y du joueur
+      return this.posYSpawnPlayer1;
     }
 
 }

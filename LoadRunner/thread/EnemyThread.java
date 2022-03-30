@@ -38,7 +38,7 @@ public class EnemyThread extends Thread {
       }
     }else{
       try{
-        gameManager.end();
+        gameManager.endGame();
       } catch (Exception e) {
         e.printStackTrace();
       }

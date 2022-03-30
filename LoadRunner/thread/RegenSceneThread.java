@@ -29,6 +29,12 @@ public class RegenSceneThread extends Thread {
                 if (st.ttype == StreamTokenizer.TT_NUMBER) {
                     this.tab[index / lenghtab][index % lenghtab] = (int) st.nval;
                 }
+                if(st.nval == 15){
+                  // si la valeur vaut 15, il s'agit de la porte de sortie du niveau
+                  // donc affectation de la ligne et de la colonne au spawn du joueur
+                  gameManager.getScene().setPosXSpawnPlayer1(index % lenghtab);
+                  gameManager.getScene().setPosYSpawnPlayer1(index / lenghtab);
+                }
                 index++;
             }
         } catch (Exception e) {
@@ -52,6 +58,10 @@ public class RegenSceneThread extends Thread {
                             gameManager.getScene().setValuePosition(x, y, 12);
                         }
                     }
+                }
+                if(gameManager.getScene().getPosXSpawnPlayer1()==gameManager.getPlayer1().getPosX() && gameManager.getScene().getPosYSpawnPlayer1()==gameManager.getPlayer1().getPosY()){
+                  // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
+                  gameManager.nextLevel();
                 }
             }
         } catch (Exception e) {

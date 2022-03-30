@@ -26,7 +26,7 @@ public class KeySelection {
 
     switch (key) {
       case 'z':
-      if (top == 3) {
+      if (top == 3 || top == 15) {
         scene.setValuePosition(x, y, 3);
         scene.setPositionPlayer(player, x, y - 1);
       }
