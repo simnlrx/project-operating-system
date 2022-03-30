@@ -17,12 +17,18 @@ public class Player {
      */
 
     public Player(int score, String name, int number) {
-        this.score = score;//score initialiser
-        this.name = name;//nom initialiser
-        this.posX = 0;//position en X
-        this.posY = 0;//position en Y
-        this.number = number;//numéro du joueur
-        this.life = 3;//nombre de vie initialiser à 3
+        this.score = score;
+        // score initialiser
+        this.name = name;
+        // nom initialiser
+        this.posX = 0;
+        // position en X
+        this.posY = 0;
+        // position en Y
+        this.number = number;
+        // numéro du joueur
+        this.life = 3;
+        // nombre de vie initialiser à 3
     }
 
 

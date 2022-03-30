@@ -30,23 +30,19 @@ public class Display {
            "3 - Hard"
     };
 
-    public static String[] scorePage = new String[]{
-       "Player 1",
-        "",
-        "Stage ",
-        "",
-        "scooooooores",
-        "stp"
-
-    };
 
     public static String[] namePage = new String[]{
-           "Choose name of player 1",
+           "Controls : ",
+           "",
+           "Z : up    A : break left bloc       ",
+           "S : down  E : break right bloc      ",
+           "Q : left  W : break bloc bottom left",
+           "D : right C : break bloc bottom right",
+           "",
+           "",
+           "Choose name of player 1 :",
     };
 
-    public static String[] gameOver = new String[]{
-           "t mort gros noob"
-    };
 
     public static void title() {
         System.out.println("                                                                                                                                                      \n" +
