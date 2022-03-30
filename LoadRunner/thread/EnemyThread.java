@@ -107,10 +107,14 @@ public class EnemyThread extends Thread {
         this.posY++;
         scene.setValuePosition(posX, posY, 4);
         try{
-          sleep(5000);//on endort l'ennemi 5 secondes avant le respawn
+          sleep(5000);
+          //on endort l'ennemi 5 secondes avant le respawn
         } catch (Exception e) {
           e.printStackTrace();
         }
+        //on replace l'ennemi à l'endroit du sapwn des ennemis
+        player1.addScore(50);
+        //le joueur gagne 50 points
         scene.setValuePosition(posX, posY, 2);
         posX = scene.getPosXSpawnEnemy();
         posY = scene.getPosYSpawnEnemy();
@@ -153,6 +157,9 @@ public class EnemyThread extends Thread {
         } catch (Exception e) {
           e.printStackTrace();
         }
+        //on replace l'ennemi à l'endroit du sapwn des ennemis
+        player1.addScore(50);
+        //le joueur gagne 50 points
         scene.setValuePosition(posX, posY, 2);
         posX = scene.getPosXSpawnEnemy();
         posY = scene.getPosYSpawnEnemy();

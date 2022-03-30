@@ -66,7 +66,6 @@ public class LoadingManager {
       String [] scorePage = new String[]{"GAME OVER",
       "",
       "Player : "+gameManager.getPlayer1().getName(),
-      "Level : "+gameManager.getLevel(),
       "lifes : "+gameManager.getPlayer1().getLife(),
       "Score :"+gameManager.getPlayer1().getScore(),
       "",

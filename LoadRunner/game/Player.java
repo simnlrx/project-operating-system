@@ -65,19 +65,12 @@ public class Player {
     }
 
     public void getKill(){
-      //méthode pour enlever la vie d'un joueur
+      // méthode pour enlever la vie d'un joueur
         this.life--;
     }
 
     public void addScore(int score){
+      // méthode pour ajouter un score au score du joueur
         this.score+=score;
-    }
-
-    public void addLife() {
-        this.life++;
-    }
-
-    public void removeLife(){
-        this.life--;
     }
 }
