@@ -181,7 +181,8 @@ public class EnemyThread extends Thread {
       if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
         // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
         downStairs();
-      }else{// si un deplacement vers le haut éloigne l'ennemi
+      }
+      if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){// si un deplacement vers le haut éloigne l'ennemi
         upStairs();
       }
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
