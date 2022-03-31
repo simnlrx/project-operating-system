@@ -69,7 +69,6 @@ public class GameManager {
       //méthode pour respawn le joueur 1 dans un nouveau niveau
       try{
           this.endLevel();
-          wait(2000);
           scene.setScene();
 
           GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE);
@@ -77,6 +76,8 @@ public class GameManager {
 
           if(this.getLevel()<3){
             gameManager2.setLevel(this.level+1);
+            System.out.println("Loading Level "+gameManager2.getLevel()+", please wait. . .");
+            wait(3000);
             gameManager2.setGameMode(gamemode); //lors de la récupération du mode de jeu, on set les joueurs
             gameManager2.setGameState(GameState.LEVEL);
             gameManager2.setLevel(gameManager2.getLevel());

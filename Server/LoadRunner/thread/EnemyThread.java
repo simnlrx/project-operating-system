@@ -118,7 +118,7 @@ public class EnemyThread extends Thread {
         posX = scene.getPosXSpawnEnemy();
         posY = scene.getPosYSpawnEnemy();
         scene.setValuePosition(posX, posY, 4);
-      }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+      }else if(valueBlocMid!=2 && valueBlocMid!=4 && (valueBlocInf==2|| valueBlocInf==3)){
         scene.setValuePosition(posX, posY, 0);
         this.posX--;
         scene.setValuePosition(posX, posY, 4);
@@ -164,7 +164,7 @@ public class EnemyThread extends Thread {
         posY = scene.getPosYSpawnEnemy();
         scene.setValuePosition(posX, posY, 4);
 
-      }else if(valueBlocMid!=2 && (valueBlocInf==2|| valueBlocInf==3)){
+      }else if(valueBlocMid!=2 && valueBlocMid!=4 && (valueBlocInf==2|| valueBlocInf==3)){
         scene.setValuePosition(posX, posY, 0);
         this.posX++;
         scene.setValuePosition(posX, posY, 4);
@@ -177,12 +177,12 @@ public class EnemyThread extends Thread {
   public void run() {
     try {
     while(gameManager.getGameState().isGame()){
-      this.sleep(500);
+      this.sleep(400);
       if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
         // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
         downStairs();
       }
-      if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){// si un deplacement vers le haut éloigne l'ennemi
+      else if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){// si un deplacement vers le haut éloigne l'ennemi
         upStairs();
       }
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
