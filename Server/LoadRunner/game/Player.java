@@ -30,7 +30,7 @@ public class Player {
         this.life = 3;
         // nombre de vie initialiser à 3
     }
-    
+
     public String getName() {
         return this.name;
     }
