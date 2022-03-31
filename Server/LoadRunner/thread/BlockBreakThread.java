@@ -1,6 +1,5 @@
 package LoadRunner.thread;
 
-import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.handler.GameManager;
 

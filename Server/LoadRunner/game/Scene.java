@@ -19,7 +19,6 @@ package LoadRunner.game;
 // 15 - niveau suivant
 
 
-
 public class Scene {
     private final int height; //Hauteur de l'écran
     private final int lenght; //Largeur de l'écran
@@ -50,7 +49,7 @@ public class Scene {
 
 
     public void setScene() {
-      //méthode qui permet d'initialiser la scene en étant vide
+        //méthode qui permet d'initialiser la scene en étant vide
         for (int i = 0; i < this.height; i++) {
             for (int y = 0; y < this.lenght; y++) {
                 //déclarations des bordures du terrain
@@ -66,18 +65,18 @@ public class Scene {
     }
 
     public synchronized void matrix2Screen() {
-      //fonction permettant d'afficher l'écran à partir du tableau (qui est une matrice)
+        //fonction permettant d'afficher l'écran à partir du tableau (qui est une matrice)
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         int value;
         for (int i = 0; i < (this.height); i++) {
-          //parcours de la matrice en y
+            //parcours de la matrice en y
             for (int y = 0; y < (this.lenght); y++) {
-              //parcours de la matrice en x
+                //parcours de la matrice en x
                 value = board[i][y];
                 switch (value) {
                     case 0:
-                    case 13 :
-                    case 14 :
+                    case 13:
+                    case 14:
                     case 6: {
                         System.out.print("  ");
                         break;
@@ -89,7 +88,7 @@ public class Scene {
                         break;
                     }// bord horizontal
                     case 15:
-                    // porte de sortie du niveau
+                        // porte de sortie du niveau
                     case 3: {
                         System.out.print("│┤");
                         break;
@@ -110,7 +109,7 @@ public class Scene {
                         System.out.print("P ");
                         break;
                     }// simulation du joueur 2
-                    case 12 : {
+                    case 12: {
                         System.out.print("__");
                         break;
                     }// passerelle
@@ -121,11 +120,11 @@ public class Scene {
         }
 
         if ((player2.getName()).equals("")) {
-          //si un deuxieme joueur n'est présent dans la partie
+            //si un deuxieme joueur n'est présent dans la partie
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
             //affichage du nom et du score du joueur1
         } else {
-          //sinon affichage du nom et du score du joueur1 et du joueur2
+            //sinon affichage du nom et du score du joueur1 et du joueur2
             System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
             System.out.println(player2.getName() + ": " + "unlimited life, kill player 1");
             //affichage du nom et du score du joueur
@@ -133,42 +132,42 @@ public class Scene {
     }
 
     public void set1Player(Player player1) {
-      //méthode permettant d'ajouter un joueur à la scene
+        //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player1;
         this.player2 = new Player(0, "", 2);
         for (int i = 0; i < (this.height); i++) {
-          //parcours de la matrice en y
+            //parcours de la matrice en y
             for (int j = 0; j < (this.lenght); j++) {
-              //parcours de la matrice en x
-                if(board[i][j] == 6){
+                //parcours de la matrice en x
+                if (board[i][j] == 6) {
                     setPositionPlayer(player1, j, i);
                 }
             }
         }
     }
 
-    public synchronized void reSpawnPlayer1(){
-      //méthode pour respawn le joueur 1 dans la scene
-      this.setValuePosition(player1.getPosX(), player1.getPosY(), 4);
-      player1.setPosition(0,0);
-      int Platforme = this.getHeight()-2;
-      int spawnX = 0;
-      try{
-        wait(2000);
-        player1.getKill();
-        do{
-          spawnX = (int)(Math.random()*this.getLenght()+1);
-        }while(this.getValuePosition(spawnX,Platforme+1)!=2 || this.getValuePosition(spawnX,Platforme)==2);
-        player1.setPosition(spawnX, Platforme);
-        this.setValuePosition(spawnX, Platforme, 10);
-      } catch (Exception e) {
-        e.printStackTrace();
+    public synchronized void reSpawnPlayer1() {
+        //méthode pour respawn le joueur 1 dans la scene
+        this.setValuePosition(player1.getPosX(), player1.getPosY(), 4);
+        player1.setPosition(0, 0);
+        int Platforme = this.getHeight() - 2;
+        int spawnX = 0;
+        try {
+            wait(2000);
+            player1.getKill();
+            do {
+                spawnX = (int) (Math.random() * this.getLenght() + 1);
+            } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
+            player1.setPosition(spawnX, Platforme);
+            this.setValuePosition(spawnX, Platforme, 10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-  }
 
 
     public String printLife(Player player) {
-      // méthode permettant d'afficher la vie des joueurs
+        // méthode permettant d'afficher la vie des joueurs
         String life = "   ";
         for (int i = 0; i < player.getLife(); i++) {
             life += "♥";
@@ -177,12 +176,12 @@ public class Scene {
     }
 
     public synchronized void setValuePosition(int x, int y, int value) {
-      // méthode permettant de metre une valeur dans le tableau
+        // méthode permettant de metre une valeur dans le tableau
         board[y][x] = value;
     }
 
     public synchronized void setPositionPlayer(Player player, int x, int y) {
-      // méthode permettant de changer la position du joueur
+        // méthode permettant de changer la position du joueur
         if (player.getNumber() == 1) {
             board[y][x] = 10;
             player.setPosition(x, y);
@@ -193,80 +192,80 @@ public class Scene {
     }
 
     public int getValuePosition(int x, int y) {
-      // méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
-        try{
+        // méthode permettant de récupérer la valeur de la position et de tester si c'est dans le tableau
+        try {
             return board[y][x];
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             return -1;
         }
     }
 
     public void set2Players(Player player1, Player player2) {
-      // ajoute deux joueurs à la scene
+        // ajoute deux joueurs à la scene
         this.player1 = player1;
         this.player2 = player2;
     }
 
 
     public int getHeight() {
-      // méthode permettant de récupérer la hauteur du plateau
+        // méthode permettant de récupérer la hauteur du plateau
         return this.height;
     }
 
     public int getLenght() {
-      // méthode permettant de récupérer la longueur du tableau
+        // méthode permettant de récupérer la longueur du tableau
         return this.lenght;
     }
 
 
     public Player getPlayer1() {
-      // getter pour le premier joueur
+        // getter pour le premier joueur
         return this.player1;
     }
 
     public Player getPlayer2() {
-      // getter pour le second joueur
+        // getter pour le second joueur
         return this.player2;
     }
 
-    public void setPosXSpawnEnemy(int x){
-      // setter pour le spawn en X des ennemis
-      this.posXSpawnEnemy = x;
+    public void setPosXSpawnEnemy(int x) {
+        // setter pour le spawn en X des ennemis
+        this.posXSpawnEnemy = x;
     }
 
-    public void setPosYSpawnEnemy(int y){
-      // setter pour le spawn en Y des ennemis
-      this.posYSpawnEnemy = y;
+    public void setPosYSpawnEnemy(int y) {
+        // setter pour le spawn en Y des ennemis
+        this.posYSpawnEnemy = y;
     }
 
-    public int getPosXSpawnEnemy(){
-      // getter pour le spawn en X des ennemis
-      return this.posXSpawnEnemy;
+    public int getPosXSpawnEnemy() {
+        // getter pour le spawn en X des ennemis
+        return this.posXSpawnEnemy;
     }
 
-    public int getPosYSpawnEnemy(){
-      // getter pour le spawn en Y des ennemis
-      return this.posYSpawnEnemy;
+    public int getPosYSpawnEnemy() {
+        // getter pour le spawn en Y des ennemis
+        return this.posYSpawnEnemy;
     }
 
-    public void setPosXSpawnPlayer1(int x){
-      // setter pour le spawn en X du joueur
-      this.posXSpawnPlayer1 = x;
+    public void setPosXSpawnPlayer1(int x) {
+        // setter pour le spawn en X du joueur
+        this.posXSpawnPlayer1 = x;
     }
 
-    public void setPosYSpawnPlayer1(int y){
-      // setter pour le spawn en Y du joueur
-      this.posYSpawnPlayer1 = y;
+    public void setPosYSpawnPlayer1(int y) {
+        // setter pour le spawn en Y du joueur
+        this.posYSpawnPlayer1 = y;
     }
 
-    public int getPosXSpawnPlayer1(){
-      // getter pour le spawn en X du joueur
-      return this.posXSpawnPlayer1;
+    public int getPosXSpawnPlayer1() {
+        // getter pour le spawn en X du joueur
+        return this.posXSpawnPlayer1;
     }
 
-    public int getPosYSpawnPlayer1(){
-      // getter pour le spawn en Y du joueur
-      return this.posYSpawnPlayer1;
+    public int getPosYSpawnPlayer1() {
+        // getter pour le spawn en Y du joueur
+        return this.posYSpawnPlayer1;
     }
 
 }

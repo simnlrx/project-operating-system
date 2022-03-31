@@ -1,6 +1,5 @@
 package LoadRunner.handler;
 
-import java.util.Scanner;
 /*
 public class LaWonteLol {
 

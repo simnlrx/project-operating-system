@@ -1,6 +1,9 @@
 import LoadRunner.game.Scene;
 
-import LoadRunner.handler.*;
+import LoadRunner.handler.FrameManager;
+import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
+import LoadRunner.handler.LoadingManager;
 import LoadRunner.utils.Display;
 
 import javax.swing.*;

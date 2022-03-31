@@ -1,11 +1,6 @@
 package LoadRunner.handler;
 
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
-
-import LoadRunner.thread.EnemyThread;
-import LoadRunner.thread.RefreshScene;
-import LoadRunner.thread.RegenSceneThread;
 
 public class ThreadManager{
   private final ArrayList<Thread> threadList;

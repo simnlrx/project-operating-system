@@ -3,7 +3,6 @@ package LoadRunner.thread;
 import LoadRunner.game.Scene;
 import LoadRunner.game.Player;
 import LoadRunner.handler.GameManager;
-import LoadRunner.handler.GameState;
 
 
 public class EnemyThread extends Thread {

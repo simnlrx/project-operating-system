@@ -1,5 +1,4 @@
 package LoadRunner.thread;
-import java.util.concurrent.Semaphore;
 
 import LoadRunner.game.Scene;
 import LoadRunner.handler.GameManager;

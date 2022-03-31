@@ -2,17 +2,10 @@ package LoadRunner.handler;
 
 import java.util.Scanner;
 
-import LoadRunner.events.KeyboardEvent;
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.thread.RefreshScene;
-import LoadRunner.handler.LevelManager;
-import LoadRunner.handler.EnemiesManager;
-import LoadRunner.handler.LoadingManager;
-import LoadRunner.thread.EnemyThread;
 import LoadRunner.thread.RegenSceneThread;
-
-import java.awt.*;
 
 public class GameManager {
 
