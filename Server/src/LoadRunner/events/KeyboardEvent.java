@@ -18,6 +18,7 @@ public class KeyboardEvent implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         keySelection.setKey(e.getKeyChar());
+        //if(e.getKeyChar() == 'z') joueur.print(e.get
     }
 
     @Override
