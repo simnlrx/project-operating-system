@@ -3,22 +3,38 @@ package LoadRunner.events;
 import LoadRunner.game.KeySelection;
 import LoadRunner.game.Player;
 import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 public class KeyboardEvent implements KeyListener {
 
     private final KeySelection keySelection;
+    private final GameManager gameManager;
+    private Player player;
 
     public KeyboardEvent(Player player, GameManager gameManager) {
         this.keySelection = new KeySelection(player, gameManager);
+        this.gameManager = gameManager;
+        this.player = player;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        keySelection.setKey(e.getKeyChar());
-        //if(e.getKeyChar() == 'z') joueur.print(e.get
+        char p = e.getKeyChar();
+        String res = "" + p;
+        if (gameManager.getGameState() == GameState.MULTIGAME) {
+            if (p == 'z' || p == 'e' || p == 'a' || p == 'q' || p == 's' || p == 'd' || p == 'w' || p == 'c') {
+                try {
+                    player.send(res);
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+        } else
+            keySelection.setKey(p);
     }
 
     @Override

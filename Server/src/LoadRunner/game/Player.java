@@ -1,5 +1,13 @@
 package LoadRunner.game;
 
+import LoadRunner.Server.TCPTask;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+
 public class Player {
 
     private int score;
@@ -16,8 +24,8 @@ public class Player {
      * @param number Numéro du joueur
      */
 
-    public Player(int score, String name, int number) {
-        this.score = score;
+    public Player(String name, int number) {
+        this.score = 0;
         // score initialiser
         this.name = name;
         // nom initialiser
@@ -69,6 +77,14 @@ public class Player {
         return life;
     }
 
+    public String getLifeToString(){
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < getLife(); i++){
+            res.append("♥");
+        }
+        return res.toString();
+    }
+
     public void getKill(){
       // méthode pour enlever la vie d'un joueur
         this.life--;
@@ -77,5 +93,12 @@ public class Player {
     public void addScore(int score){
       // méthode pour ajouter un score au score du joueur
         this.score+=score;
+    }
+
+    public void send(String s) throws IOException {
+        Socket socket = new Socket(ip, port);
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+
+        writer.println(s);
     }
 }

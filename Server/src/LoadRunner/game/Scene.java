@@ -30,15 +30,15 @@ public class Scene {
     private int posXSpawnPlayer1;// position en X du spawn du joueur 1
     private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
-    private Player player1 = new Player(0, "Player1", 1);//joueur 1
-    private Player player2 = new Player(0, "Player2", 2);//joueur 2
+    private Player player1;
+    private Player player2;
 
-    /*
+    /**
      * Constructeur d'une scene
+     *
      * @param height Hauteur de la scene
      * @param lenght Longueur de la scene
      */
-
     public Scene(int height, int lenght) {
         this.height = height;
         this.lenght = lenght;
@@ -64,11 +64,11 @@ public class Scene {
         }
     }
 
-    public synchronized String generateBoard(){
+    public synchronized String generateBoard() {
         StringBuilder res = new StringBuilder(" ");
         int value;
-        for(int i = 0; i < this.height; i++){
-            for(int j = 0; j < this.lenght; j++){
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.lenght; j++) {
                 value = board[i][j];
                 switch (value) {
                     case 0, 6, 13, 14 -> res.append("  ");
@@ -83,6 +83,10 @@ public class Scene {
             }
             res.append("\n");
         }
+        res.append(player1.getName()).append(": ").append(player1.getScore()).append(" ").append(player1.getLifeToString());
+        res.append("\n");
+        if (player2 != null)
+            res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
         return res.toString();
     }
 
@@ -140,23 +144,16 @@ public class Scene {
             }
             System.out.print("\n");
         }
-
-        if ((player2.getName()).equals("")) {
-            //si un deuxieme joueur n'est présent dans la partie
-            System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
-            //affichage du nom et du score du joueur1
-        } else {
-            //sinon affichage du nom et du score du joueur1 et du joueur2
-            System.out.println("Score " + player1.getName() + ": " + player1.getScore() + printLife(player1));
-            System.out.println(player2.getName() + ": " + "unlimited life, kill player 1");
-            //affichage du nom et du score du joueur
-        }
+        System.out.println(player1.getName() + ": " + player1.getScore() + " " + player1.getLifeToString());
+        System.out.println("\n");
+        if (player2 != null)
+            System.out.println(player2.getName() + ": " + player2.getScore() + " " + player2.getLifeToString());
     }
 
     public void set1Player(Player player1) {
         //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player1;
-        this.player2 = new Player(0, "", 2);
+        this.player2 = null;
         for (int i = 0; i < (this.height); i++) {
             //parcours de la matrice en y
             for (int j = 0; j < (this.lenght); j++) {
@@ -185,16 +182,6 @@ public class Scene {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    public String printLife(Player player) {
-        // méthode permettant d'afficher la vie des joueurs
-        String life = "   ";
-        for (int i = 0; i < player.getLife(); i++) {
-            life += "♥";
-        }
-        return life;
     }
 
     public synchronized void setValuePosition(int x, int y, int value) {
@@ -250,19 +237,14 @@ public class Scene {
         return this.player2;
     }
 
-    public void setPosXSpawnEnemy(int x) {
-        // setter pour le spawn en X des ennemis
-        this.posXSpawnEnemy = x;
-    }
-
-    public void setPosYSpawnEnemy(int y) {
-        // setter pour le spawn en Y des ennemis
-        this.posYSpawnEnemy = y;
-    }
-
     public int getPosXSpawnEnemy() {
         // getter pour le spawn en X des ennemis
         return this.posXSpawnEnemy;
+    }
+
+    public void setPosXSpawnEnemy(int x) {
+        // setter pour le spawn en X des ennemis
+        this.posXSpawnEnemy = x;
     }
 
     public int getPosYSpawnEnemy() {
@@ -270,14 +252,9 @@ public class Scene {
         return this.posYSpawnEnemy;
     }
 
-    public void setPosXSpawnPlayer1(int x) {
-        // setter pour le spawn en X du joueur
-        this.posXSpawnPlayer1 = x;
-    }
-
-    public void setPosYSpawnPlayer1(int y) {
-        // setter pour le spawn en Y du joueur
-        this.posYSpawnPlayer1 = y;
+    public void setPosYSpawnEnemy(int y) {
+        // setter pour le spawn en Y des ennemis
+        this.posYSpawnEnemy = y;
     }
 
     public int getPosXSpawnPlayer1() {
@@ -285,9 +262,19 @@ public class Scene {
         return this.posXSpawnPlayer1;
     }
 
+    public void setPosXSpawnPlayer1(int x) {
+        // setter pour le spawn en X du joueur
+        this.posXSpawnPlayer1 = x;
+    }
+
     public int getPosYSpawnPlayer1() {
         // getter pour le spawn en Y du joueur
         return this.posYSpawnPlayer1;
+    }
+
+    public void setPosYSpawnPlayer1(int y) {
+        // setter pour le spawn en Y du joueur
+        this.posYSpawnPlayer1 = y;
     }
 
 }

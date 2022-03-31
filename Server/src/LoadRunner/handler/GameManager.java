@@ -25,6 +25,8 @@ public class GameManager {
     // liste de thread
     private boolean printEndGame;
     // boolean pour l'affichage de fin de la partie
+    private int port;
+    private String ip;
 
     /*
      * Constructeur de GameManager
@@ -32,13 +34,15 @@ public class GameManager {
      * @param GameState gameState pour l'état du jeu
      */
 
-    public GameManager(Scene scene, GameState gameState) {
+    public GameManager(Scene scene, GameState gameState, int port, String ip) {
       // lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
         this.player1 = scene.getPlayer1();
         this.player2 = scene.getPlayer2();
         this.scene = scene;
         this.gameState = gameState;
         this.printEndGame = true;
+        this.port = port;
+        this.ip = ip;
         // possibilité de faire l'affichage de fin de partie quand printEndGame est à true
     }
 
@@ -71,7 +75,7 @@ public class GameManager {
           this.endLevel();
           scene.setScene();
 
-          GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE);
+          GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port, ip);
           // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
           if(this.getLevel()<3){
@@ -172,4 +176,19 @@ public class GameManager {
       return this.player1;
     }
 
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 }
