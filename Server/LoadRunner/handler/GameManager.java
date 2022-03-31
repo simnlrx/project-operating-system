@@ -1,11 +1,11 @@
 package LoadRunner.handler;
 
-import java.util.Scanner;
-
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.thread.RefreshScene;
 import LoadRunner.thread.RegenSceneThread;
+
+import java.util.Scanner;
 
 public class GameManager {
 

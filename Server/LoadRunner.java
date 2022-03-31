@@ -1,5 +1,4 @@
 import LoadRunner.game.Scene;
-
 import LoadRunner.handler.FrameManager;
 import LoadRunner.handler.GameManager;
 import LoadRunner.handler.GameState;

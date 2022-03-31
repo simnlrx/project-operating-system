@@ -64,6 +64,28 @@ public class Scene {
         }
     }
 
+    public synchronized String generateBoard(){
+        StringBuilder res = new StringBuilder(" ");
+        int value;
+        for(int i = 0; i < this.height; i++){
+            for(int j = 0; j < this.lenght; j++){
+                value = board[i][j];
+                switch (value) {
+                    case 0, 6, 13, 14 -> res.append("  ");
+                    case 1, 2, 9 -> res.append("▓▓");
+                    case 3, 15 -> res.append("│┤");
+                    case 4 -> res.append("☠ ");
+                    case 5 -> res.append("☼ ");
+                    case 10 -> res.append(player1.getName().charAt(0)).append(" ");
+                    case 11 -> res.append(player2.getName().charAt(0)).append(" ");
+                    case 12 -> res.append("__");
+                }
+            }
+            res.append("\n");
+        }
+        return res.toString();
+    }
+
     public synchronized void matrix2Screen() {
         //fonction permettant d'afficher l'écran à partir du tableau (qui est une matrice)
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
