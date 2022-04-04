@@ -151,6 +151,23 @@ public class Scene {
         }
     }
 
+    public void set2Players(Player player1, Player player2) {
+        // ajoute deux joueurs à la scene
+        //méthode permettant d'ajouter un joueur à la scene
+        this.player1 = player1;
+        this.player2 = player2;
+        for (int i = 0; i < (this.height); i++) {
+            //parcours de la matrice en y
+            for (int j = 0; j < (this.length); j++) {
+                //parcours de la matrice en x
+                if (board[i][j] == 6) {
+                    setPositionPlayer(player1, j, i);
+                    setPositionPlayer(player2, j+1, i);
+                }
+            }
+        }
+    }
+
     public synchronized void reSpawnPlayer(Player player) {
         //méthode pour respawn le joueur 1 dans la scene
         this.setValuePosition(player.getPosX(), player.getPosY(), 4);
@@ -193,12 +210,6 @@ public class Scene {
         } catch (ArrayIndexOutOfBoundsException e) {
             return -1;
         }
-    }
-
-    public void set2Players(Player player1, Player player2) {
-        // ajoute deux joueurs à la scene
-        this.player1 = player1;
-        this.player2 = player2;
     }
 
     public int getHeight() {
