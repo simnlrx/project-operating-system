@@ -40,7 +40,44 @@ public class Display {
            "D : right C : break bloc bottom right",
            "",
            "",
-           "Choose name of player 1 :",
+           "Choose your nickname :",
+    };
+
+    public static String[] multiPage = new String[]{
+            "Mode Multijoueur",
+            "",
+            "1 - Héberger la partie",
+            "2 - Se connecter à une partie",
+            "",
+    };
+
+    public static String[] hostPage = new String[]{
+            "Mode Multijoueur",
+            "",
+            "Vous hebergez la partie.",
+            "En attente de connexion",
+            "",
+    };
+
+    public static String[] ipPage = new String[]{
+            "Mode Multijoueur",
+            "",
+            "Entrez l'IP de la partie",
+            "",
+    };
+
+    public static String[] waitPage = new String[]{
+            "Mode Multijoueur",
+            "",
+            "En attente de l'autre joueur ...",
+            "",
+    };
+
+    public static String[] modePage = new String[]{
+            "Mode Multijoueur",
+            "",
+            "1 - Coopération",
+            "2 - VS",
     };
 
 

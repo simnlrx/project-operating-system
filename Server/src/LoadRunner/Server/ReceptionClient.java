@@ -2,9 +2,9 @@ package LoadRunner.Server;
 
 //Reçoit les infos du client
 
+import LoadRunner.game.KeySelection;
 import LoadRunner.game.Player;
 import LoadRunner.handler.GameManager;
-import LoadRunner.utils.ReaderUtil;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,8 +12,9 @@ import java.net.Socket;
 
 public class ReceptionClient implements Runnable {
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
     private final Socket socket;
+    private String pseudo = "";
 
     public ReceptionClient(GameManager gameManager, Socket socket) {
         this.gameManager = gameManager;
@@ -23,22 +24,33 @@ public class ReceptionClient implements Runnable {
     @Override
     public void run() {
         try {
-
-            int cpt = 0;
             String tampon;
+            Player player = gameManager.getScene().getPlayer2();
+            KeySelection keySelection = new KeySelection(player, gameManager);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            while(!socket.isClosed() && (tampon = ReaderUtil.getMessage(reader)) != null) {
-                if(cpt == 0) {
-                    Player player = new Player(tampon, 1);
+            while(!socket.isClosed() && ((tampon = reader.readLine()) != null)) {
+                if(this.pseudo.isBlank()) {
+                    pseudo = tampon;
+                    player.setName(tampon);
+                    System.out.println(tampon);
                 }
 
+                if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6"))
+                    player.setReady(true);
 
-                if(tampon.equalsIgnoreCase("z")){
-
+                if(player.isReady()){
+                    switch (tampon){
+                        case "a" -> keySelection.setKey('a');
+                        case "z" -> keySelection.setKey('z');
+                        case "e" -> keySelection.setKey('e');
+                        case "q" -> keySelection.setKey('q');
+                        case "s" -> keySelection.setKey('s');
+                        case "d" -> keySelection.setKey('d');
+                        case "w" -> keySelection.setKey('w');
+                        case "c" -> keySelection.setKey('c');
+                    }
                 }
-
-                cpt++;
             }
 
         } catch (Exception e) {

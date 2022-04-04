@@ -7,7 +7,7 @@ public class KeySelection {
 
   private final Player player;
   private final Scene scene;
-  private GameManager gameManager;
+  private final GameManager gameManager;
 
   public KeySelection(Player player, GameManager gameManager) {
     this.player = player;

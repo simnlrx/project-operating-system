@@ -7,10 +7,11 @@ import LoadRunner.handler.LoadingManager;
 import LoadRunner.utils.Display;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class LoadRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         System.out.println("Load Runner | Runnig ...");
         Display.title();
@@ -19,19 +20,14 @@ public class LoadRunner {
         GameManager gameManager = new GameManager(scene, GameState.GAMEMODE, 8059, "localhost");
         JFrame frame = new JFrame("Contrôles");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         LoadingManager loading = new LoadingManager(gameManager); // 40 30
 
         loading.start();
         gameManager.setGameMode(loading.getGamemode()); //lors de la récupération du mode de jeu, on set les joueurs
         gameManager.setGameState(GameState.LEVEL);
-        if(gameManager.getGameMode() != 1){
-            Thread tcp = new Thread(new TCPTask(gameManager, gameManager.getPort()));
-            tcp.start();
-        }
         FrameManager frameManager = new FrameManager(frame, gameManager);
         frameManager.generate();
-        gameManager.setLevel(loading.getLevel());
+        gameManager.setLevel(1);
         gameManager.setGameState(GameState.LOADING);
         gameManager.start();
     }

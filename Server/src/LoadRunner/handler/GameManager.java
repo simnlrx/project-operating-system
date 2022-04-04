@@ -9,24 +9,24 @@ import java.util.Scanner;
 
 public class GameManager {
 
+    private final Scene scene;  // scene de jeu
     private Player player1;
     // joueur 1
     private Player player2;
     // joueur 2
-    private final Scene scene;
-    // scene de jeu
     private int gamemode;
     // mode de jeu - solo ou multi -
-    private GameState gameState;
-    // GameState pour l'état de la partie
     private int level;
     // niveau de la partie
-    private ThreadManager threadManager;
-    // liste de thread
     private boolean printEndGame;
     // boolean pour l'affichage de fin de la partie
+    private int multiGamemode;
     private int port;
+    private boolean isServer = false;
+    private GameState gameState;    // GameState pour l'état de la partie
+    private ThreadManager threadManager; // liste de thread
     private String ip;
+    private ServerManager server;
 
     /*
      * Constructeur de GameManager
@@ -35,7 +35,7 @@ public class GameManager {
      */
 
     public GameManager(Scene scene, GameState gameState, int port, String ip) {
-      // lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
+        // lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
         this.player1 = scene.getPlayer1();
         this.player2 = scene.getPlayer2();
         this.scene = scene;
@@ -47,7 +47,7 @@ public class GameManager {
     }
 
     public void start() {
-      // méthode pour initialiser la partie
+        // méthode pour initialiser la partie
         LevelManager levelManager = new LevelManager(this);
         threadManager = new ThreadManager();
         EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
@@ -56,124 +56,118 @@ public class GameManager {
         threadManager.addThread(refresh);
         threadManager.addThread(regenScene);
 
-        if(getGameMode()==1){
-          // affectation du joueur 1 et du mode de jeu de gameState
+        if (getGameMode() == 1) {
+            // affectation du joueur 1 et du mode de jeu de gameState
             scene.set1Player(player1);
             gameState = GameState.SOLOGAME;
-        }else{
-          // affectation du joueur 1 et du joueur 2, suivi du mode de jeu de gameState
-            scene.set2Players(player1,player2);
+        } else {
+            // affectation du joueur 1 et du joueur 2, suivi du mode de jeu de gameState
+            scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
         }
         threadManager.startThreads();
         // méthode qui permet de lancer tout les threads présents dans la liste et donc de la partie
     }
 
-    public synchronized void nextLevel(){
-      //méthode pour respawn le joueur 1 dans un nouveau niveau
-      try{
-          this.endLevel();
-          scene.setScene();
+    public synchronized void nextLevel() {
+        //méthode pour respawn le joueur 1 dans un nouveau niveau
+        try {
+            this.endLevel();
+            scene.setScene();
 
-          GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port, ip);
-          // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
+            GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port, ip);
+            // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
-          if(this.getLevel()<3){
-            gameManager2.setLevel(this.level+1);
-            System.out.println("Loading Level "+gameManager2.getLevel()+", please wait. . .");
-            wait(3000);
-            gameManager2.setGameMode(gamemode); //lors de la récupération du mode de jeu, on set les joueurs
-            gameManager2.setGameState(GameState.LEVEL);
-            gameManager2.setLevel(gameManager2.getLevel());
-            gameManager2.setGameState(GameState.LOADING);
-            gameManager2.start();
-          }else{
-            gameManager2.endGame();
-          }
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+            if (this.getLevel() < 3) {
+                gameManager2.setLevel(this.level + 1);
+                System.out.println("Loading Level " + gameManager2.getLevel() + ", please wait. . .");
+                wait(3000);
+                gameManager2.setGameMode(gamemode); //lors de la récupération du mode de jeu, on set les joueurs
+                gameManager2.setGameState(GameState.LEVEL);
+                gameManager2.setLevel(gameManager2.getLevel());
+                gameManager2.setGameState(GameState.LOADING);
+                gameManager2.start();
+            } else {
+                gameManager2.endGame();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void printEndGame(){
-      //méthode pour afficher la fin de partie
-      if(this.printEndGame){
+    public void printEndGame() {
+        //méthode pour afficher la fin de partie
+        if (this.printEndGame) {
 
-        Scanner scanner;
-        String continueToEnd;
+            Scanner scanner;
+            String continueToEnd;
 
-        //vérification si l'affichage de la partie est déja en cours
-        System.out.println("\033[H\033[2J");
+            //vérification si l'affichage de la partie est déja en cours
+            System.out.println("\033[H\033[2J");
 
-        //supprime tout ce qu'il y a dans la console auparavant
-        LoadingManager loadingEnd = new LoadingManager(this);
-        // création de l'affichage de fin de partie
-        this.printEndGame = false;
+            //supprime tout ce qu'il y a dans la console auparavant
+            LoadingManager loadingEnd = new LoadingManager(this);
+            // création de l'affichage de fin de partie
+            this.printEndGame = false;
 
-        do{
-          loadingEnd.loadEnd();
-          scanner = new Scanner(System.in);
-          continueToEnd = scanner.nextLine();
-        }while(!continueToEnd.equals("e"));
-        System.exit(0);
-      }
+            do {
+                loadingEnd.loadEnd();
+                scanner = new Scanner(System.in);
+                continueToEnd = scanner.nextLine();
+            } while (!continueToEnd.equals("e"));
+            System.exit(0);
+        }
     }
 
-    public synchronized void endGame(){
-      // méthode qui va permettre de mettre fin à la partie suivi de son affichage
-      gameState = GameState.END;
-      printEndGame();
+    public synchronized void endGame() {
+        // méthode qui va permettre de mettre fin à la partie suivi de son affichage
+        gameState = GameState.END;
+        printEndGame();
     }
 
-    public synchronized void endLevel(){
-      // méthode qui va permettre de mettre fin à la partie suivi de son affichage
-      gameState = GameState.END;
+    public synchronized void endLevel() {
+        // méthode qui va permettre de mettre fin à la partie suivi de son affichage
+        gameState = GameState.END;
     }
 
+    public void startServer() {
+        server = new ServerManager(this);
+        server.start();
+    }
 
     public Scene getScene() {
-      // récupération de la scene
+        // récupération de la scene
         return this.scene;
     }
 
-    public void setGameMode(int gamemode) {
-      // affectation du mode de jeu
-        this.gamemode = gamemode;
-    }
-
     public int getGameMode() {
-      // récupération du mode de jeu
+        // récupération du mode de jeu
         return this.gamemode;
     }
 
+    public void setGameMode(int gamemode) {
+        // affectation du mode de jeu
+        this.gamemode = gamemode;
+    }
+
     public GameState getGameState() {
-      // récupération de GameState
+        // récupération de GameState
         return gameState;
     }
 
     public void setGameState(GameState gameState) {
-      // affecetation de gameState
+        // affecetation de gameState
         this.gameState = gameState;
     }
 
-    public void setLevel(int level){
-      // affectation du niveau
-      this.level = level;
+    public int getLevel() {
+        // récupération du niveau
+        return this.level;
     }
 
-    public int getLevel(){
-      // récupération du niveau
-      return this.level;
-    }
-
-    public void setPlayer1(Player player){
-      // affectation du joueur 1
-      this.player1 = player;
-    }
-
-    public Player getPlayer1(){
-      // récupération du joueur 1
-      return this.player1;
+    public void setLevel(int level) {
+        // affectation du niveau
+        this.level = level;
     }
 
     public int getPort() {
@@ -190,5 +184,29 @@ public class GameManager {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public int getMultiGamemode() {
+        return multiGamemode;
+    }
+
+    public void setMultiGamemode(int multiGamemode) {
+        this.multiGamemode = multiGamemode;
+    }
+
+    public ThreadManager getThreadManager() {
+        return threadManager;
+    }
+
+    public ServerManager getServer() {
+        return server;
+    }
+
+    public boolean isServer() {
+        return isServer;
+    }
+
+    public void setServer(boolean server) {
+        isServer = server;
     }
 }

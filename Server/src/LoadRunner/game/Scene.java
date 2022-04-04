@@ -21,7 +21,7 @@ package LoadRunner.game;
 
 public class Scene {
     private final int height; //Hauteur de l'écran
-    private final int lenght; //Largeur de l'écran
+    private final int length; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
 
     private int posXSpawnEnemy;// position en X du spawn ennemi
@@ -30,19 +30,19 @@ public class Scene {
     private int posXSpawnPlayer1;// position en X du spawn du joueur 1
     private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
-    private Player player1;
-    private Player player2;
+    private Player player1 = new Player("p1", 0);
+    private Player player2 = new Player("p2", 1);;
 
     /**
      * Constructeur d'une scene
      *
      * @param height Hauteur de la scene
-     * @param lenght Longueur de la scene
+     * @param length Longueur de la scene
      */
-    public Scene(int height, int lenght) {
+    public Scene(int height, int length) {
         this.height = height;
-        this.lenght = lenght;
-        this.board = new int[height][lenght];
+        this.length = length;
+        this.board = new int[height][length];
         this.setScene();
 
     }
@@ -51,11 +51,11 @@ public class Scene {
     public void setScene() {
         //méthode qui permet d'initialiser la scene en étant vide
         for (int i = 0; i < this.height; i++) {
-            for (int y = 0; y < this.lenght; y++) {
+            for (int y = 0; y < this.length; y++) {
                 //déclarations des bordures du terrain
                 if (i == 0 || i == (this.height - 1)) {
                     board[i][y] = 1;
-                } else if (y == 0 || y == (this.lenght - 1)) {
+                } else if (y == 0 || y == (this.length - 1)) {
                     board[i][y] = 9;
                 } else {
                     board[i][y] = 0;
@@ -68,7 +68,7 @@ public class Scene {
         StringBuilder res = new StringBuilder(" ");
         int value;
         for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.lenght; j++) {
+            for (int j = 0; j < this.length; j++) {
                 value = board[i][j];
                 switch (value) {
                     case 0, 6, 13, 14 -> res.append("  ");
@@ -96,48 +96,34 @@ public class Scene {
         int value;
         for (int i = 0; i < (this.height); i++) {
             //parcours de la matrice en y
-            for (int y = 0; y < (this.lenght); y++) {
+            for (int y = 0; y < (this.length); y++) {
                 //parcours de la matrice en x
                 value = board[i][y];
+                // porte de sortie du niveau
                 switch (value) {
-                    case 0:
-                    case 13:
-                    case 14:
-                    case 6: {
+                    case 0, 13, 14, 6 -> {
                         System.out.print("  ");
-                        break;
                     }// espace vide
-                    case 1:
-                    case 2:
-                    case 9: {
+                    case 1, 2, 9 -> {
                         System.out.print("▓▓");
-                        break;
                     }// bord horizontal
-                    case 15:
-                        // porte de sortie du niveau
-                    case 3: {
+                    case 15, 3 -> {
                         System.out.print("│┤");
-                        break;
                     }//échelle
-                    case 4: {
+                    case 4 -> {
                         System.out.print("☠ ");
-                        break;
                     }// simulation d'un ennemi
-                    case 5: {
+                    case 5 -> {
                         System.out.print("☼ ");
-                        break;
                     }// simulation d'un objet
-                    case 10: {
+                    case 10 -> {
                         System.out.print("J ");
-                        break;
                     }// simulation du joueur courant
-                    case 11: {
+                    case 11 -> {
                         System.out.print("P ");
-                        break;
                     }// simulation du joueur 2
-                    case 12: {
+                    case 12 -> {
                         System.out.print("__");
-                        break;
                     }// passerelle
                 }
 
@@ -156,7 +142,7 @@ public class Scene {
         this.player2 = null;
         for (int i = 0; i < (this.height); i++) {
             //parcours de la matrice en y
-            for (int j = 0; j < (this.lenght); j++) {
+            for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
                 if (board[i][j] == 6) {
                     setPositionPlayer(player1, j, i);
@@ -215,7 +201,6 @@ public class Scene {
         this.player2 = player2;
     }
 
-
     public int getHeight() {
         // méthode permettant de récupérer la hauteur du plateau
         return this.height;
@@ -223,7 +208,7 @@ public class Scene {
 
     public int getLenght() {
         // méthode permettant de récupérer la longueur du tableau
-        return this.lenght;
+        return this.length;
     }
 
 

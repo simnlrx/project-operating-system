@@ -1,7 +1,5 @@
 package LoadRunner.game;
 
-import LoadRunner.Server.TCPTask;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -16,6 +14,10 @@ public class Player {
     private int posY;
     private final int number;
     private int life;
+    private boolean ready;
+    private int type; //0 -> seul donc gentil 1-> gentil (multi) -> 2 méchant
+    private Socket socket;
+    private PrintWriter writer;
 
     /*
      * Constructeur d'un joueur
@@ -35,8 +37,23 @@ public class Player {
         // position en Y
         this.number = number;
         // numéro du joueur
-        this.life = 3;
+        this.life = 5;
         // nombre de vie initialiser à 3
+        this.type = 0;
+        this.socket = null;
+        this.ready = false;
+    }
+
+    public void openWriter() throws IOException {
+        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+    }
+
+    public void closeWriter() throws IOException {
+        writer.close();
+    }
+
+    public void send(String s) throws IOException {
+        writer.println(s);
     }
 
     public String getName() {
@@ -95,10 +112,27 @@ public class Player {
         this.score+=score;
     }
 
-    public void send(String s) throws IOException {
-        Socket socket = new Socket(ip, port);
-        PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+    public Socket getSocket() {
+        return socket;
+    }
 
-        writer.println(s);
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

@@ -4,7 +4,10 @@ package LoadRunner.Server;
 
 import LoadRunner.handler.GameManager;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,9 +28,9 @@ public class TCPTask implements Runnable {
 
         try (ServerSocket serverSocket = new ServerSocket(this.port)) {
 
-            while (client < 2) {
-
+            while (client < 1) {
                 Socket socket = serverSocket.accept();
+
                 ReceptionClient newClient = new ReceptionClient(gameManager, socket);
                 Thread th = new Thread(newClient);
 
@@ -43,5 +46,9 @@ public class TCPTask implements Runnable {
 
     public int getPort() {
         return port;
+    }
+
+    public int getClient(){
+        return client;
     }
 }

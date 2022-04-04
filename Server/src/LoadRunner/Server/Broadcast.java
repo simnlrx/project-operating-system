@@ -3,6 +3,7 @@ package LoadRunner.Server;
 //Envoi en UDP les informations
 
 import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -21,18 +22,21 @@ public class Broadcast implements Runnable {
     @Override
     public void run() {
 
-        try(DatagramSocket dtgrSocket = new DatagramSocket()) {
+        if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
+            try (DatagramSocket dtgrSocket = new DatagramSocket()) {
 
-            String ip = "255.255.255.255";
-            InetSocketAddress addr = new InetSocketAddress(ip, port);
+                String ip = "255.255.255.255";
+                InetSocketAddress addr = new InetSocketAddress(ip, port);
 
-            String msg = gameManager.getScene().generateBoard();
-            byte[] msgByte = msg.getBytes();
-            dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
+                String msg = gameManager.getScene().generateBoard();
+                byte[] msgByte = msg.getBytes();
+                dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
 
 
-        } catch (Exception e) { e.printStackTrace(); }
-
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
