@@ -59,7 +59,7 @@ public class KeySelection {
       }
       break;
       case 'd':
-      if (right == 0 || right == 3 || right ==14 left == 11) {
+      if (right == 0 || right == 3 || right ==14 || left == 11) {
         if (scene.getValuePosition(x + 1, y + 1) == 2 || scene.getValuePosition(x + 1, y + 1) == 3 || scene.getValuePosition(x + 1, y + 1) == 4) {
           scene.setValuePosition(x, y, 0);
           scene.setPositionPlayer(player, x + 1, y);

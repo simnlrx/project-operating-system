@@ -30,20 +30,21 @@ public class TCPTask implements Runnable {
 
             while (client < 1) {
                 Socket socket = serverSocket.accept();
-                //System.out.println("socket accpet");
-                client++;
-                ReceptionClient newClient = new ReceptionClient(gameManager, socket);
-                //System.out.println("instance de clien cree");
-                Thread th = new Thread(newClient);
-                //System.out.println("thread client cree");
+                System.out.println("socket accpet");
 
-                //System.out.println("client start ");
+                ReceptionClient newClient = new ReceptionClient(gameManager, socket);
+                System.out.println("instance de clien cree");
+                Thread th = new Thread(newClient);
+                System.out.println("thread client cree");
+
+                System.out.println("client start ");
                 th.start();
-                th.join();
-                //System.out.println("client++");
+                //th.join();
+                System.out.println("client++");
+                client++;
             }
 
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
