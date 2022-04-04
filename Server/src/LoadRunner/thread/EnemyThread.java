@@ -176,7 +176,6 @@ public class EnemyThread extends Thread {
   @Override
   public void run() {
     try {
-<<<<<<< HEAD
       while(gameManager.getGameState().isGame()){
         this.sleep(400);
         if(gameManager.getGameMode()==2 && gameManager.getGameState().getmodeMulti()==1){
@@ -227,7 +226,6 @@ public class EnemyThread extends Thread {
             KillPlayer();
           }
         }
-=======
     while(gameManager.getGameState().isGame()){
       this.sleep(400);
       if(getDistanceToPlayer(posX, posY+1)<getDistanceToPlayer(posX, posY)){
@@ -236,7 +234,6 @@ public class EnemyThread extends Thread {
       }
       else if(getDistanceToPlayer(posX, posY-1)<getDistanceToPlayer(posX, posY)){// si un deplacement vers le haut éloigne l'ennemi
         upStairs();
->>>>>>> parent of 46b86ce (Edit 2 players)
       }
       if(getDistanceToPlayer(posX-1, posY)<getDistanceToPlayer(posX, posY)){
         // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur

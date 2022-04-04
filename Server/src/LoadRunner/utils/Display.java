@@ -30,10 +30,7 @@ public class Display {
            "3 - Hard"
     };
 
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of 46b86ce (Edit 2 players)
     public static String[] namePage = new String[]{
            "Controls : ",
            "",
