@@ -63,7 +63,7 @@ public class LoadingManager {
                     printBoard(host);
                     new Scanner(System.in).nextLine();
 
-                } while (gameManager.getServer().getTcpTask().getClient() == 0);
+                } while (gameManager.getServer().getTcpTask().getClient() != 1);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
                 do {
