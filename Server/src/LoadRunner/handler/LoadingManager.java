@@ -30,7 +30,10 @@ public class LoadingManager {
 
         } while (this.gamemode != 1 && this.gamemode != 2);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 46b86ce (Edit 2 players)
         initLoadingScene();
 
         String[][] namePlayer1 = getDisplay(Display.namePage);

@@ -27,8 +27,8 @@ public class Scene {
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
 
-    private int posXSpawnPlayer;// position en X du spawn du joueur 1
-    private int posYSpawnPlayer;// position en Y du spawn du joueur 1
+    private int posXSpawnPlayer1;// position en X du spawn du joueur 1
+    private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
     private Player player1;
     private Player player2;
@@ -39,7 +39,6 @@ public class Scene {
      * @param height Hauteur de la scene
      * @param lenght Longueur de la scene
      */
-
     public Scene(int height, int lenght) {
         this.height = height;
         this.lenght = lenght;
@@ -166,25 +165,19 @@ public class Scene {
         }
     }
 
-    public void set2Players(Player player1, Player player2) {
-        // ajoute deux joueurs à la scene
-        this.player1 = player1;
-        this.player2 = player2;
-    }
-
-    public synchronized void reSpawnPlayer(Player player) {
+    public synchronized void reSpawnPlayer1() {
         //méthode pour respawn le joueur 1 dans la scene
-        this.setValuePosition(player.getPosX(), player.getPosY(), 4);
-        player.setPosition(0, 0);
+        this.setValuePosition(player1.getPosX(), player1.getPosY(), 4);
+        player1.setPosition(0, 0);
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
             wait(2000);
-            player.getKill();
+            player1.getKill();
             do {
                 spawnX = (int) (Math.random() * this.getLenght() + 1);
             } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
-            player.setPosition(spawnX, Platforme);
+            player1.setPosition(spawnX, Platforme);
             this.setValuePosition(spawnX, Platforme, 10);
         } catch (Exception e) {
             e.printStackTrace();
@@ -216,6 +209,11 @@ public class Scene {
         }
     }
 
+    public void set2Players(Player player1, Player player2) {
+        // ajoute deux joueurs à la scene
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
 
     public int getHeight() {
@@ -259,24 +257,24 @@ public class Scene {
         this.posYSpawnEnemy = y;
     }
 
-    public int getPosXSpawnPlayer() {
+    public int getPosXSpawnPlayer1() {
         // getter pour le spawn en X du joueur
-        return this.posXSpawnPlayer;
+        return this.posXSpawnPlayer1;
     }
 
-    public void setPosXSpawnPlayer(int x) {
+    public void setPosXSpawnPlayer1(int x) {
         // setter pour le spawn en X du joueur
-        this.posXSpawnPlayer = x;
+        this.posXSpawnPlayer1 = x;
     }
 
-    public int getPosYSpawnPlayer() {
+    public int getPosYSpawnPlayer1() {
         // getter pour le spawn en Y du joueur
-        return this.posYSpawnPlayer;
+        return this.posYSpawnPlayer1;
     }
 
-    public void setPosYSpawnPlayer(int y) {
+    public void setPosYSpawnPlayer1(int y) {
         // setter pour le spawn en Y du joueur
-        this.posYSpawnPlayer = y;
+        this.posYSpawnPlayer1 = y;
     }
 
 }
