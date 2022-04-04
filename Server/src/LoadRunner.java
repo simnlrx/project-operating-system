@@ -23,7 +23,6 @@ public class LoadRunner {
         LoadingManager loading = new LoadingManager(gameManager); // 40 30
 
         loading.start();
-        gameManager.setGameMode(loading.getGamemode()); //lors de la récupération du mode de jeu, on set les joueurs
         gameManager.setGameState(GameState.LEVEL);
         FrameManager frameManager = new FrameManager(frame, gameManager);
         frameManager.generate();

@@ -56,7 +56,7 @@ public class GameManager {
         threadManager.addThread(refresh);
         threadManager.addThread(regenScene);
 
-        if (getGameMode() == 1) {
+        if (gamemode == 1) {
             // affectation du joueur 1 et du mode de jeu de gameState
             scene.set1Player(player1);
             gameState = GameState.SOLOGAME;

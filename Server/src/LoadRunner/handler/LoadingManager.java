@@ -15,7 +15,6 @@ public class LoadingManager {
     private int multigamemode;
     private int type;
     private String ip;
-
     private String[][] board;
 
     public LoadingManager(GameManager gameManager) {
@@ -34,8 +33,11 @@ public class LoadingManager {
 
             scanner = new Scanner(System.in);
             this.gamemode = scanner.nextInt();
+            gameManager.setGameMode(this.gamemode);
 
         } while (this.gamemode != 1 && this.gamemode != 2);
+
+        System.out.println(gamemode);
 
         initLoadingScene();
 
@@ -61,7 +63,7 @@ public class LoadingManager {
                     printBoard(host);
                     new Scanner(System.in).nextLine();
 
-                } while (gameManager.getServer().getTcpTask().getClient() != 1);
+                } while (gameManager.getServer().getTcpTask().getClient() == 0);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
                 do {
@@ -126,29 +128,26 @@ public class LoadingManager {
 
                 initLoadingScene();
                 player2.send("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6");
-                player2.setReady(true);
                 printBoard(getDisplay(Display.waitPage));
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
-            /**
-             initLoadingScene();
+        }else{
+            String[][] namePlayer = getDisplay(Display.namePage);
+            do {
 
-             String[][] levelChoose = getDisplay(Display.levelPage);
+                printBoard(namePlayer);
+                scanner = new Scanner(System.in);
+                player1.setName(scanner.nextLine());
+                player1.setReady(true);
 
-             do {
+            } while (player1.getName().equals("p1"));
 
-             printBoard(levelChoose);
-             scanner = new Scanner(System.in);
-             this.level = scanner.nextInt();
+            initLoadingScene();
 
-             } while (this.level != 1 && this.level != 2 && this.level != 3);
-
-             initLoadingScene();
-
-             String[] scorePage = new String[]{"Level " + this.level, "", "Player : " + player1.getName(), "", "Score :" + player1.getScore(), "", "3 lifes"};
-             printBoard(getDisplay(scorePage));
-             new Scanner(System.in).nextLine();*/
+            String[] scorePage = new String[]{"Level 1", "Player : " + player1.getName(), "", "Score :" + player1.getScore(), "", "3 lifes"};
+            printBoard(getDisplay(scorePage));
+            new Scanner(System.in).nextLine();
         }
     }
 

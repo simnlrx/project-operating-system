@@ -94,7 +94,7 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public synchronized void mooveLeft(){
+  public synchronized void moveLeft(){
     // méthode permettant de déplacer un ennemi vers la gauche
     int valueBlocInf = scene.getValuePosition(posX-1, posY+1);
     // récupération de la valeur du bloc en bas à gauche
@@ -138,7 +138,7 @@ public class EnemyThread extends Thread {
     }
   }
 
-  public synchronized void mooveRight(){
+  public synchronized void moveRight(){
     // méthode permettant de déplacer un ennemi vers la la droite
     int valueBlocInf = scene.getValuePosition(posX+1, posY+1);
     // récupération de la valeur du bloc en bas à droite
@@ -190,7 +190,7 @@ public class EnemyThread extends Thread {
     try {
       while(gameManager.getGameState().isGame()){
         this.sleep(400);
-        if(gameManager.getScene().getPlayer2()==null){
+        if(!gameManager.getScene().getPlayer2().isReady()){
           if(getDistanceToPlayer1(posX, posY+1)<getDistanceToPlayer1(posX, posY)){
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
             downStairs();
@@ -200,9 +200,9 @@ public class EnemyThread extends Thread {
           }
           if(getDistanceToPlayer1(posX-1, posY)<getDistanceToPlayer1(posX, posY)){
             // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-            mooveLeft();
+            moveLeft();
           }else{// si un deplacement vers la gauche éloigne l'ennemi
-            mooveRight();
+            moveRight();
           }
           KillPlayer();
         }else{
@@ -216,9 +216,9 @@ public class EnemyThread extends Thread {
             }
             if(getDistanceToPlayer1(posX-1, posY)<getDistanceToPlayer1(posX, posY)){
               // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-              mooveLeft();
+              moveLeft();
             }else{// si un deplacement vers la gauche éloigne l'ennemi
-              mooveRight();
+              moveRight();
             }
             KillPlayer();
           }else{
@@ -231,9 +231,9 @@ public class EnemyThread extends Thread {
             }
             if(getDistanceToPlayer2(posX-1, posY)<getDistanceToPlayer2(posX, posY)){
               // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-              mooveLeft();
+              moveLeft();
             }else{// si un deplacement vers la gauche éloigne l'ennemi
-              mooveRight();
+              moveRight();
             }
             KillPlayer();
           }

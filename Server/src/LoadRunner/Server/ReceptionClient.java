@@ -25,7 +25,7 @@ public class ReceptionClient implements Runnable {
     public void run() {
         try {
             String tampon;
-            Player player = new Player("", 1);
+            Player player = gameManager.getScene().getPlayer2();
             KeySelection keySelection = new KeySelection(player, gameManager);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 

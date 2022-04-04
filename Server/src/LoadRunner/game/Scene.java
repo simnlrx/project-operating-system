@@ -30,8 +30,8 @@ public class Scene {
     private int posXSpawnPlayer1;// position en X du spawn du joueur 1
     private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
-    private Player player1 = new Player("p1", 0);
-    private Player player2 = null;
+    private Player player1 = new Player("p1", 1);
+    private Player player2 = new Player("p2", 2);
 
     /**
      * Constructeur d'une scene
@@ -136,16 +136,16 @@ public class Scene {
             System.out.println(player2.getName() + ": " + player2.getScore() + " " + player2.getLifeToString());
     }
 
-    public void set1Player(Player player1) {
+    public void set1Player(Player player) {
         //méthode permettant d'ajouter un joueur à la scene
-        this.player1 = player1;
+        this.player1 = player;
         this.player2 = null;
         for (int i = 0; i < (this.height); i++) {
             //parcours de la matrice en y
             for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
                 if (board[i][j] == 6) {
-                    setPositionPlayer(player1, j, i);
+                    setPositionPlayer(player, j, i);
                 }
             }
         }
