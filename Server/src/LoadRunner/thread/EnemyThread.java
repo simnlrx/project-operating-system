@@ -178,7 +178,7 @@ public class EnemyThread extends Thread {
     try {
       while(gameManager.getGameState().isGame()){
         this.sleep(400);
-        if(gameManager.getGameMode()==2 && gameManager.getGameState().getmodeMulti()==1){
+        if(gameManager.getGameState().getmodeMulti()==1){
           if(getDistanceToPlayer1(posX, posY+1)<getDistanceToPlayer1(posX, posY)){
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
             downStairs();
