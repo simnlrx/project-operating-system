@@ -16,6 +16,7 @@ public enum GameState {
     GameState(String name, boolean isgame) {
         this.name = name;
         this.isgame = isgame;
+        this.modeMulti = 0;
     }
 
     public String getName() {
