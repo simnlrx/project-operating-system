@@ -11,7 +11,6 @@ public class LoadingManager {
 
     private final GameManager gameManager;
 
-    private int level;
     private int gamemode;
     private int multigamemode;
     private int type;
@@ -204,10 +203,6 @@ public class LoadingManager {
             }
             System.out.print("\n");
         }
-    }
-
-    public int getLevel() {
-        return level;
     }
 
     public int getGamemode() {
