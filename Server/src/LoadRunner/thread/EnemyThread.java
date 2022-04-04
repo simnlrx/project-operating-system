@@ -43,7 +43,7 @@ public class EnemyThread extends Thread {
     return dist;
   }
 
-  public void getDistanceToPlayer2(int posXEnemy, int posYEnemy){
+  public double getDistanceToPlayer2(int posXEnemy, int posYEnemy){
     // méthode pour le calcul de la distance entre un ennemi et le joueur 2
     double dist = Math.sqrt(Math.pow((posXEnemy- player2.getPosX()),2)+ Math.pow((posYEnemy - player2.getPosY()),2));
     return dist;
@@ -56,7 +56,7 @@ public class EnemyThread extends Thread {
       if((posX == player1.getPosX() && posY == player1.getPosY())){
         // on enleve le joueur de la scene lorsqu'il est mort et on le remplace à l'endroit du spawn
         scene.reSpawnPlayer(player1);
-      }else if(posX == player2.getPosX() && posY == player2.getPosY())){
+      }else if(posX == player2.getPosX() && posY == player2.getPosY()){
         scene.reSpawnPlayer(player2);
       }
     }else{
