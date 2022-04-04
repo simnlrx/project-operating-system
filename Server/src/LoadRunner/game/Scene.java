@@ -151,10 +151,10 @@ public class Scene {
         }
     }
 
-    public synchronized void reSpawnPlayer1() {
+    public synchronized void reSpawnPlayer(Player player) {
         //méthode pour respawn le joueur 1 dans la scene
-        this.setValuePosition(player1.getPosX(), player1.getPosY(), 4);
-        player1.setPosition(0, 0);
+        this.setValuePosition(player.getPosX(), player.getPosY(), 4);
+        player.setPosition(0, 0);
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
@@ -163,7 +163,7 @@ public class Scene {
             do {
                 spawnX = (int) (Math.random() * this.getLenght() + 1);
             } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
-            player1.setPosition(spawnX, Platforme);
+            player.setPosition(spawnX, Platforme);
             this.setValuePosition(spawnX, Platforme, 10);
         } catch (Exception e) {
             e.printStackTrace();
