@@ -30,16 +30,6 @@ public class Display {
            "3 - Hard"
     };
 
-    public static String[] modeMulti = new String[]{
-           "Choose your multiplayer mode : ",
-           "",
-           "1 - Coop",
-           "",
-           "2 - Fight",
-           "",
-    };
-
-
     public static String[] namePage = new String[]{
            "Controls : ",
            "",

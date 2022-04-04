@@ -11,12 +11,10 @@ public enum GameState {
 
     private String name;
     private boolean isgame;
-    private int modeMulti;
 
     GameState(String name, boolean isgame) {
         this.name = name;
         this.isgame = isgame;
-        this.modeMulti = 0;
     }
 
     public String getName() {
@@ -29,12 +27,5 @@ public enum GameState {
 
     public void setIsgame(boolean isgame) {
         this.isgame = isgame;
-    }
-
-    public void setmodeMulti(int mode){
-      this.modeMulti = mode;
-    }
-    public int getmodeMulti(){
-      return this.modeMulti;
     }
 }

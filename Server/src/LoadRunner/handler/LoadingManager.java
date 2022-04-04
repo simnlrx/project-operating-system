@@ -20,7 +20,6 @@ public class LoadingManager {
     }
 
     public void start() {
-        int modeMulti;
         Scanner scanner;
         String[][] gamemodeChoose = getDisplay(Display.loadingPage);
         do {
@@ -31,19 +30,6 @@ public class LoadingManager {
 
         } while (this.gamemode != 1 && this.gamemode != 2);
 
-        initLoadingScene();
-
-        if(this.gamemode ==2){
-          String[][] modeMulti = getDisplay(Display.modeMulti);
-          do{
-            printBoard(modeMulti);
-
-            scanner = new Scanner(System.in);
-            modeMulti = scanner.nextInt();
-
-          } while(modeMulti != 1 && modeMulti != 2);
-          gameManager.getGameState().setmodeMulti(modeMulti);
-        }
 
         initLoadingScene();
 
