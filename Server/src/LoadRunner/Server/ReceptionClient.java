@@ -25,15 +25,15 @@ public class ReceptionClient implements Runnable {
     public void run() {
         try {
             String tampon;
-            Player player = gameManager.getScene().getPlayer2();
+            Player player = new Player("", 1);
             KeySelection keySelection = new KeySelection(player, gameManager);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             while(!socket.isClosed() && ((tampon = reader.readLine()) != null)) {
                 if(this.pseudo.isBlank()) {
-                    pseudo = tampon;
-                    player.setName(tampon);
-                    System.out.println(tampon);
+                  pseudo = tampon;
+                  player.setName(pseudo);
+                  System.out.println(tampon);
                 }
 
                 if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6"))

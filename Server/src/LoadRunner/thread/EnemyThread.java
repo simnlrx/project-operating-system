@@ -34,10 +34,7 @@ public class EnemyThread extends Thread {
     // les coordonnées de l'ennemi sont directement placés dans la scene
     this.gameManager = gameManager;
     this.player1 = gameManager.getScene().getPlayer1();
-    if(gameManager.getGameMode().getName().equals("multi")){
-      // si le jeu se passe en multijoueurs, affectation du joueur 2
-      this.player2 = gameManager.getScene().getPlayer2();
-    }
+    this.player2 = gameManager.getScene().getPlayer1();
   }
 
   public double getDistanceToPlayer1(int posXEnemy, int posYEnemy){
@@ -193,7 +190,7 @@ public class EnemyThread extends Thread {
     try {
       while(gameManager.getGameState().isGame()){
         this.sleep(400);
-        if(gameManager.getGameMode()==2 && gameManager.getGameState().getmodeMulti()==1){
+        if(gameManager.getScene().getPlayer2()==null){
           if(getDistanceToPlayer1(posX, posY+1)<getDistanceToPlayer1(posX, posY)){
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
             downStairs();

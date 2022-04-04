@@ -31,7 +31,7 @@ public class Scene {
     private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
 
     private Player player1 = new Player("p1", 0);
-    private Player player2 = new Player("p2", 1);;
+    private Player player2 = null;
 
     /**
      * Constructeur d'une scene
