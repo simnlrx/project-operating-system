@@ -34,6 +34,7 @@ public class ReceptionClient implements Runnable {
                 if(this.pseudo.isBlank()) {
                   pseudo = tampon;
                   player.setName(pseudo);
+                  player.setSocket(socket);
                   System.out.println(tampon);
                 }
 

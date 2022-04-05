@@ -1,5 +1,6 @@
 package LoadRunner.handler;
 
+import LoadRunner.Server.Broadcast;
 import LoadRunner.game.Player;
 import LoadRunner.game.Scene;
 import LoadRunner.thread.RefreshScene;
@@ -47,29 +48,32 @@ public class GameManager {
     }
 
     public void start() {
-        // méthode pour initialiser la partie
-        LevelManager levelManager = new LevelManager(this);
         threadManager = new ThreadManager();
-        EnemiesManager enemiesManager = new EnemiesManager(this, threadManager);
-        RefreshScene refresh = new RefreshScene(this);
-        RegenSceneThread regenScene = new RegenSceneThread(this);
-        threadManager.addThread(refresh);
-        threadManager.addThread(regenScene);
 
-        if (gamemode == 1) {
-            // affectation du joueur 1 et du mode de jeu de gameState
+        if(gamemode == 1){
             scene.set1Player(player1);
             gameState = GameState.SOLOGAME;
-        } else {
-            // affectation du joueur 1 et du joueur 2, suivi du mode de jeu de gameState
+        }
+        if (gamemode == 2) {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
         }
+
+        if (gamemode == 1 || isServer) {
+            new LevelManager(this);
+            new EnemiesManager(this, threadManager);
+            threadManager.addThread(new RefreshScene(this));
+            threadManager.addThread(new RegenSceneThread(this));
+        }
+        if(gamemode == 2 && isServer){
+            threadManager.addThread(new Thread(new Broadcast(this, port)));
+        }
+
+
         threadManager.startThreads();
-        // méthode qui permet de lancer tout les threads présents dans la liste et donc de la partie
     }
 
-   public synchronized void nextLevel() {
+    public synchronized void nextLevel() {
         //méthode pour respawn le joueur 1 dans un nouveau niveau
         try {
             this.endLevel();

@@ -31,6 +31,8 @@ public class ReceptionServer implements Runnable {
                     gameManager.getScene().getPlayer1().setReady(true);
                     reader.close();
                     socket.close();
+                }else{
+                    System.out.println(reader.readLine());
                 }
             }
 
