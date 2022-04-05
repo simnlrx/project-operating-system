@@ -67,10 +67,9 @@ public class LoadingManager {
                 String[][] host = getDisplay(Display.hostPage);
                 do {
                     printBoard(host);
+                    scanner = new Scanner(System.in);
+                    scanner.nextLine();
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
-
-                Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
-                PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
                 do {
@@ -79,9 +78,18 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
+                    Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
+                    System.out.println(socket);
+                    scanner.nextLine();
+                    PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                    System.out.println(writer);
+                    scanner.nextLine();
                     writer.println("p1ready");
+                    System.out.println("send");
+                    scanner.nextLine();
                     writer.close();
                     socket.close();
+                    System.out.println("close");
 
                 } while (player1.getName().equals("p1"));
 
@@ -138,13 +146,13 @@ public class LoadingManager {
 
                 initLoadingScene();
                 player2.send("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6");
-                do{
+                do {
                     printBoard(getDisplay(Display.waitPage));
-                }while (!player1.isReady());
+                } while (!player1.isReady());
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
-        }else{
+        } else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
 
