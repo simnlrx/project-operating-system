@@ -63,12 +63,14 @@ public class LoadingManager {
             if (this.multigamemode == 1) {
                 gameManager.startServer();
                 gameManager.setServer(true);
-                Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
-                PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+
                 String[][] host = getDisplay(Display.hostPage);
                 do {
                     printBoard(host);
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
+
+                Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
+                PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
                 do {
