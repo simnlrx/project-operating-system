@@ -25,6 +25,8 @@ public class LoadingManager {
     public void start() throws IOException {
         Player player1 = gameManager.getScene().getPlayer1();
         Player player2 = gameManager.getScene().getPlayer2();
+        player1.setReady(false);
+        player2.setReady(false);
 
         Scanner scanner;
         String[][] gamemodeChoose = getDisplay(Display.loadingPage);
@@ -59,10 +61,7 @@ public class LoadingManager {
                 gameManager.setServer(true);
                 String[][] host = getDisplay(Display.hostPage);
                 do {
-
                     printBoard(host);
-                    new Scanner(System.in).nextLine();
-
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
@@ -83,7 +82,7 @@ public class LoadingManager {
 
                     printBoard(wait);
 
-                } while (player2.isReady());
+                } while (!player2.isReady());
             } else {
                 gameManager.setServer(false);
                 initLoadingScene();
@@ -128,7 +127,9 @@ public class LoadingManager {
 
                 initLoadingScene();
                 player2.send("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6");
-                printBoard(getDisplay(Display.waitPage));
+                do{
+                    printBoard(getDisplay(Display.waitPage));
+                }while (!player1.isReady());
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
