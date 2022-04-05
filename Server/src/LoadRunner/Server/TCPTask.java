@@ -30,7 +30,6 @@ public class TCPTask implements Runnable {
 
             while (client < 1) {
                 Socket socket = serverSocket.accept();
-                System.out.println(socket.getInetAddress().getHostAddress());
 
                 ReceptionClient newClient = new ReceptionClient(gameManager, socket);
                 Thread th = new Thread(newClient);

@@ -4,7 +4,11 @@ import LoadRunner.Client.Client;
 import LoadRunner.game.Player;
 import LoadRunner.utils.Display;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class LoadingManager {
@@ -59,6 +63,8 @@ public class LoadingManager {
             if (this.multigamemode == 1) {
                 gameManager.startServer();
                 gameManager.setServer(true);
+                Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
+                PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
                 String[][] host = getDisplay(Display.hostPage);
                 do {
                     printBoard(host);
@@ -71,6 +77,9 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
+                    writer.println("p1ready");
+                    writer.close();
+                    socket.close();
 
                 } while (player1.getName().equals("p1"));
 
@@ -108,7 +117,7 @@ public class LoadingManager {
                 } while (this.ip.equals(""));
 
                 //TODO: déplacer le client pour faire une déconnexion propre avec client.logout;
-                Client client = new Client(player2, this.ip, gameManager.getPort());
+                Client client = new Client(gameManager, player2, this.ip, gameManager.getPort());
                 client.login();
                 player2.send(player2.getName());
 

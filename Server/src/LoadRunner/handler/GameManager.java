@@ -69,7 +69,7 @@ public class GameManager {
         // méthode qui permet de lancer tout les threads présents dans la liste et donc de la partie
     }
 
-    public synchronized void nextLevel() {
+   public synchronized void nextLevel() {
         //méthode pour respawn le joueur 1 dans un nouveau niveau
         try {
             this.endLevel();
@@ -209,4 +209,5 @@ public class GameManager {
     public void setServer(boolean server) {
         isServer = server;
     }
+
 }
