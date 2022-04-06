@@ -9,13 +9,13 @@ package LoadRunner.game;
 // 4 - représente un ennemi
 // 5 - représente un objet à récupérer
 
-// 6 - spawn d'un joueur
+// 6 - spawn des joueurs
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
 // 11 - représente le joueur en multijoueur
 // 12 - paserelle
 // 13 - spawn ennemie
-// 14 - case vide où les méchants tombent
+// 14 - case vide pour les ennemis
 // 15 - niveau suivant
 
 
