@@ -82,7 +82,7 @@ public class GameManager {
             GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port, ip);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
-            if (this.getLevel() < 3) {
+            if (this.getLevel() < 4) {
                 gameManager2.setLevel(this.level + 1);
                 System.out.println("Loading Level " + gameManager2.getLevel() + ", please wait. . .");
                 wait(3000);
