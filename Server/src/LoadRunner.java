@@ -25,7 +25,7 @@ public class LoadRunner {
         gameManager.setGameState(GameState.LEVEL);
         FrameManager frameManager = new FrameManager(frame, gameManager);
         frameManager.generate();
-        gameManager.setLevel(1);
+        gameManager.setLevel(21);
         gameManager.setGameState(GameState.LOADING);
         gameManager.start();
     }
