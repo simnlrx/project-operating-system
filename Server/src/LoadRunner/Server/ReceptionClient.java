@@ -28,11 +28,13 @@ public class ReceptionClient implements Runnable {
             Player player = gameManager.getScene().getPlayer2();
             KeySelection keySelection = new KeySelection(player, gameManager);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            //player.setAdresse(socket.getInetAddress().getHostAddress());
 
             while(!socket.isClosed() && ((tampon = reader.readLine()) != null)) {
                 if(this.pseudo.isBlank()) {
                   pseudo = tampon;
                   player.setName(pseudo);
+                  player.setSocket(socket);
                   System.out.println(tampon);
                 }
 

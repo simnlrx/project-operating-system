@@ -4,7 +4,11 @@ import LoadRunner.Client.Client;
 import LoadRunner.game.Player;
 import LoadRunner.utils.Display;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class LoadingManager {
@@ -25,6 +29,8 @@ public class LoadingManager {
     public void start() throws IOException {
         Player player1 = gameManager.getScene().getPlayer1();
         Player player2 = gameManager.getScene().getPlayer2();
+        player1.setReady(false);
+        player2.setReady(false);
 
         Scanner scanner;
         String[][] gamemodeChoose = getDisplay(Display.loadingPage);
@@ -57,12 +63,12 @@ public class LoadingManager {
             if (this.multigamemode == 1) {
                 gameManager.startServer();
                 gameManager.setServer(true);
+
                 String[][] host = getDisplay(Display.hostPage);
                 do {
-
                     printBoard(host);
-                    new Scanner(System.in).nextLine();
-
+                    scanner = new Scanner(System.in);
+                    scanner.nextLine();
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
 
                 String[][] namePlayer = getDisplay(Display.namePage);
@@ -72,6 +78,18 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
+                    Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
+                    System.out.println(socket);
+                    scanner.nextLine();
+                    PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                    System.out.println(writer);
+                    scanner.nextLine();
+                    writer.println("p1ready");
+                    System.out.println("send");
+                    scanner.nextLine();
+                    writer.close();
+                    socket.close();
+                    System.out.println("close");
 
                 } while (player1.getName().equals("p1"));
 
@@ -83,7 +101,7 @@ public class LoadingManager {
 
                     printBoard(wait);
 
-                } while (player2.isReady());
+                } while (!player2.isReady());
             } else {
                 gameManager.setServer(false);
                 initLoadingScene();
@@ -109,7 +127,7 @@ public class LoadingManager {
                 } while (this.ip.equals(""));
 
                 //TODO: déplacer le client pour faire une déconnexion propre avec client.logout;
-                Client client = new Client(player2, this.ip, gameManager.getPort());
+                Client client = new Client(gameManager, player2, this.ip, gameManager.getPort());
                 client.login();
                 player2.send(player2.getName());
 
@@ -128,11 +146,13 @@ public class LoadingManager {
 
                 initLoadingScene();
                 player2.send("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6");
-                printBoard(getDisplay(Display.waitPage));
+                do {
+                    printBoard(getDisplay(Display.waitPage));
+                } while (!player1.isReady());
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
-        }else{
+        } else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
 

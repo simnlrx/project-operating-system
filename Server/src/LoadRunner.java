@@ -1,4 +1,3 @@
-import LoadRunner.Server.TCPTask;
 import LoadRunner.game.Scene;
 import LoadRunner.handler.FrameManager;
 import LoadRunner.handler.GameManager;
@@ -16,7 +15,7 @@ public class LoadRunner {
         System.out.println("Load Runner | Runnig ...");
         Display.title();
 
-        Scene scene = new Scene(30,40);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
+        Scene scene = new Scene(30, 40);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         GameManager gameManager = new GameManager(scene, GameState.GAMEMODE, 8059, "localhost");
         JFrame frame = new JFrame("Contrôles");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

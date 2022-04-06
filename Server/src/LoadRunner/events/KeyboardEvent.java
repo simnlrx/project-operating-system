@@ -13,7 +13,7 @@ public class KeyboardEvent implements KeyListener {
 
     private final KeySelection keySelection;
     private final GameManager gameManager;
-    private Player player;
+    private final Player player;
 
     public KeyboardEvent(Player player, GameManager gameManager) {
         this.keySelection = new KeySelection(player, gameManager);
@@ -25,7 +25,7 @@ public class KeyboardEvent implements KeyListener {
     public void keyTyped(KeyEvent e) {
         char p = e.getKeyChar();
         String res = "" + p;
-        if (gameManager.getGameState() == GameState.MULTIGAME) {
+        if (gameManager.getGameState() == GameState.MULTIGAME && !gameManager.isServer()) {
             if (p == 'z' || p == 'e' || p == 'a' || p == 'q' || p == 's' || p == 'd' || p == 'w' || p == 'c') {
                 try {
                     player.send(res);

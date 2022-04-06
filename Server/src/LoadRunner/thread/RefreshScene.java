@@ -25,7 +25,7 @@ public class RefreshScene extends Thread {
             try {
               while (gameManager.getGameState().isGame()) {
                 scene.matrix2Screen();
-                this.sleep(100);
+                this.sleep(1000);
               }
             }catch (InterruptedException e) {
                 e.printStackTrace();
