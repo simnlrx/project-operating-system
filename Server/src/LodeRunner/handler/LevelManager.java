@@ -35,8 +35,8 @@ public class LevelManager {
                     } else if (st.nval == 15) {
                         // si la valeur vaut 15, il s'agit de la porte de sortie du niveau
                         // donc affectation de la ligne et de la colonne au spawn du joueur
-                        scene.setPosXSpawnPlayer1(index % length);
-                        scene.setPosYSpawnPlayer1(index / length);
+                        scene.setPosXNextLevel(index % length);
+                        scene.setPosYNextLevel(index / length);
                     }
                     index++;
                 }

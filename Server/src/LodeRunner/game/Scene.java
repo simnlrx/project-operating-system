@@ -28,8 +28,8 @@ public class Scene {
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
 
-    private int posXSpawnPlayer1;// position en X du spawn du joueur 1
-    private int posYSpawnPlayer1;// position en Y du spawn du joueur 1
+    private int posXNextLevel;// position en X du spawn du joueur 1
+    private int posYNextLevel;// position en Y du spawn du joueur 1
 
     private Player player1 = new Player("p1", 1);
     private Player player2 = new Player("p2", 2);
@@ -257,24 +257,24 @@ public class Scene {
         this.posYSpawnEnemy = y;
     }
 
-    public int getPosXSpawnPlayer1() {
+    public int getPosXNextLevel() {
         // getter pour le spawn en X du joueur
-        return this.posXSpawnPlayer1;
+        return this.posXNextLevel;
     }
 
-    public void setPosXSpawnPlayer1(int x) {
+    public void setPosXNextLevel(int x) {
         // setter pour le spawn en X du joueur
-        this.posXSpawnPlayer1 = x;
+        this.posXNextLevel = x;
     }
 
-    public int getPosYSpawnPlayer1() {
+    public int getPosYNextLevel() {
         // getter pour le spawn en Y du joueur
-        return this.posYSpawnPlayer1;
+        return this.posYNextLevel;
     }
 
-    public void setPosYSpawnPlayer1(int y) {
+    public void setPosYNextLevel(int y) {
         // setter pour le spawn en Y du joueur
-        this.posYSpawnPlayer1 = y;
+        this.posYNextLevel = y;
     }
 
     public String getFinalBoard() {

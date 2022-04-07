@@ -72,7 +72,7 @@ public class RegenSceneThread extends Thread {
 
                     }
                 }
-                if (gameManager.getScene().getPosXSpawnPlayer1() == player1.getPosX() && gameManager.getScene().getPosYSpawnPlayer1() == player1.getPosY()) {
+                if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
                     // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
                     gameManager.nextLevel();
                 }
