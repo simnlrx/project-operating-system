@@ -22,7 +22,7 @@ public class Broadcast implements Runnable {
     @Override
     public void run() {
 
-        if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
+        while (gameManager.getGameState().equals(GameState.MULTIGAME)) {
             try (DatagramSocket dtgrSocket = new DatagramSocket()) {
 
                 String ip = "255.255.255.255";

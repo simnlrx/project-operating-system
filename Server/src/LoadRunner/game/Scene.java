@@ -23,6 +23,7 @@ public class Scene {
     private final int height; //Hauteur de l'écran
     private final int length; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
+    private String finalBoard;
 
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
@@ -273,4 +274,12 @@ public class Scene {
         this.posYSpawnPlayer1 = y;
     }
 
+    public String getFinalBoard() {
+        this.finalBoard = generateBoard();
+        return finalBoard;
+    }
+
+    public void setFinalBoard(String finalBoard) {
+        this.finalBoard = finalBoard;
+    }
 }

@@ -16,7 +16,7 @@ public class LoadRunner {
         Display.title();
 
         Scene scene = new Scene(30, 40);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
-        GameManager gameManager = new GameManager(scene, GameState.GAMEMODE, 8059, "localhost");
+        GameManager gameManager = new GameManager(scene, GameState.GAMEMODE, 8059);
         JFrame frame = new JFrame("Contrôles");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         LoadingManager loading = new LoadingManager(gameManager); // 40 30

@@ -22,13 +22,13 @@ public class RefreshScene extends Thread {
 
     @Override
     public void run() {
-            try {
-              while (gameManager.getGameState().isGame()) {
-                scene.matrix2Screen();
-                this.sleep(1000);
-              }
-            }catch (InterruptedException e) {
-                e.printStackTrace();
+        try {
+            while (gameManager.getGameState().isGame()) {
+                System.out.println(scene.getFinalBoard());
+                this.sleep(300);
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

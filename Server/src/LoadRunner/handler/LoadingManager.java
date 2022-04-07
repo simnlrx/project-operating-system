@@ -122,7 +122,6 @@ public class LoadingManager {
 
                     scanner = new Scanner(System.in);
                     this.ip = scanner.nextLine();
-                    gameManager.setIp(this.ip);
 
                 } while (this.ip.equals(""));
 

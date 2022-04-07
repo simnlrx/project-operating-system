@@ -1,12 +1,13 @@
 package LoadRunner.Client;
 
 import LoadRunner.handler.GameManager;
+import LoadRunner.handler.GameState;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
+import java.util.Arrays;
 
 public class ReceptionServer implements Runnable {
 
@@ -37,6 +38,23 @@ public class ReceptionServer implements Runnable {
             }
 
         }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        byte[] data = new byte[4000];
+        InetSocketAddress addr = new InetSocketAddress("255.255.255.255", port);
+        DatagramPacket dtgrPacket;
+
+        try {
+            DatagramSocket dtgrSocket = new DatagramSocket(addr);
+
+            while (gameManager.getGameState().equals(GameState.MULTIGAME)){
+                dtgrPacket = new DatagramPacket(data, data.length);
+                dtgrSocket.receive(dtgrPacket);
+                Arrays.toString(dtgrPacket.getData());
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
