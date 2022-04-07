@@ -79,17 +79,10 @@ public class LoadingManager {
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
                     Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
-                    System.out.println(socket);
-                    scanner.nextLine();
                     PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-                    System.out.println(writer);
-                    scanner.nextLine();
                     writer.println("p1ready");
-                    System.out.println("send");
-                    scanner.nextLine();
                     writer.close();
                     socket.close();
-                    System.out.println("close");
 
                 } while (player1.getName().equals("p1"));
 

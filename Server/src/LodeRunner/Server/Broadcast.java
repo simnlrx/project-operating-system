@@ -32,7 +32,6 @@ public class Broadcast implements Runnable {
                 byte[] msgByte = msg.getBytes();
                 dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
 
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

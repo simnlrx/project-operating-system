@@ -44,8 +44,11 @@ public class ReceptionServer implements Runnable {
 
         DatagramPacket dtgrPacket;
 
+        String ip = "255.255.255.255";
+        InetSocketAddress addr = new InetSocketAddress(ip, gameManager.getPort());
+
         try {
-            DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());
+            DatagramSocket dtgrSocket = new DatagramSocket(addr);
 
             while (gameManager.getGameState().equals(GameState.MULTIGAME)){
                 byte[] data = new byte[5000];
