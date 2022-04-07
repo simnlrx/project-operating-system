@@ -24,6 +24,7 @@ public class RefreshScene extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
+                System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
                 System.out.println(scene.getFinalBoard());
                 sleep(300);
             }

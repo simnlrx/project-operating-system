@@ -66,7 +66,7 @@ public class Scene {
     }
 
     public synchronized String generateBoard() {
-        StringBuilder res = new StringBuilder(" ");
+        StringBuilder res = new StringBuilder();
         int value;
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.length; j++) {
@@ -138,6 +138,8 @@ public class Scene {
     }
 
     public void set1Player(Player player) {
+        System.out.println("setplayer");
+
         //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player;
         this.player2 = null;
@@ -146,6 +148,7 @@ public class Scene {
             for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
                 if (board[i][j] == 6) {
+                    System.out.println("position joueur x: " + j + " y: " + i);
                     setPositionPlayer(player, j, i);
                 }
             }

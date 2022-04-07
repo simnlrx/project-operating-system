@@ -164,7 +164,7 @@ public class LoadingManager {
 
             initLoadingScene();
 
-            String[] scorePage = new String[]{"Level 1", "Player : " + player1.getName(), "", "Score :" + player1.getScore(), "", "3 lifes"};
+            String[] scorePage = new String[]{"Level 1", "Player : " + player1.getName(), "", "Score :" + player1.getScore(), "", "5 lifes"};
             printBoard(getDisplay(scorePage));
             new Scanner(System.in).nextLine();
         }

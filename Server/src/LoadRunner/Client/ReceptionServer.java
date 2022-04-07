@@ -41,14 +41,13 @@ public class ReceptionServer implements Runnable {
             e.printStackTrace();
         }
 
-        byte[] data = new byte[4000];
-        InetSocketAddress addr = new InetSocketAddress("255.255.255.255", port);
         DatagramPacket dtgrPacket;
 
         try {
-            DatagramSocket dtgrSocket = new DatagramSocket(addr);
+            DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());
 
             while (gameManager.getGameState().equals(GameState.MULTIGAME)){
+                byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
                 Arrays.toString(dtgrPacket.getData());

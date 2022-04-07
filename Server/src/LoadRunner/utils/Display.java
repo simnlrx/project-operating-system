@@ -20,17 +20,6 @@ public class Display {
             "NINTUFR OF FRANCE INC"
     };
 
-    public static String[] levelPage = new String[]{
-           "Choose your level: ",
-           "",
-           "1 - Easy",
-           "",
-           "2 - Medium",
-           "",
-           "3 - Hard"
-    };
-
-
     public static String[] namePage = new String[]{
            "Controls : ",
            "",
