@@ -28,7 +28,6 @@ public class ReceptionServer implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             while (!socket.isClosed()){
-                System.out.println("ReceptionServer OPEN");
                 if(reader.readLine().equals("p1ready")){
                     gameManager.getScene().getPlayer1().setReady(true);
                     reader.close();
@@ -44,11 +43,8 @@ public class ReceptionServer implements Runnable {
 
         DatagramPacket dtgrPacket;
 
-        String ip = "255.255.255.255";
-        InetSocketAddress addr = new InetSocketAddress(ip, gameManager.getPort());
-
         try {
-            DatagramSocket dtgrSocket = new DatagramSocket(addr);
+            DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());
 
             while (gameManager.getGameState().equals(GameState.MULTIGAME)){
                 byte[] data = new byte[5000];

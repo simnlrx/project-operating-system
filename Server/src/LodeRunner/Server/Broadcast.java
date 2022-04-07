@@ -28,8 +28,7 @@ public class Broadcast implements Runnable {
                 String ip = "255.255.255.255";
                 InetSocketAddress addr = new InetSocketAddress(ip, port);
 
-                String msg = gameManager.getScene().generateBoard();
-                byte[] msgByte = msg.getBytes();
+                byte[] msgByte = gameManager.getScene().getFinalBoard().getBytes();
                 dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
 
             } catch (Exception e) {

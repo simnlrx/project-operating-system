@@ -35,7 +35,7 @@ public class ReceptionClient implements Runnable {
                   pseudo = tampon;
                   player.setName(pseudo);
                   player.setSocket(socket);
-                  System.out.println("Connexion établie. \n PRESS ENTER");
+                  System.out.println("Connexion établie. \nPRESS ENTER");
                 }
 
                 if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6"))
