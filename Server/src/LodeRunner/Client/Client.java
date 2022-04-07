@@ -27,7 +27,10 @@ public class Client {
             socket = new Socket(ip, port);
             player.setSocket(socket);
             player.openWriter();
-            new Thread(new ReceptionServer(gameManager,8060)).start();
+            new Thread(new ReceptionDatagramServer(gameManager)).start();
+            System.out.println("th datagram start");
+            new Thread(new ReceptionSocketServer(gameManager,8060)).start();
+            System.out.println("th socket start");
         }catch (IOException e){
             System.out.println("Connexion impossible.");
             e.printStackTrace();

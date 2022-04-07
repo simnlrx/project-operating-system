@@ -141,6 +141,7 @@ public class LoadingManager {
                 do {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());
+                gameManager.setGameState(GameState.MULTIGAME);
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 

@@ -9,12 +9,12 @@ import java.io.InputStreamReader;
 import java.net.*;
 import java.util.Arrays;
 
-public class ReceptionServer implements Runnable {
+public class ReceptionSocketServer implements Runnable {
 
-    private GameManager gameManager;
-    private int port;
+    private final GameManager gameManager;
+    private final int port;
 
-    public ReceptionServer(GameManager gameManager, int port) {
+    public ReceptionSocketServer(GameManager gameManager, int port) {
         this.gameManager = gameManager;
         this.port = port;
     }
@@ -38,22 +38,6 @@ public class ReceptionServer implements Runnable {
             }
 
         }catch (IOException e){
-            e.printStackTrace();
-        }
-
-        DatagramPacket dtgrPacket;
-
-        try {
-            DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());
-
-            while (gameManager.getGameState().equals(GameState.MULTIGAME)){
-                byte[] data = new byte[5000];
-                dtgrPacket = new DatagramPacket(data, data.length);
-                dtgrSocket.receive(dtgrPacket);
-                gameManager.getScene().setFinalBoard(Arrays.toString(dtgrPacket.getData()));
-            }
-
-        } catch (IOException e) {
             e.printStackTrace();
         }
 
