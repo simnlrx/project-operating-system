@@ -66,6 +66,10 @@ public class RegenSceneThread extends Thread {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 12) {
                             gameManager.getScene().setValuePosition(x, y, 12);
                         }
+                        if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 13) {
+                            gameManager.getScene().setValuePosition(x, y, 13);
+                        }
+
                     }
                 }
                 if (gameManager.getScene().getPosXSpawnPlayer1() == player1.getPosX() && gameManager.getScene().getPosYSpawnPlayer1() == player1.getPosY()) {

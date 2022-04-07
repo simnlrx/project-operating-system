@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ThreadManager{
   private final ArrayList<Thread> threadList;
-  // déclaration c'une ArrayList de Thread
+  // déclaration d'une ArrayList de Thread
 
   /*
    * Constructeur par défaut de ThreadManager
