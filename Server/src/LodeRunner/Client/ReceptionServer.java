@@ -28,6 +28,7 @@ public class ReceptionServer implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             while (!socket.isClosed()){
+                System.out.println("ReceptionServer OPEN");
                 if(reader.readLine().equals("p1ready")){
                     gameManager.getScene().getPlayer1().setReady(true);
                     reader.close();
