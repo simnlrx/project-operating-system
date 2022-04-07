@@ -51,7 +51,6 @@ public class GameManager {
         if (gamemode == 1 || isServer) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
-            threadManager.addThread(new RefreshScene(this));
             threadManager.addThread(new RegenSceneThread(this));
         }
         if(gamemode == 2 && isServer){
@@ -68,6 +67,7 @@ public class GameManager {
             gameState = GameState.MULTIGAME;
         }
 
+        threadManager.addThread(new RefreshScene(this));
         threadManager.startThreads();
 
     }
