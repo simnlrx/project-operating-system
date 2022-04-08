@@ -27,8 +27,7 @@ public class Broadcast implements Runnable {
             try (DatagramSocket dtgrSocket = new DatagramSocket()) {
                 InetSocketAddress addr = new InetSocketAddress(ip, port);
 
-                String str = "Salut";
-                byte[] msgByte = str.getBytes();//gameManager.getScene().getFinalBoard().getBytes();
+                byte[] msgByte = gameManager.getScene().getBoardtoString().getBytes();
                 dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
 
             } catch (Exception e) {

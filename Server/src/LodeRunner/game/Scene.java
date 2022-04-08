@@ -65,7 +65,7 @@ public class Scene {
         }
     }
 
-    public synchronized String generateBoard() {
+    public synchronized String generateBoard(String s) {
         StringBuilder res = new StringBuilder();
         int value;
         for (int i = 0; i < this.height; i++) {
@@ -284,5 +284,23 @@ public class Scene {
 
     public void setFinalBoard(String finalBoard) {
         this.finalBoard = finalBoard;
+    }
+
+    public String getBoardtoString() {
+        StringBuilder res = new StringBuilder();
+        for(int i = 0; i < this.height; i++){
+            for(int j = 0; j < this.length; j++){
+                res.append(this.board[i][j]);
+            }
+            res.append("\n");
+        }
+        return res.toString();
+    }
+
+    public int[][] convert(String s){
+        int[][] fboard;
+
+
+        return fboard;
     }
 }
