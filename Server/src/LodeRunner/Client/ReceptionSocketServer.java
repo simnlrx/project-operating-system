@@ -32,14 +32,12 @@ public class ReceptionSocketServer implements Runnable {
             String tampon;
 
             while (!socket.isClosed() && (tampon = reader.readLine()) != null) {
-                System.out.println("Nouveau message entrant: " + tampon);
 
                 if (tampon.contains("p1ready")) {
                     player1.setReady(true);
                 }
                 if (tampon.contains("p1name")) {
                     String name = tampon.substring(6);
-                    System.out.println("NOM DU JOUEUR 1" + name);
                     player1.setName(name);
                 }
                 if (tampon.contains("p1score")) {
