@@ -8,7 +8,6 @@ package LodeRunner.game;
 // 3 - représente un morceau d'une échelle
 // 4 - représente un ennemi
 // 5 - représente un objet à récupérer
-
 // 6 - spawn des joueurs
 // 9 - représente les contours vertiacaux de l'écran
 // 10 - représente le joueur courant
@@ -17,6 +16,7 @@ package LodeRunner.game;
 // 13 - spawn ennemie
 // 14 - case vide pour les ennemis
 // 15 - niveau suivant
+// 16 - pièce pickup
 
 
 import LodeRunner.handler.ServerManager;
@@ -80,7 +80,7 @@ public class Scene {
                     i++;
                 }
                 switch (value) {
-                    case "0", "6", "13", "14" -> res.append("  ");
+                    case "0", "6", "13", "14", "16" -> res.append("  ");
                     case "1", "2", "9" -> res.append("▓▓");
                     case "3", "15" -> res.append("│┤");
                     case "4" -> res.append("☠ ");
@@ -198,23 +198,21 @@ public class Scene {
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
-            wait(2000);
-            player.death();
-            if(serverManager != null) {
-                String score = "p";
-                if (player.getName().equals(getPlayer1().getName())) {
-                    score += "1";
-                } else {
-                    score += "2";
-                }
-                score += "life";
-                serverManager.send(score);
+            if (player.getType() == 0 || player.getType() == 1) {
+                wait(2000);
+                if (serverManager != null)
+                    serverManager.death(player);
+                do {
+                    spawnX = (int) (Math.random() * this.getLenght() + 1);
+                } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
+                player.setPosition(spawnX, Platforme);
+                this.setValuePosition(spawnX, Platforme, 10);
+            } else {
+                wait(4000);
+                if (serverManager != null)
+                    serverManager.death(player);
+                player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
             }
-            do {
-                spawnX = (int) (Math.random() * this.getLenght() + 1);
-            } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
-            player.setPosition(spawnX, Platforme);
-            this.setValuePosition(spawnX, Platforme, 10);
         } catch (Exception e) {
             e.printStackTrace();
         }

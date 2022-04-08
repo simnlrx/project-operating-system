@@ -1,6 +1,7 @@
 package LodeRunner.handler;
 
 import LodeRunner.Server.TCPTask;
+import LodeRunner.game.Player;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class ServerManager {
     private PrintWriter writer;
     private Socket socket;
 
-    public ServerManager(GameManager gameManager){
+    public ServerManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
@@ -31,8 +32,33 @@ public class ServerManager {
         writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
     }
 
-    public void send(String s){
+    public void send(String s) {
         writer.println(s);
+    }
+
+    public void addScore(Player player, int score) {
+        String s = "p";
+        if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
+            s += "1";
+        } else {
+            s += "2";
+        }
+        s += "score" + score;
+        if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
+            gameManager.getServer().send(s);
+        }
+    }
+
+    public void death(Player player) {
+        player.death();
+        String life = "p";
+        if (player.getName().equals(player.getName())) {
+            life += "1";
+        } else {
+            life += "2";
+        }
+        life += "life";
+        send(life);
     }
 
     public void stop() throws IOException {

@@ -51,9 +51,9 @@ public class EnemiesManager {
                   //si le mot courant est un nombre
                     if ((int) st.nval == 4) {
                       // si l'entier est 4, il s'agit d'un ennemi
-                        EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), gameManager);
+                        //EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), gameManager);
                         // alors on instancie un objet EnemyThread avec en parametre, son numéro de colonne, son numéro de ligne, sa scene et l'état le gameManager
-                        threadManager.addThread(enemi);
+                        //threadManager.addThread(enemi);
                         // on ajoute l'ennemi à la liste
                     }
                 }

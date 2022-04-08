@@ -1,8 +1,9 @@
 package LodeRunner.thread;
 
-import LodeRunner.game.Scene;
 import LodeRunner.game.Player;
+import LodeRunner.game.Scene;
 import LodeRunner.handler.GameManager;
+import LodeRunner.handler.GameState;
 
 
 public class EnemyThread extends Thread {
@@ -125,6 +126,12 @@ public class EnemyThread extends Thread {
                 }
                 //on replace l'ennemi à l'endroit du sapwn des ennemis
                 player1.addScore(50);
+                if (player2 != null && player2.getType() == 2)
+                    player2.addScore(50);
+                if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
+                    gameManager.getServer().addScore(player1, 100);
+                    gameManager.getServer().addScore(player2, 100);
+                }
                 //le joueur gagne 50 points
                 scene.setValuePosition(posX, posY, 2);
                 posX = scene.getPosXSpawnEnemy();
@@ -170,6 +177,12 @@ public class EnemyThread extends Thread {
                 }
                 //on replace l'ennemi à l'endroit du sapwn des ennemis
                 player1.addScore(50);
+                if (player2 != null && player2.getType() == 2)
+                    player2.addScore(50);
+                if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
+                    gameManager.getServer().addScore(player1, 100);
+                    gameManager.getServer().addScore(player2, 100);
+                }
                 //le joueur gagne 50 points
                 scene.setValuePosition(posX, posY, 2);
                 posX = scene.getPosXSpawnEnemy();
@@ -191,34 +204,10 @@ public class EnemyThread extends Thread {
             while (gameManager.getGameState().isGame()) {
                 this.sleep(300);
                 if (player2 == null) {
-                    if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
-                        // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
-                        downStairs();
-                    } else if (getDistanceToPlayer1(posX, posY - 1) < getDistanceToPlayer1(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
-                        upStairs();
-                    }
-                    if (getDistanceToPlayer1(posX - 1, posY) < getDistanceToPlayer1(posX, posY)) {
-                        // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-                        moveLeft();
-                    } else {// si un deplacement vers la gauche éloigne l'ennemi
-                        moveRight();
-                    }
-                    KillPlayer();
+                    distToP1();
                 } else {
                     if (getDistanceToPlayer1(posX, posY) < getDistanceToPlayer2(posX, posY)) {
-                        if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
-                            // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
-                            downStairs();
-                        } else if (getDistanceToPlayer1(posX, posY - 1) < getDistanceToPlayer1(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
-                            upStairs();
-                        }
-                        if (getDistanceToPlayer1(posX - 1, posY) < getDistanceToPlayer1(posX, posY)) {
-                            // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-                            moveLeft();
-                        } else {// si un deplacement vers la gauche éloigne l'ennemi
-                            moveRight();
-                        }
-                        KillPlayer();
+                        distToP1();
                     } else {
                         if (getDistanceToPlayer2(posX, posY + 1) < getDistanceToPlayer2(posX, posY)) {
                             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
@@ -239,5 +228,21 @@ public class EnemyThread extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void distToP1() {
+        if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
+            // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
+            downStairs();
+        } else if (getDistanceToPlayer1(posX, posY - 1) < getDistanceToPlayer1(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
+            upStairs();
+        }
+        if (getDistanceToPlayer1(posX - 1, posY) < getDistanceToPlayer1(posX, posY)) {
+            // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
+            moveLeft();
+        } else {// si un deplacement vers la gauche éloigne l'ennemi
+            moveRight();
+        }
+        KillPlayer();
     }
 }
