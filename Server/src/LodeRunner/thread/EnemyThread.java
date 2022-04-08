@@ -187,7 +187,7 @@ public class EnemyThread extends Thread {
 
     @Override
     public void run() {
-        try {
+        /*try {
             while (gameManager.getGameState().isGame()) {
                 this.sleep(300);
                 if (player2 == null) {
@@ -238,6 +238,6 @@ public class EnemyThread extends Thread {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
