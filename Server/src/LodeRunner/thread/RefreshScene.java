@@ -25,8 +25,9 @@ public class RefreshScene extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
-                if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME))
+                if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)){
                     scene.matrix2Screen();
+                }
                 sleep(100);
             }
         } catch (InterruptedException e) {
