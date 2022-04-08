@@ -26,7 +26,7 @@ public class LoadingManager {
         initLoadingScene();
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, InterruptedException {
         Player player1 = gameManager.getScene().getPlayer1();
         Player player2 = gameManager.getScene().getPlayer2();
         player1.setReady(false);
@@ -64,13 +64,6 @@ public class LoadingManager {
                 gameManager.startServer();
                 gameManager.setServer(true);
 
-                String[][] host = getDisplay(Display.hostPage);
-                do {
-                    printBoard(host);
-                    scanner = new Scanner(System.in);
-                    scanner.nextLine();
-                } while (gameManager.getServer().getTcpTask().getClient() != 1);
-
                 String[][] namePlayer = getDisplay(Display.namePage);
                 do {
 
@@ -78,9 +71,18 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
-                    gameManager.getServer().send("p1name" + player1.getName());
-                    gameManager.getServer().send("p1ready");
                 } while (player1.getName().equals("p1"));
+
+                String[][] host = getDisplay(Display.hostPage);
+                do {
+                    printBoard(host);
+                    scanner = new Scanner(System.in);
+                    scanner.nextLine();
+                } while (gameManager.getServer().getTcpTask().getClient() != 1);
+
+                gameManager.getServer().send("p1name" + player1.getName());
+                wait(500);
+                gameManager.getServer().send("p1ready");
 
                 initLoadingScene();
 

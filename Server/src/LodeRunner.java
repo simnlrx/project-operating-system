@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LodeRunner {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("\033[H\033[2J");//supprime tout ce qu'il y a dans la console auparavant
         System.out.println("Lode Runner | Runnig ...");
         Display.title();
