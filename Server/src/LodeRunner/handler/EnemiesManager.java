@@ -15,7 +15,6 @@ public class EnemiesManager {
     private ThreadManager threadManager;
     private int index;
     private int lenghtab;
-    private int heighttab;
 
     /*
      * Constructeur de EnemiesManager
