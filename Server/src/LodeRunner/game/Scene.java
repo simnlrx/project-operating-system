@@ -71,8 +71,10 @@ public class Scene {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != ' ') {
                 value = String.valueOf(s.charAt(i));
-                if (i + 1 < s.length() && s.charAt(i + 1) != ' ')
+                if (i + 1 < s.length() && s.charAt(i + 1) != ' ') {
                     value += String.valueOf(s.charAt(i + 1));
+                    i++;
+                }
                 switch (value) {
                     case "0", "6", "13", "14" -> res.append("  ");
                     case "1", "2", "9" -> res.append("▓▓");
@@ -82,15 +84,26 @@ public class Scene {
                     case "10" -> res.append(player1.getName().charAt(0)).append(" ");
                     case "11" -> res.append(player2.getName().charAt(0)).append(" ");
                     case "12" -> res.append("__");
+                    case "R" -> res.append("\n");
                 }
             }
-            res.append("\n");
         }
         res.append(player1.getName()).append(": ").append(player1.getScore()).append(" ").append(player1.getLifeToString());
         res.append("\n");
         if (player2 != null)
             res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
         System.out.println(res.toString());
+    }
+
+    public String getBoardtoString() {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.length; j++) {
+                res.append(this.board[i][j]).append(" ");
+            }
+            res.append("R ");
+        }
+        return res.toString();
     }
 
     public synchronized void matrix2Screen() {
@@ -277,17 +290,6 @@ public class Scene {
     public void setPosYNextLevel(int y) {
         // setter pour le spawn en Y du joueur
         this.posYNextLevel = y;
-    }
-
-    public String getBoardtoString() {
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.length; j++) {
-                res.append(this.board[i][j]);
-            }
-            res.append("\n");
-        }
-        return res.toString();
     }
 
 }
