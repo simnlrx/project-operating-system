@@ -1,9 +1,4 @@
 *.class
-LoadRunner/.DS_Store
-fr/.DS_Store
-.DS_Store
-LoadRunner/.DS_Store
-.DS_Store
-LoadRunner/.DS_Store
-fr/.DS_Store
-fr/.DS_Store
+*.DS_Store
+*.iml
+*.xml
