@@ -96,7 +96,7 @@ public class Scene {
         res.append("\n");
         if (player2 != null)
             res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
-        System.out.println(res.toString());
+        System.out.println(res);
     }
 
     public String getBoardtoString() {

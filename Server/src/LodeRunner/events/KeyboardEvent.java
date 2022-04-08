@@ -25,6 +25,7 @@ public class KeyboardEvent implements KeyListener {
     public void keyTyped(KeyEvent e) {
         char p = e.getKeyChar();
         String res = "" + p;
+        System.out.println(gameManager.getGameState().equals(GameState.MULTIGAME) && !gameManager.isServer());
         if (gameManager.getGameState().equals(GameState.MULTIGAME) && !gameManager.isServer()) {
             System.out.println(p);
             if (p == 'z' || p == 'e' || p == 'a' || p == 'q' || p == 's' || p == 'd' || p == 'w' || p == 'c') {

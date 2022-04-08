@@ -43,14 +43,14 @@ public class ReceptionSocketServer implements Runnable {
                     player1.setName(name);
                 }
                 if (tampon.contains("p1score")) {
-                    int score = Integer.parseInt(tampon.substring(8));
+                    int score = Integer.parseInt(tampon.substring(7));
                     player1.addScore(score);
                 }
                 if (tampon.contains("p1life")) {
                     player1.death();
                 }
                 if (tampon.contains("p2score")) {
-                    int score = Integer.parseInt(tampon.substring(8));
+                    int score = Integer.parseInt(tampon.substring(7));
                     player2.addScore(score);
                 }
                 if (tampon.contains("p2life")) {
