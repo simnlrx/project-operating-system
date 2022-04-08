@@ -1,7 +1,5 @@
 package LodeRunner.Server;
 
-//Démarre le serveur (créé le socket et accpet les connexions)
-
 import LodeRunner.handler.GameManager;
 
 import java.io.IOException;
