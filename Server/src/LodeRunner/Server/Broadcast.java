@@ -25,11 +25,11 @@ public class Broadcast implements Runnable {
         while (gameManager.getGameState().equals(GameState.MULTIGAME)) {
             try (DatagramSocket dtgrSocket = new DatagramSocket()) {
 
-                String ip = "255.255.255.255";
-                InetSocketAddress addr = new InetSocketAddress(ip, port);
+                /*String ip = "255.255.255.255";
+                InetSocketAddress addr = new InetSocketAddress(ip, port);*/
 
                 byte[] msgByte = gameManager.getScene().getFinalBoard().getBytes();
-                dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
+                dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, port));
 
             } catch (Exception e) {
                 e.printStackTrace();

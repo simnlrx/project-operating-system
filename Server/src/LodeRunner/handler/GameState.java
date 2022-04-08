@@ -2,8 +2,6 @@ package LodeRunner.handler;
 
 public enum GameState {
 
-    GAMEMODE("select gamemode", false),
-    LEVEL("select level", false),
     LOADING("loading", false),
     SOLOGAME("solo", true),
     MULTIGAME("multi", true),

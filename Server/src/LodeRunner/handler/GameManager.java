@@ -71,7 +71,7 @@ public class GameManager {
             this.endLevel();
             scene.setScene();
 
-            GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port);
+            GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
             if (this.getLevel() < 4) {
@@ -80,9 +80,7 @@ public class GameManager {
                 wait(3000);
                 gameManager2.setGameMode(this.gamemode);
                 // lors de la récupération du mode de jeu, on set les joueurs
-                gameManager2.setGameState(GameState.LEVEL);
                 gameManager2.setLevel(gameManager2.getLevel());
-                gameManager2.setGameState(GameState.LOADING);
                 gameManager2.start();
             } else {
                 gameManager2.endGame();
