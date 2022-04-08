@@ -43,23 +43,21 @@ public class GameManager {
     public void start() {
         threadManager = new ThreadManager();
 
-        if (gamemode == 1 || isServer) {
+        if (gamemode == 1 || isServer()) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
             threadManager.addThread(new RegenSceneThread(this));
         }
-        if(gamemode == 2 && isServer){
-            threadManager.addThread(new Thread(new Broadcast(this, port)));
-        }
 
-        if(gamemode == 1){
-            System.out.println("1 joueur");
+        if (gamemode == 1) {
             scene.set1Player(player1);
             gameState = GameState.SOLOGAME;
         }
         if (gamemode == 2) {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
+            if (isServer())
+                threadManager.addThread(new Thread(new Broadcast(this, port)));
         }
 
         threadManager.addThread(new RefreshScene(this));
