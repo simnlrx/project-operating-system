@@ -29,7 +29,6 @@ public class Broadcast implements Runnable {
 
                 byte[] msgByte = gameManager.getScene().getFinalBoard().getBytes();
                 dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
-                System.out.println("SEND");
 
             } catch (Exception e) {
                 e.printStackTrace();

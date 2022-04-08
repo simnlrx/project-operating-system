@@ -28,7 +28,6 @@ public class ReceptionDatagramServer implements Runnable{
             System.out.println("gamestate : " + gameManager.getGameState().getName());
 
             while (gameManager.getGameState().equals(GameState.MULTIGAME)){
-                System.out.println("tentative connection");
                 byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
