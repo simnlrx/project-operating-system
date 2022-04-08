@@ -189,7 +189,7 @@ public class EnemyThread extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
-                this.sleep(400);
+                this.sleep(300);
                 if (player2 == null) {
                     if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
                         // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur

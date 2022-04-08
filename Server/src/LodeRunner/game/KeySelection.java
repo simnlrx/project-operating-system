@@ -32,14 +32,14 @@ public class KeySelection {
       }
       break;
       case 'q':
-      if (left == 0 || left == 3 || left == 14 || left == 11 || left == 4) {
+      if (left == 0 || left == 3 || left == 14 || left == 11 || left == 4  || left == 13) {
         if (scene.getValuePosition(x - 1, y + 1) == 2 || scene.getValuePosition(x - 1, y + 1) == 3 || scene.getValuePosition(x - 1, y + 1) == 4) {
           scene.setValuePosition(x, y, 0);
           scene.setPositionPlayer(player, x - 1, y);
         }
         break;
       }
-      if (left == 5) {
+      if (left == 5 && scene.getValuePosition(x - 1, y + 1)!=14) {
         scene.setValuePosition(x, y, 0);
         scene.setPositionPlayer(player, x - 1, y);
         player.addScore(100);
@@ -59,14 +59,14 @@ public class KeySelection {
       }
       break;
       case 'd':
-      if (right == 0 || right == 3 || right ==14 || right == 11 || right == 4) {
+      if (right == 0 || right == 3 || right ==14 || right == 11 || right == 4 || right==13) {
         if (scene.getValuePosition(x + 1, y + 1) == 2 || scene.getValuePosition(x + 1, y + 1) == 3 || scene.getValuePosition(x + 1, y + 1) == 4) {
           scene.setValuePosition(x, y, 0);
           scene.setPositionPlayer(player, x + 1, y);
         }
         break;
       }
-      if (right == 5) {
+      if (right == 5 && scene.getValuePosition(x + 1, y + 1)!=14) {
         scene.setValuePosition(x, y, 0);
         scene.setPositionPlayer(player, x + 1, y);
         player.addScore(100);
