@@ -79,7 +79,7 @@ public class GameManager {
                 gameManager2.setLevel(this.level + 1);
                 System.out.println("Loading Level " + gameManager2.getLevel() + ", please wait. . .");
                 wait(3000);
-                gameManager2.setGameMode(this.gamemode);
+                gameManager2.setGameMode(this.getGameMode());
                 // lors de la récupération du mode de jeu, on set les joueurs
                 gameManager2.setLevel(gameManager2.getLevel());
                 gameManager2.start();

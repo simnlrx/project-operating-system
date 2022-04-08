@@ -94,7 +94,6 @@ public class LoadingManager {
                     gameManager.getServer().send("p1ready");
                 } while (!player2.isReady());
             } else {
-                gameManager.setServer(false);
                 initLoadingScene();
                 String[][] name = getDisplay(Display.namePage);
 
@@ -139,7 +138,7 @@ public class LoadingManager {
                 do {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());
-                gameManager.setGameState(GameState.MULTIGAME);
+                gameManager.setGameState(GameState.SOLOGAME);
                 gameManager.getClient().statReception();
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }

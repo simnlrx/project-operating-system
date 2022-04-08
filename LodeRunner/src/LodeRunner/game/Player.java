@@ -66,7 +66,7 @@ public class Player {
 
     //accesseurs pour le score du joueur
     public void setScore(int score) {
-        this.score = score;
+        this.score += score;
     }
 
     public int getScore() {
