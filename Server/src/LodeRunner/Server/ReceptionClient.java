@@ -48,6 +48,7 @@ public class ReceptionClient implements Runnable {
                 }
 
                 if (player.isReady()) {
+                    System.out.println("TOUCHE RECU: " + tampon);
                     switch (tampon) {
                         case "a" -> keySelection.setKey('a');
                         case "z" -> keySelection.setKey('z');

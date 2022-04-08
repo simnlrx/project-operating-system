@@ -38,7 +38,7 @@ public class ReceptionSocketServer implements Runnable {
                     player1.setReady(true);
                 }
                 if (tampon.contains("p1name")) {
-                    String name = tampon.substring(7);
+                    String name = tampon.substring(6);
                     System.out.println("NOM DU JOUEUR 1" + name);
                     player1.setName(name);
                 }
