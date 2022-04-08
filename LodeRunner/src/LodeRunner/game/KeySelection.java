@@ -67,7 +67,7 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x - 1, y);
                     }
                 }
-                if(left == 11 || left == 10){
+                if((left == 11 && player.getNumber()==1) || (left == 10 && player.getNumber()==2)){
                   scene.setValuePosition(x, y, 0);
                   scene.setPositionPlayer(player, x - 2, y);
                 }
@@ -109,10 +109,11 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x + 1, y);
                     }
                 }
-                if(right == 11 || right == 10){
+                if((right == 11 && player.getNumber()==1) || (right == 10 && player.getNumber()==2)){
                   scene.setValuePosition(x, y, 0);
                   scene.setPositionPlayer(player, x + 2, y);
                 }
+
                 break;
             case 'e':
                 // si touche e touchée alors bloc à gauche cassé
