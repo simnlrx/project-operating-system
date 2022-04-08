@@ -13,7 +13,6 @@ public class Client {
     private final String ip;
     private final int port;
     private Socket socket;
-    private byte[] data = new byte[5000];
 
     public Client(GameManager gameManager, Player player, String ip, int port) {
         this.gameManager = gameManager;
@@ -29,7 +28,7 @@ public class Client {
             player.openWriter();
             new Thread(new ReceptionDatagramServer(gameManager)).start();
             System.out.println("th datagram start");
-            new Thread(new ReceptionSocketServer(gameManager,8060)).start();
+            new Thread(new ReceptionSocketServer(gameManager,gameManager.getPort())).start();
             System.out.println("th socket start");
         }catch (IOException e){
             System.out.println("Connexion impossible.");
@@ -41,10 +40,6 @@ public class Client {
     public void logout() throws IOException {
         player.closeWriter();
         socket.close();
-    }
-
-    public void reception(){
-
     }
 
     public Player getPlayer() {

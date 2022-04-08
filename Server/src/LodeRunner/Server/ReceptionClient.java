@@ -5,6 +5,7 @@ package LodeRunner.Server;
 import LodeRunner.game.KeySelection;
 import LodeRunner.game.Player;
 import LodeRunner.handler.GameManager;
+import LodeRunner.handler.GameState;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,7 +29,6 @@ public class ReceptionClient implements Runnable {
             Player player = gameManager.getScene().getPlayer2();
             KeySelection keySelection = new KeySelection(player, gameManager);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            //player.setAdresse(socket.getInetAddress().getHostAddress());
 
             while(!socket.isClosed() && ((tampon = reader.readLine()) != null)) {
                 if(this.pseudo.isBlank()) {
@@ -39,10 +39,11 @@ public class ReceptionClient implements Runnable {
                 }
 
                 if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6")) {
-                    player.setReady(true);
+                    gameManager.setGameState(GameState.MULTIGAME);
                     Broadcast broadcast = new Broadcast(gameManager, gameManager.getPort());
                     broadcast.setIp(socket.getInetAddress().getHostAddress());
                     new Thread(broadcast).start();
+                    player.setReady(true);
                 }
 
                 if(player.isReady()){
