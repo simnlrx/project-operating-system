@@ -26,7 +26,7 @@ public class Client {
         try{
             socket = new Socket(ip, port);
             player.setSocket(socket);
-            player.openWriter();
+            player.openWriter(socket);
             new Thread(new ReceptionSocketServer(gameManager,8060)).start();
             /*while (gameManager.getGameState().equals(GameState.LOADING)){
                 Thread.sleep(100);

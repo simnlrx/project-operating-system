@@ -22,9 +22,9 @@ public class LodeRunner {
         LoadingManager loading = new LoadingManager(gameManager); // 40 30
 
         loading.start();
+        gameManager.setLevel(1);
         FrameManager frameManager = new FrameManager(frame, gameManager);
         frameManager.generate();
-        gameManager.setLevel(1);
         gameManager.start();
     }
 }

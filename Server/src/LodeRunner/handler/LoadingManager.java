@@ -116,9 +116,8 @@ public class LoadingManager {
 
                 } while (this.ip.equals(""));
 
-                //TODO: déplacer le client pour faire une déconnexion propre avec client.logout;
-                Client client = new Client(gameManager, player2, this.ip, gameManager.getPort());
-                client.login();
+                gameManager.startClient(this.ip);
+
                 player2.send(player2.getName());
 
                 initLoadingScene();
@@ -141,7 +140,7 @@ public class LoadingManager {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());
                 gameManager.setGameState(GameState.MULTIGAME);
-                client.statReception();
+                gameManager.getClient().statReception();
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 

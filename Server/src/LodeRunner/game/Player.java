@@ -44,8 +44,8 @@ public class Player {
         this.ready = false;
     }
 
-    public void openWriter() throws IOException {
-        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+    public void openWriter(Socket so) throws IOException {
+        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(so.getOutputStream())), true);
     }
 
     public void closeWriter() {

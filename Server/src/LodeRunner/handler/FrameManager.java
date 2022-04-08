@@ -19,7 +19,14 @@ public class FrameManager {
         frame.setLayout(new FlowLayout());
         frame.setSize(500, 500);
 
-        KeyboardEvent keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer1(), gameManager);
+        KeyboardEvent keyboardEvent;
+
+        if(gameManager.isServer() || gameManager.getGameMode() == 1){
+            keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer1(), gameManager);
+        }else{
+            keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer2(), gameManager);
+        }
+
         frame.addKeyListener(keyboardEvent);
 
         frame.setVisible(true);

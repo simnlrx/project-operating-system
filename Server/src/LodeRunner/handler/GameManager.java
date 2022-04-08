@@ -1,5 +1,6 @@
 package LodeRunner.handler;
 
+import LodeRunner.Client.Client;
 import LodeRunner.Server.Broadcast;
 import LodeRunner.game.Player;
 import LodeRunner.game.Scene;
@@ -23,6 +24,7 @@ public class GameManager {
     private GameState gameState;// GameState pour l'état de la partie
     private ThreadManager threadManager;// liste de thread
     private ServerManager server;
+    private Client client;
 
     /*
      * Constructeur de GameManager
@@ -201,5 +203,12 @@ public class GameManager {
     }
 
 
+    public void startClient(String ip) {
+        client = new Client(this, player2, ip, getPort());
+        client.login();
+    }
 
+    public Client getClient() {
+        return client;
+    }
 }
