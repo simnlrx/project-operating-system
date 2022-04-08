@@ -23,49 +23,46 @@ public class ReceptionSocketServer implements Runnable {
     @Override
     public void run() {
 
-        try(ServerSocket serverSocket = new ServerSocket(this.port)){
+        try (ServerSocket serverSocket = new ServerSocket(this.port)) {
 
             Socket socket = serverSocket.accept();
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             Player player1 = gameManager.getScene().getPlayer1();
             Player player2 = gameManager.getScene().getPlayer2();
 
-            while (!socket.isClosed()){
+            while (!socket.isClosed()) {
+                System.out.println("Nouveau message entrant: " + reader.readLine());
 
-                if(reader.readLine().contains("p1")){
-                    if(reader.readLine().contains("ready")){
-                        player1.setReady(true);
-                    }
-                    if(reader.readLine().contains("name")){
-                        String name = reader.readLine().substring(7);
-                        System.out.println("NOM DU JOUEUR 1" + name);
-                        player1.setName(name);
-                    }
-                    if(reader.readLine().contains("score")){
-                        int score = Integer.parseInt(reader.readLine().substring(8));
-                        player1.addScore(score);
-                    }
-                    if(reader.readLine().contains("life")){
-                        player1.death();
-                    }
+                if (reader.readLine().contains("p1ready")) {
+                    player1.setReady(true);
                 }
-                if(reader.readLine().contains("p2")){
-                    if(reader.readLine().contains("score")){
-                        int score = Integer.parseInt(reader.readLine().substring(8));
-                        player2.addScore(score);
-                    }
-                    if(reader.readLine().contains("life")){
-                        player2.death();
-                    }
+                if (reader.readLine().contains("p1name")) {
+                    String name = reader.readLine().substring(7);
+                    System.out.println("NOM DU JOUEUR 1" + name);
+                    player1.setName(name);
+                }
+                if (reader.readLine().contains("p1score")) {
+                    int score = Integer.parseInt(reader.readLine().substring(8));
+                    player1.addScore(score);
+                }
+                if (reader.readLine().contains("p1life")) {
+                    player1.death();
+                }
+                if (reader.readLine().contains("p2score")) {
+                    int score = Integer.parseInt(reader.readLine().substring(8));
+                    player2.addScore(score);
+                }
+                if (reader.readLine().contains("p2life")) {
+                    player2.death();
                 }
 
-                if(gameManager.getGameState().equals(GameState.END)){
+                if (gameManager.getGameState().equals(GameState.END)) {
                     reader.close();
                     socket.close();
                 }
             }
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
