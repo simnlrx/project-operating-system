@@ -31,8 +31,8 @@ public class ReceptionDatagramServer implements Runnable{
                 byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
-                System.out.println(Arrays.toString(dtgrPacket.getData()));
-                //gameManager.getScene().setFinalBoard(Arrays.toString(dtgrPacket.getData()));
+                System.out.println(new String(dtgrPacket.getData()));
+                //gameManager.getScene().setFinalBoard(new String(dtgrPacket.getData()));
             }
 
         } catch (IOException e) {
