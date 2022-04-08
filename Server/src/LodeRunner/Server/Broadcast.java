@@ -13,6 +13,7 @@ public class Broadcast implements Runnable {
 
     private final GameManager gameManager;
     private final int port;
+    private String ip;
 
     public Broadcast(GameManager gameManager, int port) {
         this.gameManager = gameManager;
@@ -25,11 +26,10 @@ public class Broadcast implements Runnable {
         while (gameManager.getGameState().equals(GameState.MULTIGAME)) {
             try (DatagramSocket dtgrSocket = new DatagramSocket()) {
 
-                /*String ip = "255.255.255.255";
-                InetSocketAddress addr = new InetSocketAddress(ip, port);*/
+                InetSocketAddress addr = new InetSocketAddress(ip, port);
 
                 byte[] msgByte = gameManager.getScene().getFinalBoard().getBytes();
-                dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, port));
+                dtgrSocket.send(new DatagramPacket(msgByte, msgByte.length, addr));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -38,4 +38,7 @@ public class Broadcast implements Runnable {
 
     }
 
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 }

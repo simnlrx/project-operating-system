@@ -56,8 +56,6 @@ public class GameManager {
         if (gamemode == 2) {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
-            if (isServer())
-                threadManager.addThread(new Thread(new Broadcast(this, port)));
         }
 
         threadManager.addThread(new RefreshScene(this));

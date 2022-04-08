@@ -38,8 +38,12 @@ public class ReceptionClient implements Runnable {
                   System.out.println("Connexion établie. \nPRESS ENTER");
                 }
 
-                if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6"))
+                if(tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6")) {
                     player.setReady(true);
+                    Broadcast broadcast = new Broadcast(gameManager, gameManager.getPort());
+                    broadcast.setIp(socket.getInetAddress().getHostAddress());
+                    new Thread(broadcast).start();
+                }
 
                 if(player.isReady()){
                     switch (tampon){
