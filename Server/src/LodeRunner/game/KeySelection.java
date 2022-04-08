@@ -67,6 +67,11 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x - 1, y);
                     }
                 }
+                if(left == 11 || left == 10){
+                  scene.setValuePosition(x, y, 0);
+                  scene.setPositionPlayer(player, x - 2, y);
+                }
+
                 break;
             case 's':
                 // si touche s touchée alors déplacement vers le bas
@@ -103,6 +108,10 @@ public class KeySelection {
                         scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x + 1, y);
                     }
+                }
+                if(right == 11 || right == 10){
+                  scene.setValuePosition(x, y, 0);
+                  scene.setPositionPlayer(player, x + 2, y);
                 }
                 break;
             case 'e':

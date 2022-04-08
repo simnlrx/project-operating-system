@@ -71,13 +71,6 @@ public class RegenSceneThread extends Thread {
                         }
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 15) {
                             gameManager.getScene().setValuePosition(x, y, 15);
-                        }
-                        if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 11) {
-                            gameManager.getScene().setValuePosition(x, y, 11);
-                        }
-                        if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 10) {
-                            gameManager.getScene().setValuePosition(x, y, 10);
-                        }
                     }
                 }
                 if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
