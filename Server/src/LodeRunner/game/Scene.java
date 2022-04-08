@@ -19,11 +19,13 @@ package LodeRunner.game;
 // 15 - niveau suivant
 
 
+import LodeRunner.handler.GameManager;
+import LodeRunner.handler.ServerManager;
+
 public class Scene {
     private final int height; //Hauteur de l'écran
     private final int length; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
-    private String finalBoard;
 
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
@@ -33,6 +35,8 @@ public class Scene {
 
     private Player player1 = new Player("p1", 1);
     private Player player2 = new Player("p2", 2);
+
+    private ServerManager serverManager;
 
     /**
      * Constructeur d'une scene
@@ -45,7 +49,7 @@ public class Scene {
         this.length = length;
         this.board = new int[height][length];
         this.setScene();
-
+        serverManager = null;
     }
 
 
@@ -195,7 +199,17 @@ public class Scene {
         int spawnX = 0;
         try {
             wait(2000);
-            player1.getKill();
+            player.death();
+            if(serverManager != null) {
+                String score = "p";
+                if (player.getName().equals(getPlayer1().getName())) {
+                    score += "1";
+                } else {
+                    score += "2";
+                }
+                score += "life";
+                serverManager.send(score);
+            }
             do {
                 spawnX = (int) (Math.random() * this.getLenght() + 1);
             } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);

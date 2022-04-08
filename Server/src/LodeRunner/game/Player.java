@@ -102,7 +102,7 @@ public class Player {
         return res.toString();
     }
 
-    public void getKill(){
+    public void death(){
       // méthode pour enlever la vie d'un joueur
         this.life--;
     }

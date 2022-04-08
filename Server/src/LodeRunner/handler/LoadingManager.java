@@ -78,12 +78,8 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
                     player1.setReady(true);
-                    Socket socket = new Socket(player2.getSocket().getInetAddress().getHostAddress(), 8060);
-                    PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-                    writer.println("p1ready");
-                    writer.close();
-                    socket.close();
-
+                    gameManager.getServer().send("p1name" + player1.getName());
+                    gameManager.getServer().send("p1ready");
                 } while (player1.getName().equals("p1"));
 
                 initLoadingScene();

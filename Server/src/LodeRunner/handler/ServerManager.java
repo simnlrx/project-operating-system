@@ -2,23 +2,39 @@ package LodeRunner.handler;
 
 import LodeRunner.Server.TCPTask;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+
 public class ServerManager {
 
     private final GameManager gameManager;
     private TCPTask tcpTask;
     private Thread tcp;
+    private PrintWriter writer;
+    private Socket socket;
 
     public ServerManager(GameManager gameManager){
         this.gameManager = gameManager;
     }
 
-    public void start(){
+    public void start() throws IOException {
+        socket = new Socket(gameManager.getScene().getPlayer2().getSocket().getInetAddress().getHostAddress(), 8060);
+        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
         tcpTask = new TCPTask(gameManager, gameManager.getPort());
         tcp = new Thread(tcpTask);
         tcp.start();
     }
 
-    public void stop(){
+    public void send(String s){
+        writer.println(s);
+    }
+
+    public void stop() throws IOException {
+        writer.close();
+        socket.close();
         tcp.interrupt();
     }
 

@@ -6,6 +6,7 @@ import LodeRunner.game.Scene;
 import LodeRunner.thread.RefreshScene;
 import LodeRunner.thread.RegenSceneThread;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GameManager {
@@ -123,7 +124,7 @@ public class GameManager {
         gameState = GameState.END;
     }
 
-    public void startServer() {
+    public void startServer() throws IOException {
         server = new ServerManager(this);
         server.start();
     }
