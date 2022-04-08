@@ -137,10 +137,10 @@ public class Scene {
                         System.out.print("☼ ");
                     }// simulation d'un objet
                     case 10 -> {
-                        System.out.print("J ");
+                        System.out.print(player1.getName().charAt(0) + " ");
                     }// simulation du joueur courant
                     case 11 -> {
-                        System.out.print("P ");
+                        System.out.print(player2.getName().charAt(0) + " ");
                     }// simulation du joueur 2
                     case 12 -> {
                         System.out.print("__");

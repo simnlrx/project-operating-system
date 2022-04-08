@@ -33,10 +33,10 @@ public class ReceptionDatagramServer implements Runnable{
                 dtgrSocket.receive(dtgrPacket);
                 System.out.println("\033[H\033[2J");
                 gameManager.getScene().generateBoard(new String(dtgrPacket.getData()));
-                //Thread.sleep(100);
+                Thread.sleep(100);
             }
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
