@@ -65,21 +65,23 @@ public class Scene {
         }
     }
 
-    public synchronized String generateBoard(String s) {
+    public synchronized void generateBoard(String s) {
         StringBuilder res = new StringBuilder();
-        int value;
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.length; j++) {
-                value = board[i][j];
+        String value;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') {
+                value = String.valueOf(s.charAt(i));
+                if (i + 1 < s.length() && s.charAt(i + 1) != ' ')
+                    value += String.valueOf(s.charAt(i + 1));
                 switch (value) {
-                    case 0, 6, 13, 14 -> res.append("  ");
-                    case 1, 2, 9 -> res.append("▓▓");
-                    case 3, 15 -> res.append("│┤");
-                    case 4 -> res.append("☠ ");
-                    case 5 -> res.append("☼ ");
-                    case 10 -> res.append(player1.getName().charAt(0)).append(" ");
-                    case 11 -> res.append(player2.getName().charAt(0)).append(" ");
-                    case 12 -> res.append("__");
+                    case "0", "6", "13", "14" -> res.append("  ");
+                    case "1", "2", "9" -> res.append("▓▓");
+                    case "3", "15" -> res.append("│┤");
+                    case "4" -> res.append("☠ ");
+                    case "5" -> res.append("☼ ");
+                    case "10" -> res.append(player1.getName().charAt(0)).append(" ");
+                    case "11" -> res.append(player2.getName().charAt(0)).append(" ");
+                    case "12" -> res.append("__");
                 }
             }
             res.append("\n");
@@ -88,7 +90,7 @@ public class Scene {
         res.append("\n");
         if (player2 != null)
             res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
-        return res.toString();
+        System.out.println(res.toString());
     }
 
     public synchronized void matrix2Screen() {
@@ -166,7 +168,7 @@ public class Scene {
                 //parcours de la matrice en x
                 if (board[i][j] == 6) {
                     setPositionPlayer(player1, j, i);
-                    setPositionPlayer(player2, j+1, i);
+                    setPositionPlayer(player2, j + 1, i);
                 }
             }
         }
@@ -277,19 +279,10 @@ public class Scene {
         this.posYNextLevel = y;
     }
 
-    public String getFinalBoard() {
-        this.finalBoard = generateBoard();
-        return finalBoard;
-    }
-
-    public void setFinalBoard(String finalBoard) {
-        this.finalBoard = finalBoard;
-    }
-
     public String getBoardtoString() {
         StringBuilder res = new StringBuilder();
-        for(int i = 0; i < this.height; i++){
-            for(int j = 0; j < this.length; j++){
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.length; j++) {
                 res.append(this.board[i][j]);
             }
             res.append("\n");
@@ -297,10 +290,4 @@ public class Scene {
         return res.toString();
     }
 
-    public int[][] convert(String s){
-        int[][] fboard;
-
-
-        return fboard;
-    }
 }

@@ -2,6 +2,7 @@ package LodeRunner.thread;
 
 import LodeRunner.game.Scene;
 import LodeRunner.handler.GameManager;
+import LodeRunner.handler.GameState;
 
 public class RefreshScene extends Thread {
     private final Scene scene;
@@ -24,7 +25,8 @@ public class RefreshScene extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
-                scene.matrix2Screen();
+                if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME))
+                    scene.matrix2Screen();
                 sleep(100);
             }
         } catch (InterruptedException e) {

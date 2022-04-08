@@ -31,11 +31,11 @@ public class ReceptionDatagramServer implements Runnable{
                 byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
-                System.out.println(new String(dtgrPacket.getData()));
-                //gameManager.getScene().setFinalBoard(new String(dtgrPacket.getData()));
+                gameManager.getScene().generateBoard(new String(dtgrPacket.getData()));
+                Thread.sleep(100);
             }
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
