@@ -43,23 +43,21 @@ public class GameManager {
     public void start() {
         threadManager = new ThreadManager();
 
-        if (gamemode == 1 || isServer) {
+        if (gamemode == 1 || isServer()) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
             threadManager.addThread(new RegenSceneThread(this));
         }
-        if(gamemode == 2 && isServer){
-            threadManager.addThread(new Thread(new Broadcast(this, port)));
-        }
 
-        if(gamemode == 1){
-            System.out.println("1 joueur");
+        if (gamemode == 1) {
             scene.set1Player(player1);
             gameState = GameState.SOLOGAME;
         }
         if (gamemode == 2) {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
+            if (isServer())
+                threadManager.addThread(new Thread(new Broadcast(this, port)));
         }
 
         threadManager.addThread(new RefreshScene(this));
@@ -73,7 +71,7 @@ public class GameManager {
             this.endLevel();
             scene.setScene();
 
-            GameManager gameManager2 = new GameManager(scene, GameState.GAMEMODE, port);
+            GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
             if (this.getLevel() < 4) {
@@ -82,9 +80,7 @@ public class GameManager {
                 wait(3000);
                 gameManager2.setGameMode(this.gamemode);
                 // lors de la récupération du mode de jeu, on set les joueurs
-                gameManager2.setGameState(GameState.LEVEL);
                 gameManager2.setLevel(gameManager2.getLevel());
-                gameManager2.setGameState(GameState.LOADING);
                 gameManager2.start();
             } else {
                 gameManager2.endGame();
