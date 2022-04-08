@@ -31,7 +31,6 @@ public class ReceptionDatagramServer implements Runnable{
                 byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
-                System.out.println("\033[H\033[2J");
                 gameManager.getScene().generateBoard(new String(dtgrPacket.getData()));
                 Thread.sleep(100);
             }

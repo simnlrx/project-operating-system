@@ -71,13 +71,15 @@ public class RegenSceneThread extends Thread {
                         }
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 15) {
                             gameManager.getScene().setValuePosition(x, y, 15);
+                        }
+                    }
+                    if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
+                        // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
+                        gameManager.nextLevel();
                     }
                 }
-                if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
-                    // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
-                    gameManager.nextLevel();
-                }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
