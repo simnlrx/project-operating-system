@@ -8,6 +8,13 @@ public class BlockBreakThread extends Thread {
     private GameManager gameManager;
     private int x, y;
 
+    /*
+     * Constructeur d'un joueur
+     * @param gameManager GameManager
+     * @param int x coorodnnée en x du bloc
+     * @param int y coodronnée en y du bloc
+     */
+
     public BlockBreakThread(GameManager gameManager, int x, int y) {
         this.gameManager = gameManager;
         this.x = x;

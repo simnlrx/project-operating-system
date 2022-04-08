@@ -14,7 +14,7 @@ public class Player {
     private int posY;
     private final int number;
     private int life;
-    private boolean ready;
+    private boolean ready;// bolléen pour la préparation deu joueur
     private int type; //0 -> seul donc gentil 1-> gentil (multi) -> 2 méchant
     private Socket socket;
     private PrintWriter writer;

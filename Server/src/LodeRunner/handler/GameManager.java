@@ -11,21 +11,16 @@ import java.util.Scanner;
 public class GameManager {
 
     private final Scene scene;  // scene de jeu
-    private Player player1;
-    // joueur 1
-    private Player player2;
-    // joueur 2
-    private int gamemode;
-    // mode de jeu - solo ou multi -
-    private int level;
-    // niveau de la partie
-    private boolean printEndGame;
-    // boolean pour l'affichage de fin de la partie
+    private Player player1;// joueur 1
+    private Player player2;// joueur 2
+    private int gamemode;// mode de jeu - solo ou multi -
+    private int level;// niveau de la partie
+    private boolean printEndGame;// boolean pour l'affichage de fin de la partie
     private int multiGamemode;
     private int port;
     private boolean isServer = false;
-    private GameState gameState;    // GameState pour l'état de la partie
-    private ThreadManager threadManager; // liste de thread
+    private GameState gameState;// GameState pour l'état de la partie
+    private ThreadManager threadManager;// liste de thread
     private ServerManager server;
 
     /*
