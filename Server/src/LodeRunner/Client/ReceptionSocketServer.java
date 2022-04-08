@@ -38,6 +38,7 @@ public class ReceptionSocketServer implements Runnable {
                     }
                     if(reader.readLine().contains("name")){
                         String name = reader.readLine().substring(7);
+                        System.out.println("NOM DU JOUEUR 1" + name);
                         player1.setName(name);
                     }
                     if(reader.readLine().contains("score")){

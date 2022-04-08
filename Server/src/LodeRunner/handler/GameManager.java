@@ -124,9 +124,13 @@ public class GameManager {
         gameState = GameState.END;
     }
 
-    public void startServer() throws IOException {
+    public void startServer() {
         server = new ServerManager(this);
         server.start();
+    }
+
+    public void startSocketServer() throws IOException {
+        server.startSocket();
     }
 
     public Scene getScene() {

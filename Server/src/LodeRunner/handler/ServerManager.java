@@ -20,12 +20,15 @@ public class ServerManager {
         this.gameManager = gameManager;
     }
 
-    public void start() throws IOException {
-        socket = new Socket(gameManager.getScene().getPlayer2().getSocket().getInetAddress().getHostAddress(), 8060);
-        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+    public void start() {
         tcpTask = new TCPTask(gameManager, gameManager.getPort());
         tcp = new Thread(tcpTask);
         tcp.start();
+    }
+
+    public void startSocket() throws IOException {
+        socket = new Socket(gameManager.getScene().getPlayer2().getSocket().getInetAddress().getHostAddress(), 8060);
+        writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
     }
 
     public void send(String s){
