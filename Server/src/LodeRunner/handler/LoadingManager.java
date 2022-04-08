@@ -73,25 +73,25 @@ public class LoadingManager {
                     player1.setReady(true);
                 } while (player1.getName().equals("p1"));
 
+                initLoadingScene();
+
                 String[][] host = getDisplay(Display.hostPage);
                 do {
                     printBoard(host);
                     scanner = new Scanner(System.in);
                     scanner.nextLine();
+                    gameManager.getServer().send("p1name" + player1.getName());
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
 
-                gameManager.getServer().send("p1name" + player1.getName());
-                wait(500);
-                gameManager.getServer().send("p1ready");
+
 
                 initLoadingScene();
-
                 String[][] wait = getDisplay(Display.waitPage);
 
                 do {
 
                     printBoard(wait);
-
+                    gameManager.getServer().send("p1ready");
                 } while (!player2.isReady());
             } else {
                 gameManager.setServer(false);

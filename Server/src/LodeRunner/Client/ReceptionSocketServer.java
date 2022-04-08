@@ -29,30 +29,31 @@ public class ReceptionSocketServer implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             Player player1 = gameManager.getScene().getPlayer1();
             Player player2 = gameManager.getScene().getPlayer2();
+            String tampon;
 
-            while (!socket.isClosed()) {
-                System.out.println("Nouveau message entrant: " + reader.readLine());
+            while (!socket.isClosed() && (tampon = reader.readLine()) != null) {
+                System.out.println("Nouveau message entrant: " + tampon);
 
-                if (reader.readLine().contains("p1ready")) {
+                if (tampon.contains("p1ready")) {
                     player1.setReady(true);
                 }
-                if (reader.readLine().contains("p1name")) {
-                    String name = reader.readLine().substring(7);
+                if (tampon.contains("p1name")) {
+                    String name = tampon.substring(7);
                     System.out.println("NOM DU JOUEUR 1" + name);
                     player1.setName(name);
                 }
-                if (reader.readLine().contains("p1score")) {
-                    int score = Integer.parseInt(reader.readLine().substring(8));
+                if (tampon.contains("p1score")) {
+                    int score = Integer.parseInt(tampon.substring(8));
                     player1.addScore(score);
                 }
-                if (reader.readLine().contains("p1life")) {
+                if (tampon.contains("p1life")) {
                     player1.death();
                 }
-                if (reader.readLine().contains("p2score")) {
-                    int score = Integer.parseInt(reader.readLine().substring(8));
+                if (tampon.contains("p2score")) {
+                    int score = Integer.parseInt(tampon.substring(8));
                     player2.addScore(score);
                 }
-                if (reader.readLine().contains("p2life")) {
+                if (tampon.contains("p2life")) {
                     player2.death();
                 }
 
