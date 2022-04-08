@@ -135,7 +135,8 @@ public class LoadingManager {
                 } while (this.type != 1 && this.type != 2);
 
                 initLoadingScene();
-                player2.send("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6");
+
+                player2.send("p2ready");
                 do {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());

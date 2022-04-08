@@ -39,7 +39,7 @@ public class ReceptionClient implements Runnable {
                     System.out.println("Connexion établie. \nPRESS ENTER");
                 }
 
-                if (tampon.equals("VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6")) {
+                if (tampon.equals("p2ready")) {
                     gameManager.setGameState(GameState.MULTIGAME);
                     Broadcast broadcast = new Broadcast(gameManager, gameManager.getPort());
                     broadcast.setIp(socket.getInetAddress().getHostAddress());

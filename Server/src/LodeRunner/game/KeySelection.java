@@ -51,7 +51,15 @@ public class KeySelection {
                 if (left == 5 && scene.getValuePosition(x - 1, y + 1) != 14) {
                     scene.setValuePosition(x, y, 0);
                     scene.setPositionPlayer(player, x - 1, y);
-                    setScore();
+                    player.setScore(100);
+                    String score = "p";
+                    if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
+                        score += "1";
+                    } else {
+                        score += "2";
+                    }
+                    score += "score100";
+                    gameManager.getServer().send(score);
                 }
                 if (left == 12) {
                     if (scene.getValuePosition(x - 1, y) == 12) {
@@ -79,7 +87,15 @@ public class KeySelection {
                 if (right == 5 && scene.getValuePosition(x + 1, y + 1) != 14) {
                     scene.setValuePosition(x, y, 0);
                     scene.setPositionPlayer(player, x + 1, y);
-                    setScore();
+                    player.setScore(100);
+                    String score = "p";
+                    if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
+                        score += "1";
+                    } else {
+                        score += "2";
+                    }
+                    score += "score100";
+                    gameManager.getServer().send(score);
                     break;
                 }
                 if (right == 12) {
@@ -118,20 +134,6 @@ public class KeySelection {
                 }
                 break;
 
-        }
-    }
-
-    private void setScore() {
-        player.addScore(100);
-        if (gameManager.isServer()) {
-            String score = "p";
-            if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
-                score += "1";
-            } else {
-                score += "2";
-            }
-            score += "score100";
-            gameManager.getServer().send(score);
         }
     }
 }
