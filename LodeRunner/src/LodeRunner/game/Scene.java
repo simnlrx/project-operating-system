@@ -16,7 +16,6 @@ package LodeRunner.game;
 // 13 - spawn ennemie
 // 14 - case vide pour les ennemis
 // 15 - niveau suivant
-// 16 - pièce pickup
 
 
 import LodeRunner.handler.ServerManager;

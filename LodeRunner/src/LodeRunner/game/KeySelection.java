@@ -48,7 +48,7 @@ public class KeySelection {
                         if (scene.getValuePosition(x - 1, y + 1) == 14){
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x - 1, y + 1);
-                            scene.reSpawnPlayer();
+                            scene.reSpawnPlayer(player);
                         }
                             break;
                     }
@@ -88,7 +88,7 @@ public class KeySelection {
                         break;
                     }
                     if (left == 5 && scene.getValuePosition(x - 1, y + 1) != 14) {
-                        scene.setValuePosition(x, y, 16);
+                        scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x - 1, y);
                         player.setScore(100);
                         if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
@@ -124,7 +124,7 @@ public class KeySelection {
                         break;
                     }
                     if (right == 5 && scene.getValuePosition(x + 1, y + 1) != 14) {
-                        scene.setValuePosition(x, y, 16);
+                        scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x + 1, y);
                         player.setScore(100);
                         if (gameManager.getGameState().equals(GameState.MULTIGAME)) {

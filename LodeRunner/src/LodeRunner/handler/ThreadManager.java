@@ -15,7 +15,7 @@ public class ThreadManager{
     this.threadList = new ArrayList<Thread>();
   }
 
-  public void startThreads(){
+  public synchronized void startThreads(){
     // méthode permettant de démarrer l'ensemble des threads de la liste
     for(int i=0;i<threadList.size();i++){
       if(!threadList.get(i).isAlive()) {

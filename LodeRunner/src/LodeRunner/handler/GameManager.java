@@ -43,9 +43,9 @@ public class GameManager {
         // possibilité de faire l'affichage de fin de partie quand printEndGame est à true
     }
 
-    public void start() {
+    public synchronized void start() {
         threadManager = new ThreadManager();
-
+        RegenSceneThread regen = new RegenSceneThread(this);
         if (gamemode == 1 || isServer()) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
@@ -59,9 +59,9 @@ public class GameManager {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
         }
-
-        threadManager.addThread(new RegenSceneThread(this));
-        threadManager.addThread(new RefreshScene(this));
+        RefreshScene refresh = new RefreshScene(this);
+        threadManager.addThread(refresh);
+        threadManager.addThread(regen);
         threadManager.startThreads();
 
     }
@@ -70,18 +70,14 @@ public class GameManager {
         //méthode pour respawn le joueur 1 dans un nouveau niveau
         try {
             this.endLevel();
-            scene.setScene();
-
+            System.out.println("Loading Level " + (this.getLevel()+1) + ", please wait. . .");
+            wait(2000);
             GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
-
-            if (this.getLevel() < 4) {
-                System.out.println("Loading Level " + gameManager2.getLevel()+1 + ", please wait. . .");
-                wait(3000);
+            gameManager2.setLevel(this.getLevel()+1);
+            if (this.getLevel() < 2) {
+              wait(2000);
                 gameManager2.setGameMode(this.getGameMode());
-                // lors de la récupération du mode de jeu, on set les joueurs
-                gameManager2.setLevel(this.level + 1);
-                wait(1000);
                 gameManager2.start();
             } else {
                 gameManager2.endGame();

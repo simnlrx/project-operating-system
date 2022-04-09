@@ -53,9 +53,8 @@ public class RegenSceneThread extends Thread {
     public void run() {
         Player player1 = gameManager.getScene().getPlayer1();
         // méthode qui va permettre de comparer le tableau tab et les valeurs de la scene pour regénérer les blocs, les échelles et les passerelleaprès le passage d'un ennemi ou d'un joueur
+        while (gameManager.getGameState().isGame()) {
         try {
-            while (gameManager.getGameState().isGame()) {
-
                 for (int y = 0; y < heighttab; y++) {
                     for (int x = 0; x < lenghtab; x++) {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 3) {
@@ -79,10 +78,9 @@ public class RegenSceneThread extends Thread {
                         gameManager.nextLevel();
                     }
                 }
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+      }
     }
 }
