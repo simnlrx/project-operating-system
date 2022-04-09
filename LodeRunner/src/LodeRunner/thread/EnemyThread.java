@@ -35,18 +35,12 @@ public class EnemyThread extends Thread {
         // les coordonnées de l'ennemi sont directement placés dans la scene
         this.gameManager = gameManager;
         this.player1 = gameManager.getScene().getPlayer1();
-        this.player2 = gameManager.getScene().getPlayer1();
+        this.player2 = gameManager.getScene().getPlayer2();
     }
 
-    public double getDistanceToPlayer1(int posXEnemy, int posYEnemy) {
+    public double getDistanceToPlayer(Player player, int posXEnemy, int posYEnemy) {
         // méthode pour le calcul de la distance entre un ennemi et le joueur 1
-        double dist = Math.sqrt(Math.pow((posXEnemy - player1.getPosX()), 2) + Math.pow((posYEnemy - player1.getPosY()), 2));
-        return dist;
-    }
-
-    public double getDistanceToPlayer2(int posXEnemy, int posYEnemy) {
-        // méthode pour le calcul de la distance entre un ennemi et le joueur 2
-        double dist = Math.sqrt(Math.pow((posXEnemy - player2.getPosX()), 2) + Math.pow((posYEnemy - player2.getPosY()), 2));
+        double dist = Math.sqrt(Math.pow((posXEnemy - player.getPosX()), 2) + Math.pow((posYEnemy - player.getPosY()), 2));
         return dist;
     }
 
@@ -206,16 +200,16 @@ public class EnemyThread extends Thread {
                 if (player2 == null) {
                     distToP1();
                 } else {
-                    if (getDistanceToPlayer1(posX, posY) < getDistanceToPlayer2(posX, posY)) {
+                    if (getDistanceToPlayer(player1, posX, posY) < getDistanceToPlayer(player2, posX, posY)) {
                         distToP1();
                     } else {
-                        if (getDistanceToPlayer2(posX, posY + 1) < getDistanceToPlayer2(posX, posY)) {
+                        if (getDistanceToPlayer(player2, posX, posY + 1) < getDistanceToPlayer(player2,posX, posY)) {
                             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
                             downStairs();
-                        } else if (getDistanceToPlayer2(posX, posY - 1) < getDistanceToPlayer2(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
+                        } else if (getDistanceToPlayer(player2, posX, posY - 1) < getDistanceToPlayer(player2, posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
                             upStairs();
                         }
-                        if (getDistanceToPlayer2(posX - 1, posY) < getDistanceToPlayer2(posX, posY)) {
+                        if (getDistanceToPlayer(player2, posX - 1, posY) < getDistanceToPlayer(player2, posX, posY)) {
                             // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
                             moveLeft();
                         } else {// si un deplacement vers la gauche éloigne l'ennemi
@@ -231,13 +225,13 @@ public class EnemyThread extends Thread {
     }
 
     private void distToP1() {
-        if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
+        if (getDistanceToPlayer(player1,posX, posY + 1) < getDistanceToPlayer(player1,posX, posY)) {
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
             downStairs();
-        } else if (getDistanceToPlayer1(posX, posY - 1) < getDistanceToPlayer1(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
+        } else if (getDistanceToPlayer(player1, posX, posY - 1) < getDistanceToPlayer(player1, posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
             upStairs();
         }
-        if (getDistanceToPlayer1(posX - 1, posY) < getDistanceToPlayer1(posX, posY)) {
+        if (getDistanceToPlayer(player1, posX - 1, posY) < getDistanceToPlayer(player1, posX, posY)) {
             // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
             moveLeft();
         } else {// si un deplacement vers la gauche éloigne l'ennemi
