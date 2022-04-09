@@ -50,7 +50,7 @@ public class EnemyThread extends Thread {
         return dist;
     }
 
-    public synchronized void KillPlayer() {
+    public synchronized void killPlayer() {
         // méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
         // le jeu nécessite que le joueur 1 doit etre en vie
         if (player1.getLife() >= 1) {
@@ -209,7 +209,7 @@ public class EnemyThread extends Thread {
         } else {// si un deplacement vers la gauche éloigne l'ennemi
             moveRight();
         }
-        KillPlayer();
+        killPlayer();
     }
 
     private void distToP2() {
@@ -225,7 +225,7 @@ public class EnemyThread extends Thread {
         } else {// si un deplacement vers la gauche éloigne l'ennemi
             moveRight();
         }
-        KillPlayer();
+        killPlayer();
     }
 
 
