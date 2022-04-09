@@ -25,6 +25,7 @@ public class GameManager {
     private ThreadManager threadManager;// liste de thread
     private ServerManager server;
     private Client client;
+    private RegenSceneThread regen;
 
     /*
      * Constructeur de GameManager
@@ -45,7 +46,7 @@ public class GameManager {
 
     public synchronized void start() {
         threadManager = new ThreadManager();
-        RegenSceneThread regen = new RegenSceneThread(this);
+        regen = new RegenSceneThread(this);
         if (gamemode == 1 || isServer()) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
@@ -70,13 +71,12 @@ public class GameManager {
         //méthode pour respawn le joueur 1 dans un nouveau niveau
         try {
             this.endLevel();
-            System.out.println("Loading Level " + (this.getLevel()+1) + ", please wait. . .");
-            wait(2000);
             GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
             gameManager2.setLevel(this.getLevel()+1);
-            if (this.getLevel() < 2) {
-              wait(2000);
+            if (this.getLevel() < 4) {
+                System.out.println("Loading Level " + (this.getLevel()+1) + ", please wait. . .");
+                wait(4000);
                 gameManager2.setGameMode(this.getGameMode());
                 gameManager2.start();
             } else {
@@ -120,6 +120,7 @@ public class GameManager {
     public synchronized void endLevel() {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
+        this.regen.resetRegen();
     }
 
     public void startServer() {

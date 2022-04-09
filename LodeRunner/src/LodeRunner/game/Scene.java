@@ -157,7 +157,6 @@ public class Scene {
 
     public void set1Player(Player player) {
         System.out.println("setplayer");
-
         //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player;
         this.player2 = null;
@@ -199,8 +198,12 @@ public class Scene {
         try {
             if (player.getType() == 0 || player.getType() == 1) {
                 wait(2000);
-                if (serverManager != null)
-                    serverManager.death(player);
+                if (serverManager != null){
+                  serverManager.death(player);
+                }
+                else{
+                  player.death();
+                }
                 do {
                     spawnX = (int) (Math.random() * this.getLenght() + 1);
                 } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);

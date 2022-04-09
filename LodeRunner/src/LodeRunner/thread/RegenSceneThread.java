@@ -21,6 +21,8 @@ public class RegenSceneThread extends Thread {
     // fichier du niveau
     private GameManager gameManager;
     // GameManager
+    private int level;
+    // niveau du niveau
 
     /*
      * Constructeur de RegenSceneThread
@@ -32,9 +34,10 @@ public class RegenSceneThread extends Thread {
         this.gameManager = gameManager;
         this.lenghtab = gameManager.getScene().getLenght();
         this.heighttab = gameManager.getScene().getHeight();
+        this.level = gameManager.getLevel();
         this.index = 0;
+        this.tab = new int[heighttab][lenghtab];
         try {
-            this.tab = new int[heighttab][lenghtab];
             file = new File("LodeRunner/files/level" + gameManager.getLevel() + ".txt");
             BufferedReader obj = new BufferedReader(new FileReader(file));
             StreamTokenizer st = new StreamTokenizer(obj);
@@ -47,6 +50,15 @@ public class RegenSceneThread extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void resetRegen(){
+      // méthode pour réinitilaiser le tableau
+      for(int i=0;i<heighttab;i++){
+        for(int y=0;y<lenghtab;y++){
+          this.tab[i][y] = 0;
+        }
+      }
     }
 
     @Override
