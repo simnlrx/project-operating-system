@@ -180,8 +180,8 @@ public class EnemyThread extends Thread {
                 if (player2 != null && player2.getType() == 2)
                     player2.addScore(50);
                 if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
-                    gameManager.getServer().addScore(player1, 100);
-                    gameManager.getServer().addScore(player2, 100);
+                    gameManager.getServer().addScore(player1, 50);
+                    gameManager.getServer().addScore(player2, 50);
                 }
                 //le joueur gagne 50 points
                 scene.setValuePosition(posX, posY, 2);
