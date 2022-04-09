@@ -49,7 +49,6 @@ public class GameManager {
         if (gamemode == 1 || isServer()) {
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
-            threadManager.addThread(new RegenSceneThread(this));
         }
 
         if (gamemode == 1) {
@@ -61,6 +60,7 @@ public class GameManager {
             gameState = GameState.MULTIGAME;
         }
 
+        threadManager.addThread(new RegenSceneThread(this));
         threadManager.addThread(new RefreshScene(this));
         threadManager.startThreads();
 
@@ -76,12 +76,12 @@ public class GameManager {
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
 
             if (this.getLevel() < 4) {
-                gameManager2.setLevel(this.level + 1);
-                System.out.println("Loading Level " + gameManager2.getLevel() + ", please wait. . .");
+                System.out.println("Loading Level " + gameManager2.getLevel()+1 + ", please wait. . .");
                 wait(3000);
                 gameManager2.setGameMode(this.getGameMode());
                 // lors de la récupération du mode de jeu, on set les joueurs
-                gameManager2.setLevel(gameManager2.getLevel());
+                gameManager2.setLevel(this.level + 1);
+                wait(1000);
                 gameManager2.start();
             } else {
                 gameManager2.endGame();
