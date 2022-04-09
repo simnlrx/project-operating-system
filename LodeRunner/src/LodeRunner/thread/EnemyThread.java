@@ -69,7 +69,7 @@ public class EnemyThread extends Thread {
         }
     }
 
-    public synchronized void downStairs() {
+    public synchronized void downLadder() {
         // méthode permettant de faire descendre les escaliers à un ennemi
         if (scene.getValuePosition(posX, posY + 1) == 3 || scene.getValuePosition(posX, posY + 1) == 10) {
             //vérification si le bloc suivant est un escalier et pas une platforme
@@ -82,7 +82,7 @@ public class EnemyThread extends Thread {
         }
     }
 
-    public synchronized void upStairs() {
+    public synchronized void upLadder() {
         // méthode permettant de faire monter les escaliers à un ennemi
         if (scene.getValuePosition(posX, posY - 1) == 3 || scene.getValuePosition(posX, posY - 1) == 10) {
             //vérification si le bloc suivant est un escalier et pas une platforme
@@ -199,9 +199,9 @@ public class EnemyThread extends Thread {
     private void distToP1() {
         if (getDistanceToPlayer1(posX, posY + 1) < getDistanceToPlayer1(posX, posY)) {
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
-            downStairs();
+            downLadder();
         } else if (getDistanceToPlayer1(posX, posY - 1) < getDistanceToPlayer1(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
-            upStairs();
+            upLadder();
         }
         if (getDistanceToPlayer1(posX - 1, posY) < getDistanceToPlayer1(posX, posY)) {
             // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
@@ -215,9 +215,9 @@ public class EnemyThread extends Thread {
     private void distToP2() {
         if (getDistanceToPlayer2(posX, posY + 1) < getDistanceToPlayer2(posX, posY)) {
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
-            downStairs();
+            downLadder();
         } else if (getDistanceToPlayer2(posX, posY - 1) < getDistanceToPlayer2(posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
-            upStairs();
+            upLadder();
         }
         if (getDistanceToPlayer2(posX - 1, posY) < getDistanceToPlayer2(posX, posY)) {
             // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
