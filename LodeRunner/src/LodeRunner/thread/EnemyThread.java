@@ -44,7 +44,7 @@ public class EnemyThread extends Thread {
         return dist;
     }
 
-    public synchronized void KillPlayer() {
+    public synchronized void killPlayer() {
         // méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
         // le jeu nécessite que le joueur 1 doit etre en vie
         if (player1.getLife() >= 1) {
@@ -191,40 +191,7 @@ public class EnemyThread extends Thread {
         }
     }
 
-
-    @Override
-    public void run() {
-        try {
-            while (gameManager.getGameState().isGame()) {
-                this.sleep(300);
-                if (player2 == null) {
-                    distToP1();
-                } else {
-                    if (getDistanceToPlayer(player1, posX, posY) < getDistanceToPlayer(player2, posX, posY)) {
-                        distToP1();
-                    } else {
-                        if (getDistanceToPlayer(player2, posX, posY + 1) < getDistanceToPlayer(player2,posX, posY)) {
-                            // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
-                            downStairs();
-                        } else if (getDistanceToPlayer(player2, posX, posY - 1) < getDistanceToPlayer(player2, posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
-                            upStairs();
-                        }
-                        if (getDistanceToPlayer(player2, posX - 1, posY) < getDistanceToPlayer(player2, posX, posY)) {
-                            // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
-                            moveLeft();
-                        } else {// si un deplacement vers la gauche éloigne l'ennemi
-                            moveRight();
-                        }
-                        KillPlayer();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void distToP1() {
+    private void distanceToPlayer1() {
         if (getDistanceToPlayer(player1,posX, posY + 1) < getDistanceToPlayer(player1,posX, posY)) {
             // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
             downStairs();
@@ -237,6 +204,43 @@ public class EnemyThread extends Thread {
         } else {// si un deplacement vers la gauche éloigne l'ennemi
             moveRight();
         }
-        KillPlayer();
+        killPlayer();
+    }
+
+    private void distanceToPlayer2() {
+        if (getDistanceToPlayer(player2,posX, posY + 1) < getDistanceToPlayer(player2,posX, posY)) {
+            // vérification si un deplacement vers le haut pourrai rapprocher l'ennemi du joueur
+            downStairs();
+        } else if (getDistanceToPlayer(player2, posX, posY - 1) < getDistanceToPlayer(player2, posX, posY)) {// si un deplacement vers le haut éloigne l'ennemi
+            upStairs();
+        }
+        if (getDistanceToPlayer(player2, posX - 1, posY) < getDistanceToPlayer(player2, posX, posY)) {
+            // vérification si un deplacement vers la gauche pourrai rapprocher l'ennemi du joueur
+            moveLeft();
+        } else {// si un deplacement vers la gauche éloigne l'ennemi
+            moveRight();
+        }
+        killPlayer();
+    }
+
+    
+    @Override
+    public void run() {
+        try {
+            while (gameManager.getGameState().isGame()) {
+                this.sleep(300);
+                if (player2 == null) {
+                    distanceToPlayer1();
+                } else {
+                    if (getDistanceToPlayer(player1, posX, posY) < getDistanceToPlayer(player2, posX, posY)) {
+                        distanceToPlayer1();
+                    } else {
+                        distanceToPlayer2();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
