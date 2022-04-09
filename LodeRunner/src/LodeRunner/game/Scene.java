@@ -37,12 +37,14 @@ public class Scene {
 
     private ServerManager serverManager;
 
-    /**
+    /*
      * Constructeur d'une scene
      *
      * @param height Hauteur de la scene
      * @param length Longueur de la scene
      */
+
+
     public Scene(int height, int length) {
         this.height = height;
         this.length = length;
