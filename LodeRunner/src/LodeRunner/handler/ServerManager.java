@@ -67,19 +67,8 @@ public class ServerManager {
         tcp.interrupt();
     }
 
-    public Thread getTcp() {
-        return tcp;
-    }
-
-    public void setTcp(Thread tcp) {
-        this.tcp = tcp;
-    }
-
     public TCPTask getTcpTask() {
         return tcpTask;
     }
 
-    public void setTcpTask(TCPTask tcpTask) {
-        this.tcpTask = tcpTask;
-    }
 }

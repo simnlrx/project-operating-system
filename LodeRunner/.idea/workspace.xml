@@ -4,15 +4,8 @@
     <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/files/level2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/files/level2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/files/level3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/files/level3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/files/level4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/files/level4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/EnemiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/EnemiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/ServerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +95,7 @@
       <workItem from="1649429989182" duration="293000" />
       <workItem from="1649434245405" duration="278000" />
       <workItem from="1649436077825" duration="4163000" />
+      <workItem from="1649599167504" duration="2267000" />
     </task>
     <servers />
   </component>

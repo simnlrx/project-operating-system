@@ -87,7 +87,7 @@ public class GameManager {
         }
     }
 
-    public void printEndGame() {
+    public void printEndGame() throws IOException {
         //méthode pour afficher la fin de partie
         if (this.printEndGame) {
 
@@ -107,6 +107,10 @@ public class GameManager {
                 scanner = new Scanner(System.in);
                 continueToEnd = scanner.nextLine();
             } while (!continueToEnd.equals("e"));
+            if(isServer)
+                server.stop();
+            if(gamemode == 2 && !isServer)
+                client.logout();
             System.exit(0);
         }
     }
