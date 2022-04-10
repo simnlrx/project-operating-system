@@ -98,7 +98,7 @@ public class Scene {
         if (player2 != null)
             res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
         this.fboard = res.toString();
-    }
+
 
     public String getBoardtoString() {
         StringBuilder res = new StringBuilder();
@@ -158,7 +158,6 @@ public class Scene {
     }
 
     public void set1Player(Player player) {
-        System.out.println("setplayer");
         //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player;
         this.player2 = null;
@@ -167,7 +166,6 @@ public class Scene {
             for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
                 if (board[i][j] == 6) {
-                    System.out.println("position joueur x: " + j + " y: " + i);
                     setPositionPlayer(player, j, i);
                 }
             }
@@ -193,12 +191,12 @@ public class Scene {
 
     public synchronized void reSpawnPlayer(Player player) {
         //méthode pour respawn le joueur 1 dans la scene
-        this.setValuePosition(player.getPosX(), player.getPosY(), 4);
         player.setPosition(0, 0);
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
             if (player.getType() == 0 || player.getType() == 1) {
+                this.setValuePosition(player.getPosX(), player.getPosY(), 4);
                 wait(2000);
                 if (serverManager != null){
                   serverManager.death(player);
