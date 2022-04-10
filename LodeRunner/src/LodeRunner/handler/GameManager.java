@@ -115,7 +115,7 @@ public class GameManager {
         }
     }
 
-    public synchronized void endGame() {
+    public synchronized void endGame() throws IOException {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
         printEndGame();
