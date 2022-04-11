@@ -270,6 +270,16 @@ public class Scene {
         return this.player2;
     }
 
+    public void setPlayer1(Player player) {
+        // setter pour le premier joueur
+        this.player2 = player;
+    }
+
+    public void setPlayer2(Player player) {
+        // setter pour le second joueur
+        this.player2 = player;
+    }
+
     public int getPosXSpawnEnemy() {
         // getter pour le spawn en X des ennemis
         return this.posXSpawnEnemy;

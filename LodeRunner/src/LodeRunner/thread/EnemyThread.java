@@ -19,6 +19,7 @@ public class EnemyThread extends Thread {
     // joueur 1
     private Player player2;
     // joueur 2
+    private int lvl;
 
     /*
      * Constructeur de EnemyThread
@@ -36,6 +37,7 @@ public class EnemyThread extends Thread {
         this.gameManager = gameManager;
         this.player1 = gameManager.getScene().getPlayer1();
         this.player2 = gameManager.getScene().getPlayer2();
+        this.lvl = gameManager.getLevel();
     }
 
     public double getDistanceToPlayer1(int posXEnemy, int posYEnemy) {

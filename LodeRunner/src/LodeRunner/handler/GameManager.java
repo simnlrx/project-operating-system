@@ -71,6 +71,7 @@ public class GameManager {
     public synchronized void nextLevel() {
         //méthode pour respawn le joueur 1 dans un nouveau niveau
         try {
+            Player player2 = this.getScene().getPlayer2();
             this.endLevel();
             GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
             // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
@@ -79,6 +80,10 @@ public class GameManager {
                 System.out.println("Loading Level " + (this.getLevel()+1) + ", please wait. . .");
                 wait(4000);
                 gameManager2.setGameMode(this.getGameMode());
+                if(isServer()){
+                  gameManager2.startServer();
+                  gameManager2.startSocketServer();
+                }
                 gameManager2.start();
             } else {
                 gameManager2.endGame();
@@ -86,6 +91,10 @@ public class GameManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public synchronized void tt(){
+
     }
 
     public void printEndGame() throws IOException {

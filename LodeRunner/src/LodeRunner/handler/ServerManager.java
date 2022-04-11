@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class ServerManager {
 
-    private final GameManager gameManager;
+    private GameManager gameManager;
     private TCPTask tcpTask;
     private Thread tcp;
     private PrintWriter writer;
@@ -67,6 +67,10 @@ public class ServerManager {
 
     public TCPTask getTcpTask() {
         return tcpTask;
+    }
+
+    public void setGameManager(GameManager gm) {
+      this.gameManager = gm;
     }
 
 }
