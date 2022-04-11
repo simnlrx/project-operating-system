@@ -34,6 +34,7 @@ public class ReceptionSocketServer implements Runnable {
             while (!socket.isClosed() && (tampon = reader.readLine()) != null) {
 
                 if (tampon.contains("p1ready")) {
+                    player1.setType(1);
                     player1.setReady(true);
                 }
                 if (tampon.contains("p1name")) {

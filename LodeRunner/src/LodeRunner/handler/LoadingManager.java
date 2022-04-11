@@ -1,14 +1,9 @@
 package LodeRunner.handler;
 
-import LodeRunner.Client.Client;
 import LodeRunner.game.Player;
 import LodeRunner.utils.Display;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.Scanner;
 
 public class LoadingManager {
@@ -70,6 +65,7 @@ public class LoadingManager {
                     printBoard(namePlayer);
                     scanner = new Scanner(System.in);
                     player1.setName(scanner.nextLine());
+                    player1.setType(1);
                     player1.setReady(true);
                 } while (player1.getName().equals("p1"));
 
@@ -82,7 +78,6 @@ public class LoadingManager {
                     scanner.nextLine();
                     gameManager.getServer().send("p1name" + player1.getName());
                 } while (gameManager.getServer().getTcpTask().getClient() != 1);
-
 
 
                 initLoadingScene();
@@ -134,7 +129,10 @@ public class LoadingManager {
 
                 initLoadingScene();
 
-                player2.send("p2ready");
+                if (player2.getType() == 1)
+                    player2.send("p2ready1");
+                else if (player2.getType() == 2)
+                    player2.send("p2ready2");
                 do {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());

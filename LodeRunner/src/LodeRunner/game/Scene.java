@@ -182,7 +182,10 @@ public class Scene {
             //parcours de la matrice en y
             for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
-                if (board[i][j] == 6) {
+                if(player2.getType() == 2 && board[i][j] == 13){
+                    setPositionPlayer(player2, j, i);
+                }
+                if (player2.getType() == 1 && board[i][j] == 6) {
                     setPositionPlayer(player1, j, i);
                     setPositionPlayer(player2, j + 1, i);
                 }

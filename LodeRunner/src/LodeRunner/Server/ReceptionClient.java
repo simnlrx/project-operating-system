@@ -1,7 +1,5 @@
 package LodeRunner.Server;
 
-//Reçoit les infos du client
-
 import LodeRunner.game.KeySelection;
 import LodeRunner.game.Player;
 import LodeRunner.handler.GameManager;
@@ -39,8 +37,13 @@ public class ReceptionClient implements Runnable {
                     System.out.println("Connexion établie. \nPRESS ENTER");
                 }
 
-                if (tampon.equals("p2ready")) {
+                if(tampon.contains("p2ready")) {
                     gameManager.setGameState(GameState.MULTIGAME);
+                    if (tampon.equals("p2ready1")) {
+                        player.setType(1);
+                    } else {
+                        player.setType(2);
+                    }
                     Broadcast broadcast = new Broadcast(gameManager, gameManager.getPort());
                     broadcast.setIp(socket.getInetAddress().getHostAddress());
                     new Thread(broadcast).start();
