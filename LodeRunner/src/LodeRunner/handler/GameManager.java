@@ -124,7 +124,7 @@ public class GameManager {
     public synchronized void endLevel() {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
-        this.regen.resetRegen();
+        //this.regen.resetRegen();
     }
 
     public void startServer() {
