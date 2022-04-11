@@ -84,6 +84,9 @@ public class RegenSceneThread extends Thread {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 15) {
                             gameManager.getScene().setValuePosition(x, y, 15);
                         }
+                        if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 1) {
+                            gameManager.getScene().setValuePosition(x, y, 1);
+                        }
                     }
                     if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
                         // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau

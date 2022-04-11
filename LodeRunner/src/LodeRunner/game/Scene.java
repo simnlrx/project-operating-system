@@ -209,7 +209,7 @@ public class Scene {
                 }
                 do {
                     spawnX = (int) (Math.random() * this.getLenght() + 1);
-                } while (this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2);
+                } while ((this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2) && this.getValuePosition(spawnX, Platforme + 1) != 5);
                 player.setPosition(spawnX, Platforme);
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
