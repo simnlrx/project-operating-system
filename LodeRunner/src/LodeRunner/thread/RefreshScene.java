@@ -25,12 +25,12 @@ public class RefreshScene extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
-                /*if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)) {
+                if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)) {
                     scene.matrix2Screen();
                 }else{
                     System.out.println("\033[H\033[2J");
                     System.out.println(gameManager.getScene().getFboard());
-                }*/
+                }
                 sleep(100);
 
             }

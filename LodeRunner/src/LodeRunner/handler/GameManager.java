@@ -48,7 +48,8 @@ public class GameManager {
         threadManager = new ThreadManager();
 
         if (gamemode == 1 || isServer()) {
-            threadManager.addThread(new RegenSceneThread(this));
+            regen = new RegenSceneThread(this);
+            threadManager.addThread(regen);
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
         }
@@ -124,7 +125,7 @@ public class GameManager {
     public synchronized void endLevel() {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
-        //this.regen.resetRegen();
+        regen.resetRegen();
     }
 
     public void startServer() {
