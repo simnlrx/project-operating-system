@@ -70,7 +70,7 @@ public class Scene {
         }
     }
 
-    public synchronized void generateBoard(String s) {
+    public void generateBoard(String s) {
         StringBuilder res = new StringBuilder();
         String value;
         for (int i = 0; i < s.length(); i++) {
@@ -101,7 +101,7 @@ public class Scene {
 
     }
 
-    public String getBoardtoString() {
+    public synchronized String getBoardtoString() {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.length; j++) {

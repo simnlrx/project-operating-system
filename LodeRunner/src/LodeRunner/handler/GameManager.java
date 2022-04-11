@@ -46,8 +46,9 @@ public class GameManager {
 
     public synchronized void start() {
         threadManager = new ThreadManager();
-        regen = new RegenSceneThread(this);
+
         if (gamemode == 1 || isServer()) {
+            threadManager.addThread(new RegenSceneThread(this));
             new LevelManager(this);
             new EnemiesManager(this, threadManager);
         }
@@ -60,9 +61,8 @@ public class GameManager {
             scene.set2Players(player1, player2);
             gameState = GameState.MULTIGAME;
         }
-        RefreshScene refresh = new RefreshScene(this);
-        threadManager.addThread(refresh);
-        threadManager.addThread(regen);
+
+        threadManager.addThread(new RefreshScene(this));
         threadManager.startThreads();
 
     }
