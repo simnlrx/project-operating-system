@@ -89,6 +89,7 @@ public class LoadingManager {
                     gameManager.getServer().send("p1ready");
                 } while (!player2.isReady());
             } else {
+                gameManager.setServer(false);
                 initLoadingScene();
                 String[][] name = getDisplay(Display.namePage);
 
