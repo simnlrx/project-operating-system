@@ -44,15 +44,13 @@ public class ServerManager {
             s += "2";
         }
         s += "score" + score;
-        if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
-            gameManager.getServer().send(s);
-        }
+        send(s);
     }
 
     public void death(Player player) {
         player.death();
         String life = "p";
-        if (player.getName().equals(player.getName())) {
+        if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
             life += "1";
         } else {
             life += "2";
