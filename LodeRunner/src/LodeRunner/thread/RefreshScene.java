@@ -9,6 +9,7 @@ public class RefreshScene extends Thread {
     // scene de jeu
     private final GameManager gameManager;
     // GameManager
+    private int lvl;
 
     /*
      * Constructeur de RefreshScene
@@ -18,13 +19,14 @@ public class RefreshScene extends Thread {
     public RefreshScene(GameManager gameManager) {
         this.scene = gameManager.getScene();
         this.gameManager = gameManager;
+        this.lvl = gameManager.getLevel();
     }
 
 
     @Override
     public void run() {
         try {
-            while (gameManager.getGameState().isGame()) {
+            while (gameManager.getLevel() == lvl) {
                 if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)) {
                     scene.matrix2Screen();
                 }else{

@@ -27,8 +27,8 @@ public class ReceptionSocketServer implements Runnable {
 
             Socket socket = serverSocket.accept();
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            Player player1 = gameManager.getScene().getPlayer1();
-            Player player2 = gameManager.getScene().getPlayer2();
+            Player player1 = gameManager.getPlayer1();
+            Player player2 = gameManager.getPlayer2();
             String tampon;
 
             while (!socket.isClosed() && (tampon = reader.readLine()) != null) {

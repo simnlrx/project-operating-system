@@ -15,16 +15,11 @@ public class LodeRunner {
         System.out.println("Lode Runner | Runnig ...");
         Display.title();
 
-        Scene scene = new Scene(30, 40);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
-        GameManager gameManager = new GameManager(scene, GameState.LOADING, 8059);
-        JFrame frame = new JFrame("Contrôles");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GameManager gameManager = new GameManager(GameState.LOADING, 8059);
         LoadingManager loading = new LoadingManager(gameManager); // 40 30
 
         loading.start();
         gameManager.setLevel(1);
-        FrameManager frameManager = new FrameManager(frame, gameManager);
-        frameManager.generate();
         gameManager.start();
     }
 }

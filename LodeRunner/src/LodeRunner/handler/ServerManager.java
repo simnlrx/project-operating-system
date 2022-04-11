@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class ServerManager {
 
-    private final GameManager gameManager;
+    private GameManager gameManager;
     private TCPTask tcpTask;
     private Thread tcp;
     private PrintWriter writer;
@@ -28,7 +28,7 @@ public class ServerManager {
     }
 
     public void startSocket() throws IOException {
-        socket = new Socket(gameManager.getScene().getPlayer2().getSocket().getInetAddress().getHostAddress(), 8060);
+        socket = new Socket(gameManager.getPlayer2().getSocket().getInetAddress().getHostAddress(), 8060);
         writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
     }
 
@@ -38,21 +38,19 @@ public class ServerManager {
 
     public void addScore(Player player, int score) {
         String s = "p";
-        if (player.getName().equals(gameManager.getScene().getPlayer1().getName())) {
+        if (player.getName().equals(gameManager.getPlayer1().getName())) {
             s += "1";
         } else {
             s += "2";
         }
         s += "score" + score;
-        if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
-            gameManager.getServer().send(s);
-        }
+        send(s);
     }
 
     public void death(Player player) {
         player.death();
         String life = "p";
-        if (player.getName().equals(player.getName())) {
+        if (player.getName().equals(gameManager.getPlayer1().getName())) {
             life += "1";
         } else {
             life += "2";
@@ -69,6 +67,10 @@ public class ServerManager {
 
     public TCPTask getTcpTask() {
         return tcpTask;
+    }
+
+    public void setGameManager(GameManager gm) {
+      this.gameManager = gm;
     }
 
 }

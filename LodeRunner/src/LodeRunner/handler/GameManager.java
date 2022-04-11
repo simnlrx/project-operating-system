@@ -1,31 +1,32 @@
 package LodeRunner.handler;
 
 import LodeRunner.Client.Client;
-import LodeRunner.Server.Broadcast;
 import LodeRunner.game.Player;
 import LodeRunner.game.Scene;
 import LodeRunner.thread.RefreshScene;
 import LodeRunner.thread.RegenSceneThread;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class GameManager {
 
-    private final Scene scene;  // scene de jeu
+    private Scene scene;  // scene de jeu
+    private GameState gameState;// GameState pour l'état de la partie
+    private ThreadManager threadManager;// liste de thread
+    private ServerManager server;
+    private Client client;
+    private RegenSceneThread regen;
     private Player player1;// joueur 1
     private Player player2;// joueur 2
+    private JFrame frame;
     private int gamemode;// mode de jeu - solo ou multi -
     private int level;// niveau de la partie
     private boolean printEndGame;// boolean pour l'affichage de fin de la partie
     private int multiGamemode;
     private int port;
     private boolean isServer = false;
-    private GameState gameState;// GameState pour l'état de la partie
-    private ThreadManager threadManager;// liste de thread
-    private ServerManager server;
-    private Client client;
-    private RegenSceneThread regen;
 
     /*
      * Constructeur de GameManager
@@ -33,18 +34,22 @@ public class GameManager {
      * @param GameState gameState pour l'état du jeu
      */
 
-    public GameManager(Scene scene, GameState gameState, int port) {
+    public GameManager(GameState gameState, int port) {
         // lors du lancement de la partie, les joueurs choisis auparavant sont ajoutés au GameManager
-        this.player1 = scene.getPlayer1();
-        this.player2 = scene.getPlayer2();
-        this.scene = scene;
+        this.player1 = new Player("p1", 1);
+        this.player2 = new Player("p2", 2);
         this.gameState = gameState;
         this.printEndGame = true;
         this.port = port;
+        this.scene = new Scene(30, 40, player1, player2);//les valeurs 17 et 36 sont faites pour coller avec les méthodes de création des escaliers =>17-1(pour le bord)= 4 escaliers
         // possibilité de faire l'affichage de fin de partie quand printEndGame est à true
     }
 
-    public synchronized void start() {
+    public void start() {
+        frame = new JFrame("Contrôles");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        FrameManager frameManager = new FrameManager(frame, this);
+        frameManager.generate();
         threadManager = new ThreadManager();
 
         if (gamemode == 1 || isServer()) {
@@ -68,24 +73,17 @@ public class GameManager {
 
     }
 
-    public synchronized void nextLevel() {
-        //méthode pour respawn le joueur 1 dans un nouveau niveau
-        try {
-            this.endLevel();
-            GameManager gameManager2 = new GameManager(scene, GameState.LOADING, port);
-            // créer une nouvelle insatnce de gameMangaer mais avec la même scene et les memes joueurs
-            gameManager2.setLevel(this.getLevel()+1);
-            if (this.getLevel() < 4) {
-                System.out.println("Loading Level " + (this.getLevel()+1) + ", please wait. . .");
-                wait(4000);
-                gameManager2.setGameMode(this.getGameMode());
-                gameManager2.start();
-            } else {
-                gameManager2.endGame();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void nextLevel() throws IOException, InterruptedException {
+        scene = new Scene(30, 40, player1, player2);
+        System.out.println("\033[H\033[2J");
+        System.out.println("Loading Level " + (this.getLevel() + 1) + ", please wait. . .");
+        if (getLevel() <= 4) {
+            setLevel(getLevel() + 1);
+            Thread.sleep(5000);
+            start();
+        } else
+            endGame();
+        frame.dispose();
     }
 
     public void printEndGame() throws IOException {
@@ -108,9 +106,9 @@ public class GameManager {
                 scanner = new Scanner(System.in);
                 continueToEnd = scanner.nextLine();
             } while (!continueToEnd.equals("e"));
-            if(isServer)
+            if (isServer)
                 server.stop();
-            if(gamemode == 2 && !isServer)
+            if (gamemode == 2 && !isServer)
                 client.logout();
             System.exit(0);
         }
@@ -120,12 +118,6 @@ public class GameManager {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
         printEndGame();
-    }
-
-    public synchronized void endLevel() {
-        // méthode qui va permettre de mettre fin à la partie suivi de son affichage
-        gameState = GameState.END;
-        regen.resetRegen();
     }
 
     public void startServer() {
@@ -214,5 +206,11 @@ public class GameManager {
         return client;
     }
 
+    public Player getPlayer1() {
+        return player1;
+    }
 
+    public Player getPlayer2() {
+        return player2;
+    }
 }

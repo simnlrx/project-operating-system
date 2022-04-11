@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.StreamTokenizer;
 
 public class RegenSceneThread extends Thread {
-    private int tab[][];
+    private volatile int[][] tab;
     // tableau à 2 dimensions d'entiers
     private int lenghtab;
     // longueur du tableau
@@ -21,7 +21,7 @@ public class RegenSceneThread extends Thread {
     // fichier du niveau
     private GameManager gameManager;
     // GameManager
-    private int level;
+    private int lvl;
     // niveau du niveau
 
     /*
@@ -34,9 +34,14 @@ public class RegenSceneThread extends Thread {
         this.gameManager = gameManager;
         this.lenghtab = gameManager.getScene().getLenght();
         this.heighttab = gameManager.getScene().getHeight();
-        this.level = gameManager.getLevel();
+        this.lvl = gameManager.getLevel();
         this.index = 0;
         this.tab = new int[heighttab][lenghtab];
+        for (int i = 0; i < heighttab; i++) {
+            for (int y = 0; y < lenghtab; y++) {
+                this.tab[i][y] = 0;
+            }
+        }
         try {
             file = new File("LodeRunner/files/level" + gameManager.getLevel() + ".txt");
             BufferedReader obj = new BufferedReader(new FileReader(file));
@@ -52,21 +57,13 @@ public class RegenSceneThread extends Thread {
         }
     }
 
-    public void resetRegen(){
-      // méthode pour réinitilaiser le tableau
-      for(int i=0;i<heighttab;i++){
-        for(int y=0;y<lenghtab;y++){
-          this.tab[i][y] = 0;
-        }
-      }
-    }
-
     @Override
     public void run() {
-        Player player1 = gameManager.getScene().getPlayer1();
+        Player player1 = gameManager.getPlayer1();
+        Player player2 = gameManager.getPlayer2();
         // méthode qui va permettre de comparer le tableau tab et les valeurs de la scene pour regénérer les blocs, les échelles et les passerelleaprès le passage d'un ennemi ou d'un joueur
-        while (gameManager.getGameState().isGame()) {
-        try {
+        while (gameManager.getLevel() == lvl) {
+            try {
                 for (int y = 0; y < heighttab; y++) {
                     for (int x = 0; x < lenghtab; x++) {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 3) {
@@ -84,15 +81,22 @@ public class RegenSceneThread extends Thread {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 15) {
                             gameManager.getScene().setValuePosition(x, y, 15);
                         }
+                        if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 1) {
+                            gameManager.getScene().setValuePosition(x, y, 1);
+                        }
                     }
                     if (gameManager.getScene().getPosXNextLevel() == player1.getPosX() && gameManager.getScene().getPosYNextLevel() == player1.getPosY()) {
                         // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
                         gameManager.nextLevel();
                     }
+                    if (gameManager.getScene().getPosXNextLevel() == player2.getPosX() && gameManager.getScene().getPosYNextLevel() == player2.getPosY()) {
+                        // vérification si le joueur ne se trouve pas sur la porte de sortie du niveau
+                        gameManager.nextLevel();
+                    }
                 }
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-      }
     }
 }

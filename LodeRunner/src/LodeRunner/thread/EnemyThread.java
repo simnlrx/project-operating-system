@@ -19,6 +19,7 @@ public class EnemyThread extends Thread {
     // joueur 1
     private Player player2;
     // joueur 2
+    private int lvl;
 
     /*
      * Constructeur de EnemyThread
@@ -34,8 +35,9 @@ public class EnemyThread extends Thread {
         scene.setValuePosition(posX, posY, 4);
         // les coordonnées de l'ennemi sont directement placés dans la scene
         this.gameManager = gameManager;
-        this.player1 = gameManager.getScene().getPlayer1();
-        this.player2 = gameManager.getScene().getPlayer2();
+        this.player1 = gameManager.getPlayer1();
+        this.player2 = gameManager.getPlayer2();
+        this.lvl = gameManager.getLevel();
     }
 
     public double getDistanceToPlayer1(int posXEnemy, int posYEnemy) {
@@ -129,8 +131,8 @@ public class EnemyThread extends Thread {
                 if (player2 != null && player2.getType() == 2)
                     player2.addScore(50);
                 if (gameManager.getGameState().equals(GameState.MULTIGAME)) {
-                    gameManager.getServer().addScore(player1, 100);
-                    gameManager.getServer().addScore(player2, 100);
+                    gameManager.getServer().addScore(player1, 50);
+                    gameManager.getServer().addScore(player2, 50);
                 }
                 //le joueur gagne 50 points
                 scene.setValuePosition(posX, posY, 2);
@@ -232,7 +234,7 @@ public class EnemyThread extends Thread {
     @Override
     public void run() {
         try {
-            while (gameManager.getGameState().isGame()) {
+            while (gameManager.getLevel() == lvl) {
                 sleep(300);
                 if (player2 == null) {
                     distToP1();

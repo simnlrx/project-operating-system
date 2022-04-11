@@ -7,7 +7,6 @@ import LodeRunner.thread.BlockBreakThread;
 public class KeySelection {
 
     private final Player player;
-    private final Scene scene;
     private final GameManager gameManager;
 
     /*
@@ -18,12 +17,12 @@ public class KeySelection {
 
     public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
-        this.scene = gameManager.getScene();
         this.gameManager = gameManager;
     }
 
     public void setKey(char key) {
         // méthode pour affecter une action en fonction du caractè passer en paramètre
+        Scene scene = gameManager.getScene();
         int x = player.getPosX();
         int y = player.getPosY();
 
@@ -40,15 +39,24 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x, y - 1);
                     }
                 case 'q':
-                    if (left == 0 || left == 3 || left == 14 || left == 10 || left == 4 || left == 13 || left == 16 || left == 5) {
+                    if (left == 0 || left == 3 || left == 14 || left == 10 || left == 4 || left == 13 || left == 16 || left == 5 || left == 11) {
                         if (scene.getValuePosition(x - 1, y + 1) == 2 || scene.getValuePosition(x - 1, y + 1) == 3 || scene.getValuePosition(x - 1, y + 1) == 4) {
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x - 1, y);
                         }
                         if (scene.getValuePosition(x - 1, y + 1) == 14){
+                          //le joueur se dirige vers l'ennemi
                             scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x - 1, y + 1);
+                            scene.setPositionPlayer(player, x - 1, y);
                             scene.reSpawnPlayer(player);
+                        }
+
+                        if(scene.getValuePosition(x - 1, y) == 11){
+                          scene.setValuePosition(x, y, 0);
+                          scene.setPositionPlayer(player, x + 2, y);
+                        }else if(scene.getValuePosition(x - 1, y) == 10){
+                          scene.setValuePosition(x, y, 0);
+                          scene.setPositionPlayer(player, x + 2, y);
                         }
                             break;
                     }
@@ -63,6 +71,19 @@ public class KeySelection {
                         if (scene.getValuePosition(x + 1, y + 1) == 2 || scene.getValuePosition(x + 1, y + 1) == 3 || scene.getValuePosition(x + 1, y + 1) == 4) {
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x + 1, y);
+                        }
+                        if (scene.getValuePosition(x - 1, y + 1) == 14){
+                          //le joueur se dirige vers l'ennemi
+                            scene.setValuePosition(x, y, 0);
+                            scene.setPositionPlayer(player, x - 1, y);
+                            scene.reSpawnPlayer(player);
+                        }
+                        if(scene.getValuePosition(x + 1, y) == 11){
+                          scene.setValuePosition(x, y, 0);
+                          scene.setPositionPlayer(player, x + 2, y);
+                        }else if(scene.getValuePosition(x + 1, y) == 10){
+                          scene.setValuePosition(x, y, 0);
+                          scene.setPositionPlayer(player, x + 2, y);
                         }
                         break;
                     }
