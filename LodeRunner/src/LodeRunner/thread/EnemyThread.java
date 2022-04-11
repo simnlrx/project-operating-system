@@ -35,7 +35,7 @@ public class EnemyThread extends Thread {
         // les coordonnées de l'ennemi sont directement placés dans la scene
         this.gameManager = gameManager;
         this.player1 = gameManager.getScene().getPlayer1();
-        this.player2 = gameManager.getScene().getPlayer1();
+        this.player2 = gameManager.getScene().getPlayer2();
     }
 
     public double getDistanceToPlayer1(int posXEnemy, int posYEnemy) {
@@ -233,7 +233,7 @@ public class EnemyThread extends Thread {
     public void run() {
         try {
             while (gameManager.getGameState().isGame()) {
-                this.sleep(300);
+                sleep(300);
                 if (player2 == null) {
                     distToP1();
                 } else {

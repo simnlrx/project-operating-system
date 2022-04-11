@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <workItem from="1649434245405" duration="278000" />
       <workItem from="1649436077825" duration="4163000" />
       <workItem from="1649599167504" duration="3023000" />
-      <workItem from="1649665406310" duration="4985000" />
+      <workItem from="1649665406310" duration="5825000" />
     </task>
     <servers />
   </component>

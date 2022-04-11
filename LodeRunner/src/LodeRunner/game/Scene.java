@@ -214,9 +214,10 @@ public class Scene {
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
                 wait(4000);
-                if (serverManager != null)
+                if (serverManager != null) {
                     serverManager.death(player);
-                player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
+                    player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
