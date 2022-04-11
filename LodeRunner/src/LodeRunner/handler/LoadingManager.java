@@ -21,7 +21,7 @@ public class LoadingManager {
         initLoadingScene();
     }
 
-    public void start() throws IOException, InterruptedException {
+    public void start() throws IOException {
         Player player1 = gameManager.getScene().getPlayer1();
         Player player2 = gameManager.getScene().getPlayer2();
         player1.setReady(false);
@@ -136,7 +136,7 @@ public class LoadingManager {
                 do {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());
-                gameManager.setGameState(GameState.SOLOGAME);
+                gameManager.setGameState(GameState.MULTIGAME);
                 gameManager.getClient().statReception();
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
