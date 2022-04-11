@@ -7,7 +7,6 @@ import LodeRunner.thread.BlockBreakThread;
 public class KeySelection {
 
     private final Player player;
-    private final Scene scene;
     private final GameManager gameManager;
 
     /*
@@ -18,12 +17,12 @@ public class KeySelection {
 
     public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
-        this.scene = gameManager.getScene();
         this.gameManager = gameManager;
     }
 
     public void setKey(char key) {
         // méthode pour affecter une action en fonction du caractè passer en paramètre
+        Scene scene = gameManager.getScene();
         int x = player.getPosX();
         int y = player.getPosY();
 

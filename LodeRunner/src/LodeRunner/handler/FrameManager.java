@@ -22,9 +22,9 @@ public class FrameManager {
         KeyboardEvent keyboardEvent;
 
         if(gameManager.isServer() || gameManager.getGameMode() == 1){
-            keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer1(), gameManager);
+            keyboardEvent = new KeyboardEvent(gameManager.getPlayer1(), gameManager);
         }else{
-            keyboardEvent = new KeyboardEvent(gameManager.getScene().getPlayer2(), gameManager);
+            keyboardEvent = new KeyboardEvent(gameManager.getPlayer2(), gameManager);
         }
 
         frame.addKeyListener(keyboardEvent);

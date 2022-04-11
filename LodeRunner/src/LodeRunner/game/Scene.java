@@ -21,6 +21,10 @@ package LodeRunner.game;
 import LodeRunner.handler.ServerManager;
 
 public class Scene {
+    private Player player1;
+    private Player player2;
+    private ServerManager serverManager;
+
     private final int height; //Hauteur de l'écran
     private final int length; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
@@ -32,20 +36,15 @@ public class Scene {
     private int posXNextLevel;// position en X du spawn du joueur 1
     private int posYNextLevel;// position en Y du spawn du joueur 1
 
-    private Player player1 = new Player("p1", 1);
-    private Player player2 = new Player("p2", 2);
-
-    private ServerManager serverManager;
-
-    /*
+    /**
      * Constructeur d'une scene
      *
      * @param height Hauteur de la scene
      * @param length Longueur de la scene
      */
-
-
-    public Scene(int height, int length) {
+    public Scene(int height, int length, Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
         this.height = height;
         this.length = length;
         this.board = new int[height][length];
@@ -257,17 +256,6 @@ public class Scene {
     public int getLenght() {
         // méthode permettant de récupérer la longueur du tableau
         return this.length;
-    }
-
-
-    public Player getPlayer1() {
-        // getter pour le premier joueur
-        return this.player1;
-    }
-
-    public Player getPlayer2() {
-        // getter pour le second joueur
-        return this.player2;
     }
 
     public void setPlayer1(Player player) {

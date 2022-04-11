@@ -35,8 +35,8 @@ public class EnemyThread extends Thread {
         scene.setValuePosition(posX, posY, 4);
         // les coordonnées de l'ennemi sont directement placés dans la scene
         this.gameManager = gameManager;
-        this.player1 = gameManager.getScene().getPlayer1();
-        this.player2 = gameManager.getScene().getPlayer2();
+        this.player1 = gameManager.getPlayer1();
+        this.player2 = gameManager.getPlayer2();
         this.lvl = gameManager.getLevel();
     }
 
@@ -234,7 +234,7 @@ public class EnemyThread extends Thread {
     @Override
     public void run() {
         try {
-            while (gameManager.getGameState().isGame()) {
+            while (gameManager.getLevel() == lvl) {
                 sleep(300);
                 if (player2 == null) {
                     distToP1();

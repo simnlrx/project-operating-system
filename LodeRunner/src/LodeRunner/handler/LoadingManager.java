@@ -22,8 +22,8 @@ public class LoadingManager {
     }
 
     public void start() throws IOException {
-        Player player1 = gameManager.getScene().getPlayer1();
-        Player player2 = gameManager.getScene().getPlayer2();
+        Player player1 = gameManager.getPlayer1();
+        Player player2 = gameManager.getPlayer2();
         player1.setReady(false);
         player2.setReady(false);
 
@@ -162,7 +162,7 @@ public class LoadingManager {
     }
 
     public void loadEnd() {
-        Player player1 = gameManager.getScene().getPlayer1();
+        Player player1 = gameManager.getPlayer1();
         // affichage de fin de partie avec les différentes informations recueillies
         String[][] end;
         String[] scorePage = new String[]{"GAME OVER",
