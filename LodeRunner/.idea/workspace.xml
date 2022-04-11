@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="" />
+    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Server/Broadcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Server/Broadcast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +98,7 @@
       <workItem from="1649434245405" duration="278000" />
       <workItem from="1649436077825" duration="4163000" />
       <workItem from="1649599167504" duration="3023000" />
-      <workItem from="1649665406310" duration="3272000" />
+      <workItem from="1649665406310" duration="3890000" />
     </task>
     <servers />
   </component>

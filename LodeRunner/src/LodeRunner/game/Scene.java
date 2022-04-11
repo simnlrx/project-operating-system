@@ -98,7 +98,6 @@ public class Scene {
         if (player2 != null)
             res.append(player2.getName()).append(": ").append(player2.getScore()).append(" ").append(player2.getLifeToString());
         this.fboard = res.toString();
-
     }
 
     public synchronized String getBoardtoString() {
