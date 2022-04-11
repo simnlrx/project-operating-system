@@ -3,21 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/files/level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/files/level1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/FrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/FrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/LevelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/ServerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/ThreadManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/ThreadManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/BlockBreakThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/BlockBreakThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +105,7 @@
       <workItem from="1649434245405" duration="278000" />
       <workItem from="1649436077825" duration="4163000" />
       <workItem from="1649599167504" duration="3023000" />
-      <workItem from="1649665406310" duration="11818000" />
+      <workItem from="1649665406310" duration="12300000" />
     </task>
     <servers />
   </component>
