@@ -45,9 +45,9 @@ public class KeySelection {
                             scene.setPositionPlayer(player, x - 1, y);
                         }
                         if (scene.getValuePosition(x - 1, y + 1) == 14){
-                          //le joueur se dirige vers l'ennemi
+                          //le joueur tombe dans le trou
                             scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x - 1, y);
+                            scene.setPositionPlayer(player, x - 1, y+1);
                             scene.reSpawnPlayer(player);
                         }
 
