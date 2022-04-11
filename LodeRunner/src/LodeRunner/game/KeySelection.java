@@ -51,12 +51,9 @@ public class KeySelection {
                             scene.reSpawnPlayer(player);
                         }
 
-                        if(scene.getValuePosition(x - 1, y) == 11){
+                        if(scene.getValuePosition(x - 1, y) == 10){
                           scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
-                        }else if(scene.getValuePosition(x - 1, y) == 10){
-                          scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
+                          scene.setPositionPlayer(player, x - 1 , y);
                         }
                             break;
                     }
@@ -78,12 +75,9 @@ public class KeySelection {
                             scene.setPositionPlayer(player, x - 1, y);
                             scene.reSpawnPlayer(player);
                         }
-                        if(scene.getValuePosition(x + 1, y) == 11){
+                        if(scene.getValuePosition(x + 1, y) == 10){
                           scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
-                        }else if(scene.getValuePosition(x + 1, y) == 10){
-                          scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
+                          scene.setPositionPlayer(player, x + 1, y);
                         }
                         break;
                     }
