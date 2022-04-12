@@ -9,12 +9,11 @@ public class KeySelection {
     private final Player player;
     private final GameManager gameManager;
 
-    /*
+    /**
      * Constructeur KeySelection
      * @param player Player joueur
      * @param gameManager gameManagaer
      */
-
     public KeySelection(Player player, GameManager gameManager) {
         this.player = player;
         this.gameManager = gameManager;

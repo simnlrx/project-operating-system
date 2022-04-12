@@ -28,10 +28,6 @@ public class Client {
             player.setSocket(socket);
             player.openWriter(socket);
             new Thread(new ReceptionSocketServer(gameManager,8060)).start();
-            /*while (gameManager.getGameState().equals(GameState.LOADING)){
-                Thread.sleep(100);
-                System.out.println(gameManager.getGameState().getName());
-            }*/
         }catch (IOException e){
             System.out.println("Connexion impossible.");
             e.printStackTrace();

@@ -62,7 +62,6 @@ public class ServerManager {
     public void stop() throws IOException {
         writer.close();
         socket.close();
-        tcp.interrupt();
     }
 
     public TCPTask getTcpTask() {

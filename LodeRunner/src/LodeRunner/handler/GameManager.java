@@ -169,20 +169,8 @@ public class GameManager {
         return port;
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public int getMultiGamemode() {
-        return multiGamemode;
-    }
-
     public void setMultiGamemode(int multiGamemode) {
         this.multiGamemode = multiGamemode;
-    }
-
-    public ThreadManager getThreadManager() {
-        return threadManager;
     }
 
     public ServerManager getServer() {

@@ -39,10 +39,6 @@ public class TCPTask implements Runnable {
 
     }
 
-    public int getPort() {
-        return port;
-    }
-
     public int getClient(){
         return client;
     }
