@@ -55,11 +55,11 @@ public class EnemyThread extends Thread {
     public synchronized void killPlayer() {
         // méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
         // le jeu nécessite que le joueur 1 doit etre en vie
-        if (player1.getLife() >= 1) {
+        if (player1.getLife() >= 1 ) {
             if ((posX == player1.getPosX() && posY == player1.getPosY())) {
                 // on enleve le joueur de la scene lorsqu'il est mort et on le remplace à l'endroit du spawn
                 scene.reSpawnPlayer(player1);
-            } else if (posX == player2.getPosX() && posY == player2.getPosY()) {
+            } else if (posX == player2.getPosX() && posY == player2.getPosY() && player2.getType()==1) {
                 scene.reSpawnPlayer(player2);
             }
         } else {
@@ -73,7 +73,7 @@ public class EnemyThread extends Thread {
 
     public synchronized void downLadder() {
         // méthode permettant de faire descendre les escaliers à un ennemi
-        if (scene.getValuePosition(posX, posY + 1) == 3 || scene.getValuePosition(posX, posY + 1) == 10) {
+        if (scene.getValuePosition(posX, posY + 1) == 3 || scene.getValuePosition(posX, posY + 1) == 10 ||(scene.getValuePosition(posX, posY + 1) == 11 && player2.getType()==1)) {
             //vérification si le bloc suivant est un escalier et pas une platforme
             scene.setValuePosition(posX, posY, 0);
             //postion actuelle de l'ennemi placée à la valeur 0
@@ -86,7 +86,7 @@ public class EnemyThread extends Thread {
 
     public synchronized void upLadder() {
         // méthode permettant de faire monter les escaliers à un ennemi
-        if (scene.getValuePosition(posX, posY - 1) == 3 || scene.getValuePosition(posX, posY - 1) == 10) {
+        if (scene.getValuePosition(posX, posY - 1) == 3 || scene.getValuePosition(posX, posY - 1) == 10 || (scene.getValuePosition(posX, posY - 1) == 11 && player2.getType()==1)) {
             //vérification si le bloc suivant est un escalier et pas une platforme
             scene.setValuePosition(posX, posY, 0);
             //postion actuelle de l'ennemi placée à la valeur 0
@@ -236,9 +236,9 @@ public class EnemyThread extends Thread {
         try {
             while (gameManager.getLevel() == lvl) {
                 sleep(300);
-                if (player2 == null) {
+                if (player2.getType()==0 || player2.getType()==2) {
                     distToP1();
-                } else {
+                } else if(player2.getType()==1){
                     if (getDistanceToPlayer1(posX, posY) < getDistanceToPlayer2(posX, posY)) {
                         distToP1();
                     } else {

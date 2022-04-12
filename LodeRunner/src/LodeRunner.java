@@ -15,6 +15,7 @@ public class LodeRunner {
         System.out.println("Lode Runner | Runnig ...");
         Display.title();
 
+
         GameManager gameManager = new GameManager(GameState.LOADING, 8059);
         LoadingManager loading = new LoadingManager(gameManager); // 40 30
 
