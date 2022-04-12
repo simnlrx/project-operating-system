@@ -37,11 +37,6 @@ public class RegenSceneThread extends Thread {
         this.lvl = gameManager.getLevel();
         this.index = 0;
         this.tab = new int[heighttab][lenghtab];
-        for (int i = 0; i < heighttab; i++) {
-            for (int y = 0; y < lenghtab; y++) {
-                this.tab[i][y] = 0;
-            }
-        }
         try {
             file = new File("LodeRunner/files/level" + gameManager.getLevel() + ".txt");
             BufferedReader obj = new BufferedReader(new FileReader(file));
@@ -54,6 +49,14 @@ public class RegenSceneThread extends Thread {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void reload(){
+        for (int i = 0; i < heighttab; i++) {
+            for (int y = 0; y < lenghtab; y++) {
+                this.tab[i][y] = 0;
+            }
         }
     }
 
