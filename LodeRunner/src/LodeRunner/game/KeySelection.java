@@ -38,60 +38,73 @@ public class KeySelection {
                         scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y - 1);
                     }
-                    if(top == 10) {
-                        scene.setValuePosition(x, y, 0);
-                        scene.setPositionPlayer(player, x, y-1);
-                        gameManager.getScene().reSpawnPlayer(gameManager.getPlayer1());
-                    }
+                    break;
                 case 'q':
-                    if (left == 0 || left == 3 || left == 14 || left == 10 || left == 4 || left == 13 || left == 5) {
-                        if (scene.getValuePosition(x - 1, y + 1) == 2 || scene.getValuePosition(x - 1, y + 1) == 3 || scene.getValuePosition(x - 1, y + 1) == 4) {
+                    if (left == 0 || left == 3 || left == 4 || left == 5 || left == 6 || left == 10 || left == 12 || left == 13) {
+                        if (scene.getValuePosition(x - 1, y + 1) == 2 || scene.getValuePosition(x - 1, y + 1) == 14 || scene.getValuePosition(x - 1, y + 1) == 3 || scene.getValuePosition(x - 1, y + 1) == 4) {
+                            if (scene.getValuePosition(x - 1, y + 1) == 14) {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x - 1, y + 1);
+                                gameManager.getScene().reSpawnPlayer(player);
+                            } else {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x - 1, y);
+                            }
+                        }
+                        if (left == 5) {
+                            scene.setValuePosition(x, y, 0);
+                            scene.setPositionPlayer(player, x - 2, y);
+                        }
+                        if (left == 12) {
+                            if (scene.getValuePosition(x - 1, y) == 12) {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x - 1, y);
+                            }
+                        }
+                        if (left == 10) {
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x - 1, y);
+                            scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 0);
+                            scene.reSpawnPlayer(gameManager.getPlayer1());
                         }
-                        if (scene.getValuePosition(x - 1, y + 1) == 14) {
-                            //le joueur tombe dans le trou
-                            scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x - 1, y + 1);
-                            scene.reSpawnPlayer(player);
-                        }
-                        if (scene.getValuePosition(x - 1, y) == 10) {
-                            scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x - 1, y);
-                            gameManager.getScene().reSpawnPlayer(gameManager.getPlayer1());
-                        }
-                        break;
                     }
+                    break;
                 case 's':
                     if (bottom == 3) {
-                        scene.setValuePosition(x, y, 0);
+                        scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y + 1);
                     }
-                    if(bottom == 10) {
-                        scene.setValuePosition(x, y, 0);
-                        scene.setPositionPlayer(player, x, y+1);
-                        gameManager.getScene().reSpawnPlayer(gameManager.getPlayer1());
-                    }
-
+                    break;
                 case 'd':
-                    if (right == 0 || right == 3 || right == 14 || right == 11 || right == 4 || right == 13 || left == 5) {
-                        if (scene.getValuePosition(x + 1, y + 1) == 2 || scene.getValuePosition(x + 1, y + 1) == 3 || scene.getValuePosition(x + 1, y + 1) == 4) {
+                    if (right == 0 || right == 3 || right == 4 || right == 5 || right == 6 || right == 10 || right == 12 || right == 13) {
+                        if (scene.getValuePosition(x + 1, y + 1) == 2 || scene.getValuePosition(x + 1, y + 1) == 14 || scene.getValuePosition(x + 1, y + 1) == 3 || scene.getValuePosition(x + 1, y + 1) == 4) {
+                            if (scene.getValuePosition(x + 1, y + 1) == 14) {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x + 1, y + 1);
+                                gameManager.getScene().reSpawnPlayer(player);
+                            } else {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x + 1, y);
+                            }
+                        }
+                        if (left == 5) {
+                            scene.setValuePosition(x, y, 0);
+                            scene.setPositionPlayer(player, x + 2, y);
+                        }
+                        if (right == 12) {
+                            if (scene.getValuePosition(x + 1, y) == 12) {
+                                scene.setValuePosition(x, y, 0);
+                                scene.setPositionPlayer(player, x + 1, y);
+                            }
+                        }
+                        if (left == 10) {
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x + 1, y);
+                            scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 0);
+                            scene.reSpawnPlayer(gameManager.getPlayer1());
                         }
-                        if (scene.getValuePosition(x + 1, y + 1) == 14) {
-                            //le joueur tombe dans le trou
-                            scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x + 1, y + 1);
-                            scene.reSpawnPlayer(player);
-                        }
-                        if (scene.getValuePosition(x + 1, y) == 10) {
-                            scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x + 1, y);
-                            gameManager.getScene().reSpawnPlayer(gameManager.getPlayer1());
-                        }
-                        break;
                     }
+                    break;
             }
         }
 

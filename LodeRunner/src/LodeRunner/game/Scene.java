@@ -174,7 +174,7 @@ public class Scene {
     }
 
     public synchronized void reSpawnPlayer(Player player) {
-        //méthode pour respawn le joueur 1 dans la scene
+        //méthode pour respawn le joueur dans la scene
         player.setPosition(0, 0);
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
@@ -193,10 +193,12 @@ public class Scene {
                 player.setPosition(spawnX, Platforme);
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
-                wait(4000);
-                if (serverManager != null) {
-                    serverManager.death(player);
+                if (player.getType() == 2) {
+                    this.setValuePosition(player.getPosX(), player.getPosY(), 2);
+                    wait(3000);
                     player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
+                    this.setValuePosition(posXSpawnEnemy, posYSpawnEnemy, 11);
+                    serverManager.death(player);
                 }
             }
         } catch (Exception e) {

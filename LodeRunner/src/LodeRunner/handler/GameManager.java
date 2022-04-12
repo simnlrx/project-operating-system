@@ -76,7 +76,7 @@ public class GameManager {
     public void nextLevel() throws IOException, InterruptedException {
         System.out.println("\033[H\033[2J");
         System.out.println("Loading Level " + (this.getLevel() + 1) + ", please wait. . .");
-        if (getLevel() <= 4) {
+        if (getLevel() < 4) {
             setLevel(getLevel() + 1);
             scene = new Scene(30, 40, player1, player2);
             Thread.sleep(5000);
