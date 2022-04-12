@@ -21,13 +21,12 @@ package LodeRunner.game;
 import LodeRunner.handler.ServerManager;
 
 public class Scene {
-    private Player player1;
-    private Player player2;
-    private ServerManager serverManager;
-
     private final int height; //Hauteur de l'écran
     private final int length; //Largeur de l'écran
     private final int[][] board; //scene représentée par une matrice 2*2
+    private Player player1;
+    private Player player2;
+    private ServerManager serverManager;
     private String fboard;
 
     private int posXSpawnEnemy;// position en X du spawn ennemi
@@ -80,7 +79,7 @@ public class Scene {
                     i++;
                 }
                 switch (value) {
-                    case "0", "6", "13", "14", "16" -> res.append("  ");
+                    case "0", "6", "13", "14" -> res.append("  ");
                     case "1", "2", "9" -> res.append("▓▓");
                     case "3", "15" -> res.append("│┤");
                     case "4" -> res.append("☠ ");
@@ -121,32 +120,15 @@ public class Scene {
                 value = board[i][y];
                 // porte de sortie du niveau
                 switch (value) {
-                    case 0, 13, 14, 6 -> {
-                        System.out.print("  ");
-                    }// espace vide
-                    case 1, 2, 9 -> {
-                        System.out.print("▓▓");
-                    }// bord horizontal
-                    case 15, 3 -> {
-                        System.out.print("│┤");
-                    }//échelle
-                    case 4 -> {
-                        System.out.print("☠ ");
-                    }// simulation d'un ennemi
-                    case 5 -> {
-                        System.out.print("☼ ");
-                    }// simulation d'un objet
-                    case 10 -> {
-                        System.out.print(player1.getName().charAt(0) + " ");
-                    }// simulation du joueur courant
-                    case 11 -> {
-                        System.out.print(player2.getName().charAt(0) + " ");
-                    }// simulation du joueur 2
-                    case 12 -> {
-                        System.out.print("__");
-                    }// passerelle
+                    case 0, 13, 14, 6 -> System.out.print("  ");// espace vide
+                    case 1, 2, 9 -> System.out.print("▓▓");// bord horizontal
+                    case 15, 3 -> System.out.print("│┤");//échelle
+                    case 4 -> System.out.print("☠ ");// simulation d'un ennemi
+                    case 5 -> System.out.print("☼ ");// simulation d'un objet
+                    case 10 -> System.out.print(player1.getName().charAt(0) + " ");// simulation du joueur courant
+                    case 11 -> System.out.print(player2.getName().charAt(0) + " ");// simulation du joueur 2
+                    case 12 -> System.out.print("__");// passerelle
                 }
-
             }
             System.out.print("\n");
         }
@@ -180,12 +162,12 @@ public class Scene {
             //parcours de la matrice en y
             for (int j = 0; j < (this.length); j++) {
                 //parcours de la matrice en x
-                if(player2.getType() == 2 && board[i][j] == 13){
+                if (player2.getType() == 2 && board[i][j] == 13)
                     setPositionPlayer(player2, j, i);
-                }
-                if (player2.getType() == 1 && board[i][j] == 6) {
+                if (board[i][j] == 6) {
                     setPositionPlayer(player1, j, i);
-                    setPositionPlayer(player2, j + 1, i);
+                    if (player2.getType() == 1)
+                        setPositionPlayer(player2, j + 1, i);
                 }
             }
         }
@@ -200,11 +182,10 @@ public class Scene {
             if (player.getType() == 0 || player.getType() == 1) {
                 this.setValuePosition(player.getPosX(), player.getPosY(), 4);
                 wait(2000);
-                if (serverManager != null){
-                  serverManager.death(player);
-                }
-                else{
-                  player.death();
+                if (serverManager != null) {
+                    serverManager.death(player);
+                } else {
+                    player.death();
                 }
                 do {
                     spawnX = (int) (Math.random() * this.getLenght() + 1);

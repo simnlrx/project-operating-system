@@ -11,11 +11,10 @@ public class RefreshScene extends Thread {
     // GameManager
     private int lvl;
 
-    /*
+    /**
      * Constructeur de RefreshScene
-     * @param GameManager gameManager
+     * @param gameManager GameManager
      */
-
     public RefreshScene(GameManager gameManager) {
         this.scene = gameManager.getScene();
         this.gameManager = gameManager;
