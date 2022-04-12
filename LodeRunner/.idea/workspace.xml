@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" afterDir="false" />
-    </list>
+    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,17 +61,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.LodeRunner" />
@@ -105,7 +91,7 @@
       <workItem from="1649434245405" duration="278000" />
       <workItem from="1649436077825" duration="4163000" />
       <workItem from="1649599167504" duration="3023000" />
-      <workItem from="1649665406310" duration="12300000" />
+      <workItem from="1649665406310" duration="5825000" />
     </task>
     <servers />
   </component>

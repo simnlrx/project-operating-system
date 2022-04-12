@@ -39,24 +39,21 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x, y - 1);
                     }
                 case 'q':
-                    if (left == 0 || left == 3 || left == 14 || left == 10 || left == 4 || left == 13 || left == 16 || left == 5 || left == 11) {
+                    if (left == 0 || left == 3 || left == 14 || left == 10 || left == 4 || left == 13 || left == 16 || left == 5) {
                         if (scene.getValuePosition(x - 1, y + 1) == 2 || scene.getValuePosition(x - 1, y + 1) == 3 || scene.getValuePosition(x - 1, y + 1) == 4) {
                             scene.setValuePosition(x, y, 0);
                             scene.setPositionPlayer(player, x - 1, y);
                         }
                         if (scene.getValuePosition(x - 1, y + 1) == 14){
-                          //le joueur se dirige vers l'ennemi
+                          //le joueur tombe dans le trou
                             scene.setValuePosition(x, y, 0);
-                            scene.setPositionPlayer(player, x - 1, y);
+                            scene.setPositionPlayer(player, x - 1, y+1);
                             scene.reSpawnPlayer(player);
                         }
 
-                        if(scene.getValuePosition(x - 1, y) == 11){
+                        if(scene.getValuePosition(x - 1, y) == 10){
                           scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
-                        }else if(scene.getValuePosition(x - 1, y) == 10){
-                          scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
+                          scene.setPositionPlayer(player, x - 1 , y);
                         }
                             break;
                     }
@@ -78,12 +75,9 @@ public class KeySelection {
                             scene.setPositionPlayer(player, x - 1, y);
                             scene.reSpawnPlayer(player);
                         }
-                        if(scene.getValuePosition(x + 1, y) == 11){
+                        if(scene.getValuePosition(x + 1, y) == 10){
                           scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
-                        }else if(scene.getValuePosition(x + 1, y) == 10){
-                          scene.setValuePosition(x, y, 0);
-                          scene.setPositionPlayer(player, x + 2, y);
+                          scene.setPositionPlayer(player, x + 1, y);
                         }
                         break;
                     }
