@@ -32,10 +32,9 @@ public class ReceptionDatagramServer implements Runnable{
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);
                 gameManager.getScene().generateBoard(new String(dtgrPacket.getData()));
-                Thread.sleep(500);
             }
 
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
