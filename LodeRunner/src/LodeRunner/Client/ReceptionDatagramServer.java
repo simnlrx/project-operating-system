@@ -20,12 +20,8 @@ public class ReceptionDatagramServer implements Runnable{
     @Override
     public void run() {
         DatagramPacket dtgrPacket;
-        System.out.println("gamestate : " + gameManager.getGameState().getName());
 
-        try {
-
-            DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());
-            System.out.println("gamestate : " + gameManager.getGameState().getName());
+        try (DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());){
 
             while (gameManager.getGameState().equals(GameState.MULTIGAME)){
                 byte[] data = new byte[5000];
