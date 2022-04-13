@@ -193,7 +193,7 @@ public class Scene {
                 player.setPosition(spawnX, Platforme);
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
-                if (player.getType() == 2) {
+                if (player.getType() == 2 && player.getLife()>0) {
                     this.setValuePosition(player.getPosX(), player.getPosY(), 2);
                     wait(3000);
                     player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
