@@ -87,10 +87,9 @@ public class GameManager {
         frame.dispose();
     }
 
-    public void printEndGame() throws IOException {
+    public void printEndGameSolo() throws IOException {
         //méthode pour afficher la fin de partie
         if (this.printEndGame) {
-
             Scanner scanner;
             String continueToEnd;
 
@@ -115,10 +114,41 @@ public class GameManager {
         }
     }
 
+    public void printEndGameMulti() throws IOException {
+        //méthode pour afficher la fin de partie
+        if (this.printEndGame) {
+            Scanner scanner;
+            String continueToEnd;
+
+            //vérification si l'affichage de la partie est déja en cours
+            System.out.println("\033[H\033[2J");
+
+            //supprime tout ce qu'il y a dans la console auparavant
+            LoadingManager loadingEnd = new LoadingManager(this);
+            // création de l'affichage de fin de partie
+            this.printEndGame = false;
+
+            do {
+                loadingEnd.loadEndMulti();
+                scanner = new Scanner(System.in);
+                continueToEnd = scanner.nextLine();
+            } while (!continueToEnd.equals("e"));
+            if (isServer)
+                server.stop();
+            if (gamemode == 2 && !isServer)
+                client.logout();
+            System.exit(0);
+        }
+    }
+
     public synchronized void endGame() throws IOException {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
-        printEndGame();
+        if(this.gamemode==1){
+          printEndGameSolo();
+        }else if(this.gamemode==2){
+          printEndGameMulti();
+        }
     }
 
     public void startServer() {

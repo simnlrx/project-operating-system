@@ -177,6 +177,26 @@ public class LoadingManager {
         printBoard(end);
     }
 
+    public void loadEndMulti() {
+        Player player1 = gameManager.getPlayer1();
+        Player player2 = gameManager.getPlayer2();
+        // affichage de fin de partie avec les différentes informations recueillies
+        String[][] end;
+        String[] scorePage = new String[]{"GAME OVER",
+                "",
+                "Player 1 : " + player1.getName(),
+                "Player 2 : " + player2.getName(),
+                "lifes Player 1: " + player1.getLife(),
+                "lifes Player 2: " + player2.getLife(),
+                "Score Player 1: :" + player1.getScore(),
+                "Score Player 2: :" + player2.getScore(),
+                "",
+                "Press e to Exit"};
+
+        end = this.getDisplay(scorePage);
+        printBoard(end);
+    }
+
     public String[][] getDisplay(String[] linesToDisplay) {
         String[][] res = this.board.clone();
         int l = this.gameManager.getScene().getLenght();
