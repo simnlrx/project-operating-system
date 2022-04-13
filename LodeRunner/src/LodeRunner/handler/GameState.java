@@ -23,15 +23,7 @@ public enum GameState {
         this.isgame = isgame;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public boolean isGame() {
         return isgame;
-    }
-
-    public void setIsgame(boolean isgame) {
-        this.isgame = isgame;
     }
 }
