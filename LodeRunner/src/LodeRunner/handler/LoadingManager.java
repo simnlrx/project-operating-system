@@ -67,7 +67,7 @@ public class LoadingManager {
                     player1.setName(scanner.nextLine());
                     player1.setType(1);
                     player1.setReady(true);
-                } while (player1.getName().equals("p1"));
+                } while (player1.getName().equals("p1") || player1.getName().equals(" "));
 
                 initLoadingScene();
 
@@ -99,7 +99,7 @@ public class LoadingManager {
                     scanner = new Scanner(System.in);
                     player2.setName(scanner.nextLine());
 
-                } while (player2.getName().equals("p2"));
+                } while (player2.getName().equals("p2") || player2.getName().equals(" "));
                 initLoadingScene();
                 String[][] ip = getDisplay(Display.ipPage);
 
@@ -151,7 +151,7 @@ public class LoadingManager {
                 player1.setName(scanner.nextLine());
                 player1.setReady(true);
 
-            } while (player1.getName().equals("p1"));
+            } while (player1.getName().equals("p1") || player1.getName().equals(" "));
 
             initLoadingScene();
 
