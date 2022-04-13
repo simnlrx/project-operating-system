@@ -139,7 +139,7 @@ public class GameManager {
         }
     }
 
-    public synchronized void endGame() throws IOException {
+    public void endGame() throws IOException {
         // méthode qui va permettre de mettre fin à la partie suivi de son affichage
         gameState = GameState.END;
         if(this.gamemode==1){
