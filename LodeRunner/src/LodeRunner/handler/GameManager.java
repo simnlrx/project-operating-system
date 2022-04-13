@@ -75,9 +75,9 @@ public class GameManager {
 
     public void nextLevel() throws IOException, InterruptedException {
         System.out.println("\033[H\033[2J");
-        System.out.println("Loading Level " + (this.getLevel() + 1) + ", please wait. . .");
-        if (getLevel() < 4) {
-            setLevel(getLevel() + 1);
+        setLevel(getLevel() + 1);
+        if (getLevel() < 5) {
+            System.out.println("Loading Level " + this.getLevel() + ", please wait. . .");
             scene = new Scene(30, 40, player1, player2);
             Thread.sleep(5000);
             regen.reload();
@@ -107,7 +107,7 @@ public class GameManager {
                 scanner = new Scanner(System.in);
                 continueToEnd = scanner.nextLine();
             } while (!continueToEnd.equals("e"));
-            if (isServer)
+            if (isServer);
                 server.stop();
             if (gamemode == 2 && !isServer)
                 client.logout();
