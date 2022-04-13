@@ -83,7 +83,9 @@ public class GameManager {
             regen.reload();
             start();
         } else {
-            getServer().send("end");
+            if(isServer()){
+              getServer().send("end");
+            }
             endGame();
         }
         frame.dispose();
