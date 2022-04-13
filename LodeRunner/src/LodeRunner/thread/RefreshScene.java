@@ -25,7 +25,7 @@ public class RefreshScene extends Thread {
     @Override
     public void run() {
         try {
-            while (gameManager.getLevel() == lvl || gameManager.getGameState().isGame()) {
+            while (gameManager.getLevel() == lvl && gameManager.getGameState().isGame()) {
                 if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)) {
                     scene.matrix2Screen();
                 }else{

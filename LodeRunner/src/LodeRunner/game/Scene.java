@@ -179,7 +179,7 @@ public class Scene {
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
-            if ((player.getType() == 0 || player.getType() == 1) && player.getLife()>0) {
+            if ((player.getType() == 0 || player.getType() == 1)) {
                 this.setValuePosition(player.getPosX(), player.getPosY(), 4);
                 wait(2000);
                 if (serverManager != null) {
@@ -193,7 +193,7 @@ public class Scene {
                 player.setPosition(spawnX, Platforme);
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
-                if (player.getType() == 2 && player.getLife()>0) {
+                if (player.getType() == 2) {
                     this.setValuePosition(player.getPosX(), player.getPosY(), 2);
                     wait(3000);
                     player.setPosition(posXSpawnEnemy, posYSpawnEnemy);
