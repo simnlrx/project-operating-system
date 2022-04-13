@@ -82,8 +82,10 @@ public class GameManager {
             Thread.sleep(5000);
             regen.reload();
             start();
-        } else
+        } else {
+            getServer().send("end");
             endGame();
+        }
         frame.dispose();
     }
 

@@ -4,7 +4,8 @@
     <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +98,7 @@
       <workItem from="1649599167504" duration="3023000" />
       <workItem from="1649665406310" duration="5825000" />
       <workItem from="1649775044774" duration="1215000" />
+      <workItem from="1649841169138" duration="789000" />
     </task>
     <servers />
   </component>

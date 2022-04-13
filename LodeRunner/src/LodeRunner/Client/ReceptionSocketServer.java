@@ -55,6 +55,9 @@ public class ReceptionSocketServer implements Runnable {
                 if (tampon.contains("p2life")) {
                     player2.death();
                 }
+                if(tampon.equals("end")){
+                    gameManager.endGame();
+                }
 
                 if (gameManager.getGameState().equals(GameState.END)) {
                     reader.close();
