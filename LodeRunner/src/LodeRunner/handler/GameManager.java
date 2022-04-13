@@ -107,7 +107,7 @@ public class GameManager {
                 scanner = new Scanner(System.in);
                 continueToEnd = scanner.nextLine();
             } while (!continueToEnd.equals("e"));
-            if (isServer);
+            if (isServer)
                 server.stop();
             if (gamemode == 2 && !isServer)
                 client.logout();
