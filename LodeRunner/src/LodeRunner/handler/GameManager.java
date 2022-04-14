@@ -153,19 +153,19 @@ public class GameManager {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         String dateOfPlay = ""+dtf.format(LocalDateTime.now());
 
-        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filePath, false)));
 
         if(this.gamemode==1){
-          String resPlayer = "name :"+player1.getName()+" score: "+player1.getScore()+" life:"+player1.getLife()+"\n";
-          writer.printf(dateOfPlay+": "+resPlayer);
+          String resPlayer = "name :"+player1.getName()+" score: "+player1.getScore()+" life:"+player1.getLife();
+          writer.printf(dateOfPlay+": "+resPlayer+"\n");
           writer.close();
           printEndGameSolo();
         }
         if(this.gamemode==2){
           String resPlayers = "name :"+player1.getName()+" score: "+player1.getScore()+"\n"
           +" life:"+player1.getLife()+" & name :"+player2.getName()+" score: "+player2.getScore()+" life:"+player2.getLife()+
-          "\n with multiGamemode: "+this.multiGamemode+"\n";
-          writer.printf(dateOfPlay+": "+resPlayers);
+          "\n with multiGamemode: "+this.multiGamemode;
+          writer.printf(dateOfPlay+": "+resPlayers+"\n");
           writer.close();
           printEndGameMulti();
         }
