@@ -179,7 +179,7 @@ public class Scene {
         int Platforme = this.getHeight() - 2;
         int spawnX = 0;
         try {
-            if (player.getType() == 0 || (player.getType() == 1 && player.getLife()>0)) {
+            if (player.getType() == 0 || (player.getType() == 1 && player.getLife() > 0)) {
                 this.setValuePosition(player.getPosX(), player.getPosY(), 4);
                 wait(2000);
                 if (serverManager != null) {
@@ -190,7 +190,7 @@ public class Scene {
                 do {
                     spawnX = (int) (Math.random() * this.getLenght() + 1);
                 } while ((this.getValuePosition(spawnX, Platforme + 1) != 2 || this.getValuePosition(spawnX, Platforme) == 2) && this.getValuePosition(spawnX, Platforme + 1) != 5 && this.getValuePosition(spawnX, Platforme + 1) != 10
-                && this.getValuePosition(spawnX, Platforme + 1) != 11);
+                        && this.getValuePosition(spawnX, Platforme + 1) != 11);
                 player.setPosition(spawnX, Platforme);
                 this.setValuePosition(spawnX, Platforme, 10);
             } else {
@@ -240,16 +240,6 @@ public class Scene {
     public int getLenght() {
         // méthode permettant de récupérer la longueur du tableau
         return this.length;
-    }
-
-    public void setPlayer1(Player player) {
-        // setter pour le premier joueur
-        this.player2 = player;
-    }
-
-    public void setPlayer2(Player player) {
-        // setter pour le second joueur
-        this.player2 = player;
     }
 
     public int getPosXSpawnEnemy() {

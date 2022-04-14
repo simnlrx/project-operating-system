@@ -8,11 +8,11 @@ import java.net.Socket;
 
 public class Player {
 
+    private final int number;
     private int score;
     private String name;
     private int posX;
     private int posY;
-    private final int number;
     private int life;
     private boolean ready;// bolléen pour la préparation deu joueur
     private int type; //0 -> seul donc gentil 1-> gentil (multi) -> 2 méchant
@@ -60,8 +60,12 @@ public class Player {
         return this.name;
     }
 
-    public void setName(String name){
-      this.name = name;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getScore() {
+        return this.score;
     }
 
     //accesseurs pour le score du joueur
@@ -69,47 +73,43 @@ public class Player {
         this.score += score;
     }
 
-    public int getScore() {
-        return this.score;
-    }
-
-    public void setPosition(int x, int y){
-      this.posX = x;
-      this.posY = y;
+    public void setPosition(int x, int y) {
+        this.posX = x;
+        this.posY = y;
     }
 
     public int getNumber() {
         return this.number;
     }
 
-    public int getPosX(){
-      return this.posX;
+    public int getPosX() {
+        return this.posX;
     }
 
-    public int getPosY(){
-      return this.posY;
+    public int getPosY() {
+        return this.posY;
     }
 
     public int getLife() {
         return life;
     }
 
-    public String getLifeToString(){
+    public String getLifeToString() {
         StringBuilder res = new StringBuilder();
-        for(int i = 0; i < getLife(); i++){
+        for (int i = 0; i < getLife(); i++) {
             res.append("♥");
         }
         return res.toString();
     }
 
-    public void death(){
-      // méthode pour enlever la vie d'un joueur
+    public void death() {
+        // méthode pour enlever la vie d'un joueur
         this.life--;
     }
 
-    public void addScore(int score){
-      // méthode pour ajouter un score au score du joueur
-        this.score+=score;
+    public void addScore(int score) {
+        // méthode pour ajouter un score au score du joueur
+        this.score += score;
     }
 
     public Socket getSocket() {

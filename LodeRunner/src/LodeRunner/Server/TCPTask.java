@@ -39,7 +39,7 @@ public class TCPTask implements Runnable {
 
     }
 
-    public int getClient(){
+    public int getClient() {
         return client;
     }
 }

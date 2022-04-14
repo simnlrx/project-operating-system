@@ -2,17 +2,16 @@ package LodeRunner.Client;
 
 import LodeRunner.game.Player;
 import LodeRunner.handler.GameManager;
-import LodeRunner.handler.GameState;
 
 import java.io.IOException;
 import java.net.Socket;
 
 public class Client {
 
-    private Player player;
-    private GameManager gameManager;
     private final String ip;
     private final int port;
+    private Player player;
+    private GameManager gameManager;
     private Socket socket;
 
     public Client(GameManager gameManager, Player player, String ip, int port) {
@@ -23,19 +22,19 @@ public class Client {
     }
 
     public void login() {
-        try{
+        try {
             socket = new Socket(ip, port);
             player.setSocket(socket);
             player.openWriter(socket);
-            new Thread(new ReceptionSocketServer(gameManager,8060)).start();
-        }catch (IOException e){
+            new Thread(new ReceptionSocketServer(gameManager, 8060)).start();
+        } catch (IOException e) {
             System.out.println("Connexion impossible.");
             e.printStackTrace();
             System.exit(0);
         }
     }
 
-    public void statReception(){
+    public void startReception() {
         new Thread(new ReceptionDatagramServer(gameManager)).start();
     }
 

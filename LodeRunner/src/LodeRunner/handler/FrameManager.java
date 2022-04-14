@@ -15,15 +15,15 @@ public class FrameManager {
         this.gameManager = gameManager;
     }
 
-    public void generate(){
+    public void generate() {
         frame.setLayout(new FlowLayout());
         frame.setSize(500, 500);
 
         KeyboardEvent keyboardEvent;
 
-        if(gameManager.isServer() || gameManager.getGameMode() == 1){
+        if (gameManager.isServer() || gameManager.getGameMode() == 1) {
             keyboardEvent = new KeyboardEvent(gameManager.getPlayer1(), gameManager);
-        }else{
+        } else {
             keyboardEvent = new KeyboardEvent(gameManager.getPlayer2(), gameManager);
         }
 

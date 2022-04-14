@@ -24,11 +24,11 @@ public class RegenSceneThread extends Thread {
     private int lvl;
     // niveau du niveau
 
-    /*
+    /**
      * Constructeur de RegenSceneThread
+     *
      * @param GameManager gameManager
      */
-
     public RegenSceneThread(GameManager gameManager) {
         // méthode permettant d'initialiser le tableau tab avec les valeurs comprises dans le fichier du niveau
         this.gameManager = gameManager;
@@ -52,7 +52,7 @@ public class RegenSceneThread extends Thread {
         }
     }
 
-    public void reload(){
+    public void reload() {
         for (int i = 0; i < heighttab; i++) {
             for (int y = 0; y < lenghtab; y++) {
                 this.tab[i][y] = 0;
@@ -65,7 +65,7 @@ public class RegenSceneThread extends Thread {
         Player player1 = gameManager.getPlayer1();
         Player player2 = gameManager.getPlayer2();
         // méthode qui va permettre de comparer le tableau tab et les valeurs de la scene pour regénérer les blocs, les échelles et les passerelleaprès le passage d'un ennemi ou d'un joueur
-        while (gameManager.getLevel() == lvl ) {
+        while (gameManager.getLevel() == lvl) {
             try {
                 for (int y = 0; y < heighttab; y++) {
                     for (int x = 0; x < lenghtab; x++) {
@@ -84,7 +84,7 @@ public class RegenSceneThread extends Thread {
                         if (gameManager.getScene().getValuePosition(x, y) == 0 && this.tab[y][x] == 15) {
                             gameManager.getScene().setValuePosition(x, y, 15);
                         }
-                        if (gameManager.getScene().getValuePosition(x, y) !=1 && this.tab[y][x] == 1) {
+                        if (gameManager.getScene().getValuePosition(x, y) != 1 && this.tab[y][x] == 1) {
                             gameManager.getScene().setValuePosition(x, y, 1);
                         }
                     }

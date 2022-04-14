@@ -13,6 +13,7 @@ public class RefreshScene extends Thread {
 
     /**
      * Constructeur de RefreshScene
+     *
      * @param gameManager GameManager
      */
     public RefreshScene(GameManager gameManager) {
@@ -28,7 +29,7 @@ public class RefreshScene extends Thread {
             while (gameManager.getLevel() == lvl && gameManager.getGameState().isGame()) {
                 if (gameManager.isServer() || gameManager.getGameState().equals(GameState.SOLOGAME)) {
                     scene.matrix2Screen();
-                }else{
+                } else {
                     System.out.println("\033[H\033[2J");
                     System.out.println(gameManager.getScene().getFboard());
                 }

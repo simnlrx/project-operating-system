@@ -35,7 +35,7 @@ public class EnemiesManager {
 
 
     public void AddEnemiesList() {
-      // méthode qui va parcourir l'ensemble du fichier d'initialisation et créer des ennemies en fonction de celui-ci
+        // méthode qui va parcourir l'ensemble du fichier d'initialisation et créer des ennemies en fonction de celui-ci
         this.index = 0;
         // index pour le parcour du fichier
         try {
@@ -46,11 +46,11 @@ public class EnemiesManager {
             StreamTokenizer st = new StreamTokenizer(obj);
             // instanciation d'un StreamTokenizer
             while (st.nextToken() != StreamTokenizer.TT_EOF) {
-              // parcours du fichier jusqu'à sa fin
+                // parcours du fichier jusqu'à sa fin
                 if (st.ttype == StreamTokenizer.TT_NUMBER) {
-                  //si le mot courant est un nombre
+                    //si le mot courant est un nombre
                     if ((int) st.nval == 4) {
-                      // si l'entier est 4, il s'agit d'un ennemi
+                        // si l'entier est 4, il s'agit d'un ennemi
                         EnemyThread enemi = new EnemyThread(index % lenghtab, (index / lenghtab), gameManager);
                         // alors on instancie un objet EnemyThread avec en parametre, son numéro de colonne, son numéro de ligne, sa scene et l'état le gameManager
                         threadManager.addThread(enemi);

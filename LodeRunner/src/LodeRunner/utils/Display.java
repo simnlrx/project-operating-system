@@ -22,15 +22,15 @@ public class Display {
     };
 
     public static String[] namePage = new String[]{
-           "Controls : ",
-           "",
-           "Z : up    A : break left bloc       ",
-           "S : down  E : break right bloc      ",
-           "Q : left  W : break bloc bottom left",
-           "D : right C : break bloc bottom right",
-           "",
-           "",
-           "Choose your nickname :",
+            "Controls : ",
+            "",
+            "Z : up    A : break left bloc       ",
+            "S : down  E : break right bloc      ",
+            "Q : left  W : break bloc bottom left",
+            "D : right C : break bloc bottom right",
+            "",
+            "",
+            "Choose your nickname :",
     };
 
     public static String[] multiPage = new String[]{
@@ -72,7 +72,7 @@ public class Display {
 
 
     public static void title() {
-        System.out.println("\n\n"+
+        System.out.println("\n\n" +
                 """
                         ██╗      ██████╗ ██████╗ ███████╗    ██████╗ ██╗   ██╗███╗   ██╗███╗   ██╗███████╗██████╗
                         ██║     ██╔═══██╗██╔══██╗██╔════╝    ██╔══██╗██║   ██║████╗  ██║████╗  ██║██╔════╝██╔══██╗

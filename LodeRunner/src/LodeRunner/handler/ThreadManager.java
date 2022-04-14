@@ -6,11 +6,10 @@ public class ThreadManager {
     private final ArrayList<Thread> threadList;
     // déclaration d'une ArrayList de Thread
 
-    /*
+    /**
      * Constructeur par défaut de ThreadManager
      * instanciation d'une ArrayList de Thread
      */
-
     public ThreadManager() {
         this.threadList = new ArrayList<>();
     }
@@ -27,10 +26,5 @@ public class ThreadManager {
     public void addThread(Thread thread) {
         // méthode permettant d'ajouter un thread à la liste
         threadList.add(thread);
-    }
-
-    public ArrayList<Thread> getThreadList() {
-        // permet de récupérer la ArrayList threadList
-        return threadList;
     }
 }

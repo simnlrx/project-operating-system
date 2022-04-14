@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="" />
+    <list default="true" id="0a9ff5da-a730-46f8-bd29-bcd3c96155ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionDatagramServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Client/ReceptionSocketServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Server/ReceptionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/Server/TCPTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/Server/TCPTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/KeySelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/game/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/EnemiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/EnemiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/FrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/FrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/LoadingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/handler/ThreadManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/handler/ThreadManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/BlockBreakThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/BlockBreakThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/EnemyThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RefreshScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/thread/RegenSceneThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LodeRunner/utils/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LodeRunner/utils/Display.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +61,9 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -57,6 +81,17 @@
     <configuration name="LodeRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LodeRunner" />
       <module name="LodeRunner" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

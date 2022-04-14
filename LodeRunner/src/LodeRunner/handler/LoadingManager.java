@@ -3,10 +3,10 @@ package LodeRunner.handler;
 import LodeRunner.game.Player;
 import LodeRunner.utils.Display;
 
-import java.io.IOException;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class LoadingManager {
 
@@ -138,31 +138,30 @@ public class LoadingManager {
                     printBoard(getDisplay(Display.waitPage));
                 } while (!player1.isReady());
                 gameManager.setGameState(GameState.MULTIGAME);
-                gameManager.getClient().statReception();
-                //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
+                gameManager.getClient().startReception();
             }
 
-        } else if(this.gamemode == 3){
-          do{
-            BufferedReader br = new BufferedReader(new FileReader("LodeRunner/files/score.txt"));
-            String line = null;
-            String[][] end;
-            String[] scorePage = new String[]{"Scores",
-                    "",
-                    "please check bellow the board",
-                    "",
-                    "Press e to Exit"
-                   };
-            scanner = new Scanner(System.in);
-            end = this.getDisplay(scorePage);
-            printBoard(end);
-            while ((line = br.readLine()) != null) {
-              System.out.println(line);
-            }
-          }while(scanner.nextLine().equals(""));
-          System.exit(0);
+        } else if (this.gamemode == 3) {
+            do {
+                BufferedReader br = new BufferedReader(new FileReader("LodeRunner/files/score.txt"));
+                String line = null;
+                String[][] end;
+                String[] scorePage = new String[]{"Scores",
+                        "",
+                        "please check bellow the board",
+                        "",
+                        "Press e to Exit"
+                };
+                scanner = new Scanner(System.in);
+                end = this.getDisplay(scorePage);
+                printBoard(end);
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } while (scanner.nextLine().equals(""));
+            System.exit(0);
 
-        }else {
+        } else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
 

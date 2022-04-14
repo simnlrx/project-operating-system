@@ -7,8 +7,8 @@ import LodeRunner.handler.GameState;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.*;
-import java.util.Arrays;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class ReceptionSocketServer implements Runnable {
 
@@ -55,7 +55,7 @@ public class ReceptionSocketServer implements Runnable {
                 if (tampon.contains("p2life")) {
                     player2.death();
                 }
-                if(tampon.equals("end")){
+                if (tampon.equals("end")) {
                     gameManager.endGame();
                 }
 

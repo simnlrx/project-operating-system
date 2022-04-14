@@ -37,7 +37,7 @@ public class ReceptionClient implements Runnable {
                     System.out.println("Connexion établie. \nPRESS ENTER");
                 }
 
-                if(tampon.equals("p2ready1") || tampon.equals("p2ready2")) {
+                if (tampon.equals("p2ready1") || tampon.equals("p2ready2")) {
                     gameManager.setGameState(GameState.MULTIGAME);
                     if (tampon.equals("p2ready1")) {
                         player.setType(1);

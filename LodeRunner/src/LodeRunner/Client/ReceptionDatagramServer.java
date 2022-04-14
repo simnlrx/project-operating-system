@@ -6,9 +6,8 @@ import LodeRunner.handler.GameState;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.util.Arrays;
 
-public class ReceptionDatagramServer implements Runnable{
+public class ReceptionDatagramServer implements Runnable {
 
     private final GameManager gameManager;
 
@@ -21,9 +20,9 @@ public class ReceptionDatagramServer implements Runnable{
     public void run() {
         DatagramPacket dtgrPacket;
 
-        try (DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());){
+        try (DatagramSocket dtgrSocket = new DatagramSocket(gameManager.getPort());) {
 
-            while (gameManager.getGameState().equals(GameState.MULTIGAME)){
+            while (gameManager.getGameState().equals(GameState.MULTIGAME)) {
                 byte[] data = new byte[5000];
                 dtgrPacket = new DatagramPacket(data, data.length);
                 dtgrSocket.receive(dtgrPacket);

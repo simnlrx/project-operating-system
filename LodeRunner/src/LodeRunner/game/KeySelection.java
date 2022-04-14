@@ -20,14 +20,14 @@ public class KeySelection {
         this.gameManager = gameManager;
     }
 
-    public void killPlayer1(){
-      if(gameManager.getPlayer1().getLife()==0){
-        try {
-            gameManager.endGame();
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void killPlayer1() {
+        if (gameManager.getPlayer1().getLife() == 0) {
+            try {
+                gameManager.endGame();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-      }
     }
 
     public void setKey(char key) {
@@ -48,7 +48,7 @@ public class KeySelection {
                         scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y - 1);
                     }
-                    if(top == 10){
+                    if (top == 10) {
                         scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y - 1);
                         scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 11);
@@ -96,7 +96,7 @@ public class KeySelection {
                         scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y + 1);
                     }
-                    if(bottom == 10){
+                    if (bottom == 10) {
                         scene.setValuePosition(x, y, 3);
                         scene.setPositionPlayer(player, x, y + 1);
                         scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 11);
@@ -168,11 +168,11 @@ public class KeySelection {
                             gameManager.getServer().addScore(player, 100);
                         }
                     }
-                    if (left == 11 && gameManager.getPlayer2().getType()!=2 && scene.getValuePosition(x - 2, y) != 9) {
+                    if (left == 11 && gameManager.getPlayer2().getType() != 2 && scene.getValuePosition(x - 2, y) != 9) {
                         scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x - 2, y);
                         break;
-                    }else if (left == 10 && scene.getValuePosition(x - 2, y)!=9) {
+                    } else if (left == 10 && scene.getValuePosition(x - 2, y) != 9) {
                         scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x - 2, y);
                         break;
@@ -212,11 +212,11 @@ public class KeySelection {
                         break;
 
                     }
-                    if (right == 11 && gameManager.getPlayer2().getType()!=2 && scene.getValuePosition(x - 2, y) != 9) {
+                    if (right == 11 && gameManager.getPlayer2().getType() != 2 && scene.getValuePosition(x - 2, y) != 9) {
                         scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x + 2, y);
                         break;
-                    }else if (right == 10 && scene.getValuePosition(x + 2, y)!=9) {
+                    } else if (right == 10 && scene.getValuePosition(x + 2, y) != 9) {
                         scene.setValuePosition(x, y, 0);
                         scene.setPositionPlayer(player, x + 2, y);
                         break;

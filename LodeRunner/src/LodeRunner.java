@@ -1,11 +1,8 @@
-import LodeRunner.game.Scene;
-import LodeRunner.handler.FrameManager;
 import LodeRunner.handler.GameManager;
 import LodeRunner.handler.GameState;
 import LodeRunner.handler.LoadingManager;
 import LodeRunner.utils.Display;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class LodeRunner {
