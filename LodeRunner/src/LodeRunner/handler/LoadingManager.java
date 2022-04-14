@@ -142,7 +142,9 @@ public class LoadingManager {
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
-        } else {
+        } else if(this.gamemode == 3){
+          
+        }else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
 
