@@ -11,7 +11,7 @@ public class Display {
             "Select your Game Mode:",
             "1 - Local Game",
             "2 - Online Game",
-            "3 - Scores"
+            "3 - Scores",
             "",
             "",
             "copyright ©2022 B GOUN",
