@@ -159,14 +159,14 @@ public class GameManager {
         PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
 
         if(this.gamemode==1){
-          String resPlayer = "name :"+player1.getName()+" score: "+player1.getScore()+" life:"+player1.getLife();
+          String resPlayer = "name :"+player1.getName()+" score: "+player1.getScore()+" life:"+player1.getLife()+"\n";
           writer.printf(dateOfPlay+": "+resPlayer);
           writer.close();
           printEndGameSolo();
         }else if(this.gamemode==2){
           String resPlayers = "name :"+player1.getName()+" score: "+player1.getScore()+"\n"
           +" life:"+player1.getLife()+" & name :"+player2.getName()+" score: "+player2.getScore()+" life:"+player2.getLife()+
-          "\n with multiGamemode: "+this.multiGamemode;
+          "\n with multiGamemode: "+this.multiGamemode+"\n";
           writer.printf(dateOfPlay+": "+resPlayers);
           writer.close();
           printEndGameMulti();
