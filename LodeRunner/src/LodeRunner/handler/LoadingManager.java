@@ -5,6 +5,8 @@ import LodeRunner.utils.Display;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class LoadingManager {
 
@@ -36,7 +38,7 @@ public class LoadingManager {
             this.gamemode = scanner.nextInt();
             gameManager.setGameMode(this.gamemode);
 
-        } while (this.gamemode != 1 && this.gamemode != 2);
+        } while (this.gamemode != 1 && this.gamemode != 2 && this.gamemode != 3);
 
         System.out.println(gamemode);
 
@@ -142,7 +144,27 @@ public class LoadingManager {
                 //Clé pour mettre prêt: VszbBZbQCOFPuQmPHknvkg2G5i1VRqH6
             }
 
-        } else {
+        } else if(this.gamemode == 3){
+          do{
+            BufferedReader br = new BufferedReader(new FileReader("LodeRunner/files/score.txt"));
+            String line = null;
+            String[][] end;
+            String[] scorePage = new String[]{"Scores",
+                    "",
+                    "please check bellow the board",
+                    "",
+                    "Press e to Exit"
+                   };
+            scanner = new Scanner(System.in);
+            end = this.getDisplay(scorePage);
+            printBoard(end);
+            while ((line = br.readLine()) != null) {
+              System.out.println(line);
+            }
+          }while(scanner.nextLine().equals(""));
+          System.exit(0);
+
+        }else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
 
