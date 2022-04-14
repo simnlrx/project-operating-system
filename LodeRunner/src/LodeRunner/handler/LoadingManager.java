@@ -254,10 +254,6 @@ public class LoadingManager {
         }
     }
 
-    public int getGamemode() {
-        return gamemode;
-    }
-
     public void initLoadingScene() {
 
         int h = this.gameManager.getScene().getHeight();

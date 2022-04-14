@@ -91,9 +91,6 @@ public class GameManager {
             regen.reload();
             start();
         } else {
-            if(isServer()){
-              getServer().send("end");
-            }
             endGame();
         }
         frame.dispose();
@@ -163,7 +160,8 @@ public class GameManager {
           writer.printf(dateOfPlay+": "+resPlayer);
           writer.close();
           printEndGameSolo();
-        }else if(this.gamemode==2){
+        }
+        if(this.gamemode==2){
           String resPlayers = "name :"+player1.getName()+" score: "+player1.getScore()+"\n"
           +" life:"+player1.getLife()+" & name :"+player2.getName()+" score: "+player2.getScore()+" life:"+player2.getLife()+
           "\n with multiGamemode: "+this.multiGamemode+"\n";
@@ -171,6 +169,10 @@ public class GameManager {
           writer.close();
           printEndGameMulti();
         }
+        if(isServer())
+            server.send("end");
+        if(gamemode == 2 && !isServer())
+            printEndGameMulti();
     }
 
     public void startServer() {

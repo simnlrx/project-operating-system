@@ -56,7 +56,7 @@ public class ReceptionSocketServer implements Runnable {
                     player2.death();
                 }
                 if(tampon.equals("end")){
-                    gameManager.printEndGameMulti();
+                    gameManager.endGame();
                 }
 
                 if (gameManager.getGameState().equals(GameState.END)) {
