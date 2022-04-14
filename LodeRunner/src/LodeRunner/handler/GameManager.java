@@ -7,17 +7,16 @@ import LodeRunner.thread.RefreshScene;
 import LodeRunner.thread.RegenSceneThread;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 public class GameManager {
 
-    private static final String filePath = "LodeRunner/files/score.txt";// chemin pour aller au chemin des scores
     private Scene scene;  // scene de jeu
     private GameState gameState;// GameState pour l'état de la partie
     private ThreadManager threadManager;// liste de thread
@@ -33,6 +32,7 @@ public class GameManager {
     private int multiGamemode;
     private int port;
     private boolean isServer = false;
+    private static final String filePath = "LodeRunner/files/score.txt";// chemin pour aller au chemin des scores
 
     /*
      * Constructeur de GameManager
@@ -85,7 +85,7 @@ public class GameManager {
         if (getLevel() < 5) {
             System.out.println("Loading Level " + this.getLevel() + ", please wait. . .");
             scene = new Scene(30, 40, player1, player2);
-            if (isServer)
+            if(isServer)
                 scene.setServerManager(getServer());
             Thread.sleep(5000);
             regen.reload();
@@ -151,27 +151,27 @@ public class GameManager {
         gameState = GameState.END;
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        String dateOfPlay = "" + dtf.format(LocalDateTime.now());
+        String dateOfPlay = ""+dtf.format(LocalDateTime.now());
 
-        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
+        PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filePath, false)));
 
-        if (this.gamemode == 1) {
-            String resPlayer = "name :" + player1.getName() + " score: " + player1.getScore() + " life:" + player1.getLife() + "\n";
-            writer.printf(dateOfPlay + ": " + resPlayer);
-            writer.close();
-            printEndGameSolo();
+        if(this.gamemode==1){
+          String resPlayer = "name :"+player1.getName()+" score: "+player1.getScore()+" life:"+player1.getLife();
+          writer.printf(dateOfPlay+": "+resPlayer+"\n");
+          writer.close();
+          printEndGameSolo();
         }
-        if (this.gamemode == 2) {
-            String resPlayers = "name :" + player1.getName() + " score: " + player1.getScore() + "\n"
-                    + " life:" + player1.getLife() + " & name :" + player2.getName() + " score: " + player2.getScore() + " life:" + player2.getLife() +
-                    "\n with multiGamemode: " + this.multiGamemode + "\n";
-            writer.printf(dateOfPlay + ": " + resPlayers);
-            writer.close();
-            printEndGameMulti();
+        if(this.gamemode==2){
+          String resPlayers = "name :"+player1.getName()+" score: "+player1.getScore()+"\n"
+          +" life:"+player1.getLife()+" & name :"+player2.getName()+" score: "+player2.getScore()+" life:"+player2.getLife()+
+          "\n with multiGamemode: "+this.multiGamemode;
+          writer.printf(dateOfPlay+": "+resPlayers+"\n");
+          writer.close();
+          printEndGameMulti();
         }
-        if (isServer())
+        if(isServer())
             server.send("end");
-        if (gamemode == 2 && !isServer())
+        if(gamemode == 2 && !isServer())
             printEndGameMulti();
     }
 
