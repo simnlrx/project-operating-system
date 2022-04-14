@@ -143,7 +143,20 @@ public class LoadingManager {
             }
 
         } else if(this.gamemode == 3){
-          
+          do{
+            BufferedReader br = new BufferedReader(new FileReader("foo.txt"));
+            String line = null;
+            String[][] end;
+            String[] scorePage = new String[]{"Scores",
+                    "",
+                    res,
+                    "",
+                    "Press e to Exit"};
+            scanner = new Scanner(System.in);
+            end = this.getDisplay(scorePage);
+            printBoard(end);
+          }while(scanner.nextLine().equals(""));
+          System.exit(0);
         }else {
             String[][] namePlayer = getDisplay(Display.namePage);
             do {
