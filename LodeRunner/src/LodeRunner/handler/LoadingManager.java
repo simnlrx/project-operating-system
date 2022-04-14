@@ -40,8 +40,6 @@ public class LoadingManager {
 
         } while (this.gamemode != 1 && this.gamemode != 2 && this.gamemode != 3);
 
-        System.out.println(gamemode);
-
         initLoadingScene();
 
         if (this.gamemode == 2) {
