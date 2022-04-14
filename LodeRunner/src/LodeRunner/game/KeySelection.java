@@ -53,6 +53,7 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x, y - 1);
                         scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 11);
                         scene.reSpawnPlayer(gameManager.getPlayer1());
+                        gameManager.getServer().addScore(player, 100);
                         killPlayer1();
                     }
                     break;
@@ -85,6 +86,7 @@ public class KeySelection {
                             scene.setPositionPlayer(player, x - 1, y);
                             scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 11);
                             scene.reSpawnPlayer(gameManager.getPlayer1());
+                            gameManager.getServer().addScore(player, 100);
                             killPlayer1();
                         }
                     }
@@ -99,6 +101,7 @@ public class KeySelection {
                         scene.setPositionPlayer(player, x, y + 1);
                         scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 11);
                         scene.reSpawnPlayer(gameManager.getPlayer1());
+                        gameManager.getServer().addScore(player, 100);
                         killPlayer1();
                     }
                     break;
@@ -131,6 +134,7 @@ public class KeySelection {
                             scene.setPositionPlayer(player, x + 1, y);
                             scene.setValuePosition(gameManager.getPlayer1().getPosX(), gameManager.getPlayer1().getPosY(), 0);
                             scene.reSpawnPlayer(gameManager.getPlayer1());
+                            gameManager.getServer().addScore(player, 100);
                             killPlayer1();
                         }
                     }
