@@ -292,6 +292,10 @@ public class Scene {
         this.posYNextLevel = y;
     }
 
+    public void setServerManager(ServerManager serverManager) {
+        this.serverManager = serverManager;
+    }
+
     public String getFboard() {
         return fboard;
     }

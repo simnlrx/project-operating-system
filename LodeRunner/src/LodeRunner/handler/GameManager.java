@@ -79,6 +79,8 @@ public class GameManager {
         if (getLevel() < 5) {
             System.out.println("Loading Level " + this.getLevel() + ", please wait. . .");
             scene = new Scene(30, 40, player1, player2);
+            if(isServer)
+                scene.setServerManager(getServer());
             Thread.sleep(5000);
             regen.reload();
             start();
@@ -154,6 +156,7 @@ public class GameManager {
     public void startServer() {
         server = new ServerManager(this);
         server.start();
+        scene.setServerManager(server);
     }
 
     public void startSocketServer() throws IOException {
