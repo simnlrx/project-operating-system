@@ -32,6 +32,7 @@ public class ReceptionSocketServer implements Runnable {
             String tampon;
 
             while (!socket.isClosed() && (tampon = reader.readLine()) != null) {
+                System.out.println(tampon);
 
                 if (tampon.contains("p1ready")) {
                     player1.setType(1);
@@ -58,7 +59,6 @@ public class ReceptionSocketServer implements Runnable {
                 if (tampon.equals("end")) {
                     gameManager.endGame();
                 }
-
                 if (gameManager.getGameState().equals(GameState.END)) {
                     reader.close();
                     socket.close();

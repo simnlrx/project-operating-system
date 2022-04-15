@@ -169,8 +169,10 @@ public class GameManager {
           writer.close();
           printEndGameMulti();
         }
-        if(isServer())
+        if(isServer()) {
             server.send("end");
+            System.out.println("end envoyé");
+        }
         if(gamemode == 2 && !isServer())
             printEndGameMulti();
     }
