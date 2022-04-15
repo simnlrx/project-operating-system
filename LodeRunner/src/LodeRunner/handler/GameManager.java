@@ -91,6 +91,9 @@ public class GameManager {
             regen.reload();
             start();
         } else {
+            if(isServer() ) {
+                server.send("end");
+            }
             endGame();
         }
         frame.dispose();
@@ -168,10 +171,6 @@ public class GameManager {
           writer.printf(dateOfPlay+": "+resPlayers+"\n");
           writer.close();
           printEndGameMulti();
-        }
-        if(isServer()) {
-            server.send("end");
-            System.out.println("end envoyé");
         }
         if(gamemode == 2 && !isServer())
             printEndGameMulti();
