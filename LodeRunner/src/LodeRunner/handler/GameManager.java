@@ -207,7 +207,7 @@ public class GameManager {
     }
 
     public void setGameState(GameState gameState) {
-        // affecetation de gameState
+        // affectation de gameState
         this.gameState = gameState;
     }
 

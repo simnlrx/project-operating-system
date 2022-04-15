@@ -24,8 +24,8 @@ public class EnemyThread extends Thread {
     /**
      * Constructeur de EnemyThread
      *
-     * @param int         posX pour la position en X de l'ennemi
-     * @param int         posY pour la position en Y de l'ennemi
+     * @param int posX pour la position en X de l'ennemi
+     * @param int posY pour la position en Y de l'ennemi
      * @param GameManager gameManager
      */
     public EnemyThread(int posX, int posY, GameManager gameManager) {
@@ -53,7 +53,7 @@ public class EnemyThread extends Thread {
     }
 
     public synchronized void killPlayer() {
-        // méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer les conséquences occasionées
+        // méthode qui permet de tuer un joueur au contact d'un ennemi, et d'engendrer des conséquences
         // le jeu nécessite que le joueur 1 doit etre en vie
         if (player1.getLife() >= 1) {
             if ((posX == player1.getPosX() && posY == player1.getPosY())) {

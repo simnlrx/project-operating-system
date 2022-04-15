@@ -26,7 +26,7 @@ public class EnemiesManager {
         this.threadManager = threadManager;
         //liste des threads
         this.gameManager = gameManager;
-        //l'attribut gameManager récuépère le gameManager passé en parametre
+        //l'attribut gameManager récupère le gameManager passé en parametre
         this.lenghtab = gameManager.getScene().getLenght();
         //on recupère la longueur du tableau
         AddEnemiesList();

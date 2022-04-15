@@ -14,7 +14,7 @@ public class Player {
     private int posX;
     private int posY;
     private int life;
-    private boolean ready;// bolléen pour la préparation deu joueur
+    private boolean ready;// bouléen pour la préparation du joueur
     private int type; //0 -> seul donc gentil 1-> gentil (multi) -> 2 méchant
     private Socket socket;
     private PrintWriter writer;
@@ -22,7 +22,7 @@ public class Player {
     /*
      * Constructeur d'un joueur
      * @param score Score du joueur
-     * @param name Non du joueur
+     * @param name Nom du joueur
      * @param number Numéro du joueur
      */
 

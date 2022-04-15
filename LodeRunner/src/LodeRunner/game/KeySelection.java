@@ -31,7 +31,7 @@ public class KeySelection {
     }
 
     public void setKey(char key) {
-        // méthode pour affecter une action en fonction du caractè passer en paramètre
+        // méthode pour affecter une action en fonction du caractère passer en paramètre
         Scene scene = gameManager.getScene();
         int x = player.getPosX();
         int y = player.getPosY();

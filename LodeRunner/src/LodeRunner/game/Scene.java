@@ -32,8 +32,8 @@ public class Scene {
     private int posXSpawnEnemy;// position en X du spawn ennemi
     private int posYSpawnEnemy;// position en Y du spawn ennemi
 
-    private int posXNextLevel;// position en X du spawn du joueur 1
-    private int posYNextLevel;// position en Y du spawn du joueur 1
+    private int posXNextLevel;// position en X de la porte de sortie du niveau
+    private int posYNextLevel;// position en Y de la porte de sortie du niveau
 
     /**
      * Constructeur d'une scene
@@ -139,7 +139,7 @@ public class Scene {
     }
 
     public void set1Player(Player player) {
-        //méthode permettant d'ajouter un joueur à la scene
+        //méthode permettant d'ajouter un joueur à la scène
         this.player1 = player;
         this.player2 = null;
         for (int i = 0; i < (this.height); i++) {
@@ -154,7 +154,7 @@ public class Scene {
     }
 
     public void set2Players(Player player1, Player player2) {
-        // ajoute deux joueurs à la scene
+        // ajoute deux joueurs à la scène
         //méthode permettant d'ajouter un joueur à la scene
         this.player1 = player1;
         this.player2 = player2;
@@ -208,7 +208,7 @@ public class Scene {
     }
 
     public synchronized void setValuePosition(int x, int y, int value) {
-        // méthode permettant de metre une valeur dans le tableau
+        // méthode permettant de mettre une valeur dans le tableau
         board[y][x] = value;
     }
 
